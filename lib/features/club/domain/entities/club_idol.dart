@@ -12,6 +12,14 @@ class ClubIdol {
     this.position,
     this.period,
     this.photoAsset,
+    this.fullName,
+    this.story,
+    this.matches,
+    this.goals,
+    this.statsAsOf,
+    this.statsScope,
+    this.titles = const [],
+    this.highlights = const [],
   });
 
   final String name;
@@ -45,6 +53,48 @@ class ClubIdol {
   /// `null` enquanto não existir foto de verdade — a UI cai pras iniciais,
   /// nunca numa imagem genérica fingindo ser a pessoa.
   final String? photoAsset;
+
+  // ---- Campos da tela de detalhe — todos opcionais. Cada um só existe com
+  // fonte; sem fonte fica `null`/vazio e a tela simplesmente não mostra a
+  // seção (nunca um traço, um zero ou um palpite no lugar).
+
+  /// Nome de registro, quando confirmado (ex.: "Fernando Lúcio da Costa").
+  final String? fullName;
+
+  /// Texto mais longo de trajetória no clube. [description] continua sendo
+  /// o resumo curto do card da lista.
+  final String? story;
+
+  /// Jogos/gols PELO CLUBE. Número só entra com fonte que feche; quando as
+  /// fontes divergem, fica `null` (ver o comentário no dataset do clube).
+  final int? matches;
+  final int? goals;
+
+  /// Data de referência (ISO `yyyy-MM-dd`) de [matches]/[goals]. Obrigatória
+  /// para quem segue em atividade — número de jogador ativo sem data
+  /// envelhece calado.
+  final String? statsAsOf;
+
+  /// Quando os números não são o total no clube (ex.: "Primeira passagem,
+  /// 2012-2013") — aparece junto dos números.
+  final String? statsScope;
+
+  /// Títulos conquistados pelo clube com o jogador, já redigidos.
+  final List<String> titles;
+
+  /// Campanhas e momentos marcantes, já redigidos.
+  final List<String> highlights;
+
+  /// Só abre detalhe quem tem algo além do que o card da lista já mostra —
+  /// assim um clube cujo dataset não usa estes campos (Bragantino, Vila
+  /// Nova) continua exatamente como era, sem tela vazia atrás do toque.
+  bool get hasDetail =>
+      fullName != null ||
+      story != null ||
+      matches != null ||
+      goals != null ||
+      titles.isNotEmpty ||
+      highlights.isNotEmpty;
 
   /// Só o que pode ir pro torcedor hoje. Tier 2 e 3 ficam de fora de
   /// propósito: as descrições deles dizem, literalmente, "revisão

@@ -2911,6 +2911,26 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get clubIdolMatches => 'Partidos';
+
+  @override
+  String get clubIdolGoals => 'Goles';
+
+  @override
+  String get clubIdolTitles => 'TÍTULOS';
+
+  @override
+  String get clubIdolHighlights => 'CAMPAÑAS Y MOMENTOS';
+
+  @override
+  String get clubIdolStory => 'HISTORIA';
+
+  @override
+  String clubIdolStatsAsOf(String date) {
+    return 'Números hasta $date';
+  }
+
+  @override
   String get clubAnthemSection => 'HIMNO';
 
   @override

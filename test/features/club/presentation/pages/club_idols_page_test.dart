@@ -9,7 +9,9 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/club/data/bragantino_idols_data.dart';
 import 'package:goias_app/features/club/data/goias_idols_data.dart';
+import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
+import 'package:goias_app/features/club/presentation/pages/club_idol_detail_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_idols_page.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
@@ -81,6 +83,11 @@ void main() {
       initialLocation: '/',
       routes: [
         GoRoute(path: '/', builder: (context, state) => const ClubIdolsPage()),
+        GoRoute(
+          path: '/clube/idolos/detalhe',
+          builder: (context, state) =>
+              ClubIdolDetailPage(idol: state.extra! as ClubIdol),
+        ),
       ],
     );
     return MaterialApp.router(
@@ -368,19 +375,20 @@ void main() {
       });
     }
 
-    testWidgets('tela estreita + texto grande: nenhum overflow em nenhum card', (
-      tester,
-    ) async {
-      addTearDown(tester.view.reset);
-      tester.view.physicalSize = const Size(320, 30000);
-      tester.view.devicePixelRatio = 1.0;
-      await register(goiasClubConfig);
-      await tester.pumpWidget(wrap(textScale: 1.6));
-      await tester.pumpAndSettle();
+    testWidgets(
+      'tela estreita + texto grande: nenhum overflow em nenhum card',
+      (tester) async {
+        addTearDown(tester.view.reset);
+        tester.view.physicalSize = const Size(320, 30000);
+        tester.view.devicePixelRatio = 1.0;
+        await register(goiasClubConfig);
+        await tester.pumpWidget(wrap(textScale: 1.6));
+        await tester.pumpAndSettle();
 
-      expect(tester.takeException(), isNull);
-      expect(find.text('Harlei', skipOffstage: false), findsOneWidget);
-    });
+        expect(tester.takeException(), isNull);
+        expect(find.text('Harlei', skipOffstage: false), findsOneWidget);
+      },
+    );
 
     testWidgets('rola até o fim da lista (Tadeu é o último, cronológico)', (
       tester,
@@ -410,6 +418,129 @@ void main() {
       expect(byName['Edson Mug']!.period, isNull);
       // Estatística de quem segue em atividade sempre com data.
       expect(byName['Tadeu']!.description, contains('28/08/2026'));
+    });
+  });
+
+  group('Detalhe do ídolo', () {
+    test('Bragantino e Vila Nova não usam os campos de detalhe — os cards '
+        'deles continuam estáticos, como sempre foram', () {
+      expect(BragantinoIdolsData.idols.where((i) => i.hasDetail), isEmpty);
+      expect(VilaNovaIdolsData.idols.where((i) => i.hasDetail), isEmpty);
+    });
+
+    testWidgets('card do Bragantino não tem seta nem abre nada', (
+      tester,
+    ) async {
+      useTallSurface(tester);
+      await register(bragantinoClubConfig);
+      await tester.pumpWidget(wrap());
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+      await tester.tap(find.text('Mauro Silva'));
+      await tester.pumpAndSettle();
+      expect(find.byType(ClubIdolDetailPage), findsNothing);
+    });
+
+    testWidgets('Goiás: tocar no Harlei abre o detalhe com números e títulos', (
+      tester,
+    ) async {
+      addTearDown(tester.view.reset);
+      tester.view.physicalSize = const Size(800, 9000);
+      tester.view.devicePixelRatio = 1.0;
+      await register(goiasClubConfig);
+      await tester.pumpWidget(wrap());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Harlei'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ClubIdolDetailPage), findsOneWidget);
+      expect(find.text('Harlei de Menezes Silva'), findsOneWidget);
+      expect(find.text('831'), findsOneWidget);
+      expect(find.text('JOGOS'), findsOneWidget);
+      // Sem gols confirmados → sem a caixa de gols (nunca um "0" inventado).
+      expect(find.text('GOLS'), findsNothing);
+      expect(find.text('TÍTULOS'), findsOneWidget);
+      expect(find.text('Campeonato Brasileiro Série B 2012'), findsOneWidget);
+      expect(find.text('CAMPANHAS E MOMENTOS'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    Future<void> openDetail(
+      WidgetTester tester,
+      ClubIdol idol, {
+      bool dark = false,
+      double width = 800,
+      double textScale = 1,
+    }) async {
+      addTearDown(tester.view.reset);
+      tester.view.physicalSize = Size(width, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      await register(goiasClubConfig);
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => ClubIdolDetailPage(idol: idol),
+          ),
+        ],
+      );
+      await tester.pumpWidget(
+        MaterialApp.router(
+          theme: dark ? AppTheme.dark() : AppTheme.light(),
+          locale: const Locale('pt'),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(
+              context,
+            ).copyWith(textScaler: TextScaler.linear(textScale)),
+            child: child!,
+          ),
+          routerConfig: router,
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    ClubIdol goias(String name) =>
+        GoiasIdolsData.idols.firstWhere((i) => i.name == name);
+
+    testWidgets(
+      'jogador em atividade mostra a data de referência dos números',
+      (tester) async {
+        await openDetail(tester, goias('Tadeu'));
+        expect(find.text('400'), findsOneWidget);
+        expect(find.text('Números até 28/08/2026'), findsOneWidget);
+      },
+    );
+
+    testWidgets('números parciais dizem a que se referem', (tester) async {
+      await openDetail(tester, goias('Walter'));
+      expect(find.text('82'), findsOneWidget);
+      expect(find.text('45'), findsOneWidget);
+      expect(find.text('Primeira passagem (2012-2013)'), findsOneWidget);
+    });
+
+    testWidgets('ídolo sem números/títulos não mostra essas seções', (
+      tester,
+    ) async {
+      await openDetail(tester, goias('Lincoln'));
+      expect(find.text('Lincoln de Freitas Neves'), findsOneWidget);
+      expect(find.text('JOGOS'), findsNothing);
+      expect(find.text('TÍTULOS'), findsNothing);
+      expect(find.text('CAMPANHAS E MOMENTOS'), findsNothing);
+      expect(find.text('HISTÓRIA'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('detalhe em tela estreita, texto grande e tema escuro: '
+        'sem overflow em nenhum ídolo do Goiás', (tester) async {
+      for (final idol in GoiasIdolsData.idols.where((i) => i.hasDetail)) {
+        await openDetail(tester, idol, dark: true, width: 320, textScale: 1.6);
+        expect(tester.takeException(), isNull, reason: idol.name);
+      }
     });
   });
 }

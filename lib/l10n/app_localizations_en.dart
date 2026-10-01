@@ -2903,6 +2903,26 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get clubIdolMatches => 'Matches';
+
+  @override
+  String get clubIdolGoals => 'Goals';
+
+  @override
+  String get clubIdolTitles => 'TITLES';
+
+  @override
+  String get clubIdolHighlights => 'CAMPAIGNS AND MOMENTS';
+
+  @override
+  String get clubIdolStory => 'STORY';
+
+  @override
+  String clubIdolStatsAsOf(String date) {
+    return 'Figures as of $date';
+  }
+
+  @override
   String get clubAnthemSection => 'ANTHEM';
 
   @override

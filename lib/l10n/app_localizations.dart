@@ -4995,6 +4995,42 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 ídolo} other{{count} ídolos}}'**
   String clubIdolsCount(int count);
 
+  /// No description provided for @clubIdolMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos'**
+  String get clubIdolMatches;
+
+  /// No description provided for @clubIdolGoals.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols'**
+  String get clubIdolGoals;
+
+  /// No description provided for @clubIdolTitles.
+  ///
+  /// In pt, this message translates to:
+  /// **'TÍTULOS'**
+  String get clubIdolTitles;
+
+  /// No description provided for @clubIdolHighlights.
+  ///
+  /// In pt, this message translates to:
+  /// **'CAMPANHAS E MOMENTOS'**
+  String get clubIdolHighlights;
+
+  /// No description provided for @clubIdolStory.
+  ///
+  /// In pt, this message translates to:
+  /// **'HISTÓRIA'**
+  String get clubIdolStory;
+
+  /// No description provided for @clubIdolStatsAsOf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Números até {date}'**
+  String clubIdolStatsAsOf(String date);
+
   /// No description provided for @clubAnthemSection.
   ///
   /// In pt, this message translates to:

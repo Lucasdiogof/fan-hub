@@ -1678,6 +1678,19 @@
       }
     }
   },
+  "clubIdolMatches": "Jogos",
+  "clubIdolGoals": "Gols",
+  "clubIdolTitles": "TÍTULOS",
+  "clubIdolHighlights": "CAMPANHAS E MOMENTOS",
+  "clubIdolStory": "HISTÓRIA",
+  "clubIdolStatsAsOf": "Números até {date}",
+  "@clubIdolStatsAsOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "clubAnthemSection": "HINO",
   "clubSongsSection": "{clubCode, select, goias{MÚSICAS ESMERALDINAS} other{MÚSICAS DO {club}}}",
   "@clubSongsSection": {

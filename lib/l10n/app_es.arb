@@ -1053,6 +1053,12 @@
       }
     }
   },
+  "clubIdolMatches": "Partidos",
+  "clubIdolGoals": "Goles",
+  "clubIdolTitles": "TÍTULOS",
+  "clubIdolHighlights": "CAMPAÑAS Y MOMENTOS",
+  "clubIdolStory": "HISTORIA",
+  "clubIdolStatsAsOf": "Números hasta {date}",
   "clubAnthemSection": "HIMNO",
   "clubSongsSection": "{clubCode, select, goias{CANCIONES ESMERALDINAS} other{CANCIONES DEL {club}}}",
   "@clubSongsSection": {

@@ -44,10 +44,12 @@ import 'package:goias_app/features/auth/presentation/pages/check_your_email_page
 import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
 import 'package:goias_app/features/club/presentation/pages/club_diretoria_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_idol_detail_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_idols_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_transparency_document_page.dart';
@@ -624,6 +626,17 @@ GoRouter createAppRouter(
             path: '/clube/idolos',
             pageBuilder: (context, state) =>
                 appPage(state, const ClubIdolsPage()),
+          ),
+          GoRoute(
+            path: '/clube/idolos/detalhe',
+            // O ídolo vem por `extra` (mesmo padrão da letra do hino). Sem
+            // ele (link direto/refresh no web), cai na lista — nunca crash.
+            pageBuilder: (context, state) => appPage(
+              state,
+              state.extra is ClubIdol
+                  ? ClubIdolDetailPage(idol: state.extra! as ClubIdol)
+                  : const ClubIdolsPage(),
+            ),
           ),
           GoRoute(
             path: '/clube/diretoria',

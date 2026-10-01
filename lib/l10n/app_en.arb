@@ -1065,6 +1065,12 @@
       }
     }
   },
+  "clubIdolMatches": "Matches",
+  "clubIdolGoals": "Goals",
+  "clubIdolTitles": "TITLES",
+  "clubIdolHighlights": "CAMPAIGNS AND MOMENTS",
+  "clubIdolStory": "STORY",
+  "clubIdolStatsAsOf": "Figures as of {date}",
   "clubAnthemSection": "ANTHEM",
   "clubSongsSection": "{clubCode, select, goias{ESMERALDINA SONGS} other{{club} SONGS}}",
   "@clubSongsSection": {

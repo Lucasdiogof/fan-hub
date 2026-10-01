@@ -6,6 +6,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
+import 'package:goias_app/features/club/presentation/widgets/club_idol_avatar.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -111,7 +112,7 @@ class _IdolCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final subtitle = _subtitle;
-    return Container(
+    final card = Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
@@ -122,7 +123,7 @@ class _IdolCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _IdolAvatar(name: idol.name, photoAsset: idol.photoAsset),
+          ClubIdolAvatar(name: idol.name, photoAsset: idol.photoAsset),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(
@@ -162,90 +163,25 @@ class _IdolCard extends StatelessWidget {
               ],
             ),
           ),
+          if (idol.hasDetail) ...[
+            const SizedBox(width: AppSpacing.sm),
+            Padding(
+              padding: const EdgeInsets.only(top: 14),
+              child: Icon(Icons.chevron_right_rounded, color: colors.textHint),
+            ),
+          ],
         ],
       ),
     );
-  }
-}
-
-/// Foto real quando existe asset; caso contrário, iniciais sobre a cor
-/// secundária do clube — mesma linguagem do avatar da Diretoria. NUNCA uma
-/// imagem genérica fingindo ser o jogador.
-class _IdolAvatar extends StatelessWidget {
-  const _IdolAvatar({required this.name, this.photoAsset});
-
-  final String name;
-  final String? photoAsset;
-
-  String get _initials {
-    final parts = name.trim().split(RegExp(r'\s+'));
-    if (parts.isEmpty || parts.first.isEmpty) return '';
-    final first = parts.first.characters.first;
-    final last = parts.length > 1 && parts.last.isNotEmpty
-        ? parts.last.characters.first
-        : '';
-    return (first + last).toUpperCase();
-  }
-
-  static bool _isNetworkUrl(String value) =>
-      value.startsWith('http://') || value.startsWith('https://');
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final asset = photoAsset;
-    const size = 52.0;
-    Widget image;
-    if (asset == null || asset.isEmpty) {
-      image = _InitialsText(initials: _initials);
-    } else if (_isNetworkUrl(asset)) {
-      // Foto do elenco atual (CDN oficial do clube) — mesmo padrão de
-      // `SquadAvatar`/`GuessBlurredPhoto`: [photoAsset] pode ser um asset
-      // local (histórico) ou uma URL remota (jogador ainda no elenco).
-      image = Image.network(
-        asset,
-        width: size,
-        height: size,
-        fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) =>
-            _InitialsText(initials: _initials),
-      );
-    } else {
-      image = Image.asset(
-        asset,
-        width: size,
-        height: size,
-        fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) =>
-            _InitialsText(initials: _initials),
-      );
-    }
-    return ClipOval(
-      child: Container(
-        width: size,
-        height: size,
-        alignment: Alignment.center,
-        color: colors.secondary,
-        child: image,
-      ),
-    );
-  }
-}
-
-class _InitialsText extends StatelessWidget {
-  const _InitialsText({required this.initials});
-
-  final String initials;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Text(
-      initials,
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w900,
-        color: colors.primary,
+    // Só vira botão quem tem detalhe de verdade (ver `ClubIdol.hasDetail`)
+    // — ídolo só com resumo continua um card estático, como sempre foi.
+    if (!idol.hasDetail) return card;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppRadius.card),
+        onTap: () => context.push('/clube/idolos/detalhe', extra: idol),
+        child: card,
       ),
     );
   }
