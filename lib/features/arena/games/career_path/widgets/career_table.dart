@@ -56,15 +56,16 @@ class CareerTable extends StatelessWidget {
 
 /// Quando o jogador teve mais de uma passagem pelo mesmo clube e a fonte só
 /// fecha o total somado (nunca por passagem individual), as linhas daquele
-/// clube na tabela acima mostram "—" em jogos/gols — o número real mora só
-/// aqui, explicitamente marcado como combinado, nunca atribuído a uma
-/// passagem específica.
+/// clube na tabela acima mostram "0" em jogos/gols (2026-09-30: "—" dava
+/// impressão de erro de carregamento, trocado por pedido do usuário) — o
+/// número real mora só aqui, explicitamente marcado como combinado, nunca
+/// atribuído a uma passagem específica.
 class _AggregateSection extends StatelessWidget {
   const _AggregateSection({required this.stats});
 
   final List<CareerAggregateStat> stats;
 
-  String _n(int? value) => value?.toString() ?? '—';
+  String _n(int? value) => value?.toString() ?? '0';
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +203,7 @@ class _EntryRow extends StatelessWidget {
   final CareerEntry entry;
   final bool showDivider;
 
-  String _n(int? value) => value?.toString() ?? '—';
+  String _n(int? value) => value?.toString() ?? '0';
 
   @override
   Widget build(BuildContext context) {
