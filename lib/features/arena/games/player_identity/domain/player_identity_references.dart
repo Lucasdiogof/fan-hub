@@ -268,7 +268,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'luvanor',
     name: 'Luvanor',
-    period: '1977–1982',
+    period: '1977–1983 / 1990–1992',
     creativity: 74,
     definition: 64,
     leadership: 54,
