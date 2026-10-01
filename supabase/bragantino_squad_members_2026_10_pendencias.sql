@@ -13,6 +13,13 @@
 -- profissional; Bruninho no profissional, voltou a treinar em 2026-06-29):
 -- seguem ativos, nada muda.
 --
+-- ATENÇÃO (descoberto ao aplicar, 2026-10-01): o banco REAL já tinha alturas
+-- gravadas em 2026-09-09 que os seeds do repo não registram (ogol): Pitta 185,
+-- Lucas Barbosa 194, Rodriguinho 185, Gustavo Neves 176, Volpi 189, Girotto
+-- 171, Sant'Anna 173 e Cauê 186. Por isso Pitta e Lucas Barbosa aceitam
+-- também o valor antigo do banco (185 e 194) e são corrigidos para o valor
+-- confirmado; os demais não mudam (já batem ou estão pendentes).
+--
 -- Rodar SÓ no projeto Supabase do BRAGANTINO (yrgyzkaaudyzmsqwzecj), DEPOIS de
 -- bragantino_squad_members_2026_10_validation.sql. Idempotente: cada UPDATE
 -- confere o valor antigo.
@@ -25,7 +32,7 @@ begin
 end $$;
 
 update public.squad_members set birth_date = '2000-08-10', updated_at = now() where id = 'eric-ramires' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and birth_date = '2000-10-10';
-update public.squad_members set height_cm = 183, updated_at = now() where id = 'pitta' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and height_cm is null;
+update public.squad_members set height_cm = 183, updated_at = now() where id = 'pitta' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and (height_cm is null or height_cm = 185);
 update public.squad_members set height_cm = 185, updated_at = now() where id = 'rodriguinho' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and height_cm is null;
-update public.squad_members set height_cm = 193, updated_at = now() where id = 'lucas-barbosa' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and height_cm is null;
+update public.squad_members set height_cm = 193, updated_at = now() where id = 'lucas-barbosa' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and (height_cm is null or height_cm = 194);
 update public.squad_members set height_cm = 176, updated_at = now() where id = 'gustavo-neves' and club_id = '51683d2a-ea1d-57c6-8014-996146f242e7' and height_cm is null;
