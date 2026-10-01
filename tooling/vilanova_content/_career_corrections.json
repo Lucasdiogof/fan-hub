@@ -1,5 +1,5 @@
 {
-  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte. Rodada de 2026-10-01 (pendências): empréstimo/compra resolvidos com as conclusões confirmadas; pendentes ficam sem tag de empréstimo, com data_quality \"review\" e nota. Rodada 2 (2026-10-01): Douglas Mendes revertido (Salzburg dono desde 07/2023 — comunicados oficiais), Janderson/Ceará definitivo, Jonathan Costa/Portimonense contrato direto.",
+  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte. Rodada de 2026-10-01 (pendências): empréstimo/compra resolvidos com as conclusões confirmadas; pendentes ficam sem tag de empréstimo, com data_quality \"review\" e nota. Rodada 2 (2026-10-01): Douglas Mendes revertido (Salzburg dono desde 07/2023 — comunicados oficiais), Janderson/Ceará definitivo, Jonathan Costa/Portimonense contrato direto. Rodada 3 (2026-10-01): Douglas Mendes cedido pelo Salzburg (nota oficial de 05/07/2026), empréstimo ao Bragantino prorrogado até 31/12/2025; Marquinhos Gabriel Passo Fundo -> Inter 2007.",
   "corrections": [
     {
       "player_id": "vn_dalberson",
@@ -853,26 +853,26 @@
       "to": [
         {
           "period": "2007",
-          "team": "Internacional (base)",
+          "team": "Passo Fundo (base)",
           "appearances": null,
           "goals": null,
-          "loan": true,
+          "loan": false,
           "data_quality": "partial",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Juventude."
+          "notes": "Chegou ao Passo Fundo em maio de 2007 (Wikipédia); o ogol não registra esta passagem."
         },
         {
-          "period": "2008–2009",
+          "period": "2007–2009",
           "team": "Internacional (base)",
           "appearances": null,
           "goals": null,
           "loan": false,
           "data_quality": "review",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Vínculo a partir de 2008 não confirmado: não há anúncio da aquisição."
+          "notes": "Chegou ao Inter em novembro de 2007, vindo do Passo Fundo (Wikipédia; ge, 2016). O ogol marca empréstimo do Juventude, mas a Wikipédia diz que ele só fez testes no Juventude em 2006. Modalidade da transferência sem documento."
         }
       ],
-      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Empréstimo confirmado só em 2007; 2008+ pendente."
+      "source": "https://pt.wikipedia.org/wiki/Marquinhos_Gabriel",
+      "corroboration": "Rodada 3 de pendências (2026-10-01; fonte conferida)",
+      "reason": "Wikipédia (\"no mês de novembro de 2007, o Internacional ... levou o futuro craque para o Beira-Rio\", vindo do Passo Fundo) + ge (https://ge.globo.com/futebol/times/corinthians/noticia/2016/04/alcado-por-tite-no-inter-marquinhos-gabriel-era-chamado-de-novo-pato.html: \"Destaque do Passo Fundo, o garoto chegou ainda juvenil ao Colorado, em 2007\"). Prioridade 2 + imprensa contra o ogol sozinho."
     },
     {
       "player_id": "vn_janderson",
@@ -934,10 +934,49 @@
       },
       "field": "notes",
       "from": null,
-      "to": "Contratado em definitivo em 30/06/2026 (contrato até dezembro de 2028). Clube cedente em revisão: o Salzburg detinha os direitos desde 07/2023.",
-      "source": "https://www.redbullsalzburg.at/getmedia/82ff107e-7415-4020-a99f-0b420cd9f44d/202324_105_Douglas-Mendes-Leihe-Bragantino.pdf",
-      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
-      "reason": "Comunicado oficial do Salzburg (09/01/2024): empréstimo (\"Leihvertrag\") ao Bragantino. Quem cedeu o atleta ao Vila em 2026 não foi confirmado."
+      "to": "Contratado em definitivo junto ao Red Bull Salzburg, dono dos direitos desde 07/2023 (anúncio do Vila em 30/06/2026; contrato até dezembro de 2028).",
+      "source": "https://www.redbullsalzburg.at/en/recent/news/douglas-mendes-moreira-07-2026",
+      "corroboration": "Rodada 3 de pendências (2026-10-01; fonte conferida)",
+      "reason": "FC Red Bull Salzburg (05/07/2026, \"Douglas Mendes moves to Brazil\"): \"returning to Brazil on a permanent basis and has signed a contract with ... Vila Nova FC\". Fecha o clube cedente."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Bragantino",
+        "period": "2024–2025"
+      },
+      "field": "notes",
+      "from": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
+      "to": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado pelo Red Bull Salzburg (09/01/2024); empréstimo prorrogado até 31/12/2025.",
+      "source": "https://www.redbullsalzburg.at/getmedia/99079717-6c24-4d7e-8fe9-09002fceed97/202425_112_Douglas-Leihe-Bragantino.pdf",
+      "corroboration": "Rodada 3 de pendências (2026-10-01; fonte conferida)",
+      "reason": "Medieninfo 112 do Salzburg (02/01/2025): \"Der Leihvertrag ... wurde bis 31. Dezember 2025 verlängert.\" O retorno antecipado em meados de 2025 que a pesquisa citou NÃO tem fonte conferida — não entra."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Juventude (base)",
+        "period": "2005–2006"
+      },
+      "field": "data_quality",
+      "from": "partial",
+      "to": "review",
+      "source": "https://pt.wikipedia.org/wiki/Marquinhos_Gabriel",
+      "corroboration": "Rodada 3 de pendências (2026-10-01; fonte conferida)",
+      "reason": "Wikipédia: fez testes no Juventude em 2006, foi aprovado mas não seguiu no clube."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Juventude (base)",
+        "period": "2005–2006"
+      },
+      "field": "notes",
+      "from": "Passagem identificada; totais não exibidos na tabela consultada.",
+      "to": "Fontes divergem: o ogol registra a base do Juventude em 2005–2006; a Wikipédia diz que ele só fez testes lá em 2006 e não seguiu no clube.",
+      "source": "https://pt.wikipedia.org/wiki/Marquinhos_Gabriel",
+      "corroboration": "Rodada 3 de pendências (2026-10-01; fonte conferida)",
+      "reason": "Ver a correção de data_quality acima."
     }
   ]
 }

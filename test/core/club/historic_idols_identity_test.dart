@@ -49,8 +49,11 @@ void main() {
       expect(gibrair.period, isNot(contains('198')));
     });
 
-    test('Luciano não vira Luciano Goiano sem evidência', () {
-      expect(vila.where((i) => i.name.contains('Luciano')), isEmpty);
+    test('Luciano só entra como Luciano Goiano (fonte própria: O Popular '
+        'o chama de ídolo), nunca como "Luciano" solto nem Luciano Mineiro', () {
+      final lucianos = vila.where((i) => i.name.contains('Luciano'));
+      expect(lucianos.map((i) => i.name), ['Luciano Goiano']);
+      expect(lucianos.single.description, contains('25 gols'));
     });
 
     test('Moisés: os dois goleadores da Série C 2015 são Frontini (9) e '

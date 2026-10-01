@@ -933,7 +933,7 @@
           "goals": 2,
           "loan": true,
           "data_quality": "partial",
-          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado pelo Red Bull Salzburg (09/01/2024); empréstimo prorrogado até 31/12/2025.",
           "is_club": false
         },
         {
@@ -963,7 +963,7 @@
           "goals": 1,
           "loan": false,
           "data_quality": "verified",
-          "notes": "Contratado em definitivo em 30/06/2026 (contrato até dezembro de 2028). Clube cedente em revisão: o Salzburg detinha os direitos desde 07/2023.",
+          "notes": "Contratado em definitivo junto ao Red Bull Salzburg, dono dos direitos desde 07/2023 (anúncio do Vila em 30/06/2026; contrato até dezembro de 2028).",
           "is_club": true
         }
       ],
@@ -3397,28 +3397,28 @@
           "appearances": null,
           "goals": null,
           "loan": false,
-          "data_quality": "partial",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "data_quality": "review",
+          "notes": "Fontes divergem: o ogol registra a base do Juventude em 2005–2006; a Wikipédia diz que ele só fez testes lá em 2006 e não seguiu no clube.",
           "is_club": false
         },
         {
           "period": "2007",
-          "team": "Internacional (base)",
+          "team": "Passo Fundo (base)",
           "appearances": null,
           "goals": null,
-          "loan": true,
+          "loan": false,
           "data_quality": "partial",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Juventude.",
+          "notes": "Chegou ao Passo Fundo em maio de 2007 (Wikipédia); o ogol não registra esta passagem.",
           "is_club": false
         },
         {
-          "period": "2008–2009",
+          "period": "2007–2009",
           "team": "Internacional (base)",
           "appearances": null,
           "goals": null,
           "loan": false,
           "data_quality": "review",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Vínculo a partir de 2008 não confirmado: não há anúncio da aquisição.",
+          "notes": "Chegou ao Inter em novembro de 2007, vindo do Passo Fundo (Wikipédia; ge, 2016). O ogol marca empréstimo do Juventude, mas a Wikipédia diz que ele só fez testes no Juventude em 2006. Modalidade da transferência sem documento.",
           "is_club": false
         },
         {
@@ -5677,12 +5677,12 @@
     {
       "name": "Douglas Mendes",
       "date": "2026-06-30",
-      "from": null,
+      "from": "Red Bull Salzburg",
       "type": "definitivo",
-      "status": "REVIEW",
+      "status": "READY",
       "source_name": "ge",
       "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml",
-      "notes": "Definitivo, 30/06/2026, contrato até dezembro de 2028. Clube cedente em revisão: comunicados oficiais do Salzburg mostram que ele foi contratado em definitivo pelo Salzburg em 01/07/2023 (contrato até 30/06/2028) e emprestado ao Bragantino em 2024 — a rodada 1 (que dizia RB Bragantino) estava errada. Rodada 2 de pendências (2026-10-01; fonte oficial conferida)."
+      "notes": "Definitivo, anúncio de 30/06/2026, contrato até dezembro de 2028. Cedido pelo Red Bull Salzburg, dono dos direitos desde 07/2023 (nota oficial do Salzburg de 05/07/2026: https://www.redbullsalzburg.at/en/recent/news/douglas-mendes-moreira-07-2026). Rodada 3 de pendências (2026-10-01; fonte conferida)."
     },
     {
       "name": "Jonathan Costa",
@@ -5771,9 +5771,9 @@
       "name": "Caio Marcelo",
       "to": "Seoul E-Land",
       "type": null,
-      "date": null,
-      "status": "REVIEW",
-      "notes": "Transferência registrada em 18/08/2026 por fontes secundárias (BeSoccer, 365Scores); data do anúncio oficial não localizada. 29/08 é a estreia, não a transferência.",
+      "date": "2026-08-18",
+      "status": "READY",
+      "notes": "Anúncio oficial do Seoul E-Land FC no Instagram em 18/08/2026 (\"환영합니다 카이오!\", marcando @caiomarcelo36): https://www.instagram.com/reel/DcLTcxVyp0_/. 29/08 é a estreia. Rodada 3 de pendências (2026-10-01; fonte conferida).",
       "source": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas)"
     },
     {

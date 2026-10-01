@@ -304,8 +304,9 @@ void main() {
       );
       // 9 + 10 novos confirmados na auditoria de 2026-09-30 (Gibrair,
       // Fernandinho, Roberto Oliveira, Zé Luís, Zé Henrique, Timoura,
-      // Paulinho Benga, Sabino, Moisés, Michel Alves).
-      expect(content.publishedIdols, hasLength(19));
+      // Paulinho Benga, Sabino, Moisés, Michel Alves) + Luciano Goiano
+      // (rodada 3 de pendências, 2026-10-01).
+      expect(content.publishedIdols, hasLength(20));
     });
 
     test('nenhum texto institucional carrega identidade de outro clube nem '

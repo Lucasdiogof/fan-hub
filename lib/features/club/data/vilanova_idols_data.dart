@@ -24,13 +24,13 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// exatamente em 45 gols/156 jogos, confirmando o valor já publicado —
 /// a fonte alternativa (49/175) não bateu com o detalhamento por
 /// temporada e foi descartada.
-/// "Luciano" NÃO foi adicionado: candidato mais provável é Luciano
-/// Santos Gonçalves ("Luciano Goiano", anos 1990), mas a fonte histórica
-/// cita só "Luciano" sem desambiguação suficiente — pendência aberta,
-/// não transformar em certeza sem evidência adicional. Pesquisa de
-/// 2026-10-01 reforçou a dúvida: na mesma época o Vila teve também um
-/// "Luciano Mineiro", e há escalações com "Luciano Goiano" e "Luciano
-/// Mineiro" como pessoas distintas. Identidade segue não verificada.
+/// Luciano Goiano (Luciano Santos Gonçalves) entrou em 2026-10-01 (rodada 3
+/// de pendências) por fonte própria, não pela retrospectiva que cita só
+/// "Luciano": O Popular (07/05/2021) o chama de "o ídolo colorado" e
+/// confirma os 25 gols no Goianão de 1995; títulos e passagens pela ficha
+/// do Futebol de Goyaz (futeboldegoyaz.com.br/jogadores/4648). Continua NÃO
+/// demonstrado que o "Luciano" daquela retrospectiva é ele — o Vila também
+/// teve um Luciano Mineiro (lateral) na mesma época.
 class VilaNovaIdolsData {
   const VilaNovaIdolsData._();
 
@@ -67,6 +67,17 @@ class VilaNovaIdolsData {
           'Revelado pelo Vila, foi campeão goiano em 1995 antes de uma carreira '
           'nacional e internacional. Voltou em 2010 e somou 86 jogos e 41 gols '
           'pelo clube.',
+    ),
+    ClubIdol(
+      name: 'Luciano Goiano',
+      tier: 1,
+      evidenceExplicitIdol: true,
+      position: 'Atacante',
+      period: '1990–2000',
+      description:
+          'Atacante nascido em Inhumas, campeão goiano em 1993 e 1995 e '
+          'artilheiro do Goianão de 1995, com 25 gols. Teve várias passagens '
+          'pelo Vila entre 1990 e 2000.',
     ),
     ClubIdol(
       name: 'Wando',
