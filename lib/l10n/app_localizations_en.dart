@@ -1793,6 +1793,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guessColDebut => 'DEBUT';
 
   @override
+  String get guessAcademyUnknown => 'Unknown';
+
+  @override
   String dateMinutesAgo(int minutes) {
     return '${minutes}min ago';
   }

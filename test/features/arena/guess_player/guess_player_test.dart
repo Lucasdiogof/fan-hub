@@ -89,6 +89,49 @@ void main() {
       );
     });
 
+    test('sem clube formador continua elegível (verified + demais pistas + '
+        'foto) — BASE só se preenche com fonte explícita', () {
+      const player = GuessPlayer(
+        id: 'x',
+        name: 'X',
+        displayName: 'X',
+        position: PlayerPosition.ata,
+        shirtNumber: 9,
+        clubDebutYear: 2020,
+        imageUrl: 'lib/assets/squad/x.jpg',
+        dataStatus: GuessPlayerDataStatus.verified,
+      );
+      expect(player.eligibleAsSecret, isTrue);
+      expect(player.hasFullHints, isTrue);
+    });
+
+    test('sem clube formador e pré-2008 sem camisa: elegível', () {
+      const player = GuessPlayer(
+        id: 'x',
+        name: 'X',
+        displayName: 'X',
+        position: PlayerPosition.vol,
+        clubDebutYear: 1987,
+        imageUrl: 'lib/assets/x.png',
+        dataStatus: GuessPlayerDataStatus.verified,
+      );
+      expect(player.eligibleAsSecret, isTrue);
+    });
+
+    test('sem clube formador não vira elegível se não for verified', () {
+      const player = GuessPlayer(
+        id: 'x',
+        name: 'X',
+        displayName: 'X',
+        position: PlayerPosition.ata,
+        shirtNumber: 9,
+        clubDebutYear: 2020,
+        imageUrl: 'lib/assets/squad/x.jpg',
+        dataStatus: GuessPlayerDataStatus.incomplete,
+      );
+      expect(player.eligibleAsSecret, isFalse);
+    });
+
     GuessPlayer withoutShirt(int? debut) => GuessPlayer(
       id: 'h',
       name: 'H',
@@ -116,6 +159,64 @@ void main() {
     test('camisa vazia do secreto deixa a pista de camisa como desconhecida, '
         'sem acusar acerto nem erro', () {
       expect(compareShirtNumber(null, 9), DirectionalResult.unknown);
+    });
+  });
+
+  group('GuessPlayer.hasFullHints (filtro do autocomplete)', () {
+    GuessPlayer hints({
+      PlayerPosition? position = PlayerPosition.ld,
+      int? shirt = 2,
+      String? academy,
+      int? debut = 2015,
+    }) => GuessPlayer(
+      id: 'h',
+      name: 'H',
+      displayName: 'H',
+      position: position,
+      shirtNumber: shirt,
+      academyClub: academy,
+      clubDebutYear: debut,
+      dataStatus: GuessPlayerDataStatus.incomplete,
+    );
+
+    test('não depende de clube formador', () {
+      expect(hints(academy: 'Goiás').hasFullHints, isTrue);
+      expect(hints().hasFullHints, isTrue);
+    });
+
+    test('continua exigindo posição e estreia', () {
+      expect(hints(position: null).hasFullHints, isFalse);
+      expect(hints(debut: null).hasFullHints, isFalse);
+    });
+
+    test('camisa segue a regra de 2008', () {
+      expect(hints(shirt: null, debut: 2007).hasFullHints, isTrue);
+      expect(hints(shirt: null, debut: 2008).hasFullHints, isFalse);
+      expect(hints(shirt: null, debut: null).hasFullHints, isFalse);
+    });
+
+    test('todo elegível como secreto também aparece como opção de palpite '
+        '(senão a rodada fica impossível de acertar)', () {
+      for (final debut in [1970, 2007, 2008, 2024]) {
+        for (final shirt in [null, 10]) {
+          for (final academy in [null, 'Goiás']) {
+            final player = GuessPlayer(
+              id: 'p',
+              name: 'P',
+              displayName: 'P',
+              position: PlayerPosition.mei,
+              shirtNumber: shirt,
+              academyClub: academy,
+              clubDebutYear: debut,
+              imageUrl: 'lib/assets/x.png',
+              dataStatus: GuessPlayerDataStatus.verified,
+            );
+            if (player.eligibleAsSecret) {
+              expect(player.hasFullHints, isTrue, reason: '$debut/$shirt');
+            }
+          }
+        }
+      }
     });
   });
 

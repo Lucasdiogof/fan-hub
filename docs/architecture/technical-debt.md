@@ -1,6 +1,6 @@
 # Débito técnico
 
-> Classificação por **impacto técnico comprovável** no código lido (commit `e90de17`), não por preferência estética. Cada item aponta a evidência e diz o que **não** foi verificado. Nada aqui foi corrigido: é um inventário para priorizar. Detalhes de segurança estão em [security-overview.md](security-overview.md) e de multi-clube em [multi-club.md](multi-club.md); este documento os consolida e acrescenta acoplamento, código morto e dívida de processo.
+> Classificação por **impacto técnico comprovável** no código lido (commit `e90de17`), não por preferência estética. Cada item aponta a evidência e diz o que **não** foi verificado. Nada aqui foi corrigido em produção: é um inventário para priorizar (a única correção já escrita é a migration de hardening do passaporte, **preparada e não aplicada** — ver A1). Detalhes de segurança estão em [security-overview.md](security-overview.md) e de multi-clube em [multi-club.md](multi-club.md); este documento os consolida e acrescenta acoplamento, código morto e dívida de processo.
 
 **Critérios:** *crítico* = dano comprovado e sem mitigação visível; *alto* = falha confirmada no repositório com efeito relevante ou risco de erro operacional caro; *médio* = problema real e delimitado, ou risco que depende de estado não visto; *baixo* = higiene, custo de manutenção ou risco remoto.
 
@@ -17,7 +17,7 @@
 
 | ID | Item | Evidência | Impacto |
 |---|---|---|---|
-| **A1** | **IDOR anônimo nas RPCs `passport_*` reintroduzido pelo baseline** | `supabase/migrations/20260904000000_canonical_baseline.sql` ~2263–2639: `SECURITY DEFINER`, filtro por `coalesce(p_user_id, auth.uid())`, `EXECUTE` para `anon`; `passport_ranking` expõe `user_id`. O fix está em `supabase/passport_harden_per_user_rpcs.sql`, **fora** da cadeia de migrations | Quem tem a chave *publishable* lê a presença em jogos de qualquer usuário num projeto não endurecido. **Não verificado:** se o fix foi aplicado em cada projeto vivo |
+| **A1** | **IDOR anônimo nas RPCs `passport_*` reintroduzido pelo baseline** — **correção preparada, NÃO aplicada, NÃO verificada em produção; permanece ALTO** | `supabase/migrations/20260904000000_canonical_baseline.sql` ~2263–2639: `SECURITY DEFINER`, filtro por `coalesce(p_user_id, auth.uid())`, `EXECUTE` para `anon`; `passport_ranking` expõe `user_id`. O fix original está em scripts soltos (`supabase/passport_harden_per_user_rpcs.sql`, `passport_revoke_anon_execute.sql`), fora da cadeia. **Foi criada `supabase/migrations/20261002040000_harden_passport_per_user_rpcs.sql`**: as 5 RPCs por usuário passam a usar `auth.uid()` e recusam `p_user_id` alheio; `EXECUTE` é revogado de `public` e `anon` em todas as `passport_*`, mantendo `authenticated` e `service_role`; há *checks* transacionais na própria migration. **Ainda não foi executada contra um PostgreSQL real nem aplicada aos bancos dos clubes** | Quem tem a chave *publishable* lê a presença em jogos de qualquer usuário num projeto não endurecido. **Não verificado:** o estado dos bancos vivos (se o hardening já foi aplicado à mão) e o comportamento real da migration. Só reclassificar como resolvido após aplicação **e** teste autenticado de IDOR em cada projeto |
 | **A2** | **Migrations só-Goiás na cadeia comum** | 11 arquivos `20260930010000`…`20261002030000` (um deles *untracked*) que alteram linhas por id de jogador (por exemplo `where id = 'ernando'`) e não consultam `public.clubs` nem `club_id`; `db-push.mjs <clube>` aplica toda a cadeia | Um `db-push` para Bragantino/Vila Nova pode **abortar** (id inexistente) e bloquear a evolução de schema desses clubes, ou virar *no-op* silencioso. **Não verificado:** quais já foram aplicadas em cada projeto |
 | **A3** | **`--flavor` e `APP_CLUB` não são cruzados** | `resolve_active_club.dart:26` (vazio → Goiás); o script citado no comentário, `check_app_club_enforced.mjs`, **não existe** | `flutter run/build --flavor vilanova` sem `--dart-define=APP_CLUB=vilanova` produz um app com identidade do Vila Nova e **Supabase/Worker do Goiás**. Erro caro e silencioso |
 | **A4** | **Vazamento de dados do Goiás para outros clubes (Career Path e ingresso)** | `career_autocomplete.dart:180-198` injeta `goiasPlayers` (218 nomes) para todos os clubes; `ticket_pdf.dart:37-38` usa QR `GOIAS-EC-…` e `:76-77` verde fixo | Usuários do Bragantino/Vila Nova veem/aceitam dados do Goiás num jogo habilitado e recebem ingresso com prefixo do Goiás |
@@ -119,7 +119,7 @@ Mudar a assinatura de `club_config.dart`, `result.dart` ou `load_status.dart` to
 
 ## 7. Quick wins (baixo risco, bom retorno)
 
-1. Promover `passport_harden_per_user_rpcs.sql` e `passport_revoke_anon_execute.sql` a migration idempotente (A1).
+1. Aplicar e testar a migration `20261002040000_harden_passport_per_user_rpcs.sql` (já escrita, **não aplicada**), respeitando o risco A2 (A1).
 2. Filtrar `goiasPlayers` por clube e parametrizar prefixo do QR e cor do PDF (A4).
 3. Falhar o build quando `--flavor` ≠ `APP_CLUB`, ou criar de fato `check_app_club_enforced.mjs` (A3).
 4. Adicionar CI com `flutter analyze`, `flutter test` e `npm run test:worker` (A5).
@@ -141,10 +141,17 @@ Mudar a assinatura de `club_config.dart`, `result.dart` ou `load_status.dart` to
 
 ## 9. Próximos passos sugeridos (ordem técnica; nenhum foi implementado)
 
-1. **Verificar o banco vivo** dos 3 projetos quanto a A1/S-02 (grants de `anon` em `passport_*`, `arena_*`, `cpf_is_taken`) antes de qualquer outra coisa — é a única forma de fechar o item mais sensível.
-2. Promover os scripts de hardening a migration; rodar o teste IDOR em cada projeto.
-3. Resolver o destino das migrations só-Goiás (A2) **antes** do próximo `db-push` em outro clube.
-4. Tornar o build à prova de divergência de flavor (A3) e corrigir os vazamentos de A4.
-5. Criar o CI mínimo (A5) e cobrir `app_router` (redirect), `auth_repository_impl` e `push_notification_service`.
-6. Tratar M4–M6: tirar `sl<T>()` de entidades de domínio e quebrar o ciclo da loja; avaliar inverter a dependência `core/club` → features (por exemplo, configs referenciando *providers* de conteúdo).
-7. Só então: higiene (B1–B10), peso de assets e atualização de documentação.
+**Fechar A1 (S-01).** A migration de hardening existe (`20261002040000_harden_passport_per_user_rpcs.sql`). **Vila Nova: concluído em 2026-10-02** — aplicada e registrada pelo `db-push` filtrado, grants e corpos conferidos no banco, teste de IDOR passou inteiro (ver S-01 em [security-overview.md](security-overview.md)). **Goiás: concluído em 2026-10-02** — histórico reconciliado por repair (10 Goiás-only + `0915`), `040000` aplicada e registrada pelo push normal, teste de IDOR passou. **Bragantino:** efeito já presente no banco, mas a `040000` não está registrada e o teste não rodou; A1 continua aberto para ele até o passo 5:
+
+1. Resolver primeiro o risco A2 da cadeia compartilhada de migrations, ou encontrar uma forma segura de aplicar **somente** esta migration.
+2. Aplicar `20261002040000_harden_passport_per_user_rpcs.sql` individualmente em cada projeto/clube.
+3. Rodar `tooling/passport_security/run_authenticated_idor_test.mjs` em cada projeto.
+4. Verificar os grants reais de `anon`, `authenticated` e `service_role` (nas `passport_*` e também, para S-02/S-03, em `arena_*` e `cpf_is_taken`, que esta migration **não** altera).
+5. Só depois reclassificar S-01/A1 como resolvido.
+
+**Demais prioridades:**
+
+6. Tornar o build à prova de divergência de flavor (A3) e corrigir os vazamentos de A4.
+7. Criar o CI mínimo (A5) e cobrir `app_router` (redirect), `auth_repository_impl` e `push_notification_service`.
+8. Tratar M4–M6: tirar `sl<T>()` de entidades de domínio e quebrar o ciclo da loja; avaliar inverter a dependência `core/club` → features (por exemplo, configs referenciando *providers* de conteúdo).
+9. Só então: higiene (B1–B10), peso de assets e atualização de documentação.

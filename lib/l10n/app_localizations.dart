@@ -3147,6 +3147,12 @@ abstract class AppLocalizations {
   /// **'ESTREIA'**
   String get guessColDebut;
 
+  /// Pista BASE quando não há fonte explícita do clube formador do jogador.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desconhecido'**
+  String get guessAcademyUnknown;
+
   /// No description provided for @dateMinutesAgo.
   ///
   /// In pt, this message translates to:

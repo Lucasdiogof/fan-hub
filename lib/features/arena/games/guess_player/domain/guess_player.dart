@@ -59,7 +59,8 @@ class GuessPlayer {
   final int? shirtNumber;
 
   /// Clube formador (categoria de base) — exibido na pista. `null` se não
-  /// documentado, nunca inventado.
+  /// há fonte explícita de base, nunca inventado; a pista mostra
+  /// "Desconhecido" e não conta como acerto nem erro.
   final String? academyClub;
   final List<String> academyHistory;
 
@@ -79,15 +80,20 @@ class GuessPlayer {
 
   final GuessPlayerDataStatus dataStatus;
 
-  /// Tem os 4 atributos preenchidos (POS/CAMISA/BASE/ESTREIA) — ou seja,
-  /// todo palpite com esse jogador mostra TODAS as dicas, nenhuma coluna
-  /// "—". Não exige foto nem status `verified` (a foto/status só importam
-  /// pra ser sorteado como secreto).
+  /// Tem as pistas que se pode exigir (POS/ESTREIA e a CAMISA quando
+  /// [_shirtRequired]) — é o filtro de quem aparece no autocomplete. Não
+  /// exige foto nem status `verified` (a foto/status só importam pra ser
+  /// sorteado como secreto).
+  ///
+  /// Clube formador (BASE) não entra: decisão do usuário em 2026-10-02 —
+  /// só se preenche com fonte explícita de base, e sem ela a pista aparece
+  /// como "Desconhecido" em vez de tirar o jogador do jogo. A camisa segue
+  /// a mesma regra de [eligibleAsSecret], senão um secreto pré-2008 sem
+  /// camisa poderia ser sorteado sem nunca aparecer como opção de palpite.
   bool get hasFullHints =>
       position != null &&
-      shirtNumber != null &&
-      academyClub != null &&
-      clubDebutYear != null;
+      clubDebutYear != null &&
+      (shirtNumber != null || !_shirtRequired);
 
   /// Ano a partir do qual existe registro confiável de camisa por temporada
   /// (antes disso as bases só trazem a escalação, sem número). Decisão do
@@ -102,12 +108,10 @@ class GuessPlayer {
       clubDebutYear == null || clubDebutYear! >= shirtRecordsFromYear;
 
   /// Derivado, não guardado: evita uma segunda fonte de verdade que possa
-  /// dessincronizar dos 5 campos + status.
+  /// dessincronizar das pistas + foto + status. Quem é sorteável é sempre
+  /// também opção de palpite (mesmo [hasFullHints]).
   bool get eligibleAsSecret =>
       dataStatus == GuessPlayerDataStatus.verified &&
-      position != null &&
-      academyClub != null &&
-      clubDebutYear != null &&
-      (shirtNumber != null || !_shirtRequired) &&
+      hasFullHints &&
       imageUrl != null;
 }

@@ -643,6 +643,7 @@
   "guessColShirt": "CAMISETA",
   "guessColBase": "CANTERA",
   "guessColDebut": "DEBUT",
+  "guessAcademyUnknown": "Desconocido",
   "dateMinutesAgo": "hace {minutes}min",
   "dateHoursAgo": "hace {hours}h",
   "dateDaysAgo": "{days, plural, =1{hace 1 día} other{hace {days} días}}",

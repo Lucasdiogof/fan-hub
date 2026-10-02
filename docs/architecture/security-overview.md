@@ -1,6 +1,6 @@
 # Visão geral de segurança
 
-> **Análise estática.** Baseada somente no que está versionado no repositório (commit `e90de17`). Não houve requisição de rede, acesso a banco, nem tentativa de exploração. O **estado vivo** dos três projetos Supabase (grants reais, funções aplicadas, se os scripts de hardening foram executados), as regras do Cloudflare (WAF/rate limit), os *secrets* efetivamente configurados e as restrições de chave no Google Cloud **não foram verificados**. Nenhuma correção foi aplicada: este documento só registra achados.
+> **Análise estática.** Baseada somente no que está versionado no repositório (commit `e90de17`). Não houve requisição de rede, acesso a banco, nem tentativa de exploração. O **estado vivo** dos três projetos Supabase (grants reais, funções aplicadas, se os scripts de hardening foram executados), as regras do Cloudflare (WAF/rate limit), os *secrets* efetivamente configurados e as restrições de chave no Google Cloud **não foram verificados**. Nenhuma correção foi aplicada a qualquer banco; este documento registra achados, e a única correção já escrita (uma migration de hardening para S-01) está **preparada e não aplicada** (ver §3).
 >
 > Nenhum valor de segredo é reproduzido. Severidades refletem impacto técnico comprovável no código lido; confiança `CONFIRMADO` = leitura direta do código/SQL, `POSSÍVEL` = depende de estado que não pôde ser visto.
 
@@ -9,7 +9,7 @@
 | Severidade | Qtd. | Itens |
 |---|---:|---|
 | Crítico | 0 | — |
-| **Alto** | 1 | S-01 |
+| **Alto** | 1 | S-01 (**resolvido no Vila Nova e no Goiás** em 2026-10-02; Bragantino pendente — ver §3) |
 | Médio | 4 | S-02, S-03, S-04, SC-01 |
 | Médio/Baixo | 1 | S-05 |
 | Baixo | ~12 | S-06, S-08, W-01, W-02, W-03, W-05, C-01, C-02, C-05, `notifications-test-trigger`, … |
@@ -32,13 +32,39 @@
 
 **RLS:** 58/58 tabelas do baseline e `passport_matches_excluded` têm RLS. Todas as policies `using (true)` são `SELECT` em catálogos públicos; dados do usuário usam `auth.uid()`; tabelas de serviço usam `using (false)`. Todas as funções `SECURITY DEFINER` revisadas fixam `search_path`.
 
-### S-01 — ALTO (CONFIRMADO no SQL; POSSÍVEL no banco vivo): IDOR anônimo nas RPCs `passport_*`
+### S-01 — ALTO (CONFIRMADO no SQL; RESOLVIDO no Vila Nova e no Goiás; Bragantino pendente): IDOR anônimo nas RPCs `passport_*`
 
 - **Onde:** `supabase/migrations/20260904000000_canonical_baseline.sql`, linhas ~2263–2639.
 - **O quê:** `passport_summary`, `passport_attendance_breakdown`, `passport_attended_matches`, `passport_memorable_match_id` e `passport_stadium_summary` são `SECURITY DEFINER`, filtram por `coalesce(p_user_id, auth.uid())` (confiam no id enviado pelo cliente) e têm `grant execute ... to anon, authenticated, service_role`. `passport_ranking` é público e devolve `user_id`.
 - **Impacto:** quem tiver a chave *publishable* (embutida em todo build) pode coletar uids no ranking e ler a presença em jogos de qualquer usuário.
-- **Contexto:** o próprio repositório descreve este vetor e o corrige em `supabase/passport_harden_per_user_rpcs.sql` e `supabase/passport_revoke_anon_execute.sql` — mas esses são **scripts soltos**, fora da cadeia `supabase/migrations/` e dos `bootstrap.sql`. Um projeto novo montado pela cadeia oficial nasce com a versão vulnerável **a menos que** o script tenha sido aplicado à mão. O Vila Nova tem `hasPassport: true`.
-- **Mitigação sugerida:** promover os dois scripts a migration idempotente e rodar `tooling/passport_security/run_authenticated_idor_test.mjs` contra cada projeto (não há CI que o faça).
+- **Contexto:** o próprio repositório descreve este vetor e o corrige em `supabase/passport_harden_per_user_rpcs.sql` e `supabase/passport_revoke_anon_execute.sql` — mas esses são **scripts soltos**, fora da cadeia `supabase/migrations/` e dos `bootstrap.sql`. O baseline em si continua com a versão vulnerável, então um projeto novo montado pela cadeia oficial nasce vulnerável **a menos que** o hardening seja aplicado depois dele. O Vila Nova tem `hasPassport: true`.
+- **Status por projeto (2026-10-02):**
+  - **Vila Nova (`vkybbrfvmexevakknlsi`) — RESOLVIDO.**
+    - *Antes:* era o único dos três bancos com exposição real. As 5 RPCs por usuário estavam na versão do baseline, filtrando por `coalesce(p_user_id, auth.uid())`, e as 12 `passport_*` tinham `EXECUTE` direto para `anon`.
+    - *Correção:* `20261002040000_harden_passport_per_user_rpcs.sql` aplicada pelo fluxo filtrado (`tooling/multiclub/db-push.mjs vilanova --yes`; o `--dry-run --remote` antes listou só ela) e **registrada** em `supabase_migrations.schema_migrations`.
+    - *Grants lidos depois:* `PUBLIC` 0/12, `anon` 0/12, `authenticated` 12/12, `service_role` 12/12.
+    - *Corpos:* as 5 RPCs estão em `plpgsql`, `security definer`, usam `auth.uid()`, recusam sessão ausente e `p_user_id` alheio, sem `coalesce(p_user_id…)`; o md5 de cada corpo bate com o da `040000`.
+    - *Teste funcional:* `run_authenticated_idor_test.mjs --club vilanova` passou inteiro com duas contas QA e dado real (presença marcada e desfeita pela RPC oficial): A e B leem os próprios dados; A→B e B→A recusados (403); sem sessão recusado (401), inclusive passando `p_user_id`; `passport_attended_matches` isolado; `passport_ranking`/`passport_my_rank` recusados sem sessão e funcionando autenticados. As 4 contas QA criadas pelos testes foram apagadas em seguida por IDs/e-mails exatos, numa transação com checagem antes e depois (`auth.users` voltou a 3 usuários, todos reais; nenhuma linha das contas QA em nenhuma das 33 tabelas que referenciam `auth.users`).
+  - **Goiás (`yonozsdgyrhgqrvydbnr`) — RESOLVIDO.**
+    - *Antes:* o efeito hardened já estava no banco, aplicado fora da cadeia de migrations (corpos iguais aos da `040000`, `anon` sem `EXECUTE`), mas a `040000` não estava registrada e o teste desta versão não tinha rodado.
+    - *Reconciliação do histórico (sem reaplicar SQL):* `migration repair --status applied` das 10 migrations Goiás-only (`20260930010000`…`20261002020000`) e da `20260915000000`, depois de conferir o efeito de cada statement no banco (todas `APPLIED_OUTSIDE_HISTORY`; impressão digital dos dados idêntica antes/depois do repair da `0915`).
+    - *Correção:* `20261002030000` (Manto) e `20261002040000` aplicadas juntas pelo fluxo normal (`db-push.mjs goias --yes`; o `--dry-run --remote` antes listou só as duas) e **registradas**. Histórico: 19 versões.
+    - *Grants lidos depois:* `PUBLIC` 0/12, `anon` 0/12, `authenticated` 12/12, `service_role` 12/12; md5 dos 5 corpos bate com a `040000`.
+    - *Teste funcional:* `run_authenticated_idor_test.mjs --club goias` passou inteiro (mesma matriz do Vila). *Limpeza das contas QA: pendente.*
+  - **Bragantino — PENDENTE.** Efeito hardened presente no banco, mas a `040000` não está registrada e o teste desta versão não rodou; a `0915` não está aplicada lá. Não reclassificar antes do push normal (`0915` + `040000`) e do teste.
+  - Foi criada `supabase/migrations/20261002040000_harden_passport_per_user_rpcs.sql`, que formaliza o hardening das RPCs `passport_*` na cadeia oficial. Os scripts soltos originais foram mantidos como referência histórica.
+  - As 5 RPCs por usuário (`passport_summary`, `passport_attendance_breakdown`, `passport_stadium_summary`, `passport_attended_matches`, `passport_memorable_match_id`) passam a usar `auth.uid()` e recusam um `p_user_id` alheio (`forbidden`) e chamadas sem sessão (`not authenticated`). As assinaturas foram preservadas.
+  - `EXECUTE` é revogado de `public` e `anon` para as RPCs `passport_*`; `authenticated` e `service_role` permanecem autorizados.
+  - A migration tem *checks* transacionais no final: falha e reverte tudo se `anon` ainda executar alguma `passport_*` ou se `authenticated` perder `EXECUTE`.
+  - Regra mantida: S-01 só é reclassificado como resolvido num projeto depois de a `040000` estar aplicada **e registrada** nele **e** o teste autenticado de IDOR passar. Até 2026-10-02 isso vale só para o Vila Nova.
+  - Mudança de comportamento: `passport_ranking`/`passport_my_rank` deixaram de ser públicos (sem sessão → 401). O app só os chama logado; o teste de IDOR foi ajustado para exigir a recusa sem sessão e o funcionamento com sessão.
+- **Próximos passos recomendados:**
+  1. Resolver primeiro o risco A2 da cadeia compartilhada de migrations ([technical-debt.md](technical-debt.md)), ou encontrar uma forma segura de aplicar **somente** esta migration.
+  2. Aplicar `20261002040000_harden_passport_per_user_rpcs.sql` individualmente em cada projeto/clube.
+  3. Rodar `tooling/passport_security/run_authenticated_idor_test.mjs` em cada projeto (não há CI que o faça).
+  4. Verificar os grants reais de `anon`, `authenticated` e `service_role`.
+  5. Só depois reclassificar S-01 como resolvido.
+- **Fora do escopo desta migration:** ela só altera as funções `passport_*`. Os achados S-02 (`arena_ranking_for_club`, `arena_user_detail_for_club`) e S-03 (`cpf_is_taken`) continuam abertos.
 
 ### S-02 — MÉDIO/ALTO (CONFIRMADO no SQL; POSSÍVEL no vivo): `REVOKE ... FROM PUBLIC` não remove `anon`
 

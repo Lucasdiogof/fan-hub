@@ -57,6 +57,15 @@ void main() {
       expect(compareAcademy(null, 'Cruzeiro'), MatchResult.unknown);
       expect(compareAcademy('Goiás', null), MatchResult.unknown);
     });
+
+    test('dois "Desconhecido" nunca contam como acerto', () {
+      expect(compareAcademy(null, null), MatchResult.unknown);
+    });
+
+    test('string vazia ou só espaços vale como ausente', () {
+      expect(compareAcademy('', 'Goiás'), MatchResult.unknown);
+      expect(compareAcademy('Goiás', '   '), MatchResult.unknown);
+    });
   });
 
   group('compareDebutYear', () {

@@ -655,6 +655,7 @@
   "guessColShirt": "SHIRT",
   "guessColBase": "YOUTH",
   "guessColDebut": "DEBUT",
+  "guessAcademyUnknown": "Unknown",
   "dateMinutesAgo": "{minutes}min ago",
   "dateHoursAgo": "{hours}h ago",
   "dateDaysAgo": "{days, plural, =1{1 day ago} other{{days} days ago}}",

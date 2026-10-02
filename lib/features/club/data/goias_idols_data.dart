@@ -293,7 +293,10 @@ class GoiasIdolsData {
       tier: 1,
       evidenceExplicitIdol: true,
       description:
-          'Volante revelado pelo Goiás, lembrado pelo clube entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
+          // Fonte do formador: pt.wikipedia.org/wiki/Josué_Anunciado_de_Oliveira
+          // ("Revelado pelo Clube Atlético do Porto, de Caruaru") — o texto
+          // antigo dizia "revelado pelo Goiás" sem fonte.
+          'Volante revelado pelo Porto, de Caruaru, lembrado pelo Goiás entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
       position: 'Volante',
       period: '1997-2004',
       fullName: 'Josué Anunciado de Oliveira',

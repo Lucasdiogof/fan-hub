@@ -31,9 +31,15 @@ DirectionalResult compareShirtNumber(int? secret, int? guess) {
   return guess < secret ? DirectionalResult.higher : DirectionalResult.lower;
 }
 
+/// Sem clube formador documentado de um dos lados (null ou só espaços) a
+/// pista fica `unknown` — dois "Desconhecido" nunca contam como acerto.
 MatchResult compareAcademy(String? secret, String? guess) {
-  if (secret == null || guess == null) return MatchResult.unknown;
-  return secret == guess ? MatchResult.match : MatchResult.mismatch;
+  final s = secret?.trim();
+  final g = guess?.trim();
+  if (s == null || s.isEmpty || g == null || g.isEmpty) {
+    return MatchResult.unknown;
+  }
+  return s == g ? MatchResult.match : MatchResult.mismatch;
 }
 
 DirectionalResult compareDebutYear(int? secret, int? guess) {

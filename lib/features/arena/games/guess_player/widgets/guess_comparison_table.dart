@@ -25,7 +25,7 @@ class GuessComparisonTable extends StatelessWidget {
             _HeaderCell(context.l10n.lineupPlayerHeading, flex: 3),
             _HeaderCell(context.l10n.guessColPos, flex: 2),
             _HeaderCell(context.l10n.guessColShirt, flex: 2),
-            _HeaderCell(context.l10n.guessColBase, flex: 2),
+            _HeaderCell(context.l10n.guessColBase, flex: 3),
             _HeaderCell(context.l10n.guessColDebut, flex: 2),
           ],
         ),
@@ -109,10 +109,10 @@ class _ResultRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: _MatchCell(
               match: result.academy,
-              label: result.guessedPlayer.academyClub ?? '—',
+              label: _academyLabel(context, result.guessedPlayer.academyClub),
             ),
           ),
           Expanded(
@@ -126,6 +126,14 @@ class _ResultRow extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Clube formador sem fonte explícita aparece como "Desconhecido", não
+/// "—": é dado que não existe, não pista que faltou carregar.
+String _academyLabel(BuildContext context, String? academyClub) {
+  final value = academyClub?.trim();
+  if (value == null || value.isEmpty) return context.l10n.guessAcademyUnknown;
+  return value;
 }
 
 class _MatchCell extends StatelessWidget {
@@ -204,6 +212,26 @@ class _CellChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final style = TextStyle(
+      fontSize: 11.5,
+      fontWeight: FontWeight.w800,
+      color: foreground,
+    );
+    // Palavra única ("Desconhecido", "Internacional") não tem onde quebrar
+    // linha e sairia cortada com reticências na coluna estreita: encolhe a
+    // fonte só o necessário. Rótulo com espaço segue quebrando em 2 linhas.
+    final text = label.contains(RegExp(r'\s'))
+        ? Text(
+            label,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: style,
+          )
+        : FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(label, maxLines: 1, softWrap: false, style: style),
+          );
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 2),
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
@@ -216,19 +244,7 @@ class _CellChip extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Flexible(
-            child: Text(
-              label,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 11.5,
-                fontWeight: FontWeight.w800,
-                color: foreground,
-              ),
-            ),
-          ),
+          Flexible(child: text),
           if (trailingIcon != null) ...[
             const SizedBox(width: 2),
             Icon(trailingIcon, size: 12, color: foreground),
