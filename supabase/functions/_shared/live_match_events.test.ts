@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   buildGoalDedupeKey,
+  confirmedGoalIndexes,
   detectGoals,
+  goalContext,
   detectStatusTransitionEvents,
   normalizedMinute,
   type FixtureEvent,
@@ -42,6 +44,51 @@ describe('detectGoals — GOAL_FOR vs GOAL_AGAINST, nunca por home/away isolado'
       goalEvent('home', '10'),
     ];
     expect(detectGoals(events, 'home')).toHaveLength(1);
+  });
+});
+
+describe('gol só conta quando o placar confirma', () => {
+  // Caso real (01/10/2026, Grêmio Novorizontino x Goiás): pênalti do Tadeu
+  // defendido aos 43' apareceu na OneFootball como gol do Goiás (away) por
+  // alguns minutos, com o placar ainda 1x0 — e saiu "GOL DO GOIÁS".
+  const romulo = goalEvent('home', "20'", 'Rômulo');
+  const tadeuFantasma = goalEvent('away', "43'", 'Tadeu');
+
+  it('lance fantasma com o placar 1x0 não é confirmado; o gol real é', () => {
+    const events = [romulo, tadeuFantasma];
+    const confirmed = confirmedGoalIndexes(events, 1, 0);
+    expect([...confirmed]).toEqual([0]);
+    const notificar = detectGoals(events, 'away').filter(({ index }) => confirmed.has(index));
+    expect(notificar.map((g) => g.eventType)).toEqual(['goal_against']);
+  });
+
+  it('gol listado antes do placar subir espera; quando o placar sobe, conta', () => {
+    const events = [romulo, goalEvent('away', "50'", 'Pedrinho')];
+    expect(confirmedGoalIndexes(events, 1, 0).has(1)).toBe(false);
+    expect(confirmedGoalIndexes(events, 1, 1).has(1)).toBe(true);
+  });
+
+  it('placar nulo (jogo ainda sem placar) não confirma nada', () => {
+    expect(confirmedGoalIndexes([romulo], null, null).size).toBe(0);
+  });
+
+  it('lance fantasma não muda a chave nem o placar do gol real seguinte', () => {
+    const robson = goalEvent('home', "61'", 'Robson');
+    const comFantasma = [romulo, tadeuFantasma, robson];
+    const semFantasma = [romulo, robson];
+    const c1 = confirmedGoalIndexes(comFantasma, 2, 0);
+    const c2 = confirmedGoalIndexes(semFantasma, 2, 0);
+    const k1 = buildGoalDedupeKey({ matchId: 'm', events: comFantasma, targetIndex: 2, clubCode: 'goias', confirmed: c1 });
+    const k2 = buildGoalDedupeKey({ matchId: 'm', events: semFantasma, targetIndex: 1, clubCode: 'goias', confirmed: c2 });
+    expect(k1).toBe(k2);
+    expect(goalContext(comFantasma, 2, c1).scoreAfter).toBe('2-0');
+  });
+
+  it('placar do payload é o do próprio gol, não o placar final', () => {
+    const events = [romulo, goalEvent('home', "61'", 'Robson'), goalEvent('home', "93'", 'Juninho')];
+    const confirmed = confirmedGoalIndexes(events, 3, 0);
+    expect(goalContext(events, 0, confirmed)).toMatchObject({ homeScore: 1, awayScore: 0 });
+    expect(goalContext(events, 2, confirmed)).toMatchObject({ homeScore: 3, awayScore: 0 });
   });
 });
 

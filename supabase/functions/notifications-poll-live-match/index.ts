@@ -22,7 +22,9 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 import { resolveClubServerConfigByClubId, type ClubServerConfig } from '../_shared/club_server_config.ts';
 import {
   buildGoalDedupeKey,
+  confirmedGoalIndexes,
   detectGoals,
+  goalContext,
   detectStatusTransitionEvents,
   type FixtureEvent,
 } from '../_shared/live_match_events.ts';
@@ -197,11 +199,30 @@ Deno.serve(async (req) => {
       // 2) Gols — GOAL_FOR e GOAL_AGAINST, generalizado por
       // `activeClubSide` (nunca hardcoded pro time da casa).
       if (activeClubSide) {
-        const goals = detectGoals(events, activeClubSide);
+        // Só gols que o placar confirma (ver `confirmedGoalIndexes`): um
+        // lance listado pela fonte sem o placar subir — ex.: pênalti
+        // defendido registrado como gol por alguns minutos — não notifica.
+        const confirmed = confirmedGoalIndexes(events, match.homeScore, match.awayScore);
+        const goals = detectGoals(events, activeClubSide).filter(({ index }) => confirmed.has(index));
         await Promise.all(
           goals.map(async ({ event, index, eventType }) => {
-            const dedupeKey = buildGoalDedupeKey({ matchId: session.match_id, events, targetIndex: index, clubCode: clubConfig.code });
-            const goalPayload = { ...scorePayload, scorer: event.player, minute: event.minute };
+            const dedupeKey = buildGoalDedupeKey({
+              matchId: session.match_id,
+              events,
+              targetIndex: index,
+              clubCode: clubConfig.code,
+              confirmed,
+            });
+            // Placar DAQUELE gol, nunca o placar atual do jogo — antes, o
+            // update abaixo reescrevia o gol dos 20' com o 3x0 final.
+            const at = goalContext(events, index, confirmed);
+            const goalPayload = {
+              ...scorePayload,
+              homeScore: at.homeScore,
+              awayScore: at.awayScore,
+              scorer: event.player,
+              minute: event.minute,
+            };
 
             const created = await upsertNotificationEvent(admin, {
               matchId: session.match_id,

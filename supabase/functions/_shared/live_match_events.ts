@@ -20,11 +20,53 @@ export function normalizedMinute(raw: string): number {
   return baseNum * 100 + stoppageNum;
 }
 
+/** Ordem cronológica dos gols (minuto normalizado, depois posição no array). */
+function orderedGoals(events: FixtureEvent[]): { event: FixtureEvent; index: number }[] {
+  return events
+    .map((event, index) => ({ event, index }))
+    .filter(({ event }) => event.type === 'goal')
+    .sort((a, b) => {
+      const minuteDiff = normalizedMinute(a.event.minute) - normalizedMinute(b.event.minute);
+      return minuteDiff !== 0 ? minuteDiff : a.index - b.index;
+    });
+}
+
+/**
+ * Gols que o PLACAR confirma: para cada lado, só os N primeiros gols em ordem
+ * cronológica, sendo N o placar atual daquele lado. A OneFootball às vezes
+ * lista um "gol" que o placar nunca registra e que some depois — caso real
+ * em 01/10/2026: pênalti do Tadeu defendido aos 43' de Grêmio Novorizontino
+ * x Goiás apareceu como gol do Goiás por alguns minutos e disparou "GOL DO
+ * GOIÁS" com o placar ainda 1x0. Gol não confirmado não notifica: se o placar
+ * subir depois, ele passa a contar no próximo poll; se sumir, nunca notifica.
+ * Limitação aceita (a fonte não tem id de evento): um lance fantasma ANTERIOR
+ * a um gol real do mesmo lado ocupa a vaga dele.
+ */
+export function confirmedGoalIndexes(
+  events: FixtureEvent[],
+  homeScore: number | null,
+  awayScore: number | null,
+): Set<number> {
+  const allowed = { home: homeScore ?? 0, away: awayScore ?? 0 };
+  const taken = { home: 0, away: 0 };
+  const confirmed = new Set<number>();
+  for (const { event, index } of orderedGoals(events)) {
+    if (taken[event.side] < allowed[event.side]) {
+      taken[event.side] += 1;
+      confirmed.add(index);
+    }
+  }
+  return confirmed;
+}
+
 export interface GoalDedupeInput {
   matchId: string;
   events: FixtureEvent[];
   targetIndex: number;
   clubCode: string;
+  /** Só estes gols contam no ordinal/placar (ver [confirmedGoalIndexes]);
+   * sem o parâmetro, todos contam (comportamento antigo). */
+  confirmed?: Set<number>;
 }
 
 /**
@@ -50,33 +92,31 @@ export interface GoalDedupeInput {
  * nova e, em tese, uma push duplicada — risco aceito, documentado, não
  * escondido.
  */
-export function buildGoalDedupeKey({ matchId, events, targetIndex, clubCode }: GoalDedupeInput): string {
-  const goalEvents = events
-    .map((event, index) => ({ event, index }))
-    .filter(({ event }) => event.type === 'goal')
-    .sort((a, b) => {
-      const minuteDiff = normalizedMinute(a.event.minute) - normalizedMinute(b.event.minute);
-      return minuteDiff !== 0 ? minuteDiff : a.index - b.index;
-    });
+export function buildGoalDedupeKey({ matchId, events, targetIndex, clubCode, confirmed }: GoalDedupeInput): string {
+  const { side: targetSide, scoreAfter, sideOrdinal } = goalContext(events, targetIndex, confirmed);
+  return `${matchId}|${clubCode}|${targetSide}|${normalizedMinute(events[targetIndex].minute)}|${sideOrdinal}|${scoreAfter}`;
+}
 
+/** Placar logo depois do gol `targetIndex` e a posição dele entre os gols do
+ * mesmo lado — contando só os gols confirmados, quando informados. É o placar
+ * DAQUELE lance (o payload do evento usa isto, nunca o placar atual do jogo). */
+export function goalContext(
+  events: FixtureEvent[],
+  targetIndex: number,
+  confirmed?: Set<number>,
+): { side: 'home' | 'away'; homeScore: number; awayScore: number; scoreAfter: string; sideOrdinal: number } {
   const targetSide = events[targetIndex].side;
   let homeGoals = 0;
   let awayGoals = 0;
   let sideOrdinal = 0;
-  let scoreAfter = '';
-
-  for (const { event, index } of goalEvents) {
+  for (const { event, index } of orderedGoals(events)) {
+    if (confirmed && !confirmed.has(index) && index !== targetIndex) continue;
     if (event.side === 'home') homeGoals += 1;
     else awayGoals += 1;
     if (event.side === targetSide) sideOrdinal += 1;
-
-    if (index === targetIndex) {
-      scoreAfter = `${homeGoals}-${awayGoals}`;
-      break;
-    }
+    if (index === targetIndex) break;
   }
-
-  return `${matchId}|${clubCode}|${targetSide}|${normalizedMinute(events[targetIndex].minute)}|${sideOrdinal}|${scoreAfter}`;
+  return { side: targetSide, homeScore: homeGoals, awayScore: awayGoals, scoreAfter: `${homeGoals}-${awayGoals}`, sideOrdinal };
 }
 
 export interface DetectedGoal {
