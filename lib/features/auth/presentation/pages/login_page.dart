@@ -16,6 +16,15 @@ import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dar
 import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
+/// Largura ÷ altura de `background_login.png` do Goiás (941×1672). As artes
+/// de Bragantino e Vila Nova são ainda mais estreitas (1170×2532); numa
+/// coluna desta proporção elas só perdem um pouco do degradê de baixo, nunca
+/// o escudo (ancorado no topo).
+const _loginArtAspectRatio = 941 / 1672;
+
+/// Abaixo disso o formulário fica apertado demais numa janela baixa.
+const _minColumnWidth = 400.0;
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -68,7 +77,48 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      backgroundColor: Colors.black,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // A arte é vertical (celular). Numa janela mais larga que a
+          // proporção dela (desktop/tablet deitado), `cover` estica a arte
+          // até a largura e o escudo desce pra baixo do formulário, cobrindo
+          // o "Criar conta". Ali a tela inteira vira uma coluna com a
+          // proporção da arte, centralizada — mesma ideia da splash em vídeo
+          // (`_CenteredVideo`) — e as laterais só repetem a foto escurecida.
+          final columnWidth = (constraints.maxHeight * _loginArtAspectRatio)
+              .clamp(_minColumnWidth, ContentWidth.form.maxWidth);
+          final page = _buildPage(context);
+          if (constraints.maxWidth <= columnWidth * 1.15) return page;
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  sl<ClubConfig>().assets.loginBackground,
+                  fit: BoxFit.cover,
+                  color: Colors.black.withValues(alpha: 0.55),
+                  colorBlendMode: BlendMode.darken,
+                ),
+              ),
+              Center(
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    boxShadow: [BoxShadow(blurRadius: 48, spreadRadius: 8)],
+                  ),
+                  child: SizedBox(width: columnWidth, child: page),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildPage(BuildContext context) {
+    return ColoredBox(
+      color: Colors.black,
+      child: Stack(
         children: [
           Positioned.fill(
             child: Image.asset(

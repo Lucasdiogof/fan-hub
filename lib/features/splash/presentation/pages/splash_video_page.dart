@@ -60,6 +60,7 @@ class SplashVideoPage extends StatefulWidget {
 
 class _SplashVideoPageState extends State<SplashVideoPage> {
   late final Future<void> _homePreload;
+  late final Future<void> _releaseCheck;
   bool _finished = false;
   Timer? _fallbackTimer;
 
@@ -67,6 +68,10 @@ class _SplashVideoPageState extends State<SplashVideoPage> {
   void initState() {
     super.initState();
     _homePreload = _preloadDestination();
+    // Começa junto com a splash, não no fim dela — antes a consulta só saía
+    // depois do conteúdo terminar e somava até `ReleaseGate._checkTimeout`
+    // de espera extra na cara do usuário.
+    _releaseCheck = sl<ReleaseGate>().ensureChecked();
     // Antes de tentar mostrar qualquer conteúdo, de propósito — se o
     // vídeo/precache nunca resolver, a splash ainda sai sozinha.
     _fallbackTimer = Timer(_fallbackTimeout, _finishSplash);
@@ -118,7 +123,7 @@ class _SplashVideoPageState extends State<SplashVideoPage> {
   /// mais tempo do que ela já levaria sozinha. `ReleaseGate.ensureChecked()`
   /// nunca lança (timeout próprio, fail-open) — `Future.wait` aqui é seguro.
   Future<void> _completeGateAfterPreload() async {
-    await Future.wait([_homePreload, sl<ReleaseGate>().ensureChecked()]);
+    await Future.wait([_homePreload, _releaseCheck]);
     sl<SplashGate>().complete();
   }
 
