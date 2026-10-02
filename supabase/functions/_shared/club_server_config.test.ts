@@ -36,10 +36,10 @@ describe('resolveClubServerConfigByCode', () => {
   });
 });
 
-describe('SERVER_CLUB_REGISTRY — Goiás + Bragantino, nenhum 3º clube sem autorização', () => {
-  it('tem exatamente 2 entradas: goias e bragantino', () => {
-    expect(SERVER_CLUB_REGISTRY).toHaveLength(2);
-    expect(SERVER_CLUB_REGISTRY.map((c) => c.code).sort()).toEqual(['bragantino', 'goias']);
+describe('SERVER_CLUB_REGISTRY — Goiás + Bragantino + Vila Nova, nenhum 4º clube sem autorização', () => {
+  it('tem exatamente 3 entradas: goias, bragantino e vilanova', () => {
+    expect(SERVER_CLUB_REGISTRY).toHaveLength(3);
+    expect(SERVER_CLUB_REGISTRY.map((c) => c.code).sort()).toEqual(['bragantino', 'goias', 'vilanova']);
   });
 
   it('cada clube tem workerBaseUrl PRÓPRIO — nunca os 2 apontando pro mesmo Worker', () => {
@@ -61,5 +61,23 @@ describe('resolveClubServerConfigByClubId/ByCode — Bragantino', () => {
   it("code 'bragantino' resolve pra config do Bragantino", () => {
     const config = resolveClubServerConfigByCode('bragantino');
     expect(config?.canonicalClubId).toBe(BRAGANTINO_CANONICAL_CLUB_ID);
+  });
+});
+
+describe('resolveClubServerConfigByClubId/ByCode — Vila Nova', () => {
+  const VILANOVA_CANONICAL_CLUB_ID = '3a6b1e27-8441-533d-b6b8-99fdcfdf1c3e';
+
+  it('UUID real do Vila Nova resolve pra config do Vila, nunca a do Goiás', () => {
+    const config = resolveClubServerConfigByClubId(VILANOVA_CANONICAL_CLUB_ID);
+    expect(config?.code).toBe('vilanova');
+    expect(config?.oneFootballTeamId).toBe(2865);
+    expect(config?.shortName).toBe('Vila Nova');
+    expect(config?.workerBaseUrl).toBe('https://vilanova-app.lucasdiogo1234.workers.dev');
+  });
+
+  it("code 'vilanova' resolve pra config do Vila Nova", () => {
+    const config = resolveClubServerConfigByCode('vilanova');
+    expect(config?.canonicalClubId).toBe(VILANOVA_CANONICAL_CLUB_ID);
+    expect(config?.oneFootballTeamPath).toBe('vilanova');
   });
 });

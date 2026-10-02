@@ -86,12 +86,25 @@ const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
 };
 
-/** Todo registro real hoje — Goiás e Bragantino. Um 3º clube real precisa
- * da mesma autorização explícita já dada aqui (mesma regra do
+// Mesmos valores reais de `lib/core/club/vilanova_club_config.dart`
+// (canonicalClubId = `goias-app:multiclub:club:3`, oneFootballTeamId 2865 e
+// workerBaseUrl confirmados lá, nunca reinventados aqui).
+const VILANOVA_SERVER_CONFIG: ClubServerConfig = {
+  code: 'vilanova',
+  canonicalClubId: '3a6b1e27-8441-533d-b6b8-99fdcfdf1c3e',
+  oneFootballTeamId: 2865,
+  oneFootballTeamPath: 'vilanova',
+  shortName: 'Vila Nova',
+  workerBaseUrl: 'https://vilanova-app.lucasdiogo1234.workers.dev',
+};
+
+/** Todo registro real hoje — Goiás, Bragantino e Vila Nova. Um 4º clube real
+ * precisa da mesma autorização explícita já dada aqui (mesma regra do
  * `clubRegistry` do Flutter e de `SERVER_CLUB_CODES` do Worker). */
 export const SERVER_CLUB_REGISTRY: readonly ClubServerConfig[] = [
   GOIAS_SERVER_CONFIG,
   BRAGANTINO_SERVER_CONFIG,
+  VILANOVA_SERVER_CONFIG,
 ];
 
 export function resolveClubServerConfigByClubId(clubId: string): ClubServerConfig | undefined {
