@@ -410,7 +410,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     personId: null,
     name: 'Dalton',
     displayName: 'Dalton',
-    position: PlayerPosition.le,
+    position: PlayerPosition.vol,
     academyClub: 'Goiânia',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
@@ -724,7 +724,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     academyClub: 'Goiás',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
-    clubDebutYear: 1993,
+    clubDebutYear: 1992,
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   GuessPlayer(
@@ -916,7 +916,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     position: PlayerPosition.ld,
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
-    clubDebutYear: 2003,
+    clubDebutYear: 2002,
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   GuessPlayer(
@@ -1279,6 +1279,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     personId: null,
     name: 'Lúcio',
     displayName: 'Lúcio',
+    aliases: ['Lúcio Bala'],
     position: PlayerPosition.mei,
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
@@ -1786,7 +1787,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     academyClub: 'Goiás',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
-    clubDebutYear: 2003,
+    clubDebutYear: 2002,
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   const GuessPlayer(
