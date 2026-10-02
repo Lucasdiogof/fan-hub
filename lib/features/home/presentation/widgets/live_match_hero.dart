@@ -110,25 +110,37 @@ class LiveMatchHero extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: AppSpacing.lg),
+                // Largura pelo conteúdo (mínimo 200) e rótulo sempre em UMA
+                // linha centralizada: com largura fixa, fonte ampliada no
+                // aparelho quebrava "ACOMPANHAR JOGO" em duas linhas
+                // alinhadas à esquerda. O FittedBox só reduz em último caso
+                // (texto que não cabe nem na largura do card).
                 Center(
-                  child: SizedBox(
-                    width: 200,
-                    child: ElevatedButton(
-                      onPressed: onFollow,
-                      style: matchCtaFilledStyle(context, forceDark: true)
-                          .merge(
-                            ElevatedButton.styleFrom(
-                              textStyle: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.3,
-                              ),
-                            ),
-                          ),
+                  child: ElevatedButton(
+                    onPressed: onFollow,
+                    // `a.merge(b)` mantém o que `a` define: os ajustes deste
+                    // botão vêm primeiro pra vencer o `minimumSize` de
+                    // largura infinita do estilo padrão.
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(200, 46),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.xl,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.3,
+                      ),
+                    ).merge(matchCtaFilledStyle(context, forceDark: true)),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: Text(
                         _isFinished
                             ? l10n.matchViewDetails
                             : l10n.matchFollowLive,
+                        maxLines: 1,
+                        softWrap: false,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
