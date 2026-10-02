@@ -76,11 +76,12 @@ class PushNotificationService {
         sound: false,
       );
 
-      final token = await messaging.getToken();
-      if (token != null) await _registerToken(token);
+      // Escuta ANTES de pedir o token: no iOS o token do FCM pode só existir
+      // depois que o APNs responder, e é por aqui que ele chega nesse caso.
       _tokenRefreshSubscription = messaging.onTokenRefresh.listen(
         _registerToken,
       );
+      await _registerCurrentToken(messaging);
 
       _foregroundSubscription = FirebaseMessaging.onMessage.listen(
         _handleForegroundMessage,
@@ -91,6 +92,31 @@ class PushNotificationService {
       if (initialMessage != null) _navigate(initialMessage);
 
       _initialized = true;
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+    }
+  }
+
+  /// No iOS, `getToken()` lança `apns-token-not-set` quando o token do APNs
+  /// ainda não chegou — comum logo depois de o usuário aceitar a permissão.
+  /// Antes, essa exceção abortava `_initialize` inteiro: o aparelho nunca
+  /// era cadastrado em `user_notification_tokens` e nada chegava no iPhone.
+  /// Agora espera o APNs (com algumas tentativas) e, se mesmo assim não
+  /// vier, segue em frente — o `onTokenRefresh` já ligado cadastra depois.
+  Future<void> _registerCurrentToken(FirebaseMessaging messaging) async {
+    try {
+      if (Platform.isIOS) {
+        String? apns;
+        for (var i = 0; i < 10 && apns == null; i++) {
+          apns = await messaging.getAPNSToken();
+          if (apns == null) {
+            await Future<void>.delayed(const Duration(seconds: 1));
+          }
+        }
+        if (apns == null) return;
+      }
+      final token = await messaging.getToken();
+      if (token != null) await _registerToken(token);
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
     }
