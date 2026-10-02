@@ -9,7 +9,7 @@
 | Severidade | Qtd. | Itens |
 |---|---:|---|
 | Crítico | 0 | — |
-| **Alto** | 1 | S-01 (**resolvido no Vila Nova e no Goiás** em 2026-10-02; Bragantino pendente — ver §3) |
+| ~~Alto~~ | 0 (era 1) | S-01 **resolvido nos três projetos** em 2026-10-02 (Vila Nova, Goiás, Bragantino — ver §3) |
 | Médio | 4 | S-02, S-03, S-04, SC-01 |
 | Médio/Baixo | 1 | S-05 |
 | Baixo | ~12 | S-06, S-08, W-01, W-02, W-03, W-05, C-01, C-02, C-05, `notifications-test-trigger`, … |
@@ -32,7 +32,7 @@
 
 **RLS:** 58/58 tabelas do baseline e `passport_matches_excluded` têm RLS. Todas as policies `using (true)` são `SELECT` em catálogos públicos; dados do usuário usam `auth.uid()`; tabelas de serviço usam `using (false)`. Todas as funções `SECURITY DEFINER` revisadas fixam `search_path`.
 
-### S-01 — ALTO (CONFIRMADO no SQL; RESOLVIDO no Vila Nova e no Goiás; Bragantino pendente): IDOR anônimo nas RPCs `passport_*`
+### S-01 — era ALTO; RESOLVIDO nos três projetos em 2026-10-02: IDOR anônimo nas RPCs `passport_*`
 
 - **Onde:** `supabase/migrations/20260904000000_canonical_baseline.sql`, linhas ~2263–2639.
 - **O quê:** `passport_summary`, `passport_attendance_breakdown`, `passport_attended_matches`, `passport_memorable_match_id` e `passport_stadium_summary` são `SECURITY DEFINER`, filtram por `coalesce(p_user_id, auth.uid())` (confiam no id enviado pelo cliente) e têm `grant execute ... to anon, authenticated, service_role`. `passport_ranking` é público e devolve `user_id`.
@@ -50,8 +50,12 @@
     - *Reconciliação do histórico (sem reaplicar SQL):* `migration repair --status applied` das 10 migrations Goiás-only (`20260930010000`…`20261002020000`) e da `20260915000000`, depois de conferir o efeito de cada statement no banco (todas `APPLIED_OUTSIDE_HISTORY`; impressão digital dos dados idêntica antes/depois do repair da `0915`).
     - *Correção:* `20261002030000` (Manto) e `20261002040000` aplicadas juntas pelo fluxo normal (`db-push.mjs goias --yes`; o `--dry-run --remote` antes listou só as duas) e **registradas**. Histórico: 19 versões.
     - *Grants lidos depois:* `PUBLIC` 0/12, `anon` 0/12, `authenticated` 12/12, `service_role` 12/12; md5 dos 5 corpos bate com a `040000`.
-    - *Teste funcional:* `run_authenticated_idor_test.mjs --club goias` passou inteiro (mesma matriz do Vila). *Limpeza das contas QA: pendente.*
-  - **Bragantino — PENDENTE.** Efeito hardened presente no banco, mas a `040000` não está registrada e o teste desta versão não rodou; a `0915` não está aplicada lá. Não reclassificar antes do push normal (`0915` + `040000`) e do teste.
+    - *Teste funcional:* `run_authenticated_idor_test.mjs --club goias` passou inteiro (mesma matriz do Vila). As 6 contas QA do projeto (2 deste teste + 4 deixadas por execuções de 2026-09-07) foram apagadas por IDs/e-mails exatos, numa transação com checagem antes e depois (`auth.users` ficou com os 25 usuários reais; nenhuma linha das contas QA nas 33 tabelas que referenciam `auth.users`).
+  - **Bragantino (`yrgyzkaaudyzmsqwzecj`) — RESOLVIDO.**
+    - *Antes:* efeito hardened já presente no banco (fora da cadeia), `040000` não registrada; a `20260915000000` **não** estava aplicada (sem as colunas/índices/tabela do catálogo histórico).
+    - *Correção:* `20260915000000` (só estrutura aditiva; os 1.437 jogos existentes não mudaram) e `20261002040000` aplicadas pelo fluxo normal (`db-push.mjs bragantino --yes`; o `--dry-run --remote` antes listou só as duas) e **registradas**. Histórico: 8 versões.
+    - *Grants lidos depois:* `PUBLIC` 0/12, `anon` 0/12, `authenticated` 12/12, `service_role` 12/12; md5 dos 5 corpos bate com a `040000`.
+    - *Teste funcional:* `run_authenticated_idor_test.mjs --club bragantino` passou inteiro (mesma matriz). As 8 contas QA do projeto (2 deste teste + 6 deixadas por execuções de 2026-09-07) foram apagadas por IDs/e-mails exatos, numa transação com checagem antes e depois (`auth.users` ficou com os 3 usuários reais).
   - Foi criada `supabase/migrations/20261002040000_harden_passport_per_user_rpcs.sql`, que formaliza o hardening das RPCs `passport_*` na cadeia oficial. Os scripts soltos originais foram mantidos como referência histórica.
   - As 5 RPCs por usuário (`passport_summary`, `passport_attendance_breakdown`, `passport_stadium_summary`, `passport_attended_matches`, `passport_memorable_match_id`) passam a usar `auth.uid()` e recusam um `p_user_id` alheio (`forbidden`) e chamadas sem sessão (`not authenticated`). As assinaturas foram preservadas.
   - `EXECUTE` é revogado de `public` e `anon` para as RPCs `passport_*`; `authenticated` e `service_role` permanecem autorizados.

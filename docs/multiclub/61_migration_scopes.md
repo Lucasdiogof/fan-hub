@@ -87,15 +87,47 @@ histórica).
 
 ## Limitações restantes
 
-1. **Históricos reais não reconciliados.** Falta comparar o manifesto com
-   `supabase_migrations.schema_migrations` dos três bancos (`db-status`).
-   Enquanto isso, A2 **não** está resolvido em produção.
+1. ~~Históricos reais não reconciliados.~~ Reconciliados em 2026-10-02 — ver
+   "Reconciliação dos históricos reais" abaixo.
 2. O manifesto é a fonte de verdade humana: classificar errado uma migration
    nova continua sendo possível (o tooling só garante que *existe* classificação).
 3. `supabase db push` direto (fora destes scripts) ainda vê tudo; a proteção
    depende de usar o wrapper. CI deve chamar apenas `db-push.mjs`.
 4. Ctrl-C durante o push pode deixar o diretório temporário (só cópias de SQL).
 5. Migrations globais futuras com dado específico de clube precisam de guarda própria.
+
+## Reconciliação dos históricos reais (2026-10-02)
+
+Leitura só-leitura de `supabase_migrations.schema_migrations` e do efeito de
+cada migration nos três bancos, seguida das correções abaixo. Repair usado
+**só** onde o efeito foi conferido statement a statement; o resto entrou pelo
+fluxo normal (`db-push.mjs`).
+
+| Banco | Antes | O que foi feito | Depois |
+|---|---|---|---|
+| Vila Nova | 7 globais (até `0915`); `040000` ausente e RPCs no baseline vulnerável | `db-push.mjs vilanova --yes` → `040000` | 8 versões (todas as globais) |
+| Goiás | 6 globais; `0915` e as 10 Goiás-only com efeito presente mas fora do histórico; `030000`/`040000` pendentes | `migration repair --status applied` das 10 Goiás-only (`20260930010000`…`20261002020000`) e da `0915`, depois de conferir o efeito (todas `APPLIED_OUTSIDE_HISTORY`; impressão digital dos dados idêntica antes/depois); em seguida `db-push.mjs goias --yes` → `030000` + `040000` | 19 versões (todas) |
+| Bragantino | 6 globais; `0915` **não** aplicada; `040000` ausente (efeito hardened presente) | `db-push.mjs bragantino --yes` → `0915` (aplicação real, só estrutura aditiva) + `040000` | 8 versões (todas as globais) |
+
+Depois disso, `db-push.mjs <clube> --dry-run --remote` não tem nada pendente
+em nenhum dos três. Nenhuma migration histórica foi reescrita.
+
+**Por que repair nas 10 Goiás-only e não push:** elas não são idempotentes —
+as pré-condições abortam quando o dado já mudou (ex.: "pedrinho não está em
+182") e a fase 1 tem `DELETE`. Reaplicar falharia; o repair só grava a linha
+do histórico. **Por que repair na `0915` do Goiás:** depois do repair das 10,
+ela ficou mais antiga que a última versão remota, e o CLI exigiria
+`--include-all` (que empurraria tudo o que estivesse pendente).
+
+**Drift histórico de bytes (só documentado, não corrigido):**
+`20260904000000_canonical_baseline.sql` e
+`20260904210000_add_delivery_address_triggers.sql` foram editadas no
+repositório depois de já aplicadas em Goiás e Bragantino — o SQL guardado em
+`schema_migrations.statements` desses dois bancos não bate 100% com os
+arquivos atuais (no Vila Nova bate). O CLI identifica migration por **versão**,
+não por conteúdo, então isso não gera reaplicação. Não reescrever a migration
+histórica nem fazer repair baseado em SHA; se aparecer diferença **funcional**
+ainda ativa, tratar em migration nova.
 
 ## CI (desenho)
 
