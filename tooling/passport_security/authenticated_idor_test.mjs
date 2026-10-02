@@ -78,47 +78,95 @@ function assertForbidden(res, label) {
   }
 }
 
-// Roda a matriz completa A×B nas 5 RPCs + anon + público, num projeto.
-// Retorna { pass: true } ou lança MatrixFailure com o motivo exato.
+// Roda a matriz completa A×B nas 5 RPCs + anon + ranking, num projeto.
+// Lança MatrixFailure com o motivo exato na primeira falha.
 // Nunca recebe nem imprime senha — só token/uid, e mesmo esses não são logados.
+//
+// Cada checagem imprime o próprio PASS na hora (não só no fim): se alguma
+// falhar, fica registrado até onde a matriz passou. Por isso `log` volta
+// vazio — as linhas já foram impressas; o campo só existe por compatibilidade
+// com quem ainda itera sobre ele.
+//
+// Ranking: desde a 20261002040000 NENHUMA `passport_*` executa para anon
+// (inclusive passport_ranking/passport_my_rank). Testa os dois lados: sem
+// sessão é recusado; com sessão responde 200 e no formato esperado.
 export async function runMatrix({ url, publishableKey, tokenA, uidA, tokenB, uidB }) {
-  const log = [];
+  const pass = (label) => console.log(`PASS ${label}`);
+  const ok = (res, label) => {
+    assertOk(res, label);
+    pass(label);
+  };
+  const forbidden = (res, label) => {
+    assertForbidden(res, label);
+    pass(`${label} -> recusado (${res.status})`);
+  };
 
   for (const fn of RPCS) {
-    assertOk(await callRpc(url, publishableKey, fn, tokenA, {}), `${fn}: A sem p_user_id`);
-    assertOk(
+    ok(await callRpc(url, publishableKey, fn, tokenA, {}), `${fn}: A lê os próprios dados (sem p_user_id)`);
+    ok(
       await callRpc(url, publishableKey, fn, tokenA, { p_user_id: uidA }),
-      `${fn}: A com p_user_id=A`,
+      `${fn}: A lê os próprios dados (p_user_id=A)`,
     );
-    assertForbidden(
-      await callRpc(url, publishableKey, fn, tokenA, { p_user_id: uidB }),
-      `${fn}: A com p_user_id=B`,
-    );
-    assertForbidden(
-      await callRpc(url, publishableKey, fn, tokenB, { p_user_id: uidA }),
-      `${fn}: B com p_user_id=A`,
-    );
-    assertOk(await callRpc(url, publishableKey, fn, tokenB, {}), `${fn}: B sem p_user_id`);
-    assertOk(
+    ok(await callRpc(url, publishableKey, fn, tokenB, {}), `${fn}: B lê os próprios dados (sem p_user_id)`);
+    ok(
       await callRpc(url, publishableKey, fn, tokenB, { p_user_id: uidB }),
-      `${fn}: B com p_user_id=B`,
+      `${fn}: B lê os próprios dados (p_user_id=B)`,
     );
-
-    const anonRes = await callRpc(url, publishableKey, fn, null, {});
-    assertForbidden(anonRes, `${fn}: anon sem sessão`);
-
-    log.push(`PASS ${fn}`);
+    forbidden(
+      await callRpc(url, publishableKey, fn, tokenA, { p_user_id: uidB }),
+      `${fn}: A tenta consultar B`,
+    );
+    forbidden(
+      await callRpc(url, publishableKey, fn, tokenB, { p_user_id: uidA }),
+      `${fn}: B tenta consultar A`,
+    );
+    forbidden(await callRpc(url, publishableKey, fn, null, {}), `${fn}: sem sessão`);
+    forbidden(
+      await callRpc(url, publishableKey, fn, null, { p_user_id: uidA }),
+      `${fn}: sem sessão com p_user_id=A`,
+    );
   }
 
-  const ranking = await callRpc(url, publishableKey, 'passport_ranking', null, {});
-  assertOk(ranking, 'passport_ranking (anon, deve continuar público)');
-  log.push('PASS passport_ranking (anon, público)');
+  // Ranking/my_rank sem sessão: recusados (anon sem EXECUTE).
+  forbidden(await callRpc(url, publishableKey, 'passport_ranking', null, {}), 'passport_ranking: sem sessão');
+  forbidden(await callRpc(url, publishableKey, 'passport_my_rank', null, {}), 'passport_my_rank: sem sessão');
 
-  const myRank = await callRpc(url, publishableKey, 'passport_my_rank', null, {});
-  assertOk(myRank, 'passport_my_rank (anon, comportamento esperado)');
-  log.push('PASS passport_my_rank (anon)');
+  // Ranking autenticado: 200 e lista no formato do leaderboard.
+  const ranking = await callRpc(url, publishableKey, 'passport_ranking', tokenA, {});
+  assertOk(ranking, 'passport_ranking: autenticado');
+  const rankingShapeOk =
+    Array.isArray(ranking.body) &&
+    ranking.body.every(
+      (r) => Number.isInteger(r.rank) && typeof r.user_id === 'string' && Number.isInteger(r.match_count),
+    );
+  if (!rankingShapeOk) {
+    throw new MatrixFailure(
+      `passport_ranking: autenticado respondeu 200 com formato inesperado — ${JSON.stringify(ranking.body).slice(0, 300)}`,
+    );
+  }
+  pass(`passport_ranking: autenticado -> 200, ${ranking.body.length} linha(s) no formato esperado`);
 
-  return { pass: true, log };
+  // my_rank autenticado: 200, no máximo 1 linha (a do próprio usuário).
+  for (const [who, token] of [
+    ['A', tokenA],
+    ['B', tokenB],
+  ]) {
+    const myRank = await callRpc(url, publishableKey, 'passport_my_rank', token, {});
+    assertOk(myRank, `passport_my_rank: autenticado (${who})`);
+    const myRankShapeOk =
+      Array.isArray(myRank.body) &&
+      myRank.body.length <= 1 &&
+      myRank.body.every((r) => Number.isInteger(r.rank) && Number.isInteger(r.match_count));
+    if (!myRankShapeOk) {
+      throw new MatrixFailure(`passport_my_rank (${who}): formato inesperado — ${JSON.stringify(myRank.body)}`);
+    }
+    const desc = myRank.body.length
+      ? `posição ${myRank.body[0].rank}, ${myRank.body[0].match_count} jogo(s)`
+      : 'sem posição (0 jogos)';
+    pass(`passport_my_rank: autenticado (${who}) -> 200, ${desc}`);
+  }
+
+  return { pass: true, log: [] };
 }
 
 async function mainFromEnv() {

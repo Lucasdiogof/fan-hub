@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "_comment": "Escopo de cada migration de supabase/migrations/. Fonte única lida por tooling/multiclub/migration_scope.mjs. Toda migration precisa de exatamente 1 entrada; sem entrada o tooling aborta (fail closed).",
+  "_scopes": "Valores válidos: \"global\" (TODOS os clubes do registry, em qualquer conta Supabase) OU uma lista de clubes do registry (goias, bragantino, vilanova). \"global\" nunca se mistura com clube. A conta/organização Supabase NÃO participa do escopo.",
+  "_integrity": {
+    "algorithm": "sha256",
+    "normalization": "CRLF -> LF antes do hash (o Git for Windows reescreve o fim de linha no disco)",
+    "disclaimer": "Este hash prova apenas que o arquivo não mudou depois da criação do manifesto. Ele NÃO prova que esses mesmos bytes foram aplicados historicamente aos bancos existentes."
+  },
+  "migrations": [
+    {
+      "version": "20260904000000",
+      "file": "20260904000000_canonical_baseline.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "217e1088d0bb907c73f948d3780101f679e4de2649c721e4d05dbe9a5ff6ad62",
+      "note": "Schema canônico (58 tabelas, RPCs, RLS, buckets). Sem identidade de clube (cabeçalho do próprio arquivo)."
+    },
+    {
+      "version": "20260904210000",
+      "file": "20260904210000_add_delivery_address_triggers.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "210e4d2b2704a284149930beece12d5b1ed781129e63d0f018a5624a916e2d1e",
+      "note": "Recria os 2 triggers de delivery_addresses; reexecutável (DROP IF EXISTS antes do CREATE)."
+    },
+    {
+      "version": "20260908000000",
+      "file": "20260908000000_squad_members_add_lifecycle_columns.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "9864ea77fbabb1d29aee73bae297bf89b4202bdc3f73a32ecb0ad77078f96541",
+      "note": "squad_members: colunas de ciclo de vida (active, departed_at, departed_to); add column if not exists."
+    },
+    {
+      "version": "20260909000000",
+      "file": "20260909000000_arena_record_score_identity_games.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "ca0d9fdc02d0c34a7e83f046c5d01ea9542d1fd0c036014e9e7d41f8b5e4c6f6",
+      "note": "Recria a RPC legada arena_record_score (jogos de identidade). Escopo global no DDL. DÍVIDA SEPARADA, fora de A2: a função insere em score_events sem club_id (NOT NULL no baseline), então a funcionalidade é INCERTA; o app usa arena_record_score_for_club. Não corrigido aqui."
+    },
+    {
+      "version": "20260909120000",
+      "file": "20260909120000_half_price_proof.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "fe33856dcf64fbd58c20b041d4c48c0c35b6f5bb3740b6d7db6b7a0fc7b52286",
+      "note": "tickets: half_price_type e half_price_proof_path + bucket privado half_price_proofs e policies; o add constraint não é idempotente."
+    },
+    {
+      "version": "20260911000000",
+      "file": "20260911000000_live_match_notification_events.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "75245fe1693f77372621d329386c62ce1fd60e6186886545c7170e23d4b6c555",
+      "note": "Eventos de push ao vivo: constraint de event_type, coluna last_provider_status, rename e colunas em user_notification_preferences; não idempotente."
+    },
+    {
+      "version": "20260915000000",
+      "file": "20260915000000_passport_esmeraldino_historical_schema.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "c01f08a5fe17a97256efecc54a0499d20237b2a20a20b1c80f309820ff7d9eba",
+      "note": "Schema histórico do passaporte (match_date nullable, colunas de auditoria, tabela passport_matches_excluded). Genérico apesar do nome \"esmeraldino\"."
+    },
+    {
+      "version": "20260930010000",
+      "file": "20260930010000_fix_career_players_goias_ogol_research.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "bb411157fc671395cec2b8377b335554ee31368c7cc73e7b0172f97d7f145377",
+      "note": "Dado do Goiás: career_players (pesquisa ogol). As guardas abortam num projeto sem essas linhas."
+    },
+    {
+      "version": "20260930020000",
+      "file": "20260930020000_fill_squad_members_goias_foot_height.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "1a088214c63870a91b392215800031417f2a83c3de84a8b1bbbaa7abc43f2791",
+      "note": "Dado do Goiás: pé e altura em squad_members. A guarda final exige 0 jogadores sem pé: abortaria num elenco com campos nulos."
+    },
+    {
+      "version": "20260930030000",
+      "file": "20260930030000_fill_murillo_victorio_height.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "927fbb03da688c5bfb9f6e02cb540d595ec7ca3e99854497ff6641ac5d4aa379",
+      "note": "Dado do Goiás: altura do Murillo Victorio. Fora do Goiás passaria sem efeito (NULL != n não dispara a guarda)."
+    },
+    {
+      "version": "20260930040000",
+      "file": "20260930040000_fix_pedrinho_height.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "913837996c55ded1c8bdf892c19b11eccbb2c6c22480b70c3878eed2f6f3c55a",
+      "note": "Dado do Goiás: altura do Pedrinho. Fora do Goiás passaria sem efeito (NULL != n não dispara a guarda)."
+    },
+    {
+      "version": "20260930050000",
+      "file": "20260930050000_fix_cadu_height_official_source.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "9c38e00adc1433b2e9b5b1ad4dd548c81a62f62af1a850736133ed44877700e5",
+      "note": "Dado do Goiás: altura do Cadu. Fora do Goiás passaria sem efeito (NULL != n não dispara a guarda)."
+    },
+    {
+      "version": "20261001010000",
+      "file": "20261001010000_fix_arena_goias_audit_phase1.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "39b550c71629cc539fb13f106132dfddf700174af992c24222affce2c8b4ff50",
+      "note": "Dado do Goiás: auditoria da Arena, fase 1 (guess_players, spells/stats, squad_members). As guardas abortam fora do Goiás."
+    },
+    {
+      "version": "20261001020000",
+      "file": "20261001020000_manto_goias_phase2_fill_from_ogol.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "353f4456f04718c3bef3ffb24d2db119bd85dc9ae9050f07cfd14043f9909be5",
+      "note": "Dado do Goiás: Quem Vestiu o Manto, fase 2 (preenchimentos a partir do ogol). As guardas abortam fora do Goiás."
+    },
+    {
+      "version": "20261001030000",
+      "file": "20261001030000_arena_goias_phase3_external_research.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "02ed83573b8d1a3aaac81ff8ee8bab7a9dab1a5b6b77a534e6cb6beb9b5c036c",
+      "note": "Dado do Goiás: Arena, fase 3 (lineup_matches, matches, stats). As guardas abortam fora do Goiás."
+    },
+    {
+      "version": "20261002010000",
+      "file": "20261002010000_arena_goias_phase4_research.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "c628a94daadcd1ee8fb74f2cc69d72f3e256a19349402a597c8d1ef671cf0b0b",
+      "note": "Dado do Goiás: Arena, fase 4 (lineup_matches, matches, stats). As guardas abortam fora do Goiás."
+    },
+    {
+      "version": "20261002020000",
+      "file": "20261002020000_manto_goias_hide_empty_identity_records.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "0b9e6f0295a77a4e211b91be50fd7e19153d98020d5452b30e33d266f552b350",
+      "note": "Dado do Goiás: esconde 4 registros de identidade vazios do Manto. As guardas abortam fora do Goiás."
+    },
+    {
+      "version": "20261002030000",
+      "file": "20261002030000_manto_goias_academy_club_rule.sql",
+      "scope": [
+        "goias"
+      ],
+      "sha256": "c65b9e392e3fc8b8d767128f044c2d707e2ba9a65c22e7d93277b9e0c29882a9",
+      "note": "Dado do Goiás: regra do clube formador do Manto. As guardas abortam fora do Goiás. Arquivo ainda não versionado no git quando classificado."
+    },
+    {
+      "version": "20261002040000",
+      "file": "20261002040000_harden_passport_per_user_rpcs.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "e5219ddd7db24bad7895c71dc5437ef200666fdad2ff6c2609b8e56171e944ff",
+      "note": "Hardening das RPCs passport_*: auth.uid() nas 5 por usuário, revoga EXECUTE de public e anon, checks transacionais. Preparada e NÃO aplicada. Global: as 12 funções existem no baseline e não há literal de clube."
+    }
+  ]
+}

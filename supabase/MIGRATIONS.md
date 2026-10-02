@@ -6,9 +6,8 @@ scripts soltos em `supabase/*.sql`.
 
 Os scripts soltos (`arena_ranking.sql`, `quiz_questions.sql`, etc.) continuam
 existindo como referência histórica de como cada tabela nasceu — não foram
-convertidos retroativamente em migrations (ver o marcador de baseline em
-`supabase/migrations/20260830220000_baseline_marker.sql` pra entender por
-quê). Isso significa que reconstruir um ambiente do zero exige dois passos:
+convertidos retroativamente em migrations (o marcador de baseline original foi substituído pelo baseline canônico
+`20260904000000_canonical_baseline.sql`). Isso significa que reconstruir um ambiente do zero exige dois passos:
 primeiro os scripts soltos (na ordem que fizer sentido pras dependências
 entre tabelas), depois as migrations em ordem cronológica.
 
@@ -39,16 +38,30 @@ Escreva o SQL da mudança ali dentro. Convenções:
 - Nunca `drop table`/`truncate` numa migration sem confirmar explicitamente
   com quem pediu a mudança — é destrutivo e não tem volta.
 
-## Como aplicar em QA
+## Escopo por clube (obrigatório)
+
+Toda migration precisa de uma entrada em `supabase/migration_scopes.json`
+(`global` ou lista de clubes). Sem entrada, SHA divergente ou escopo inválido,
+todo o tooling aborta. O clube escolhido determina quais migrations o Supabase CLI
+enxerga (workdir temporário filtrado). Detalhes: `docs/multiclub/61_migration_scopes.md`.
+
+Fluxo: clube -> registry -> project ref -> escopo da migration -> banco. A conta
+Supabase é informativa; **nunca** use "a conta autenticada" como indicador de destino.
 
 ```bash
-supabase link --project-ref <ref-do-projeto-qa>
-supabase db push
+node tooling/multiclub/migration_scope.mjs check                  # valida o manifesto
+node tooling/multiclub/db-push.mjs goias --dry-run                # plano local, sem conexão
+node tooling/multiclub/db-push.mjs bragantino --dry-run --remote  # lê histórico remoto
+node tooling/multiclub/db-push.mjs vilanova --yes                 # escrita real
 ```
 
-`db push` aplica só as migrations que ainda não rodaram naquele projeto
-(controladas por uma tabela interna do próprio Supabase,
-`supabase_migrations.schema_migrations`).
+`run-sql-file.mjs` respeita o manifesto para migrations, mas **não registra**
+histórico (só `db push` registra). Não use `supabase link` + `db push` crus.
+
+## Como aplicar em QA
+
+Use `db-push.mjs` (acima) com o clube de QA. O `db push` interno aplica só as
+migrations ainda não registradas em `supabase_migrations.schema_migrations`.
 
 ## Como validar
 
@@ -60,22 +73,13 @@ supabase db push
 
 ## Como aplicar em PROD
 
-Mesmo comando (`supabase db push`), mas depois de já ter validado em QA:
-
-```bash
-supabase link --project-ref yonozsdgyrhgqrvydbnr
-supabase migration list   # confirma o que está pendente antes de aplicar
-supabase db push
-```
-
-Nunca pule QA pra uma mudança de schema/RPC nova — só migrations já
-validadas lá (como o marcador de baseline e o fix do `arena_record_score`,
-que só re-registra algo que já está em produção) podem ir direto.
+Mesmo fluxo, depois de validado em QA: `db-push.mjs <clube> --dry-run`, revisar
+incluídas/excluídas e só então `--yes`. Nunca `supabase link` + `db push` cru.
 
 ## Como verificar migrations pendentes
 
 ```bash
-supabase migration list
+node tooling/multiclub/db-status.mjs <clube>
 ```
 
 Compara o que existe em `supabase/migrations/` localmente contra o que já

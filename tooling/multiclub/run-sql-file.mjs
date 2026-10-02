@@ -17,6 +17,15 @@ import fs from 'fs';
 import path from 'path';
 import { Client } from 'pg';
 import { resolveTarget, printTargetBanner } from './db_target_resolver.mjs';
+import { checkFileForClub } from './migration_scope.mjs';
+
+// ESCOPO DE MIGRATIONS (A2): este script NÃO pode ser um atalho que contorna o
+// manifesto supabase/migration_scopes.json. Se o arquivo for uma migration —
+// por estar em supabase/migrations/ OU por ter o mesmo conteúdo (SHA normalizado)
+// de uma migration do manifesto — o clube precisa estar no escopo dela, senão o
+// script recusa ANTES de resolver o alvo e ANTES de abrir qualquer conexão.
+// Nota: rodar uma migration por aqui NÃO registra a versão no histórico do
+// Supabase (só `db push` registra). SQL que não é migration segue como antes.
 
 const [clubArg, fileArg] = process.argv.slice(2);
 const hasYes = process.argv.includes('--yes');
@@ -25,6 +34,22 @@ if (!clubArg || !fileArg) {
   console.error(
     'Uso: node tooling/multiclub/run-sql-file.mjs <club> <arquivo.sql> [--yes]',
   );
+  process.exit(1);
+}
+
+const filePath = path.resolve(fileArg);
+if (!fs.existsSync(filePath)) {
+  console.error(`Arquivo não encontrado: ${filePath}`);
+  process.exit(1);
+}
+
+// Escopo ANTES de tudo (alvo, env var, conexão). Fail closed: manifesto
+// inválido, clube desconhecido ou migration fora do escopo -> aborta aqui.
+let scope;
+try {
+  scope = checkFileForClub(filePath, clubArg);
+} catch (err) {
+  console.error(err.message);
   process.exit(1);
 }
 
@@ -43,15 +68,15 @@ if (!target.writable) {
   process.exit(1);
 }
 
-const filePath = path.resolve(fileArg);
-if (!fs.existsSync(filePath)) {
-  console.error(`Arquivo não encontrado: ${filePath}`);
-  process.exit(1);
-}
 const sql = fs.readFileSync(filePath, 'utf8');
 
 printTargetBanner(target);
 console.log(`arquivo:          ${path.relative(process.cwd(), filePath)} (${sql.length} bytes)`);
+console.log(
+  scope.entry
+    ? `escopo:           OK — migration ${scope.entry.version} [${scope.entry.scope.join('+')}] permitida em "${clubArg}"`
+    : 'escopo:           n/a — SQL que não é migration do manifesto',
+);
 
 if (!hasYes) {
   console.error(

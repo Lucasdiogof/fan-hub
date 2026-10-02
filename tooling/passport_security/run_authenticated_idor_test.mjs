@@ -10,27 +10,51 @@
 // Token, senha e refresh token NUNCA são impressos, gravados em arquivo, log
 // ou memória — só nome de RPC, status HTTP, contagens e PASS/FAIL.
 //
-// Rode uma vez por projeto (Goiás e Bragantino são bancos de auth separados,
-// cada execução cria seu próprio par de contas QA nesse projeto):
+// Rode uma vez por projeto (cada clube é um banco de auth separado; cada
+// execução cria seu próprio par de contas QA nesse projeto). O clube é OBRIGATÓRIO
+// e o destino é validado contra supabase_projects_registry.json ANTES de qualquer
+// rede ou escrita — a URL é o que decide onde as contas serão criadas, então um
+// SUPABASE_URL de outro projeto aborta aqui, sem criar nada:
 //
-//   SUPABASE_URL=https://yonozsdgyrhgqrvydbnr.supabase.co \
+//   SUPABASE_URL=https://<project-ref-do-clube>.supabase.co \
 //   SUPABASE_PUBLISHABLE_KEY=sb_publishable_... \
-//   CLUB_LABEL=goias \
-//   node tooling/passport_security/run_authenticated_idor_test.mjs
+//   node tooling/passport_security/run_authenticated_idor_test.mjs --club goias
+//
+// `--club` aceita: goias | bragantino | vilanova (as chaves do registry). Conta
+// Supabase (accountLabel) NÃO entra na validação: vale só clube -> projectRef.
 //
 // Pré-requisito: "Confirm email" OFF no projeto (já é o caso nos dois — ver
 // reference_supabase_email_confirmation_toggle), senão o signup não devolve
 // sessão imediata e o script não tem como logar sozinho.
 
 import { randomBytes } from 'node:crypto';
+import { assertSupabaseUrlMatchesClub } from '../multiclub/db_target_resolver.mjs';
 import { callRpc, runMatrix } from './authenticated_idor_test.mjs';
 
+function parseClubFlag(argv) {
+  const eq = argv.find((a) => a.startsWith('--club='));
+  if (eq) return eq.slice('--club='.length);
+  const i = argv.indexOf('--club');
+  return i >= 0 ? argv[i + 1] : undefined;
+}
+
+const clubLabel = parseClubFlag(process.argv.slice(2));
 const url = process.env.SUPABASE_URL;
 const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY;
-const clubLabel = process.env.CLUB_LABEL || 'qa';
 
+if (!clubLabel || clubLabel.startsWith('--')) {
+  console.error('Uso: node tooling/passport_security/run_authenticated_idor_test.mjs --club <goias|bragantino|vilanova>');
+  process.exit(1);
+}
 if (!url || !publishableKey) {
-  console.log('Faltam SUPABASE_URL e/ou SUPABASE_PUBLISHABLE_KEY.');
+  console.error('Faltam SUPABASE_URL e/ou SUPABASE_PUBLISHABLE_KEY.');
+  process.exit(1);
+}
+// Validação do destino ANTES de qualquer fetch (nenhum usuário é criado se divergir).
+try {
+  assertSupabaseUrlMatchesClub(clubLabel, url);
+} catch (err) {
+  console.error(err.message);
   process.exit(1);
 }
 

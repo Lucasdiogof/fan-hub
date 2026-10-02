@@ -41,6 +41,63 @@ export function extractProjectRefFromDbUrl(dbUrl) {
   return null;
 }
 
+/** Extrai o project ref de uma URL de API do Supabase (`https://<ref>.supabase.co`).
+ * Só aceita o formato oficial: domínio customizado, http, ou qualquer host
+ * inesperado devolve null (quem chama trata como fail-loud — nunca assume). */
+export function extractProjectRefFromSupabaseUrl(supabaseUrl) {
+  let parsed;
+  try {
+    parsed = new URL(supabaseUrl);
+  } catch {
+    return null;
+  }
+  if (parsed.protocol !== 'https:') return null;
+  const m = parsed.hostname.match(/^([a-z0-9]+)\.supabase\.co$/);
+  return m ? m[1] : null;
+}
+
+/** Garante que `supabaseUrl` (API do Supabase) pertence ao projeto REGISTRADO
+ * para `clubArg`. Usado por ferramentas que escrevem via API (ex.: teste de
+ * IDOR, que cria contas) e que não passam por `resolveTarget`. Fail-loud:
+ * clube desconhecido, URL em formato inesperado ou ref divergente lançam erro.
+ * Devolve o projectRef confirmado. A conta/organização NUNCA entra aqui. */
+export function assertSupabaseUrlMatchesClub(clubArg, supabaseUrl) {
+  const registry = loadProjectsRegistry();
+  const validClubKeys = Object.keys(registry).filter((k) => !k.startsWith('_'));
+  const club = clubArg && !String(clubArg).startsWith('_') ? registry[clubArg] : undefined;
+  if (!club) {
+    throw new Error(
+      `Clube "${clubArg ?? ''}" não está em supabase_projects_registry.json ` +
+        `(disponíveis: ${validClubKeys.join(', ')}). Nunca resolvido por padrão.`,
+    );
+  }
+  const actualRef = extractProjectRefFromSupabaseUrl(supabaseUrl ?? '');
+  if (!actualRef) {
+    throw new Error(
+      'Não consegui extrair um project ref de SUPABASE_URL ' +
+        '(formato esperado: https://<ref>.supabase.co). Fail-loud — nunca assumo que está certo.',
+    );
+  }
+  if (actualRef !== club.projectRef) {
+    throw new Error(
+      `MISMATCH: SUPABASE_URL aponta pro projeto "${actualRef}", mas o clube ` +
+        `"${clubArg}" está registrado com projectRef="${club.projectRef}" em ` +
+        'supabase_projects_registry.json. PARE — nada foi criado nem escrito.',
+    );
+  }
+  return club.projectRef;
+}
+
+/** Versão da connection string segura pra log: sem usuário nem senha. */
+export function redactDbUrl(dbUrl) {
+  try {
+    const u = new URL(dbUrl);
+    return `${u.protocol}//<redigido>@${u.host}${u.pathname}`;
+  } catch {
+    return '<connection string malformada>';
+  }
+}
+
 /** Nunca retorna a connection string inteira — só o host, pra log seguro. */
 export function sanitizeHostForLog(dbUrl) {
   try {
@@ -98,6 +155,8 @@ export function resolveTarget(clubArg) {
     projectRef: club.projectRef,
     workdir: path.join(ROOT, club.workdir),
     writable: club.writable,
+    // Rótulo operacional (informativo): NUNCA decide onde algo roda.
+    accountLabel: club.accountLabel ?? null,
     dbUrl,
     hostSanitized: sanitizeHostForLog(dbUrl),
   };
@@ -110,5 +169,6 @@ export function printTargetBanner(target) {
   console.log(`host (sanitized): ${target.hostSanitized}`);
   console.log(`workdir:          ${path.relative(process.cwd(), target.workdir)}`);
   console.log(`writable:         ${target.writable}`);
+  console.log(`conta (info):     ${target.accountLabel ?? '<não informada>'} — só informativo, nunca decide o destino`);
   console.log('========================');
 }

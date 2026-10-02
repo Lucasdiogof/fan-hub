@@ -1,24 +1,27 @@
 {
-  "_comment": "Fonte única de verdade de quais projetos Supabase existem e a que clube pertencem. Nunca uma connection string/senha aqui — só o project ref (público, não é segredo).",
+  "_comment": "Fonte única de verdade de quais projetos Supabase existem e a que clube pertencem. Nunca uma connection string/senha aqui — só o project ref (público, não é segredo). accountLabel (account_a/account_b) é só rótulo operacional informativo da conta Supabase: NUNCA decide onde uma migration roda — o destino é sempre clube -> projectRef (validado contra a env var). Goiás e Bragantino na mesma conta não compartilham escopo de migration.",
   "goias": {
     "projectRef": "yonozsdgyrhgqrvydbnr",
     "workdir": ".",
     "writable": true,
     "envVar": "GOIAS_DB_URL",
-    "_note": "writable=true desde 2026-09-04 — autorização explícita pra convergência real do schema do Goiás pro canonical. Depois do migration-history cutover (mesmo dia), goias e bragantino usam o MESMO workdir (\".\", supabase/migrations/ na raiz) — não existe mais 'workdir legacy do Goiás' vs 'workdir canonical do Bragantino'. Só muda DB_URL/project ref por clube. --yes continua obrigatório pra escrita real em db-push.mjs, dry-run continua disponível sem --yes."
+    "_note": "writable=true desde 2026-09-04 — autorização explícita pra convergência real do schema do Goiás pro canonical. Depois do migration-history cutover (mesmo dia), goias e bragantino usam o MESMO workdir (\".\", supabase/migrations/ na raiz) — não existe mais 'workdir legacy do Goiás' vs 'workdir canonical do Bragantino'. Só muda DB_URL/project ref por clube. --yes continua obrigatório pra escrita real em db-push.mjs, dry-run continua disponível sem --yes.",
+    "accountLabel": "account_a"
   },
   "bragantino": {
     "projectRef": "yrgyzkaaudyzmsqwzecj",
     "workdir": ".",
     "writable": true,
     "envVar": "BRAGANTINO_DB_URL",
-    "_note": "workdir=\".\" desde o migration-history cutover de 2026-09-04 — infra/supabase/canonical/ (a antiga cadeia paralela usada só pra provar o baseline) foi removida depois de promovida pra supabase/migrations/ na raiz, a mesma cadeia oficial que o Goiás usa. Staging descartável — vazio de usuário/dado real, só schema+identidade."
+    "_note": "workdir=\".\" desde o migration-history cutover de 2026-09-04 — infra/supabase/canonical/ (a antiga cadeia paralela usada só pra provar o baseline) foi removida depois de promovida pra supabase/migrations/ na raiz, a mesma cadeia oficial que o Goiás usa. Staging descartável — vazio de usuário/dado real, só schema+identidade.",
+    "accountLabel": "account_a"
   },
   "vilanova": {
     "projectRef": "vkybbrfvmexevakknlsi",
     "workdir": ".",
     "writable": true,
     "envVar": "VILANOVA_DB_URL",
-    "_note": "Projeto criado pelo usuário em 2026-09-29 (dashboard: supabase.com/dashboard/project/vkybbrfvmexevakknlsi). writable=true por ser projeto NOVO/vazio, sem dado de usuário — aplicar o baseline canônico + bootstrap + seeds do runbook (docs/multiclub/60_vilanova_seeds_runbook.md) é a etapa esperada, não uma convergência de produção. Mesmo workdir \".\" dos outros dois clubes (supabase/migrations/ na raiz, schema canônico compartilhado)."
+    "_note": "Projeto criado pelo usuário em 2026-09-29 (dashboard: supabase.com/dashboard/project/vkybbrfvmexevakknlsi). writable=true por ser projeto NOVO/vazio, sem dado de usuário — aplicar o baseline canônico + bootstrap + seeds do runbook (docs/multiclub/60_vilanova_seeds_runbook.md) é a etapa esperada, não uma convergência de produção. Mesmo workdir \".\" dos outros dois clubes (supabase/migrations/ na raiz, schema canônico compartilhado).",
+    "accountLabel": "account_b"
   }
 }
