@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/features/arena/games/guess_player/domain/guess_comparison.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_round_state.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
@@ -86,6 +87,35 @@ void main() {
         ).eligibleAsSecret,
         isFalse,
       );
+    });
+
+    GuessPlayer withoutShirt(int? debut) => GuessPlayer(
+      id: 'h',
+      name: 'H',
+      displayName: 'H',
+      position: PlayerPosition.zag,
+      academyClub: 'Goiás',
+      clubDebutYear: debut,
+      imageUrl: 'lib/assets/x.png',
+      dataStatus: GuessPlayerDataStatus.verified,
+    );
+
+    test('camisa vazia não impede o sorteio de quem estreou antes de 2008 '
+        '(não há registro de camisa dessa época)', () {
+      expect(withoutShirt(1990).eligibleAsSecret, isTrue);
+      expect(withoutShirt(2007).eligibleAsSecret, isTrue);
+    });
+
+    test('a partir de 2008 (ou sem ano de estreia) a camisa continua '
+        'obrigatória', () {
+      expect(withoutShirt(2008).eligibleAsSecret, isFalse);
+      expect(withoutShirt(2020).eligibleAsSecret, isFalse);
+      expect(withoutShirt(null).eligibleAsSecret, isFalse);
+    });
+
+    test('camisa vazia do secreto deixa a pista de camisa como desconhecida, '
+        'sem acusar acerto nem erro', () {
+      expect(compareShirtNumber(null, 9), DirectionalResult.unknown);
     });
   });
 

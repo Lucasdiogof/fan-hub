@@ -89,10 +89,25 @@ class GuessPlayer {
       academyClub != null &&
       clubDebutYear != null;
 
+  /// Ano a partir do qual existe registro confiável de camisa por temporada
+  /// (antes disso as bases só trazem a escalação, sem número). Decisão do
+  /// usuário em 2026-10-02: jogador que estreou antes disso pode ser
+  /// sorteado com a camisa em branco — nunca um número inventado só para
+  /// preencher a pista.
+  static const shirtRecordsFromYear = 2008;
+
+  /// Camisa só é obrigatória para quem estreou a partir de
+  /// [shirtRecordsFromYear] (ou sem ano conhecido).
+  bool get _shirtRequired =>
+      clubDebutYear == null || clubDebutYear! >= shirtRecordsFromYear;
+
   /// Derivado, não guardado: evita uma segunda fonte de verdade que possa
   /// dessincronizar dos 5 campos + status.
   bool get eligibleAsSecret =>
       dataStatus == GuessPlayerDataStatus.verified &&
-      hasFullHints &&
+      position != null &&
+      academyClub != null &&
+      clubDebutYear != null &&
+      (shirtNumber != null || !_shirtRequired) &&
       imageUrl != null;
 }

@@ -949,15 +949,6 @@ final guessPlayerCatalog = <GuessPlayer>[
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
-    id: 'hugo_identity_review',
-    personId: null,
-    name: 'Hugo',
-    displayName: 'Hugo',
-    nationalityCode: 'BR',
-    nationalityName: 'Brasil',
-    dataStatus: GuessPlayerDataStatus.incomplete,
-  ),
-  const GuessPlayer(
     id: 'iarley',
     personId: '652b4be1-ed2b-5c0e-a384-4626b9bb5920',
     name: 'Iarley',
@@ -1096,15 +1087,6 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2005,
-    dataStatus: GuessPlayerDataStatus.incomplete,
-  ),
-  const GuessPlayer(
-    id: 'julio_cesar_identity_review',
-    personId: null,
-    name: 'Júlio César',
-    displayName: 'Júlio César',
-    nationalityCode: 'BR',
-    nationalityName: 'Brasil',
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   const GuessPlayer(
@@ -1406,15 +1388,6 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2018,
-    dataStatus: GuessPlayerDataStatus.incomplete,
-  ),
-  const GuessPlayer(
-    id: 'marcao_identity_review',
-    personId: null,
-    name: 'Marcão',
-    displayName: 'Marcão',
-    nationalityCode: 'BR',
-    nationalityName: 'Brasil',
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   const GuessPlayer(
@@ -2199,15 +2172,6 @@ final guessPlayerCatalog = <GuessPlayer>[
     clubDebutYear: 2025,
     imageUrl: squadPhotoAssets['wellington_rato'],
     dataStatus: GuessPlayerDataStatus.verified,
-  ),
-  const GuessPlayer(
-    id: 'welliton_identity_review',
-    personId: 'a6577244-2373-5e79-b65c-b9200cb2a6e9',
-    name: 'Welliton',
-    displayName: 'Welliton',
-    nationalityCode: 'BR',
-    nationalityName: 'Brasil',
-    dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   GuessPlayer(
     id: 'willean_lepo',

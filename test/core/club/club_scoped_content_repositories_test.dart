@@ -567,7 +567,9 @@ void main() {
         'contagens dos fallbacks batem com o real do Supabase (auditado ao vivo na M2.2A)',
         () {
           expect(careerPlayers.length, 30);
-          expect(guessPlayerCatalog.length, 174);
+          // 174 - 4 registros sem identidade desabilitados em 2026-10-02
+          // (migration 20261002020000).
+          expect(guessPlayerCatalog.length, 170);
           expect(orderedLineupMatches.length, 31);
           expect(quizQuestions.length, 60);
         },
