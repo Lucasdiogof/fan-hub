@@ -12,6 +12,7 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 
 /// Duas abas: "Escalação da torcida" (o consolidado — formação mais votada
 /// + jogador mais escalado em cada slot; primeira aba, é a que mais gente
@@ -168,20 +169,15 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                   ),
                 ),
                 const SizedBox(height: 8),
-                TabBar(
+                FanHubControllerTabBar(
                   controller: _tabController,
-                  labelColor: colors.primary,
-                  unselectedLabelColor: colors.textHint,
-                  indicatorColor: colors.primary,
-                  labelStyle: const TextStyle(
-                    fontSize: 13.5,
-                    fontWeight: FontWeight.w800,
-                  ),
-                  tabs: [
-                    Tab(text: context.l10n.crowdTitle),
-                    Tab(text: context.l10n.crowdTabEscale),
+                  labels: [
+                    context.l10n.crowdTitle,
+                    context.l10n.crowdTabEscale,
                   ],
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                 ),
+                const SizedBox(height: 8),
                 Expanded(
                   child: TabBarView(
                     controller: _tabController,

@@ -10,6 +10,7 @@ import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -119,47 +120,11 @@ class _PeriodSelector extends StatelessWidget {
       (null, l10n.passportRankingPeriodOverall),
       for (final y in years) (y, '$y'),
     ];
-    return SizedBox(
-      height: 34,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: options.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 6),
-        itemBuilder: (context, index) {
-          final (year, label) = options[index];
-          final selected = state.year == year;
-          final colors = context.colors;
-          return Semantics(
-            button: true,
-            selected: selected,
-            label: label,
-            child: InkWell(
-              onTap: () =>
-                  context.read<PassportRankingCubit>().selectYear(year),
-              borderRadius: BorderRadius.circular(999),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: selected ? colors.primary : colors.secondary,
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: selected ? colors.onPrimary : colors.textSecondary,
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+    return FanHubTabBar(
+      labels: [for (final (_, label) in options) label],
+      selectedIndex: options.indexWhere((option) => option.$1 == state.year),
+      onChanged: (index) =>
+          context.read<PassportRankingCubit>().selectYear(options[index].$1),
     );
   }
 }

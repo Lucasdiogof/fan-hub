@@ -255,7 +255,7 @@ class _MatchesContent extends StatelessWidget {
           else
             for (final match in roundMatches) ...[
               MatchListItem(match: match, onTap: () => onMatchTap(match)),
-              const SizedBox(height: AppSpacing.sm),
+              const SizedBox(height: 10),
             ],
         ],
       ],

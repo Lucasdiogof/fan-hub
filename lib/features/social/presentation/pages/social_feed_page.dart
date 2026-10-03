@@ -19,6 +19,7 @@ import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// Notícias, Instagram, YouTube e X num filtro só, lado a lado — Notícias
@@ -146,77 +147,10 @@ class _MediaFilterBar extends StatelessWidget {
         (_MediaFilter.x, l10n.socialPlatformX),
       ],
     ];
-    final colors = context.colors;
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: colors.surface,
-        borderRadius: BorderRadius.circular(AppRadius.button),
-        border: Border.all(color: colors.border),
-      ),
-      child: Row(
-        children: [
-          for (final (filter, label) in options)
-            Expanded(
-              child: _FilterChip(
-                label: label,
-                selected: selected == filter,
-                onTap: () => onSelected(filter),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _FilterChip extends StatelessWidget {
-  const _FilterChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(AppRadius.button - 4),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: selected ? colors.primary : Colors.transparent,
-          borderRadius: BorderRadius.circular(AppRadius.button - 4),
-          boxShadow: selected
-              ? [
-                  BoxShadow(
-                    color: colors.primary.withValues(alpha: 0.35),
-                    blurRadius: 10,
-                    offset: const Offset(0, 3),
-                  ),
-                ]
-              : null,
-        ),
-        child: Text(
-          label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 10.5,
-            fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
-            letterSpacing: 0.3,
-            color: selected ? colors.onPrimary : colors.textSecondary,
-          ),
-        ),
-      ),
+    return FanHubTabBar(
+      labels: [for (final (_, label) in options) label],
+      selectedIndex: options.indexWhere((option) => option.$1 == selected),
+      onChanged: (index) => onSelected(options[index].$1),
     );
   }
 }

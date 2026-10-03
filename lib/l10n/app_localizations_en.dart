@@ -213,31 +213,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get matchToBeConfirmed => 'To be confirmed';
 
   @override
-  String get matchInfoTitle => 'INFORMATION';
-
-  @override
   String get matchFieldDate => 'Date';
-
-  @override
-  String get matchFieldTime => 'Time';
-
-  @override
-  String get matchFieldStadium => 'Stadium';
-
-  @override
-  String get matchFieldCity => 'City';
-
-  @override
-  String get matchFieldCompetition => 'Competition';
-
-  @override
-  String get matchFieldRound => 'Round';
-
-  @override
-  String get matchFieldStatus => 'Status';
-
-  @override
-  String get matchEventsTitle => 'MATCH EVENTS';
 
   @override
   String get matchEventGoal => 'Goal';
@@ -255,6 +231,51 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchStatsTitle => 'STATISTICS';
+
+  @override
+  String get matchTabEvents => 'EVENTS';
+
+  @override
+  String get matchEventsEmpty => 'Match events not available yet';
+
+  @override
+  String get matchStatsEmpty => 'Statistics not available yet';
+
+  @override
+  String get matchLineupsEmpty => 'Lineup not announced yet';
+
+  @override
+  String get matchLineupStarters => 'Starters';
+
+  @override
+  String get matchStatPossession => 'Possession';
+
+  @override
+  String get matchStatShots => 'Shots';
+
+  @override
+  String get matchStatShotsOnTarget => 'Shots on target';
+
+  @override
+  String get matchStatCorners => 'Corners';
+
+  @override
+  String get matchStatDuelsWon => 'Duels won';
+
+  @override
+  String get matchEventPenalty => 'Penalty';
+
+  @override
+  String get matchEventOwnGoal => 'Own goal';
+
+  @override
+  String get matchEventYellowCard => 'Yellow card';
+
+  @override
+  String get matchEventRedCard => 'Red card';
+
+  @override
+  String get matchEventSubstitutionLabel => 'Substitution';
 
   @override
   String get standingsClub => 'CLUB';

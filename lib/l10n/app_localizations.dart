@@ -496,59 +496,11 @@ abstract class AppLocalizations {
   /// **'A confirmar'**
   String get matchToBeConfirmed;
 
-  /// No description provided for @matchInfoTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'INFORMAÇÕES'**
-  String get matchInfoTitle;
-
   /// No description provided for @matchFieldDate.
   ///
   /// In pt, this message translates to:
   /// **'Data'**
   String get matchFieldDate;
-
-  /// No description provided for @matchFieldTime.
-  ///
-  /// In pt, this message translates to:
-  /// **'Horário'**
-  String get matchFieldTime;
-
-  /// No description provided for @matchFieldStadium.
-  ///
-  /// In pt, this message translates to:
-  /// **'Estádio'**
-  String get matchFieldStadium;
-
-  /// No description provided for @matchFieldCity.
-  ///
-  /// In pt, this message translates to:
-  /// **'Cidade'**
-  String get matchFieldCity;
-
-  /// No description provided for @matchFieldCompetition.
-  ///
-  /// In pt, this message translates to:
-  /// **'Competição'**
-  String get matchFieldCompetition;
-
-  /// No description provided for @matchFieldRound.
-  ///
-  /// In pt, this message translates to:
-  /// **'Rodada'**
-  String get matchFieldRound;
-
-  /// No description provided for @matchFieldStatus.
-  ///
-  /// In pt, this message translates to:
-  /// **'Status'**
-  String get matchFieldStatus;
-
-  /// No description provided for @matchEventsTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'EVENTOS DA PARTIDA'**
-  String get matchEventsTitle;
 
   /// No description provided for @matchEventGoal.
   ///
@@ -579,6 +531,96 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'ESTATÍSTICAS'**
   String get matchStatsTitle;
+
+  /// No description provided for @matchTabEvents.
+  ///
+  /// In pt, this message translates to:
+  /// **'EVENTOS'**
+  String get matchTabEvents;
+
+  /// No description provided for @matchEventsEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Eventos da partida ainda não disponíveis'**
+  String get matchEventsEmpty;
+
+  /// No description provided for @matchStatsEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estatísticas ainda não disponíveis'**
+  String get matchStatsEmpty;
+
+  /// No description provided for @matchLineupsEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalação ainda não divulgada'**
+  String get matchLineupsEmpty;
+
+  /// No description provided for @matchLineupStarters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Titulares'**
+  String get matchLineupStarters;
+
+  /// No description provided for @matchStatPossession.
+  ///
+  /// In pt, this message translates to:
+  /// **'Posse de bola'**
+  String get matchStatPossession;
+
+  /// No description provided for @matchStatShots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Finalizações'**
+  String get matchStatShots;
+
+  /// No description provided for @matchStatShotsOnTarget.
+  ///
+  /// In pt, this message translates to:
+  /// **'Finalizações no gol'**
+  String get matchStatShotsOnTarget;
+
+  /// No description provided for @matchStatCorners.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escanteios'**
+  String get matchStatCorners;
+
+  /// No description provided for @matchStatDuelsWon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Disputas ganhas'**
+  String get matchStatDuelsWon;
+
+  /// No description provided for @matchEventPenalty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pênalti'**
+  String get matchEventPenalty;
+
+  /// No description provided for @matchEventOwnGoal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gol contra'**
+  String get matchEventOwnGoal;
+
+  /// No description provided for @matchEventYellowCard.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão amarelo'**
+  String get matchEventYellowCard;
+
+  /// No description provided for @matchEventRedCard.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão vermelho'**
+  String get matchEventRedCard;
+
+  /// No description provided for @matchEventSubstitutionLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Substituição'**
+  String get matchEventSubstitutionLabel;
 
   /// No description provided for @standingsClub.
   ///

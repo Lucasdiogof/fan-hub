@@ -493,7 +493,7 @@ void main() {
       );
 
       expect(tester.takeException(), isNull);
-      // O único scroll horizontal permitido é o seletor de fase — os cards
+      // O único scroll horizontal permitido (e só se precisar) é o seletor de fase — os cards
       // ficam numa Column vertical comum, nunca dentro de um
       // SingleChildScrollView/ListView horizontal.
       final horizontalScrollables = tester
@@ -503,7 +503,8 @@ void main() {
                 s.axisDirection == AxisDirection.right ||
                 s.axisDirection == AxisDirection.left,
           );
-      expect(horizontalScrollables.length, 1);
+      // Máximo 1: o seletor só rola quando os rótulos não cabem (FanHubTabBar).
+      expect(horizontalScrollables.length, lessThanOrEqualTo(1));
     },
   );
 

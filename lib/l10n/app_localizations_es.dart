@@ -213,31 +213,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get matchToBeConfirmed => 'Por confirmar';
 
   @override
-  String get matchInfoTitle => 'INFORMACIÓN';
-
-  @override
   String get matchFieldDate => 'Fecha';
-
-  @override
-  String get matchFieldTime => 'Hora';
-
-  @override
-  String get matchFieldStadium => 'Estadio';
-
-  @override
-  String get matchFieldCity => 'Ciudad';
-
-  @override
-  String get matchFieldCompetition => 'Competición';
-
-  @override
-  String get matchFieldRound => 'Jornada';
-
-  @override
-  String get matchFieldStatus => 'Estado';
-
-  @override
-  String get matchEventsTitle => 'EVENTOS DEL PARTIDO';
 
   @override
   String get matchEventGoal => 'Gol';
@@ -255,6 +231,51 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get matchStatsTitle => 'ESTADÍSTICAS';
+
+  @override
+  String get matchTabEvents => 'EVENTOS';
+
+  @override
+  String get matchEventsEmpty => 'Eventos del partido aún no disponibles';
+
+  @override
+  String get matchStatsEmpty => 'Estadísticas aún no disponibles';
+
+  @override
+  String get matchLineupsEmpty => 'Alineación aún no divulgada';
+
+  @override
+  String get matchLineupStarters => 'Titulares';
+
+  @override
+  String get matchStatPossession => 'Posesión';
+
+  @override
+  String get matchStatShots => 'Remates';
+
+  @override
+  String get matchStatShotsOnTarget => 'Remates a puerta';
+
+  @override
+  String get matchStatCorners => 'Córners';
+
+  @override
+  String get matchStatDuelsWon => 'Duelos ganados';
+
+  @override
+  String get matchEventPenalty => 'Penal';
+
+  @override
+  String get matchEventOwnGoal => 'Gol en contra';
+
+  @override
+  String get matchEventYellowCard => 'Tarjeta amarilla';
+
+  @override
+  String get matchEventRedCard => 'Tarjeta roja';
+
+  @override
+  String get matchEventSubstitutionLabel => 'Sustitución';
 
   @override
   String get standingsClub => 'CLUB';

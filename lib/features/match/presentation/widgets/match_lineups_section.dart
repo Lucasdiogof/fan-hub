@@ -3,81 +3,131 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
-import 'package:goias_app/shared/utils/image_proxy.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_tab_empty_state.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
 
-/// Escalações titulares — só aparece quando o OneFootball já confirmou a
-/// lista pra essa partida (nem toda partida tem, ex.: futuras/muito
-/// antigas). Só titulares: a fonte não traz banco nem técnico.
+/// Aba ESCALAÇÕES: um time embaixo do outro (duas colunas deixariam os nomes
+/// apertados em celular), cada um com escudo, nome e titulares (número +
+/// nome). A fonte só traz os titulares — não há reservas, técnico, formação
+/// em texto, posição nem goleiro, então nada disso é mostrado. Cada time é
+/// tratado sozinho: se só um tem escalação, o outro mostra "ainda não
+/// divulgada".
 class MatchLineupsSection extends StatelessWidget {
-  const MatchLineupsSection({required this.lineups, super.key});
+  const MatchLineupsSection({
+    required this.match,
+    required this.lineups,
+    super.key,
+  });
 
+  final Match match;
   final MatchLineups? lineups;
 
   @override
   Widget build(BuildContext context) {
     final data = lineups;
-    if (data == null) return const SizedBox.shrink();
-    final colors = context.colors;
+    final home = data?.home;
+    final away = data?.away;
+    final homeEmpty = home == null || _isEmpty(home);
+    final awayEmpty = away == null || _isEmpty(away);
+    if (homeEmpty && awayEmpty) {
+      return MatchTabEmptyState(
+        icon: Icons.groups_outlined,
+        message: context.l10n.matchLineupsEmpty,
+      );
+    }
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: AppSpacing.xxxl),
-        Text(
-          context.l10n.matchLineupsTitle,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.2,
-            color: colors.textSecondary,
-          ),
-        ),
-        const SizedBox(height: AppSpacing.md),
-        _TeamLineupCard(team: data.home),
+        _TeamLineupCard(team: match.homeTeam, lineup: homeEmpty ? null : home),
         const SizedBox(height: AppSpacing.lg),
-        _TeamLineupCard(team: data.away),
+        _TeamLineupCard(team: match.awayTeam, lineup: awayEmpty ? null : away),
       ],
     );
   }
+
+  static bool _isEmpty(TeamLineup lineup) =>
+      lineup.rows.every((row) => row.isEmpty);
 }
 
 class _TeamLineupCard extends StatelessWidget {
-  const _TeamLineupCard({required this.team});
+  const _TeamLineupCard({required this.team, required this.lineup});
 
-  final TeamLineup team;
+  final Team team;
+  final TeamLineup? lineup;
+
+  /// Número 0 é só o valor padrão do parser quando a fonte não traz camisa —
+  /// nunca é mostrado como se fosse o número do jogador.
+  static const double _numberWidth = 34;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final l10n = context.l10n;
+    final players = [
+      for (final row in lineup?.rows ?? const <List<LineupPlayer>>[]) ...row,
+    ];
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colors.surface,
-        borderRadius: BorderRadius.circular(AppRadius.card),
-        border: Border.all(color: colors.border),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: colors.border.withValues(alpha: 0.55)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            team.teamName.toUpperCase(),
-            style: TextStyle(
-              fontSize: 12.5,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.6,
-              color: colors.textPrimary,
-            ),
+          Row(
+            children: [
+              SizedBox(
+                width: 30,
+                height: 30,
+                child: ClubBadge(team: team, size: 30),
+              ),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: Text(
+                  shortTeamName(team.name).toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.3,
+                    color: colors.textPrimary,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: AppSpacing.md),
-          for (var i = 0; i < team.rows.length; i++) ...[
-            if (i > 0) const SizedBox(height: AppSpacing.md),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                for (final player in team.rows[i])
-                  Expanded(child: _LineupPlayerTile(player: player)),
-              ],
+          if (players.isEmpty)
+            Text(
+              l10n.matchLineupsEmpty,
+              style: TextStyle(fontSize: 13.5, color: colors.textSecondary),
+            )
+          else ...[
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: 7,
+              ),
+              decoration: BoxDecoration(
+                color: colors.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                l10n.matchLineupStarters,
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w700,
+                  color: colors.textSecondary,
+                ),
+              ),
             ),
+            for (var i = 0; i < players.length; i++)
+              _PlayerRow(player: players[i], showDivider: i > 0),
           ],
         ],
       ),
@@ -85,98 +135,61 @@ class _TeamLineupCard extends StatelessWidget {
   }
 }
 
-class _LineupPlayerTile extends StatelessWidget {
-  const _LineupPlayerTile({required this.player});
+class _PlayerRow extends StatelessWidget {
+  const _PlayerRow({required this.player, required this.showDivider});
 
   final LineupPlayer player;
+  final bool showDivider;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final fallback = _NumberCircle(number: player.jerseyNumber, colors: colors);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            if (player.photo.isEmpty)
-              fallback
-            else
-              ClipOval(
-                child: Image.network(
-                  proxiedImageUrl(player.photo),
-                  width: 44,
-                  height: 44,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, _, _) => fallback,
-                  loadingBuilder: (context, child, progress) =>
-                      progress == null ? child : fallback,
-                ),
-              ),
-            Positioned(
-              bottom: -2,
-              right: -2,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                decoration: BoxDecoration(
-                  color: colors.primary,
-                  borderRadius: BorderRadius.circular(999),
-                  border: Border.all(color: colors.surface, width: 1.5),
-                ),
-                child: Text(
-                  '${player.jerseyNumber}',
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
-                    color: colors.onPrimary,
-                  ),
-                ),
+    final hasNumber = player.jerseyNumber > 0;
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 9),
+      decoration: BoxDecoration(
+        border: showDivider
+            ? Border(
+                top: BorderSide(color: colors.border.withValues(alpha: 0.5)),
+              )
+            : null,
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: _TeamLineupCard._numberWidth,
+            child: hasNumber
+                ? Container(
+                    height: 24,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: colors.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      '${player.jerseyNumber}',
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w800,
+                        color: colors.primary,
+                        fontFeatures: const [FontFeature.tabularFigures()],
+                      ),
+                    ),
+                  )
+                : null,
+          ),
+          const SizedBox(width: AppSpacing.md),
+          Expanded(
+            child: Text(
+              player.name,
+              style: TextStyle(
+                fontSize: 14.5,
+                height: 1.25,
+                color: colors.textPrimary,
               ),
             ),
-          ],
-        ),
-        const SizedBox(height: 6),
-        Text(
-          player.name,
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: 10.5,
-            fontWeight: FontWeight.w600,
-            color: colors.textPrimary,
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class _NumberCircle extends StatelessWidget {
-  const _NumberCircle({required this.number, required this.colors});
-
-  final int number;
-  final AppColors colors;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 44,
-      height: 44,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: colors.secondary,
-        border: Border.all(color: colors.border),
-      ),
-      child: Text(
-        '$number',
-        style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w800,
-          color: colors.textPrimary,
-        ),
+        ],
       ),
     );
   }

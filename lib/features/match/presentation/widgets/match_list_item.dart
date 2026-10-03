@@ -24,132 +24,203 @@ class MatchListItem extends StatelessWidget {
   bool get _isInProgress =>
       match.status == MatchStatus.live || match.status == MatchStatus.halftime;
 
+  // Card "contraste suave de superfícies": o destaque vem da diferença entre
+  // o fundo da tela (`colors.background`) e a superfície do card
+  // (`colors.surface`), com borda quase imperceptível e sem sombra.
+  static const double _radius = 18;
+  static const double _badgeSize = 28;
+
+  /// Largura reservada ao placar/horário — a mesma em todo card, pra o
+  /// centro ficar no mesmo eixo independente do tamanho dos nomes.
+  static const double centerWidth = 72;
+
+  static const _tabularFigures = [FontFeature.tabularFigures()];
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final locale = Localizations.localeOf(context).toString();
     // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
     final kickoff = match.kickoff != null ? toBrazilTime(match.kickoff!) : null;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-      child: Container(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        decoration: BoxDecoration(
-          color: colors.surface,
-          borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-          border: Border.all(color: colors.border),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    kickoff != null
-                        ? '${shortDateLabel(kickoff, Localizations.localeOf(context).toString())} • ${weekdayShortLabel(kickoff, Localizations.localeOf(context).toString())}'
-                        : context.l10n.matchDateToBeConfirmed,
-                    style: TextStyle(
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.w700,
-                      color: colors.textSecondary,
-                    ),
-                  ),
-                ),
-                if (_isInProgress) _LiveBadge(status: match.status),
-              ],
-            ),
-            const SizedBox(height: AppSpacing.md),
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      ClubBadge(team: match.homeTeam, size: 30),
-                      const SizedBox(width: AppSpacing.sm),
-                      Flexible(
-                        child: Text(
-                          shortTeamName(match.homeTeam.name),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 13,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.sm,
-                  ),
-                  child: _hasScore
-                      ? Text(
-                          '${match.homeScore} x ${match.awayScore}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 15,
-                            color: colors.textPrimary,
-                          ),
-                        )
-                      : Text(
-                          kickoff != null ? timeLabel(kickoff) : '--:--',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 13,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          shortTeamName(match.awayTeam.name),
-                          maxLines: 1,
-                          textAlign: TextAlign.right,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 13,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
-                      ClubBadge(team: match.awayTeam, size: 30),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            if (match.stadium.isNotEmpty) ...[
-              const SizedBox(height: AppSpacing.md),
+    final centerStyle = TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 15,
+      fontFeatures: _tabularFigures,
+      color: colors.textPrimary,
+    );
+    final nameStyle = TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 13,
+      color: colors.textPrimary,
+    );
+    return Material(
+      color: colors.surface,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(_radius),
+        side: BorderSide(color: colors.border.withValues(alpha: 0.55)),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: 14,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.location_on_outlined,
-                    size: 13,
-                    color: colors.textHint,
+                  Expanded(
+                    child: Text(
+                      kickoff != null
+                          ? '${shortDateLabel(kickoff, locale)} • ${weekdayShortLabel(kickoff, locale)}'
+                          : context.l10n.matchDateToBeConfirmed,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.3,
+                        color: colors.textSecondary,
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 4),
-                  Text(
-                    match.stadium,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11.5, color: colors.textHint),
+                  if (_isInProgress) _LiveBadge(status: match.status),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        ClubBadge(team: match.homeTeam, size: _badgeSize),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: _TeamName(
+                            shortTeamName(match.homeTeam.name),
+                            style: nameStyle,
+                            alignment: Alignment.centerLeft,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: centerWidth,
+                    child: Center(
+                      child: _hasScore
+                          ? Text(
+                              '${match.homeScore} x ${match.awayScore}',
+                              style: centerStyle,
+                            )
+                          : Text(
+                              kickoff != null ? timeLabel(kickoff) : '--:--',
+                              style: centerStyle,
+                            ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _TeamName(
+                            shortTeamName(match.awayTeam.name),
+                            style: nameStyle,
+                            alignment: Alignment.centerRight,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        ClubBadge(team: match.awayTeam, size: _badgeSize),
+                      ],
+                    ),
                   ),
                 ],
               ),
+              if (match.stadium.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on_outlined,
+                      size: 13,
+                      color: colors.textHint,
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        match.stadium,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 11.5,
+                          color: colors.textHint,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+/// Nome do time em uma linha: tenta 13, depois 12 e 11 (nunca menos que isso)
+/// quando não cabe no espaço entre o escudo e a área central; só se nem a 11
+/// couber é que termina em reticências — nunca quebra linha.
+class _TeamName extends StatelessWidget {
+  const _TeamName(this.name, {required this.style, required this.alignment});
+
+  static const _sizes = [13.0, 12.0, 11.0];
+
+  final String name;
+  final TextStyle style;
+  final Alignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    final scaler = MediaQuery.textScalerOf(context);
+    final direction = Directionality.of(context);
+    // Mede com o mesmo estilo que o Text vai herdar (família da fonte do tema).
+    final base = DefaultTextStyle.of(context).style;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        var chosen = _sizes.last;
+        for (final size in _sizes) {
+          final painter = TextPainter(
+            text: TextSpan(
+              text: name,
+              style: base.merge(style.copyWith(fontSize: size)),
+            ),
+            textDirection: direction,
+            textScaler: scaler,
+            maxLines: 1,
+          )..layout();
+          final fits = painter.width <= constraints.maxWidth;
+          painter.dispose();
+          if (fits) {
+            chosen = size;
+            break;
+          }
+        }
+        return Align(
+          alignment: alignment,
+          child: Text(
+            name,
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            textAlign: alignment == Alignment.centerRight
+                ? TextAlign.right
+                : TextAlign.left,
+            style: style.copyWith(fontSize: chosen),
+          ),
+        );
+      },
     );
   }
 }
@@ -165,7 +236,7 @@ class _LiveBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: colors.secondary,
+        color: colors.primary.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(999),
       ),
       child: Row(

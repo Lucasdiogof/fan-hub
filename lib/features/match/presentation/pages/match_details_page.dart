@@ -9,18 +9,14 @@ import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
-import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_state.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_events_timeline.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_hero_card.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_lineups_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_stats_section.dart';
-import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
-import 'package:goias_app/shared/utils/brazil_time.dart';
-import 'package:goias_app/shared/utils/date_labels.dart';
-import 'package:goias_app/shared/utils/team_name.dart';
-import 'package:goias_app/shared/widgets/club_badge.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -163,7 +159,7 @@ class _BackButton extends StatelessWidget {
   }
 }
 
-class _MatchDetailsContent extends StatelessWidget {
+class _MatchDetailsContent extends StatefulWidget {
   const _MatchDetailsContent({
     required this.match,
     required this.events,
@@ -177,264 +173,44 @@ class _MatchDetailsContent extends StatelessWidget {
   final List<MatchStat> stats;
 
   @override
+  State<_MatchDetailsContent> createState() => _MatchDetailsContentState();
+}
+
+class _MatchDetailsContentState extends State<_MatchDetailsContent> {
+  int _tab = 0;
+
+  @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
-    // `toBrazilTime`, nunca `.toLocal()`: `kickoff` é o instante absoluto
-    // real (spec 2026-09-12) — horário de partida sempre em Brasília,
-    // independente do fuso do aparelho.
-    final kickoff = match.kickoff != null ? toBrazilTime(match.kickoff!) : null;
+    final l10n = context.l10n;
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         AppSpacing.lg,
-        AppSpacing.lg,
+        AppSpacing.md,
         AppSpacing.lg,
         AppSpacing.xxxl,
       ),
       children: [
-        Text(
-          match.competition.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.2,
-            color: colors.primary,
-          ),
-        ),
-        if (match.round.isNotEmpty) ...[
-          const SizedBox(height: 4),
-          Text(
-            match.round.toUpperCase(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: colors.textHint,
-            ),
-          ),
-        ],
-        const SizedBox(height: AppSpacing.xxl),
-        Row(
-          children: [
-            Expanded(child: _TeamBlock(team: match.homeTeam)),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-              child: _ScoreOrVs(match: match),
-            ),
-            Expanded(child: _TeamBlock(team: match.awayTeam)),
+        MatchHeroCard(match: widget.match),
+        const SizedBox(height: AppSpacing.lg),
+        FanHubTabBar(
+          labels: [
+            l10n.matchTabEvents,
+            l10n.matchStatsTitle,
+            l10n.matchLineupsTitle,
           ],
+          selectedIndex: _tab,
+          onChanged: (index) => setState(() => _tab = index),
         ),
-        const SizedBox(height: AppSpacing.xxl),
-        Text(
-          kickoff != null
-              ? longDateLabel(
-                  kickoff,
-                  context.l10n,
-                  Localizations.localeOf(context).toString(),
-                )
-              : context.l10n.matchDateToBeConfirmed,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-            color: colors.textPrimary,
+        const SizedBox(height: AppSpacing.lg),
+        switch (_tab) {
+          0 => MatchEventsTimeline(match: widget.match, events: widget.events),
+          1 => MatchStatsSection(match: widget.match, stats: widget.stats),
+          _ => MatchLineupsSection(
+            match: widget.match,
+            lineups: widget.lineups,
           ),
-        ),
-        if (kickoff != null) ...[
-          const SizedBox(height: 2),
-          Text(
-            timeLabel(kickoff),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: colors.textSecondary,
-            ),
-          ),
-        ],
-        if (match.stadium.isNotEmpty) ...[
-          const SizedBox(height: AppSpacing.sm),
-          Text(
-            match.stadium.toUpperCase(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12.5,
-              fontWeight: FontWeight.w700,
-              color: colors.textPrimary,
-            ),
-          ),
-          if (match.city != null)
-            Text(
-              match.city!,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, color: colors.textHint),
-            ),
-        ],
-        const SizedBox(height: AppSpacing.xxxl),
-        Text(
-          context.l10n.matchInfoTitle,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.2,
-            color: colors.textSecondary,
-          ),
-        ),
-        const SizedBox(height: AppSpacing.md),
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
-          ),
-          decoration: BoxDecoration(
-            color: colors.surface,
-            borderRadius: BorderRadius.circular(AppRadius.card),
-            border: Border.all(color: colors.border),
-          ),
-          child: Column(
-            children: [
-              _InfoRow(
-                label: context.l10n.matchFieldDate,
-                value: kickoff != null
-                    ? longDateLabel(
-                        kickoff,
-                        context.l10n,
-                        Localizations.localeOf(context).toString(),
-                      )
-                    : context.l10n.matchToBeConfirmed,
-              ),
-              _InfoRow(
-                label: context.l10n.matchFieldTime,
-                value: kickoff != null ? timeLabel(kickoff) : '—',
-              ),
-              _InfoRow(
-                label: context.l10n.matchFieldStadium,
-                value: match.stadium.isEmpty ? '—' : match.stadium,
-              ),
-              if (match.city != null)
-                _InfoRow(
-                  label: context.l10n.matchFieldCity,
-                  value: match.city!,
-                ),
-              _InfoRow(
-                label: context.l10n.matchFieldCompetition,
-                value: match.competition,
-              ),
-              if (match.round.isNotEmpty)
-                _InfoRow(
-                  label: context.l10n.matchFieldRound,
-                  value: match.round,
-                ),
-              _InfoRow(
-                label: context.l10n.matchFieldStatus,
-                value: matchStatusLabel(context.l10n, match.status),
-                isLast: true,
-              ),
-            ],
-          ),
-        ),
-        MatchEventsTimeline(match: match, events: events),
-        MatchStatsSection(stats: stats),
-        MatchLineupsSection(lineups: lineups),
+        },
       ],
-    );
-  }
-}
-
-class _ScoreOrVs extends StatelessWidget {
-  const _ScoreOrVs({required this.match});
-
-  final Match match;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final homeScore = match.homeScore;
-    final awayScore = match.awayScore;
-    if (homeScore == null || awayScore == null) {
-      return Text(
-        'X',
-        style: TextStyle(color: colors.textHint, fontWeight: FontWeight.w800),
-      );
-    }
-    return Text(
-      '$homeScore x $awayScore',
-      style: TextStyle(
-        color: colors.textPrimary,
-        fontWeight: FontWeight.w900,
-        fontSize: 22,
-      ),
-    );
-  }
-}
-
-class _TeamBlock extends StatelessWidget {
-  const _TeamBlock({required this.team});
-
-  final Team team;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ClubBadge(team: team, size: 60),
-        const SizedBox(height: AppSpacing.sm),
-        Text(
-          shortTeamName(team.name).toUpperCase(),
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            fontSize: 13,
-            color: colors.textPrimary,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _InfoRow extends StatelessWidget {
-  const _InfoRow({
-    required this.label,
-    required this.value,
-    this.isLast = false,
-  });
-
-  final String label;
-  final String value;
-  final bool isLast;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-      decoration: BoxDecoration(
-        border: isLast
-            ? null
-            : Border(bottom: BorderSide(color: colors.border)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: TextStyle(fontSize: 13, color: colors.textSecondary),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w700,
-              color: colors.textPrimary,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

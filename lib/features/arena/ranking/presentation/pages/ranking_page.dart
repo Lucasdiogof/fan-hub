@@ -16,6 +16,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
@@ -184,68 +185,15 @@ class _PeriodSegmented extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final options = [
       (RankingPeriod.allTime, context.l10n.arenaRankingAllTime),
       (RankingPeriod.monthly, context.l10n.arenaRankingMonthly),
       (RankingPeriod.weekly, context.l10n.arenaRankingWeekly),
     ];
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: colors.surface,
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: colors.border),
-      ),
-      child: Row(
-        children: [
-          for (final option in options)
-            Expanded(
-              child: _SegmentButton(
-                label: option.$2,
-                selected: option.$1 == period,
-                onTap: () => onChanged(option.$1),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SegmentButton extends StatelessWidget {
-  const _SegmentButton({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: selected ? colors.primary : Colors.transparent,
-      borderRadius: BorderRadius.circular(999),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(999),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 9),
-          child: Text(
-            label,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12.5,
-              fontWeight: FontWeight.w800,
-              color: selected ? colors.onPrimary : colors.textSecondary,
-            ),
-          ),
-        ),
-      ),
+    return FanHubTabBar(
+      labels: [for (final option in options) option.$2],
+      selectedIndex: options.indexWhere((option) => option.$1 == period),
+      onChanged: (index) => onChanged(options[index].$1),
     );
   }
 }

@@ -19,6 +19,7 @@ import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/demo_tag.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -168,18 +169,14 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                   const SizedBox(height: AppSpacing.lg),
                   PageTitle(context.l10n.ticketsMyTicketsTitle),
                   const SizedBox(height: AppSpacing.lg),
-                  TabBar(
+                  FanHubControllerTabBar(
                     controller: _tabController,
-                    labelColor: colors.primary,
-                    unselectedLabelColor: colors.textSecondary,
-                    indicatorColor: colors.primary,
-                    tabAlignment: TabAlignment.start,
-                    isScrollable: true,
-                    tabs: [
-                      Tab(text: context.l10n.ticketsTabUpcoming),
-                      Tab(text: context.l10n.ticketsTabHistory),
+                    labels: [
+                      context.l10n.ticketsTabUpcoming,
+                      context.l10n.ticketsTabHistory,
                     ],
                   ),
+                  const SizedBox(height: AppSpacing.md),
                   Expanded(
                     child: BlocConsumer<MyTicketsCubit, MyTicketsState>(
                       listenWhen: (previous, current) =>

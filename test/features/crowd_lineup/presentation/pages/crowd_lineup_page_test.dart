@@ -15,6 +15,7 @@ import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_
 import 'package:goias_app/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 
 const _match = Match(
   id: 'm-1',
@@ -99,7 +100,7 @@ void main() {
       // Sem voto próprio, a aba inicial é "Escale" — navega explicitamente.
       await tester.tap(
         find.descendant(
-          of: find.byType(TabBar),
+          of: find.byType(FanHubControllerTabBar),
           matching: find.text('ESCALAÇÃO DA TORCIDA'),
         ),
       );
@@ -117,7 +118,7 @@ void main() {
       await _pump(tester, repository: repository);
       await tester.tap(
         find.descendant(
-          of: find.byType(TabBar),
+          of: find.byType(FanHubControllerTabBar),
           matching: find.text('ESCALAÇÃO DA TORCIDA'),
         ),
       );
@@ -135,7 +136,7 @@ void main() {
       await _pump(tester, repository: repository);
       await tester.tap(
         find.descendant(
-          of: find.byType(TabBar),
+          of: find.byType(FanHubControllerTabBar),
           matching: find.text('ESCALAÇÃO DA TORCIDA'),
         ),
       );
@@ -143,7 +144,10 @@ void main() {
       expect(find.byIcon(Icons.share_rounded), findsOneWidget);
 
       await tester.tap(
-        find.descendant(of: find.byType(TabBar), matching: find.text('ESCALE')),
+        find.descendant(
+          of: find.byType(FanHubControllerTabBar),
+          matching: find.text('ESCALE'),
+        ),
       );
       await tester.pumpAndSettle();
 
@@ -162,7 +166,10 @@ void main() {
       );
 
       await tester.tap(
-        find.descendant(of: find.byType(TabBar), matching: find.text('ESCALE')),
+        find.descendant(
+          of: find.byType(FanHubControllerTabBar),
+          matching: find.text('ESCALE'),
+        ),
       );
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.share_rounded), findsNothing);
