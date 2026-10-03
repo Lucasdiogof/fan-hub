@@ -23,6 +23,11 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 ///
 /// Ordem cronológica pela chegada ao clube — nunca ranking.
 ///
+/// PENDÊNCIA (auditoria específica da semântica de `career_players`):
+/// `supabase/career_players.sql` ainda traz Dill com 133 gols (os Ídolos
+/// usam 135, press kits oficiais de 2026) e Ernando com 330 jogos e 11 gols
+/// (os Ídolos usam 405 jogos). Não alterado de propósito nesta rodada.
+///
 /// FOTOS: reaproveitam o acervo já usado no "Quem Vestiu o Manto"
 /// (`goiasGuessPlayerPhotos`) e no Elenco (Tadeu), mesmo padrão do
 /// Bragantino. Os demais ficam `null` (a tela mostra as iniciais) até o
@@ -111,8 +116,11 @@ class GoiasIdolsData {
       name: 'Luvanor',
       tier: 1,
       evidenceExplicitIdol: true,
+      // Formação na base: futeboldegoyaz.com.br/jogadores/3109/jogador (ficha
+      // com "Divulgação no site do Goias E.C."; estreou aos 16 anos) e
+      // pt.wikipedia.org/wiki/Luvanor_Donizete_Borges (base desde 1973).
       description:
-          'Meia revelado pelo Goiás, com duas passagens pelo clube; lembrado pelo Goiás entre os jogadores que decidiram jogos e construíram momentos históricos.',
+          'Meia formado nas categorias de base do Goiás, com duas passagens pelo clube; lembrado pelo Goiás entre os jogadores que decidiram jogos e construíram momentos históricos.',
       position: 'Meia',
       period: '1977-1983, 1990-1991',
       fullName: 'Luvanor Donizete Borges',
@@ -151,16 +159,23 @@ class GoiasIdolsData {
       name: 'Cacau',
       tier: 1,
       evidenceExplicitIdol: true,
+      // Matéria oficial do Goiás (URL não registrada): revelado pelo Goiás,
+      // atacante, 105 jogos e 18 gols. Apoio: futeboldegoyaz.com.br/jogadores/2890/jogador
+      // (atacante, Goiás 1981-85 e 1990-93). O ogol diz meia (ogol.com.br/player.php?id=128387).
       description:
-          'Meia revelado pelo Goiás, com trajetória no clube entre os anos 1980 e o início dos anos 1990.',
-      position: 'Meia',
+          'Atacante revelado pelo Goiás, com trajetória no clube entre os anos 1980 e o início dos anos 1990.',
+      position: 'Atacante',
       period: 'Anos 1980-1993',
       fullName: 'Cláudio Rabello de Castro',
+      matches: 105,
+      goals: 18,
     ),
     ClubIdol(
       name: 'Uidemar',
       tier: 1,
       evidenceExplicitIdol: true,
+      // "Grande revelação do Goiás na década de 1980":
+      // futeboldegoyaz.com.br/jogadores/154/jogador.
       description:
           'Volante revelado pelo Goiás nos anos 1980, lembrado pelo clube entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
       position: 'Volante',
@@ -171,9 +186,16 @@ class GoiasIdolsData {
       name: 'Marquinhos',
       tier: 1,
       evidenceExplicitIdol: false,
-      // Identidade ainda não definida: há vários "Marquinhos" na história do
-      // clube. Nada além do nome até o usuário confirmar qual é.
-      description: '',
+      // Marcos José Franklin Macena de Melo, lateral-esquerdo, Goiás 1997-2002
+      // (identidade, período e Série B 1999: futeboldegoyaz.com.br/jogadores/3561/jogador).
+      // O ge o cita como jogador de grande passagem da geração campeã (URL
+      // não registrada). Sem total de jogos/gols: nenhuma fonte do clube que feche.
+      description:
+          'Lateral-esquerdo da geração campeã do Goiás entre 1997 e 2002.',
+      position: 'Lateral-esquerdo',
+      period: '1997-2002',
+      fullName: 'Marcos José Franklin Macena de Melo',
+      titles: ['Campeonato Brasileiro Série B 1999'],
     ),
     ClubIdol(
       name: 'Túlio Maravilha',
@@ -191,6 +213,8 @@ class GoiasIdolsData {
       name: 'Kléber Guerra',
       tier: 1,
       evidenceExplicitIdol: true,
+      // Formado na base (17 anos no clube, 9 como profissional):
+      // futeboldegoyaz.com.br/noticias/265/noticia.
       description:
           'Goleiro formado no Goiás, representante dos anos 1990 na homenagem do clube aos seus ídolos.',
       position: 'Goleiro',
@@ -210,14 +234,23 @@ class GoiasIdolsData {
       name: 'Dill',
       tier: 1,
       evidenceExplicitIdol: true,
+      // Sem "revelado pelo Goiás": o Futebol de Goyaz diz que sim
+      // (futeboldegoyaz.com.br/jogadores/1655/jogador) e o Esporte Goiano também,
+      // mas a Folha de 03/09/2000 (URL não registrada) diz que o primeiro clube
+      // foi o Brasília, depois o Gama, e que chegou ao Goiás em 1994 — conflito,
+      // vale a regra rígida de formação. Gols: 135 dos press kits oficiais do
+      // Goiás de 2026 (URL não registrada); o card de 83 anos
+      // (maisgoias.com.br, "memórias que nascem verde e branco") e a imprensa
+      // traziam 133. Os 101 jogos do ogol (ogol.com.br/player.php?id=5137) são
+      // recorte parcial, por isso não há total de jogos.
       description:
-          'Atacante revelado pelo Goiás; um dos nomes que ajudaram a consolidar o clube no cenário nacional.',
+          'Chegou ao Goiás em 1994 e se tornou um dos grandes artilheiros da história do clube.',
       position: 'Atacante',
       period: '1994-2000',
       photoAsset: '$_guess/dill.png',
       fullName: 'Elpídio Barbosa Conceição',
-      matches: 101,
-      goals: 38,
+      goals: 135,
+      statsScope: 'Levantamento institucional do Goiás, atualizado em 2026',
     ),
     ClubIdol(
       name: 'Alex Dias',
@@ -282,7 +315,12 @@ class GoiasIdolsData {
       position: 'Atacante',
       period: '1997-2003, 2013-2014',
       fullName: 'Clemerson de Araújo Soares',
-      // Total histórico oficial do Goiás.
+      // Maior artilheiro, 145 gols e 391 jogos (todos de 1997-2003 e 2013-2014).
+      // Fonte oficial do Goiás (URL não registrada); a imprensa concorda no
+      // 145: goal.com/br/listas/maiores-artilheiros-goias-historia/blta7bf3280d376c85f,
+      // esportegoiano.com.br/confira-quais-sao-os-maiores-artilheiros-da-historia-do-goias/
+      // e portaldabola.com.br/futebol/idolo-goias-araujo-retorno-futebol/ (391).
+      // O 187 do Túlio é contagem pessoal dele, não número do clube.
       matches: 391,
       goals: 145,
       titles: ['Campeonato Brasileiro Série B 1999'],
@@ -374,8 +412,12 @@ class GoiasIdolsData {
       period: '2005-2013',
       photoAsset: '$_guess/ernando.png',
       fullName: 'Ernando Rodrigues Lopes',
-      matches: 371,
-      goals: 12,
+      // 405 jogos: press kit oficial do Goiás (URL não registrada); a imprensa
+      // repete o número: ohoje.com/2026/08/28/goias-vence-sao-bernardo-e-tadeu-celebra-400-jogos-na-serrinha/
+      // (Ernando em segundo, atrás do Harlei). Gols fora até haver fonte que
+      // diga explicitamente quantos foram PELO Goiás (o 12 do ogol não fecha:
+      // ogol.com.br/jogador/ernando/32225).
+      matches: 405,
     ),
     ClubIdol(
       name: 'Amaral',

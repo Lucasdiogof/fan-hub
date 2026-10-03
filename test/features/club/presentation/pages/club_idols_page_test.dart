@@ -409,10 +409,13 @@ void main() {
     test('dados opcionais: quem não tem fonte fica sem o campo, nunca com '
         'palpite', () {
       final byName = {for (final i in GoiasIdolsData.idols) i.name: i};
-      // Identidade ainda não definida — só o nome.
-      expect(byName['Marquinhos']!.description, isEmpty);
-      expect(byName['Marquinhos']!.position, isNull);
-      expect(byName['Marquinhos']!.period, isNull);
+      // Marquinhos (identidade fechada em 2026-10-03): sem total de jogos/gols.
+      expect(byName['Marquinhos']!.matches, isNull);
+      expect(byName['Marquinhos']!.goals, isNull);
+      // Dill: sem total de jogos (o do ogol era recorte parcial).
+      expect(byName['Dill']!.matches, isNull);
+      // Ernando: sem gols até haver fonte explícita pelo Goiás.
+      expect(byName['Ernando']!.goals, isNull);
       // Período divergente entre fontes — fica de fora.
       expect(byName['Amauri']!.period, isNull);
       expect(byName['Edson Mug']!.period, isNull);
