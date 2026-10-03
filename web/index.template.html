@@ -21,25 +21,22 @@
   <meta name="description" content="__CLUB_DESCRIPTION__">
 
   <!--
-    `viewport-fit=cover` é o que permite o conteúdo (não só o fundo) ir por
-    trás da status bar/notch no iOS standalone — sem isso a área segura vira
-    uma faixa "morta" que nem o app nem o iOS pintam de propósito, e some com
-    o Flutter injetando um viewport próprio sem essa flag. Flutter Web já lê
-    `env(safe-area-inset-*)` sozinho pra alimentar `MediaQuery.padding`, então
-    `SafeArea` nas telas continua funcionando normalmente por cima disso.
+    SEM `viewport-fit=cover` de propósito: no iOS 26 em PWA standalone, junto com
+    `black-translucent`, o `visualViewport.offsetTop` nasce em 59px (altura da
+    status bar) e TODO toque chega no Flutter 59px abaixo de onde o dedo tocou —
+    a tela parece travada até o teclado abrir/fechar e zerar o offset. Medido
+    com log de diagnóstico em 2026-10-02; o app já é desenhado abaixo da status
+    bar (`padTop` 0), então nada visível se perde.
   -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- iOS PWA standalone: sem `apple-mobile-web-app-capable`, o iOS ignora
-    completamente o `status-bar-style` abaixo e abre como um web clip comum
-    (por isso a faixa branca — não é o app pintando branco, é o iOS nem
-    aplicando a customização). `black-translucent` é o único valor que faz a
-    status bar virar uma sobreposição transparente em vez de uma barra sólida
-    separada — é isso que deixa o fundo do Flutter (claro OU escuro,
-    dependendo do tema ativo no app) aparecer por trás dela. -->
+    completamente o `status-bar-style` abaixo e abre como um web clip comum.
+    `black` (barra sólida preta, sem sobreposição) e NÃO `black-translucent`:
+    o translucent causa o deslocamento de 59px nos toques descrito acima. -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="__CLUB_APPLE_TITLE__">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
