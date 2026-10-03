@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_stat_colors.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_tab_empty_state.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
@@ -90,6 +93,15 @@ class MatchStatsSection extends StatelessWidget {
       );
     }
     final colors = context.colors;
+    // O clube ativo é sempre o verde (colors.primary); o adversário usa a cor
+    // dele, trocando de cor quando colidir com a nossa (ou com a do outro).
+    final sides = MatchStatColors.resolve(
+      homeTeam: match.homeTeam,
+      awayTeam: match.awayTeam,
+      clubConfig: sl<ClubConfig>(),
+      colors: colors,
+      brightness: Theme.of(context).brightness,
+    );
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
@@ -101,19 +113,21 @@ class MatchStatsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Text(
-                  shortTeamName(match.homeTeam.name),
-                  style: _teamStyle(colors, colors.primary),
+                child: _TeamLegend(
+                  name: shortTeamName(match.homeTeam.name),
+                  color: sides.home,
+                  alignEnd: false,
                 ),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(
-                child: Text(
-                  shortTeamName(match.awayTeam.name),
-                  textAlign: TextAlign.right,
-                  style: _teamStyle(colors, colors.textSecondary),
+                child: _TeamLegend(
+                  name: shortTeamName(match.awayTeam.name),
+                  color: sides.away,
+                  alignEnd: true,
                 ),
               ),
             ],
@@ -121,23 +135,67 @@ class MatchStatsSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.lg),
           for (var i = 0; i < ordered.length; i++) ...[
             if (i > 0) const SizedBox(height: AppSpacing.lg),
-            _StatRow(stat: ordered[i]),
+            _StatRow(stat: ordered[i], sides: sides),
           ],
         ],
       ),
     );
   }
+}
 
-  static TextStyle _teamStyle(AppColors colors, Color color) =>
-      TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: color);
+/// Bolinha na cor do time + nome completo (até 2 linhas, sem reticências).
+class _TeamLegend extends StatelessWidget {
+  const _TeamLegend({
+    required this.name,
+    required this.color,
+    required this.alignEnd,
+  });
+
+  final String name;
+  final Color color;
+  final bool alignEnd;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final dot = Container(
+      width: 10,
+      height: 10,
+      margin: const EdgeInsets.only(top: 3),
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+    );
+    final label = Flexible(
+      child: Text(
+        name,
+        maxLines: 2,
+        textAlign: alignEnd ? TextAlign.right : TextAlign.left,
+        style: TextStyle(
+          fontSize: 13,
+          height: 1.2,
+          fontWeight: FontWeight.w800,
+          color: colors.textPrimary,
+        ),
+      ),
+    );
+    return Row(
+      mainAxisAlignment: alignEnd
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: alignEnd
+          ? [label, const SizedBox(width: 6), dot]
+          : [dot, const SizedBox(width: 6), label],
+    );
+  }
 }
 
 enum _StatKind { possession, shots, shotsOnTarget, corners, duelsWon }
 
 class _StatRow extends StatelessWidget {
-  const _StatRow({required this.stat});
+  const _StatRow({required this.stat, required this.sides});
 
   final MatchStat stat;
+  final MatchStatColors sides;
 
   String _format(num value) => stat.unit == MatchStatUnit.percent
       ? '${value.round()}%'
@@ -210,15 +268,13 @@ class _StatRow extends StatelessWidget {
                     if (homeFlex > 0)
                       Expanded(
                         flex: homeFlex,
-                        child: ColoredBox(color: colors.primary),
+                        child: ColoredBox(color: sides.home),
                       ),
                     if (homeFlex > 0 && awayFlex > 0) const SizedBox(width: 2),
                     if (awayFlex > 0)
                       Expanded(
                         flex: awayFlex,
-                        child: ColoredBox(
-                          color: colors.textSecondary.withValues(alpha: 0.55),
-                        ),
+                        child: ColoredBox(color: sides.away),
                       ),
                   ],
                 ),

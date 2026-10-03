@@ -73,6 +73,10 @@ class _EventRow extends StatelessWidget {
   static const double _railWidth = 30;
   static const double _iconSize = 26;
 
+  /// Faz o centro do minuto (12,5px) coincidir com o centro do ícone (13px) e
+  /// com a 1ª linha do título.
+  static const double _minuteTop = 5.5;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -84,12 +88,12 @@ class _EventRow extends StatelessWidget {
           SizedBox(
             width: _minuteWidth,
             child: Padding(
-              padding: const EdgeInsets.only(top: 6),
+              padding: const EdgeInsets.only(top: _minuteTop),
               // Minuto comprido (ex.: "120+10'") encolhe de leve em vez de
               // vazar da coluna fixa e desalinhar a timeline.
               child: FittedBox(
                 fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.topLeft,
                 child: Text(
                   event.minute,
                   maxLines: 1,
@@ -112,16 +116,13 @@ class _EventRow extends StatelessWidget {
                 Positioned(
                   top: 0,
                   bottom: isLast ? null : 0,
-                  height: isLast ? _iconSize / 2 + 3 : null,
+                  height: isLast ? _iconSize / 2 : null,
                   child: Container(
                     width: 1,
                     color: colors.border.withValues(alpha: 0.8),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 3),
-                  child: _EventIcon(type: event.type),
-                ),
+                _EventIcon(type: event.type),
               ],
             ),
           ),

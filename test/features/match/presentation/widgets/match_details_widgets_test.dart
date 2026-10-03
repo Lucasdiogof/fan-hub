@@ -18,6 +18,7 @@ import 'package:goias_app/features/match/presentation/widgets/match_lineups_sect
 import 'package:goias_app/features/match/presentation/widgets/match_stats_section.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
+import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 
 import '../../fakes/fake_football_repository.dart';
 
@@ -636,7 +637,46 @@ void main() {
     LineupPlayer p(String name, int number) =>
         LineupPlayer(name: name, jerseyNumber: number, photo: '');
 
-    testWidgets('mostra os dois times com camisa e nome', (tester) async {
+    Finder teamTab(String name) => find.descendant(
+      of: find.byType(FanHubTabBar),
+      matching: find.text(name),
+    );
+
+    testWidgets('seletor mostra o nome dos dois times e abre no mandante', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _host(
+          MatchLineupsSection(
+            match: _match(),
+            lineups: MatchLineups(
+              home: lineup('Fortaleza', [
+                [p('Lucero', 9)],
+                [p('Tinga', 2), p('Brítez', 4)],
+                [p('João Ricardo', 1)],
+              ]),
+              away: lineup('Náutico', [
+                [p('Paulo Sérgio', 9)],
+                [p('Muriel', 1)],
+              ]),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+      expect(tester.takeException(), isNull);
+      expect(teamTab('Fortaleza'), findsOneWidget);
+      expect(teamTab('Náutico'), findsOneWidget);
+      expect(find.text('Titulares'), findsOneWidget);
+      // Mandante aberto: só os jogadores dele aparecem.
+      expect(find.text('João Ricardo'), findsOneWidget);
+      expect(find.text('Muriel'), findsNothing);
+      // A fonte não traz reservas/técnico/formação: nada disso aparece.
+      expect(find.text('Reservas'), findsNothing);
+      expect(find.textContaining('Técnico'), findsNothing);
+    });
+
+    testWidgets('tocar no visitante troca o campo', (tester) async {
       await tester.pumpWidget(
         _host(
           MatchLineupsSection(
@@ -644,7 +684,6 @@ void main() {
             lineups: MatchLineups(
               home: lineup('Fortaleza', [
                 [p('João Ricardo', 1)],
-                [p('Tinga', 2), p('Brítez', 4)],
               ]),
               away: lineup('Náutico', [
                 [p('Muriel', 1)],
@@ -654,18 +693,13 @@ void main() {
         ),
       );
       await tester.pump();
-      expect(tester.takeException(), isNull);
-      expect(find.text('FORTALEZA'), findsOneWidget);
-      expect(find.text('NÁUTICO'), findsOneWidget);
-      expect(find.text('Titulares'), findsNWidgets(2));
-      expect(find.text('João Ricardo'), findsOneWidget);
-      expect(find.text('4'), findsOneWidget);
-      // A fonte não traz reservas/técnico/formação: nada disso aparece.
-      expect(find.text('Reservas'), findsNothing);
-      expect(find.textContaining('Técnico'), findsNothing);
+      await tester.tap(teamTab('Náutico'));
+      await tester.pumpAndSettle();
+      expect(find.text('Muriel'), findsOneWidget);
+      expect(find.text('João Ricardo'), findsNothing);
     });
 
-    testWidgets('só um time com escalação: o outro mostra o aviso', (
+    testWidgets('as linhas da fonte viram linhas no campo (ataque em cima)', (
       tester,
     ) async {
       await tester.pumpWidget(
@@ -674,19 +708,52 @@ void main() {
             match: _match(),
             lineups: MatchLineups(
               home: lineup('Fortaleza', [
-                [p('João Ricardo', 1)],
+                [p('Atacante', 9)],
+                [p('MeioA', 8), p('MeioB', 10)],
+                [p('Goleiro', 1)],
               ]),
-              away: lineup('Náutico', const []),
+              away: lineup('Náutico', [
+                [p('Muriel', 1)],
+              ]),
             ),
           ),
         ),
       );
       await tester.pump();
-      expect(find.text('João Ricardo'), findsOneWidget);
-      expect(find.text('Escalação ainda não divulgada'), findsOneWidget);
+      double y(String t) => tester.getCenter(find.text(t)).dy;
+      expect(y('Atacante'), lessThan(y('MeioA')));
+      expect(y('MeioA'), lessThan(y('Goleiro')));
+      expect(y('MeioA'), closeTo(y('MeioB'), 0.5));
     });
 
-    testWidgets('sem escalação nenhuma: estado vazio i18n', (tester) async {
+    testWidgets(
+      'só um time com escalação: abre nele e o outro mostra o aviso',
+      (tester) async {
+        await tester.pumpWidget(
+          _host(
+            MatchLineupsSection(
+              match: _match(),
+              lineups: MatchLineups(
+                home: lineup('Fortaleza', const []),
+                away: lineup('Náutico', [
+                  [p('Muriel', 1)],
+                ]),
+              ),
+            ),
+          ),
+        );
+        await tester.pump();
+        expect(find.text('Muriel'), findsOneWidget);
+        await tester.tap(teamTab('Fortaleza'));
+        await tester.pumpAndSettle();
+        expect(find.text('Escalação ainda não divulgada'), findsOneWidget);
+        expect(find.text('Muriel'), findsNothing);
+      },
+    );
+
+    testWidgets('sem escalação nenhuma: estado vazio i18n, sem seletor', (
+      tester,
+    ) async {
       for (final (locale, text) in [
         (const Locale('pt'), 'Escalação ainda não divulgada'),
         (const Locale('en'), 'Lineup not announced yet'),
@@ -700,68 +767,41 @@ void main() {
         );
         await tester.pump();
         expect(find.text(text), findsOneWidget);
+        expect(find.byType(FanHubTabBar), findsNothing);
       }
     });
 
-    testWidgets('11 e 18 jogadores, e linhas internas vazias, não estouram', (
-      tester,
-    ) async {
-      List<List<LineupPlayer>> rows(int count) => [
-        [],
-        [for (var i = 1; i <= count; i++) p('Jogador $i', i)],
-        [],
-      ];
-      for (final count in [11, 18]) {
-        await tester.pumpWidget(
-          _host(
-            MatchLineupsSection(
-              match: _match(),
-              lineups: MatchLineups(
-                home: lineup('Fortaleza', rows(count)),
-                away: lineup('Náutico', [[], []]),
+    testWidgets(
+      '11 e 18 jogadores, linhas vazias e camisa 0/100 não estouram',
+      (tester) async {
+        for (final width in [300.0, 390.0, 900.0]) {
+          await tester.pumpWidget(
+            _host(
+              MatchLineupsSection(
+                match: _match(),
+                lineups: MatchLineups(
+                  home: lineup('Fortaleza', [
+                    [],
+                    [
+                      p('Sem Camisa', 0),
+                      p('Jogador Com Um Nome Absurdamente Grande Da Silva', 99),
+                      p('Camisa Cem', 100),
+                      for (var i = 1; i <= 15; i++) p('Jogador $i', i),
+                    ],
+                    [],
+                  ]),
+                  away: lineup('Náutico', [[], []]),
+                ),
               ),
+              width: width,
             ),
-            width: 300,
-          ),
-        );
-        await tester.pump();
-        expect(tester.takeException(), isNull, reason: '$count');
-        expect(find.text('Jogador $count'), findsOneWidget);
-        expect(find.text('Escalação ainda não divulgada'), findsOneWidget);
-      }
-    });
-
-    testWidgets('camisa 0 (sem dado) não aparece; nome enorme não estoura', (
-      tester,
-    ) async {
-      await tester.pumpWidget(
-        _host(
-          MatchLineupsSection(
-            match: _match(),
-            lineups: MatchLineups(
-              home: lineup('Fortaleza', [
-                [
-                  p('Sem Camisa', 0),
-                  p(
-                    'Jogador Com Um Nome Absurdamente Grande Da Silva Santos',
-                    99,
-                  ),
-                  p('Camisa Cem', 100),
-                ],
-              ]),
-              away: lineup('Náutico', [
-                [p('Muriel', 1)],
-              ]),
-            ),
-          ),
-          width: 300,
-        ),
-      );
-      await tester.pump();
-      expect(tester.takeException(), isNull);
-      expect(find.text('0'), findsNothing);
-      expect(find.text('100'), findsOneWidget);
-    });
+          );
+          await tester.pump();
+          expect(tester.takeException(), isNull, reason: '$width');
+          expect(find.text('Camisa Cem'), findsOneWidget);
+        }
+      },
+    );
   });
 
   group('MatchDetailsPage', () {
@@ -832,6 +872,13 @@ void main() {
       await tester.tap(find.text('ESCALAÇÕES'));
       await tester.pumpAndSettle();
       expect(find.text('João Ricardo'), findsOneWidget);
+      await tester.tap(
+        find.descendant(
+          of: find.byType(FanHubTabBar).last,
+          matching: find.text('Náutico'),
+        ),
+      );
+      await tester.pumpAndSettle();
       expect(find.text('Escalação ainda não divulgada'), findsOneWidget);
 
       await tester.tap(find.text('EVENTOS'));

@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_team_name.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
@@ -32,7 +33,14 @@ class MatchListItem extends StatelessWidget {
 
   /// Largura reservada ao placar/horário — a mesma em todo card, pra o
   /// centro ficar no mesmo eixo independente do tamanho dos nomes.
-  static const double centerWidth = 72;
+  static const double centerWidth = 64;
+
+  /// Espaço entre o escudo e o nome do time.
+  static const double _badgeGap = 8;
+
+  /// Tamanho preferido do nome do time (ver [_TeamName]).
+  static const double nameFontSize = 13;
+  static const double nameLineHeight = 1.2;
 
   static const _tabularFigures = [FontFeature.tabularFigures()];
 
@@ -50,9 +58,16 @@ class MatchListItem extends StatelessWidget {
     );
     final nameStyle = TextStyle(
       fontWeight: FontWeight.w700,
-      fontSize: 13,
+      fontSize: nameFontSize,
+      height: nameLineHeight,
       color: colors.textPrimary,
     );
+    // Todo card reserva a altura de DUAS linhas de nome, mesmo quando os dois
+    // times cabem em uma: escudos, nomes e placar ficam sempre no mesmo eixo
+    // vertical, e o card não muda de altura de um jogo pro outro.
+    final lineBox =
+        MediaQuery.textScalerOf(context).scale(nameFontSize) * nameLineHeight;
+    final rowHeight = lineBox * 2 > _badgeSize ? lineBox * 2 : _badgeSize;
     return Material(
       color: colors.surface,
       clipBehavior: Clip.antiAlias,
@@ -89,53 +104,56 @@ class MatchListItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              Row(
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        ClubBadge(team: match.homeTeam, size: _badgeSize),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: _TeamName(
-                            shortTeamName(match.homeTeam.name),
-                            style: nameStyle,
-                            alignment: Alignment.centerLeft,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: centerWidth,
-                    child: Center(
-                      child: _hasScore
-                          ? Text(
-                              '${match.homeScore} x ${match.awayScore}',
-                              style: centerStyle,
-                            )
-                          : Text(
-                              kickoff != null ? timeLabel(kickoff) : '--:--',
-                              style: centerStyle,
+              ConstrainedBox(
+                constraints: BoxConstraints(minHeight: rowHeight),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          ClubBadge(team: match.homeTeam, size: _badgeSize),
+                          const SizedBox(width: _badgeGap),
+                          Expanded(
+                            child: MatchTeamName(
+                              shortTeamName(match.homeTeam.name),
+                              style: nameStyle,
+                              alignment: Alignment.centerLeft,
                             ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: _TeamName(
-                            shortTeamName(match.awayTeam.name),
-                            style: nameStyle,
-                            alignment: Alignment.centerRight,
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                        ClubBadge(team: match.awayTeam, size: _badgeSize),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: centerWidth,
+                      child: Center(
+                        child: _hasScore
+                            ? Text(
+                                '${match.homeScore} x ${match.awayScore}',
+                                style: centerStyle,
+                              )
+                            : Text(
+                                kickoff != null ? timeLabel(kickoff) : '--:--',
+                                style: centerStyle,
+                              ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: MatchTeamName(
+                              shortTeamName(match.awayTeam.name),
+                              style: nameStyle,
+                              alignment: Alignment.centerRight,
+                            ),
+                          ),
+                          const SizedBox(width: _badgeGap),
+                          ClubBadge(team: match.awayTeam, size: _badgeSize),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               if (match.stadium.isNotEmpty) ...[
                 const SizedBox(height: 10),
@@ -165,62 +183,6 @@ class MatchListItem extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// Nome do time em uma linha: tenta 13, depois 12 e 11 (nunca menos que isso)
-/// quando não cabe no espaço entre o escudo e a área central; só se nem a 11
-/// couber é que termina em reticências — nunca quebra linha.
-class _TeamName extends StatelessWidget {
-  const _TeamName(this.name, {required this.style, required this.alignment});
-
-  static const _sizes = [13.0, 12.0, 11.0];
-
-  final String name;
-  final TextStyle style;
-  final Alignment alignment;
-
-  @override
-  Widget build(BuildContext context) {
-    final scaler = MediaQuery.textScalerOf(context);
-    final direction = Directionality.of(context);
-    // Mede com o mesmo estilo que o Text vai herdar (família da fonte do tema).
-    final base = DefaultTextStyle.of(context).style;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        var chosen = _sizes.last;
-        for (final size in _sizes) {
-          final painter = TextPainter(
-            text: TextSpan(
-              text: name,
-              style: base.merge(style.copyWith(fontSize: size)),
-            ),
-            textDirection: direction,
-            textScaler: scaler,
-            maxLines: 1,
-          )..layout();
-          final fits = painter.width <= constraints.maxWidth;
-          painter.dispose();
-          if (fits) {
-            chosen = size;
-            break;
-          }
-        }
-        return Align(
-          alignment: alignment,
-          child: Text(
-            name,
-            maxLines: 1,
-            softWrap: false,
-            overflow: TextOverflow.ellipsis,
-            textAlign: alignment == Alignment.centerRight
-                ? TextAlign.right
-                : TextAlign.left,
-            style: style.copyWith(fontSize: chosen),
-          ),
-        );
-      },
     );
   }
 }

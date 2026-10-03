@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_team_name.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
@@ -20,7 +21,7 @@ class MatchHeroCard extends StatelessWidget {
 
   static const backgroundAsset = 'lib/assets/match_hero_stadium.webp';
   static const double badgeSize = 64;
-  static const double centerWidth = 124;
+  static const double centerWidth = 112;
 
   bool get _isLive =>
       match.status == MatchStatus.live || match.status == MatchStatus.halftime;
@@ -163,12 +164,11 @@ class _TeamColumn extends StatelessWidget {
           child: ClubBadge(team: team, size: MatchHeroCard.badgeSize),
         ),
         const SizedBox(height: AppSpacing.sm),
-        Text(
+        MatchTeamName(
           shortTeamName(team.name),
-          textAlign: TextAlign.center,
-          maxLines: 2,
+          alignment: Alignment.center,
+          sizes: const [14.5, 13.5, 12.5, 11.5],
           style: const TextStyle(
-            fontSize: 14.5,
             fontWeight: FontWeight.w800,
             height: 1.2,
             color: Colors.white,
