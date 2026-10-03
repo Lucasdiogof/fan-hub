@@ -1,12 +1,10 @@
 name: Bragantino Passport Historical Materialization
 
+# Desativado: só roda se for disparado manualmente (workflow_dispatch). O
+# oGol e o ZeroZero respondem 403 aos IPs do GitHub, então a coleta automática
+# a cada push sempre falhava.
 on:
-  push:
-    branches:
-      - data/bragantino-data-finalize-20260910
-    paths:
-      - 'tooling/bragantino_passport/**'
-      - '.github/workflows/bragantino_passport_materialize.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
