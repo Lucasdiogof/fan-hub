@@ -12,8 +12,12 @@ export const PLACEHOLDER_SHA1 = '6c00c23b';
 const PLACEHOLDER_BYTES = 6004;
 const PLAYER_PHOTO_PREFIX = 'https://images.onefootball.com/players/';
 
-// Foto de jogador quase nunca muda; quem ganha foto nova aparece em até 1 dia.
-const VERDICT_TTL_SECONDS = 60 * 60 * 24;
+// Cada fetch é um subrequest (limite de 50 por invocação no plano gratuito,
+// e a Cache API também conta). Por isso: 1 fetch por foto única, o cache fica
+// por conta da borda da Cloudflare (`cf`) e há um teto — acima dele as fotos
+// excedentes ficam como vieram (nunca estourar o limite e derrubar o detalhe).
+const EDGE_TTL_SECONDS = 60 * 60 * 24;
+const MAX_CHECKS = 36;
 
 async function sha1Prefix(bytes: ArrayBuffer): Promise<string> {
   const digest = await crypto.subtle.digest('SHA-1', bytes);
@@ -25,48 +29,38 @@ async function sha1Prefix(bytes: ArrayBuffer): Promise<string> {
 
 /** Só `true` quando a imagem é COMPROVADAMENTE a silhueta. Qualquer dúvida
  * (erro de rede, status != 200, host desconhecido) mantém a foto: pior caso
- * é mostrar o que mostrávamos antes. Dúvida não é cacheada. */
+ * é mostrar o que mostrávamos antes. */
 export async function isPlaceholderPhoto(url: string): Promise<boolean> {
   if (!url.startsWith(PLAYER_PHOTO_PREFIX)) return false;
-
-  const cache = (caches as unknown as { default: Cache }).default;
-  const cacheKey = new Request(`https://photo-verdict.internal/?u=${encodeURIComponent(url)}`);
-  const cached = await cache.match(cacheKey);
-  if (cached) return (await cached.text()) === '1';
-
-  let verdict: boolean;
   try {
-    const response = await fetch(url, { headers: { accept: 'image/*' } });
+    const response = await fetch(url, {
+      headers: { accept: 'image/*' },
+      cf: { cacheEverything: true, cacheTtl: EDGE_TTL_SECONDS },
+    });
     if (response.status !== 200) return false;
     const bytes = await response.arrayBuffer();
-    verdict = bytes.byteLength === PLACEHOLDER_BYTES && (await sha1Prefix(bytes)) === PLACEHOLDER_SHA1;
+    return bytes.byteLength === PLACEHOLDER_BYTES && (await sha1Prefix(bytes)) === PLACEHOLDER_SHA1;
   } catch {
     return false;
   }
-
-  await cache.put(
-    cacheKey,
-    new Response(verdict ? '1' : '0', { headers: { 'cache-control': `public, max-age=${VERDICT_TTL_SECONDS}` } }),
-  );
-  return verdict;
-}
-
-async function stripTeam(team: TeamLineupJson): Promise<TeamLineupJson> {
-  const rows = await Promise.all(
-    team.rows.map((row) =>
-      Promise.all(
-        row.map(async (player) =>
-          player.photo && (await isPlaceholderPhoto(player.photo)) ? { ...player, photo: '' } : player,
-        ),
-      ),
-    ),
-  );
-  return { ...team, rows };
 }
 
 /** Troca por `''` a foto de quem só tem a silhueta — o Flutter já trata
  * `photo` vazio com o círculo de número. */
 export async function stripPlaceholderPhotos(lineups: MatchLineupsJson): Promise<MatchLineupsJson> {
-  const [home, away] = await Promise.all([stripTeam(lineups.home), stripTeam(lineups.away)]);
-  return { home, away };
+  const urls = new Set<string>();
+  for (const team of [lineups.home, lineups.away]) {
+    for (const player of team.rows.flat()) if (player.photo) urls.add(player.photo);
+  }
+  const toCheck = [...urls].slice(0, MAX_CHECKS);
+  const verdicts = new Map<string, boolean>(
+    await Promise.all(toCheck.map(async (url): Promise<[string, boolean]> => [url, await isPlaceholderPhoto(url)])),
+  );
+  const clean = (team: TeamLineupJson): TeamLineupJson => ({
+    ...team,
+    rows: team.rows.map((row) =>
+      row.map((player) => (verdicts.get(player.photo) ? { ...player, photo: '' } : player)),
+    ),
+  });
+  return { home: clean(lineups.home), away: clean(lineups.away) };
 }

@@ -43,7 +43,7 @@ describe('isPlaceholderPhoto', () => {
     expect(await isPlaceholderPhoto(`${BASE}/t-samesize-1.jpg`)).toBe(false);
   });
 
-  it('erro de rede ou status != 200 mantém a foto e não cacheia a dúvida', async () => {
+  it('erro de rede ou status != 200 mantém a foto', async () => {
     global.fetch = vi.fn(async () => {
       throw new Error('rede');
     }) as unknown as typeof fetch;
@@ -51,12 +51,6 @@ describe('isPlaceholderPhoto', () => {
 
     global.fetch = vi.fn(async () => new Response('x', { status: 503 })) as unknown as typeof fetch;
     expect(await isPlaceholderPhoto(`${BASE}/t-503-1.jpg`)).toBe(false);
-
-    // dúvida não foi cacheada: uma nova tentativa consulta de novo
-    const spy = vi.fn(async () => new Response(new Uint8Array(10), { status: 200 }));
-    global.fetch = spy as unknown as typeof fetch;
-    await isPlaceholderPhoto(`${BASE}/t-err-1.jpg`);
-    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('host fora do OneFootball nunca é buscado', async () => {
@@ -66,12 +60,18 @@ describe('isPlaceholderPhoto', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('veredito fica em cache: segunda chamada não busca a imagem de novo', async () => {
-    const spy = vi.fn(async () => new Response(new Uint8Array(9654), { status: 200 }));
+  it('subrequests: 1 fetch por foto única e respeita o teto (nunca estoura o limite)', async () => {
+    const spy = vi.fn(async () => new Response(new Uint8Array(10), { status: 200 }));
     global.fetch = spy as unknown as typeof fetch;
-    await isPlaceholderPhoto(`${BASE}/t-cache-1.jpg`);
-    await isPlaceholderPhoto(`${BASE}/t-cache-1.jpg`);
-    expect(spy).toHaveBeenCalledTimes(1);
+    const players = Array.from({ length: 60 }, (_, i) => ({ name: 'J' + i, jerseyNumber: i, photo: `${BASE}/cap-${i}.jpg` }));
+    const dup = { name: 'D', jerseyNumber: 99, photo: `${BASE}/cap-0.jpg` };
+    const out = await stripPlaceholderPhotos({
+      home: { teamName: 'A', rows: [[...players, dup]] },
+      away: { teamName: 'B', rows: [] },
+    });
+    expect(spy.mock.calls.length).toBeLessThanOrEqual(36);
+    expect(out.home.rows[0]).toHaveLength(61);
+    expect(out.home.rows[0][59].photo).toBe(`${BASE}/cap-59.jpg`);
   });
 });
 
