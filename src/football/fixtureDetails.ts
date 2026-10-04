@@ -6,6 +6,7 @@ import { ProviderError } from './_lib/providerError';
 import { fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchScore } from './normalize/match';
 import { normalizeOneFootballMatchEvent } from './normalize/match_event';
+import { stripPlaceholderPhotos } from './lineupPhotos';
 import { normalizeOneFootballMatchLineups } from './normalize/match_lineup';
 import { normalizeOneFootballMatchStat } from './normalize/match_stat';
 
@@ -46,7 +47,7 @@ async function handleOneFootballFixture(request: Request, cacheVersion: string, 
       competition: { name: detail.score.competition?.name ?? '', season: null },
       match: normalizeOneFootballMatchScore(matchId, detail.score, detail.stadium),
       events: detail.events.map(normalizeOneFootballMatchEvent),
-      lineups: detail.lineup ? normalizeOneFootballMatchLineups(detail.lineup) : null,
+      lineups: detail.lineup ? await stripPlaceholderPhotos(normalizeOneFootballMatchLineups(detail.lineup)) : null,
       stats: detail.stats.map(normalizeOneFootballMatchStat),
     };
   });
