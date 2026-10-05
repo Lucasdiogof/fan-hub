@@ -1,5 +1,33 @@
 [
   {
+    "tweet_id": "2107094967311102300",
+    "text": "Massa Bruta, quarta-feira é dia de jogar em nossa casa! E, mais do que nunca, precisamos do apoio de vocês! ❤️‍🔥\n\nVenham fazer a diferença e ser o nosso 12º jogador! 🏟️\n\nContamos com vocês! 👊 https://t.co/ET7kuVBwXw",
+    "timestamp": "2026-10-05T13:06:02+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2107094967311102300",
+    "image_links": [
+      "https://pbs.twimg.com/media/HT3ntDxW4AEhN7Q.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 5,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2106851911899271496",
+    "text": "Três vitórias na primeira fase da Hooray Cup, na China! 🇨🇳\n\nOs #CriasDoBraga agora encaram o Zhejiang pela segunda fase. A partida está marcada para essa segunda (05), às 4h30 no horário de Brasília. 👊 https://t.co/4RRZWMfErA",
+    "timestamp": "2026-10-04T21:00:13+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2106851911899271496",
+    "image_links": [
+      "https://pbs.twimg.com/media/HT0KoncXUAAqw_Z.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 5,
+    "retweets": 1,
+    "comments": 0
+  },
+  {
     "tweet_id": "2106743606090559830",
     "text": "O próximo compromisso do Braga é na quarta-feira, na nossa casa! 🏠 🔜 https://t.co/Dq3EQKE2q6",
     "timestamp": "2026-10-04T13:49:51+00:00",
@@ -9,7 +37,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 3,
+    "likes": 4,
     "retweets": 0,
     "comments": 0
   },
@@ -23,7 +51,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 22,
+    "likes": 26,
     "retweets": 0,
     "comments": 4
   },
@@ -49,7 +77,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 41,
+    "likes": 43,
     "retweets": 7,
     "comments": 9
   },
@@ -149,7 +177,7 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 12,
+    "likes": 13,
     "retweets": 3,
     "comments": 3
   },
@@ -175,7 +203,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 5,
+    "likes": 6,
     "retweets": 0,
     "comments": 1
   },
@@ -192,7 +220,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 5,
+    "likes": 6,
     "retweets": 0,
     "comments": 0
   },
@@ -243,35 +271,5 @@
     "likes": 12,
     "retweets": 2,
     "comments": 0
-  },
-  {
-    "tweet_id": "2106476454946984382",
-    "text": "📍 Arena MRV 🏟️ https://t.co/he9yMLmCX4",
-    "timestamp": "2026-10-03T20:08:17+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2106476454946984382",
-    "image_links": [
-      "https://pbs.twimg.com/media/HTu1KrAWMAAjhxf.jpg",
-      "https://pbs.twimg.com/media/HTu1Kq-WAAAWTyu.jpg",
-      "https://pbs.twimg.com/media/HTu1KrBXYAAIZkj.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2085350300773146941",
-    "text": "O futuro vem de dentro. 🔴⚫🪽\n\nA Camisa III do Red Bull Bragantino nasce daquilo que nos move, a nossa essência: a coragem de evoluir e a vontade de construir o que vem pela frente.\n\nDisponível na Red Bull Shop, em https://t.co/oQe6zC4nCq e nas lojas @pumabrasil Morumbi, Tatuapé e Ibirapuera.",
-    "timestamp": "2026-08-06T13:00:30+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2085350300773146941",
-    "image_links": [
-      "https://pbs.twimg.com/amplify_video_thumb/2085345931629608961/img/4HT7HjhuVoApCSYI.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 42,
-    "retweets": 6,
-    "comments": 11
   }
 ]
