@@ -76,14 +76,38 @@ class _RailItem extends StatelessWidget {
         vertical: AppSpacing.xs,
       ),
       child: Material(
-        color: selected ? colors.secondary : Colors.transparent,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.cardSmall),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(AppRadius.cardSmall),
           mouseCursor: SystemMouseCursors.click,
-          child: Padding(
+          hoverColor: colors.primary.withValues(alpha: 0.06),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
             padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+              // Fundo translúcido na cor primária + contorno fino: destaca
+              // sem o "bloco escuro" chapado de antes.
+              color: selected
+                  ? colors.primary.withValues(alpha: 0.14)
+                  : Colors.transparent,
+              border: Border.all(
+                color: selected
+                    ? colors.primary.withValues(alpha: 0.45)
+                    : Colors.transparent,
+              ),
+              boxShadow: selected
+                  ? [
+                      BoxShadow(
+                        color: colors.primary.withValues(alpha: 0.18),
+                        blurRadius: 12,
+                      ),
+                    ]
+                  : null,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
