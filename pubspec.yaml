@@ -64,6 +64,7 @@ flutter:
     - lib/assets/sponsors/bragantino/
     - lib/assets/sponsors/vilanova/
     - lib/assets/branding/goias/
+    - lib/assets/branding/goias/idols/
     - lib/assets/branding/bragantino/
     - lib/assets/branding/bragantino/idols/
     - lib/assets/branding/vilanova/

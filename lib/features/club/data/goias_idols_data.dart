@@ -37,12 +37,14 @@ class GoiasIdolsData {
   const GoiasIdolsData._();
 
   static const _guess = 'lib/assets/games/guess_player/goias';
+  static const _idols = 'lib/assets/branding/goias/idols';
 
   static const List<ClubIdol> idols = [
     // ---------------------------------------------------- anos 1950–1970
     ClubIdol(
-      name: 'Tão Segurado',
+      name: 'Tião Segurado',
       tier: 1,
+      photoAsset: '$_idols/tiao_segurado.jpg',
       evidenceExplicitIdol: true,
       description:
           'Um dos nomes das gerações mais antigas do Goiás lembrados pelo '
@@ -52,6 +54,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Macalé',
       tier: 1,
+      photoAsset: '$_idols/macale.jpg',
       evidenceExplicitIdol: true,
       description:
           'Zagueiro de duas passagens pelo Goiás, das gerações mais antigas homenageadas pelo clube.',
@@ -62,6 +65,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Lincoln',
       tier: 1,
+      photoAsset: '$_idols/lincoln.jpg',
       evidenceExplicitIdol: true,
       description: 'Centroavante do Goiás na década de 1970.',
       position: 'Centroavante',
@@ -71,6 +75,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Paghetti',
       tier: 1,
+      photoAsset: '$_idols/paghetti.jpg',
       evidenceExplicitIdol: true,
       description:
           'Atacante da década de 1970; o Goiás registra 36 gols dele com a camisa esmeraldina.',
@@ -84,6 +89,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Tuíra',
       tier: 1,
+      photoAsset: '$_idols/tuira.jpg',
       evidenceExplicitIdol: true,
       description: 'Atacante, destaque do Goiás na década de 1970.',
       position: 'Atacante',
@@ -93,6 +99,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Matinha',
       tier: 1,
+      photoAsset: '$_idols/matinha.jpg',
       evidenceExplicitIdol: true,
       description:
           'Volante, destaque do Goiás na década de 1970, com passagem pelo clube até 1982.',
@@ -103,6 +110,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Amauri',
       tier: 1,
+      photoAsset: '$_idols/amauri.jpg',
       evidenceExplicitIdol: false,
       description:
           'Goleiro da década de 1970, lembrado por uma sequência de seis partidas consecutivas sem sofrer gol.',
@@ -115,6 +123,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Luvanor',
       tier: 1,
+      photoAsset: '$_idols/luvanor.jpg',
       evidenceExplicitIdol: true,
       // Formação na base: futeboldegoyaz.com.br/jogadores/3109/jogador (ficha
       // com "Divulgação no site do Goias E.C."; estreou aos 16 anos) e
@@ -129,6 +138,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Carlos Alberto Santos',
       tier: 1,
+      photoAsset: '$_idols/carlos_alberto_santos.jpg',
       evidenceExplicitIdol: false,
       description: 'Volante do Goiás na primeira metade dos anos 1980.',
       position: 'Volante',
@@ -138,6 +148,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Zé Teodoro',
       tier: 1,
+      photoAsset: '$_idols/ze_teodoro.jpg',
       evidenceExplicitIdol: false,
       description:
           'Lateral-direito com duas passagens pelo Goiás, nos anos 1980 e 1990.',
@@ -148,6 +159,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Edson Mug',
       tier: 1,
+      photoAsset: '$_idols/edson_mug.jpg',
       evidenceExplicitIdol: true,
       description: 'Goleiro eleito o "Goleiro do Fantástico" em 1983 e 1984.',
       // Dados pessoais e período ainda divergem entre fontes — nada além do
@@ -158,6 +170,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Cacau',
       tier: 1,
+      photoAsset: '$_idols/cacau.jpg',
       evidenceExplicitIdol: true,
       // Matéria oficial do Goiás (URL não registrada): revelado pelo Goiás,
       // atacante, 105 jogos e 18 gols. Apoio: futeboldegoyaz.com.br/jogadores/2890/jogador
@@ -173,6 +186,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Uidemar',
       tier: 1,
+      photoAsset: '$_idols/uidemar.jpg',
       evidenceExplicitIdol: true,
       // "Grande revelação do Goiás na década de 1980":
       // futeboldegoyaz.com.br/jogadores/154/jogador.
@@ -185,6 +199,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Marquinhos',
       tier: 1,
+      photoAsset: '$_idols/marquinhos.jpg',
       evidenceExplicitIdol: false,
       // Marcos José Franklin Macena de Melo, lateral-esquerdo, Goiás 1997-2002
       // (identidade, período e Série B 1999: futeboldegoyaz.com.br/jogadores/3561/jogador).
@@ -212,6 +227,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Kléber Guerra',
       tier: 1,
+      photoAsset: '$_idols/kleber_guerra.jpg',
       evidenceExplicitIdol: true,
       // Formado na base (17 anos no clube, 9 como profissional):
       // futeboldegoyaz.com.br/noticias/265/noticia.
@@ -224,6 +240,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Lúcio Bala',
       tier: 1,
+      photoAsset: '$_idols/lucio_bala.jpg',
       evidenceExplicitIdol: true,
       description: 'Meia-atacante do Goiás em meados dos anos 1990.',
       // Nome completo diverge entre bases — fica de fora.
@@ -289,6 +306,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Sílvio Criciúma',
       tier: 1,
+      photoAsset: '$_idols/silvio_criciuma.jpg',
       evidenceExplicitIdol: true,
       description:
           'Zagueiro lembrado pelo Goiás entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
@@ -299,6 +317,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Aloísio Chulapa',
       tier: 1,
+      photoAsset: '$_idols/aloisio_chulapa.jpg',
       evidenceExplicitIdol: true,
       description:
           'Centroavante, um dos nomes que ajudaram a consolidar o Goiás no cenário nacional.',
@@ -309,6 +328,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Araújo',
       tier: 1,
+      photoAsset: '$_idols/araujo.jpg',
       evidenceExplicitIdol: true,
       description:
           'Maior artilheiro da história do Goiás e peça da geração dominante do fim dos anos 1990 e início dos 2000.',
@@ -329,6 +349,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Josué',
       tier: 1,
+      photoAsset: '$_idols/josue.jpg',
       evidenceExplicitIdol: true,
       description:
           // Fonte do formador: pt.wikipedia.org/wiki/Josué_Anunciado_de_Oliveira
@@ -365,16 +386,18 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Dimba',
       tier: 1,
+      photoAsset: '$_idols/dimba.jpg',
       evidenceExplicitIdol: true,
       description:
           'Centroavante, um dos nomes que ajudaram a consolidar o Goiás no cenário nacional.',
       position: 'Centroavante',
-      period: '2003',
+      period: '2002-2003',
       fullName: 'Editácio Vieira de Andrade',
     ),
     ClubIdol(
       name: 'Paulo Baier',
       tier: 1,
+      photoAsset: '$_idols/paulo_baier.jpg',
       evidenceExplicitIdol: true,
       description:
           'Meia de duas passagens pelo Goiás, lembrado pelo clube entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
@@ -422,6 +445,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Amaral',
       tier: 1,
+      photoAsset: '$_idols/amaral.png',
       evidenceExplicitIdol: true,
       description:
           'Volante, capitão e um dos jogadores mais identificados com o clube.',
@@ -449,6 +473,7 @@ class GoiasIdolsData {
     ClubIdol(
       name: 'Iarley',
       tier: 1,
+      photoAsset: '$_idols/iarley.jpg',
       evidenceExplicitIdol: true,
       description:
           'Atacante de duas passagens pelo Goiás; marcou o gol que confirmou o título da Série B de 2012.',

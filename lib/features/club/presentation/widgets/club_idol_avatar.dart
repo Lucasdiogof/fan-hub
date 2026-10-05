@@ -47,6 +47,8 @@ class ClubIdolAvatar extends StatelessWidget {
         width: size,
         height: size,
         fit: BoxFit.cover,
+        // Fotos do elenco são retratos altos: o rosto fica no terço superior.
+        alignment: const Alignment(0, -0.6),
         errorBuilder: (context, error, stackTrace) => initials,
       );
     } else {
@@ -55,6 +57,11 @@ class ClubIdolAvatar extends StatelessWidget {
         width: size,
         height: size,
         fit: BoxFit.cover,
+        // Fotos do elenco são retratos altos: o rosto fica no terço superior.
+        alignment: const Alignment(0, -0.6),
+        // Lista (52) reduz pouco; o detalhe (88) é onde a foto aparece
+        // grande o bastante pra a reamostragem fazer diferença.
+        filterQuality: size > 52 ? FilterQuality.high : FilterQuality.medium,
         errorBuilder: (context, error, stackTrace) => initials,
       );
     }
