@@ -54,13 +54,13 @@ void main() {
     );
 
     test(
-      'Cacau: atacante revelado pelo Goiás, 105 jogos e 18 gols (matéria oficial)',
+      'Cacau: atacante revelado pelo Goiás, SEM total geral (105/18 eram recorte do Brasileiro)',
       () {
         final cacau = byName(goias, 'Cacau');
         expect(cacau.position, 'Atacante');
         expect(cacau.description, contains('revelado pelo Goiás'));
-        expect(cacau.matches, 105);
-        expect(cacau.goals, 18);
+        expect(cacau.matches, isNull);
+        expect(cacau.goals, isNull);
       },
     );
 
@@ -104,6 +104,70 @@ void main() {
         final ernando = byName(goias, 'Ernando');
         expect(ernando.matches, 405);
         expect(ernando.goals, isNull);
+      },
+    );
+
+    group(
+      'auditoria de 06/10/2026: recorte não vira total, divergência fica',
+      () {
+        test(
+          'Walter: 48 gols somando as duas passagens (jogos divergem 97 x 98)',
+          () {
+            final walter = byName(goias, 'Walter');
+            expect(walter.goals, 48);
+            expect(walter.matches, isNull);
+            expect(walter.statsScope, contains('duas passagens'));
+            expect(walter.highlights.join(' '), contains('81 jogos e 45 gols'));
+          },
+        );
+
+        test('Lúcio Bala: títulos NÃO deduzidos (o jogador não diz quais)', () {
+          expect(byName(goias, 'Lúcio Bala').titles, isEmpty);
+        });
+
+        test(
+          'Brasileiro de 1983: colocação divergente (5º x 7º) fica fora',
+          () {
+            for (final name in ['Zé Teodoro', 'Luvanor']) {
+              final texto = byName(goias, name).highlights.join(' ');
+              expect(texto, contains('1983'), reason: name);
+              expect(texto, isNot(contains('Quinto')), reason: name);
+              expect(texto, isNot(contains('Sétimo')), reason: name);
+            }
+          },
+        );
+
+        test('Iarley: 173 jogos e 47 gols (soma das quatro temporadas)', () {
+          final iarley = byName(goias, 'Iarley');
+          expect(iarley.matches, 173);
+          expect(iarley.goals, 47);
+        });
+
+        test('Túlio: gols seguem com o escopo da fonte (93 x 96 divergem)', () {
+          final tulio = byName(goias, 'Túlio Maravilha');
+          expect(tulio.goals, 93);
+          expect(tulio.statsScope, isNotNull);
+        });
+
+        test('totais confirmados pela auditoria', () {
+          expect(byName(goias, 'Amaral').goals, 44);
+          expect(byName(goias, 'Kléber Guerra').matches, 312);
+          expect(byName(goias, 'Rafael Moura').goals, isNull);
+          expect(byName(goias, 'Rafael Moura').matches, isNull);
+        });
+
+        test('recortes de uma competição nunca viram total', () {
+          for (final name in [
+            'Luvanor',
+            'Dimba',
+            'Matinha',
+            'Carlos Alberto Santos',
+          ]) {
+            final idol = byName(goias, name);
+            expect(idol.matches, isNull, reason: name);
+            expect(idol.goals, isNull, reason: name);
+          }
+        });
       },
     );
 

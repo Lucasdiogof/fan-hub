@@ -418,7 +418,7 @@ void main() {
       expect(byName['Ernando']!.goals, isNull);
       // Período divergente entre fontes — fica de fora.
       expect(byName['Amauri']!.period, isNull);
-      expect(byName['Edson Mug']!.period, isNull);
+      expect(byName['Edson Mug']!.period, '1983-1984');
       // Estatística de quem segue em atividade sempre com data.
       expect(byName['Tadeu']!.description, contains('28/08/2026'));
     });
@@ -514,23 +514,34 @@ void main() {
       'jogador em atividade mostra a data de referência dos números',
       (tester) async {
         await openDetail(tester, goias('Tadeu'));
-        expect(find.text('400'), findsOneWidget);
-        expect(find.text('Números até 28/08/2026'), findsOneWidget);
+        expect(find.text('406'), findsOneWidget);
+        expect(find.text('Números até 01/10/2026'), findsOneWidget);
       },
     );
 
     testWidgets('números parciais dizem a que se referem', (tester) async {
       await openDetail(tester, goias('Walter'));
-      expect(find.text('82'), findsOneWidget);
-      expect(find.text('45'), findsOneWidget);
-      expect(find.text('Primeira passagem (2012-2013)'), findsOneWidget);
+      expect(find.text('48'), findsOneWidget);
+      expect(
+        find.text('Somando as duas passagens (2012-2013 e 2016-2017)'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('ídolo sem números/títulos não mostra essas seções', (
       tester,
     ) async {
-      await openDetail(tester, goias('Lincoln'));
-      expect(find.text('Lincoln de Freitas Neves'), findsOneWidget);
+      await openDetail(
+        tester,
+        const ClubIdol(
+          name: 'Fulano',
+          tier: 1,
+          evidenceExplicitIdol: false,
+          description: 'Sem dados além do nome.',
+          fullName: 'Fulano de Tal',
+        ),
+      );
+      expect(find.text('Fulano de Tal'), findsOneWidget);
       expect(find.text('JOGOS'), findsNothing);
       expect(find.text('TÍTULOS'), findsNothing);
       expect(find.text('CAMPANHAS E MOMENTOS'), findsNothing);
