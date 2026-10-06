@@ -466,26 +466,24 @@ class _ReferenceRow extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                     ),
                   ),
-                  Text(
-                    '${sl<ClubConfig>().identity.shortName} • '
-                    '${affinity.reference.period}',
-                    style: const TextStyle(
-                      color: Color(0xFF6B6F6D),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
                 ],
               ),
             ),
-            Text(
-              l10n.playerIdentityAffinityLabel(
-                affinity.affinity.toStringAsFixed(1),
-              ),
-              style: TextStyle(
-                color: sl<ClubConfig>().branding.light.primary,
-                fontSize: 12.5,
-                fontWeight: FontWeight.w800,
+            // Largura limitada: o rótulo quebra em 2 linhas (percentual +
+            // "afinidade de estilo") em vez de espremer o nome do craque.
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 104),
+              child: Text(
+                l10n.playerIdentityAffinityLabel(
+                  affinity.affinity.toStringAsFixed(1),
+                ),
+                textAlign: TextAlign.end,
+                maxLines: 2,
+                style: TextStyle(
+                  color: sl<ClubConfig>().branding.light.primary,
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
             const SizedBox(width: 4),

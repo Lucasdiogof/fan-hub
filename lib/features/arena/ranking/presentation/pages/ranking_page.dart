@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/shared/utils/display_name_fit.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -262,10 +263,10 @@ class _RankRow extends StatelessWidget {
                 child: Row(
                   children: [
                     Flexible(
-                      child: Text(
+                      // Nome sem reticências: "Lucas Diogo França" vira
+                      // "Lucas Diogo" quando não cabe ao lado da tag/pontos.
+                      child: FittedNameText(
                         rankingDisplayName(context, entry),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 14.5,
                           fontWeight: FontWeight.w800,
@@ -288,6 +289,7 @@ class _RankRow extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(width: AppSpacing.sm),
               Text(
                 '${entry.totalScore}',
                 style: TextStyle(
