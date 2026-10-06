@@ -49,12 +49,20 @@ class GoiasIdolsData {
       description:
           'Um dos nomes das gerações mais antigas do Goiás lembrados pelo '
           'clube entre os seus ídolos.',
+      position: 'Atacante',
       period: '1953-1963',
+      fullName: 'Sebastião Batista Segurado',
       highlights: [
         'Artilheiro do Campeonato Goiano de 1956, com 22 gols — o primeiro do Goiás a terminar o estadual como artilheiro',
       ],
-      // Auditoria 06/10/2026: PERÍODO DIVERGENTE (catálogo 1953-1963 x fonte histórica 1954-1961) — preservado como está até haver prova.
-      // Pesquisa 2026-10: artilheiro 1956 = Goiás EC + RSSSF. Nome completo, posição, 112 jogos/84 gols: só Futebol de Goyaz (1 FONTE) — fora.
+      // Período 1953-1963 CONFIRMADO em 06/10/2026: Futebol de Goyaz (Goiás 1953-1963) e
+      // Mais Goiás (2026, matéria sobre os 33 ídolos homenageados pelo clube). O
+      // Futebol80 registra "Tão Segurado" marcando pelo Goiás em 08/11/1953, o que
+      // descarta o início em 1954. A versão 1954-1961 (fonte histórica antiga) fica só
+      // como registro: divergente/incompleta, não é o período principal.
+      // Nome completo e posição aplicados na mesma rodada.
+      // 112 jogos / 84 gols: NÃO aplicados como totais (só Futebol de Goyaz) — seguem bloqueados.
+      // Pesquisa 2026-10: artilheiro 1956 = Goiás EC + RSSSF.
     ),
     ClubIdol(
       name: 'Macalé',
@@ -83,6 +91,9 @@ class GoiasIdolsData {
           'eleito o melhor jogador do Goiás naquela campanha. Voltou ao clube em '
           '1973 e conquistou o estadual de 1975 e o de 1976.',
       // Pesquisa 2026-10: retrospectivas do Goiás EC (antigo site) — títulos e momentos CONFIRMADOS. Total de jogos: só o recorte de Brasileiro (118) — fora.
+      // Total geral NULO: o 218 da visualização geral do Futebol de Goyaz inclui a
+      // Seleção Goiana; filtrando só Goiás-GO a própria base retorna 217 — nenhum dos
+      // dois é tratado como total definitivo.
     ),
     ClubIdol(
       name: 'Lincoln',
@@ -109,6 +120,9 @@ class GoiasIdolsData {
           'em 1973, e foi o primeiro brasileiro a fazer um gol no Serra Dourada, '
           'em 1975.',
       // Pesquisa 2026-10: Goiás EC (retrospectiva oficial) — 109 gols e marcos CONFIRMADOS. Jogos: sem fonte.
+      // Total geral de jogos NULO: o Futebol de Goyaz filtrado para Goiás-GO retorna 148,
+      // mas sem segunda fonte independente; os 96 conhecidos são só do Campeonato
+      // Brasileiro.
     ),
     ClubIdol(
       name: 'Paghetti',
@@ -144,8 +158,10 @@ class GoiasIdolsData {
       tier: 1,
       photoAsset: '$_idols/tuira.jpg',
       evidenceExplicitIdol: true,
-      description: 'Atacante, destaque do Goiás na década de 1970.',
-      // Posição VAZIA de propósito: as fontes divergem (meio-campista x atacante).
+      description: 'Destaque do Goiás na década de 1970.',
+      // Posição VAZIA de propósito: o Futebol de Goyaz o chama de meio-campista, o
+      // Zerozero de avançado e uma matéria de 1975 o descreve atuando no ataque, no
+      // meio e na defesa — por isso o texto também não fixa "atacante".
       period: '1969-1975',
       fullName: 'Valtuir Laureano Marques',
       highlights: [
@@ -170,6 +186,8 @@ class GoiasIdolsData {
         'Esteve no empate por 4 a 4 com o Santos, no Pacaembu',
       ],
       // Pesquisa 2026-10: Goiás EC. Período (1971-1982 + 1984 na fonte) NÃO alterado: divergente.
+      // Total geral NULO: o 267 da visualização geral do Futebol de Goyaz inclui a
+      // Seleção Goiana; filtrando só Goiás-GO a base retorna 265 — não é total definitivo.
     ),
     ClubIdol(
       name: 'Amauri',
@@ -177,18 +195,27 @@ class GoiasIdolsData {
       photoAsset: '$_idols/amauri.jpg',
       evidenceExplicitIdol: false,
       description:
-          'Goleiro da década de 1970, lembrado por uma sequência de seis partidas consecutivas sem sofrer gol.',
-      // Período fica de fora: as fontes divergem sobre o início e o fim
-      // exatos da passagem (ogol: 1972-1981).
+          'Goleiro da década de 1970, lembrado por uma sequência de 589 minutos sem sofrer gol no Campeonato Brasileiro de 1973.',
       position: 'Goleiro',
+      period: '1973-1982',
       fullName: 'José Amauri Soares dos Santos',
+      titles: ['Campeonato Goiano 1975', 'Campeonato Goiano 1976'],
       highlights: [
-        '540 minutos sem sofrer gol, em seis partidas consecutivas, em 1973',
+        'Goleiro titular na primeira participação do Goiás no Campeonato Brasileiro, em 1973',
+        '589 minutos sem sofrer gol no Campeonato Brasileiro de 1973: seis jogos completos sem tomar gol, até a sequência terminar contra o Remo, com gol aos 3 minutos do segundo tempo',
       ],
-      // Pesquisa 2026-10: Goiás EC + ge. Período e títulos (Goianos 1975/76 = 1 FONTE) NÃO alterados.
-      // Rodada 07/10/2026: 540 min (Goiás EC + ge) x 589 min (outra base, Brasileiro de
-      // 1973) — mantido o número oficial. Período: ge/Sagres 1972-1981 x Futebol de
-      // Goyaz 1973-1982 — segue DIVERGENTE.
+      // Rodada 06/10/2026: fatos confirmados pelo ge e pelo próprio Goiás (titular no
+      // Brasileiro de 1973; bicampeão goiano 1975/1976). NÃO escrever os minutos sem
+      // sofrer gol: 540 x 589 NÃO são números incompatíveis. O Goiás publica 540
+      // minutos e explica que equivalem a seis rodadas completas; a Sagres e o
+      // Esporte Goiano publicam 589 como a sequência cronológica inteira (o Esporte
+      // Goiano detalha os seis jogos e o fim contra o Remo, gol aos 3 do 2º tempo).
+      // 540 = seis jogos completos; 589 = intervalo total. Usado o 589.
+      // Período 1973-1982: ainda defendia o Avaí em fev/1973, já era do Goiás nas
+      // decisões do Goiano em ago/1973, Futebol de Goyaz registra Goiás 1973-82 e há
+      // escalação nominal dele em 17/04/1982. NÃO voltar para 1972-1981. Um índice
+      // secundário sugere breve passagem pelo Operário-MS em 1978-79: sem confirmação
+      // independente, o período NÃO foi dividido em duas passagens.
     ),
     ClubIdol(
       name: 'Luvanor',
@@ -235,7 +262,7 @@ class GoiasIdolsData {
         'Disputou 20 partidas pelo Goiás no Campeonato Brasileiro de 1985',
       ],
       // Pesquisa 2026-10: Goiás EC. Período 1979-1986 (revelado em 1979 + escalação do Brasileiro de 1979).
-      // Jogos/gols VAZIOS de propósito: 94/2 (uma base) x 163/10 (painel do Futebol de Goyaz, que mistura clubes) — escopos divergentes.
+      // Jogos/gols VAZIOS de propósito: 94/5 e 163/10 (painel do Futebol de Goyaz, que mistura clubes) não são total definitivo; o Futebol80 documenta 24 gols pelo Goiás, mas ainda sem segunda fonte independente. Nome completo: Futebol de Goyaz e oGol concordam.
     ),
     ClubIdol(
       name: 'Zé Teodoro',
@@ -261,12 +288,22 @@ class GoiasIdolsData {
       photoAsset: '$_idols/edson_mug.jpg',
       evidenceExplicitIdol: true,
       description: 'Goleiro eleito o "Goleiro do Fantástico" em 1983 e 1984.',
-      // Período 1983-1984: CONFIRMADO na pesquisa 2026-10 (ge + Mais Goiás). Nome
-      // completo ainda só em base secundária (1 FONTE) — fica de fora, assim como
-      // jogos/gols/títulos.
+      // Rodada 06/10/2026: período 1983-1986 (Futebol de Goyaz + Zerozero; ficha de
+      // Goiás x Grêmio em dez/1986 com Edison no gol; foto do arquivo pessoal dele com a
+      // faixa de campeão goiano de 1986), nome completo (Futebol de Goyaz), Goiano 1986
+      // e os 21 jogos no Brasileiro de 1984 (Futebol de Goyaz; o site oficial do Goiás
+      // confirma que Cacau também teve 21 e dividiu o posto de mais assíduo).
+      // "Goleiro do Fantástico": ge + Terceiro Tempo.
+      // NÃO aplicados: 52 ou 76 jogos como total geral (coberturas diferentes das
+      // bases) e quaisquer outros títulos sem confirmação nominal.
       position: 'Goleiro',
-      period: '1983-1984',
-      highlights: ['Eleito o "Goleiro do Fantástico" em 1983 e 1984'],
+      period: '1983-1986',
+      fullName: 'Edison Pereira de Sousa',
+      titles: ['Campeonato Goiano 1986'],
+      highlights: [
+        'Eleito o "Goleiro do Fantástico" em 1983 e 1984',
+        'Disputou 21 partidas pelo Goiás no Campeonato Brasileiro de 1984, o jogador com mais jogos do clube naquela edição, ao lado de Cacau',
+      ],
     ),
     ClubIdol(
       name: 'Cacau',
@@ -332,20 +369,23 @@ class GoiasIdolsData {
         'Campeonato Goiano 1998',
         'Campeonato Goiano 1999',
         'Campeonato Goiano 2000',
+        'Campeonato Goiano 2002',
         'Copa Centro-Oeste 2000',
         'Copa Centro-Oeste 2001',
         'Copa Centro-Oeste 2002',
       ],
       highlights: ['Marcou na campanha decisiva da Série B de 1999'],
-      // Rodada 07/10/2026: Goiano 2002 segue FORA — as escalações das duas finais (16 e
-      // 23/06/2002, Bola na Área) não trazem o Marquinhos. Futebol de Goyaz: 165 jogos/17
-      // gols são do painel padrão do site, não total oficial.
+      // Goiano 2002 APLICADO em 06/10/2026: Futebol de Goyaz e Galo Digital creditam
+      // nominalmente os mesmos cinco Goianos (1997, 1998, 1999, 2000 e 2002) e uma
+      // terceira fonte independente concorda. É o título/a campanha campeã — NÃO se
+      // afirma que ele jogou as finais (as escalações de 16 e 23/06/2002, Bola na Área,
+      // não o trazem). Futebol de Goyaz: 165 jogos/17 gols são do painel padrão do
+      // site, não total oficial.
       // Jogos VAZIOS de propósito: 312 (material recente do Goiás) x 465 (ge/O Popular) — divergência grande demais.
       // Pesquisa 2026-10: Goiás EC. Rodada 06/10/2026: Copas Centro-Oeste 2000/01/02
       // (aparece nas finais/escalações; RSSSF registra gols dele em 2001 e 2002) e
       // Goianos 1997-2000 (Futebol de Goyaz + evidência de quatro títulos do
-      // pentacampeonato). Goiano 2002: PENDENTE — a ficha do Futebol de Goyaz o
-      // lista, mas falta prova nominal robusta da participação na campanha.
+      // pentacampeonato).
     ),
     ClubIdol(
       name: 'Túlio Maravilha',
@@ -394,6 +434,8 @@ class GoiasIdolsData {
         'Esteve na campanha do vice-campeonato da Copa do Brasil de 1990',
         'Participou do acesso do Goiás à Série A em 1994',
       ],
+      // Total de jogos NULO: 312 (material recente do Goiás) x 465/quase 500 (imprensa)
+      // seguem incompatíveis.
       // Pesquisa 2026-10: Goiás EC. Rodada 06/10/2026: os sete Goianos (1989, 1990,
       // 1991, 1994, 1996, 1997, 1998) vêm da fonte jornalística que lista os anos
       // + material biográfico concordante, conforme a pesquisa do usuário. Uma
@@ -459,11 +501,24 @@ class GoiasIdolsData {
       period: '1995-1999',
       photoAsset: '$_guess/alex_dias.png',
       fullName: 'Alex Dias de Almeida',
+      titles: [
+        'Campeonato Goiano 1996',
+        'Campeonato Goiano 1997',
+        'Campeonato Goiano 1998',
+        'Campeonato Goiano 1999',
+      ],
       highlights: [
         'Integrou o ataque do Goiás que chegou à semifinal do Campeonato Brasileiro de 1996',
         'Marcou 8 gols no Campeonato Brasileiro de 1996',
       ],
-      // Goianos 1996-1999: ge (não conferido ano a ano) + Wikipédia — NÃO gravados. Período (retorno em 2004?) segue em aberto — NÃO alterado.
+      // Goianos 1996-1999 aplicados em 06/10/2026: O Popular/ge (1997, 1998 e 1999;
+      // titular na final de 1996), Futebol de Goyaz (1997-1999) e a ficha oficial do
+      // São Paulo (1996-1999). Período mantido como no card oficial do Goiás
+      // (1995-1999). Início em 1995 RESOLVIDO: a Sagres diz que ele foi contratado
+      // para o Brasileiro de 1995, outra matéria da Sagres o registra contestado
+      // desde a chegada em 1995, e há registros dele atuando e marcando pelo Goiás
+      // naquele Brasileiro (a ideia de chegada em 1996 era divergência superada).
+      // Retorno em 2004 segue em aberto.
     ),
     ClubIdol(
       name: 'Fernandão',
@@ -587,15 +642,26 @@ class GoiasIdolsData {
           // de Caruaru, até ser contratado pelo Goiás") e Lancepedia/O Tempo
           // ("Revelado pelo Atlético do Porto, de Caruaru") concordam — o "formado
           // no Goiás" da pesquisa anterior fica REFUTADO por duas fontes. Chegada ao
-          // Goiás: 1997 (O Tempo) x 1996 (Galo Digital/Futebol de Goyaz) — o período
-          // segue 1997-2004.
+          // Goiás: RESOLVIDA em 06/10/2026 — 1996 (ficha oficial do Atlético-MG: Porto
+          // 1996 e Goiás 1996-2004; ge 2013; ficha histórica do GloboEsporte; ge de
+          // 22/09/2017; Futebol de Goyaz: Porto 1994-96 e Goiás 1996-2004). O 1997 do
+          // O Tempo fica como fonte divergente.
           'Volante revelado pelo Porto, de Caruaru, lembrado pelo Goiás entre os jogadores de relevância nacional que vestiram a camisa esmeraldina.',
       position: 'Volante',
-      period: '1997-2004',
+      period: '1996-2004',
       fullName: 'Josué Anunciado de Oliveira',
       matches: 386,
       statsScope: 'Press kit oficial do Goiás, 2026',
-      titles: ['Campeonato Brasileiro Série B 1999', 'Copa Centro-Oeste 2000'],
+      titles: [
+        'Campeonato Brasileiro Série B 1999',
+        'Campeonato Goiano 1997',
+        'Campeonato Goiano 1998',
+        'Campeonato Goiano 1999',
+        'Campeonato Goiano 2000',
+        'Campeonato Goiano 2002',
+        'Campeonato Goiano 2003',
+        'Copa Centro-Oeste 2000',
+      ],
       highlights: [
         'Um dos destaques da campanha do título da Série B de 1999',
         'No press kit oficial do Goiás de 2026, aparecia em 4º lugar entre os jogadores com mais partidas pelo clube, com 386 jogos',
@@ -606,6 +672,9 @@ class GoiasIdolsData {
           'Permaneceu no time esmeraldino até se transferir para o São Paulo e '
           'depois construiu carreira na Seleção Brasileira e no futebol europeu.',
       // Pesquisa 2026-10: 386 jogos = press kit oficial 2026; Série B 1999 = Goiás EC. Gols: sem fonte (nada gravado).
+      // Goianos 1997-2000, 2002 e 2003: Atlético-MG oficial, ge e Futebol de Goyaz
+      // (a lista de estaduais dele começa em 1997). Goiano 1996 NÃO aplicado: ter
+      // chegado em 1996 não prova o título, e só uma fonte antiga divergente o atribui.
     ),
     ClubIdol(
       name: 'Harlei',
@@ -654,6 +723,7 @@ class GoiasIdolsData {
         'O Goiás terminou o Campeonato Brasileiro de 2003 em 9º lugar',
       ],
       // Pesquisa 2026-10: Goiás EC + ge. Os 31 gols são do Brasileiro 2003, não total no clube. 9º lugar: tabelas finais contemporâneas (Folha, UOL) + histórico do ge; o "6º" de uma página narrativa do clube não é a classificação final. Jogos/gols totais: sem fonte.
+      // Período 2002-2003: Futebol de Goyaz registra Goiás (2002-03) diretamente. Os 50 jogos/32 gols do oGol NÃO são total: cobrem só Série A + Copa do Brasil de 2003, sem o Estadual nem o período inteiro.
     ),
     ClubIdol(
       name: 'Paulo Baier',
@@ -751,6 +821,7 @@ class GoiasIdolsData {
       ],
       highlights: [
         'Formado nas categorias de base do Goiás',
+        'Estreou como profissional em 19/11/2006, no empate por 2 a 2 com o Botafogo, no Maracanã, pelo Campeonato Brasileiro',
         'Chegou ao 300º jogo pelo Goiás em 2012, com 8 gols marcados até ali',
         'Ultrapassou 400 partidas pelo clube',
       ],
@@ -762,6 +833,8 @@ class GoiasIdolsData {
       // da final de 2009 e na lista de 2012 (como reserva); o Futebol de Goyaz lista só o
       // Goiano 2013 — conflito com a fonte nominal de 2013 que lista 2009/12/13. Gols: o
       // 12 do Futebol de Goyaz/ogol é da carreira inteira, não do Goiás.
+      // Estreia (06/10/2026): ge — jogo nº 1 de Ernando como profissional, Botafogo
+      // 2 x 2 Goiás em 19/11/2006, entrou no lugar de Rogério Corrêa.
       // Pesquisa 2026-10: ge.
     ),
     ClubIdol(

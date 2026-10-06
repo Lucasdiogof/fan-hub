@@ -416,9 +416,9 @@ void main() {
       expect(byName['Dill']!.matches, isNull);
       // Ernando: sem gols até haver fonte explícita pelo Goiás.
       expect(byName['Ernando']!.goals, isNull);
-      // Período divergente entre fontes — fica de fora.
-      expect(byName['Amauri']!.period, isNull);
-      expect(byName['Edson Mug']!.period, '1983-1984');
+      // Período fechado com evidência (Avaí em fev/1973, escalação em 1982).
+      expect(byName['Amauri']!.period, '1973-1982');
+      expect(byName['Edson Mug']!.period, '1983-1986');
       // Estatística de quem segue em atividade sempre com data.
       expect(byName['Tadeu']!.description, contains('28/08/2026'));
     });

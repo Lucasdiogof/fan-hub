@@ -163,8 +163,9 @@ void main() {
             'Campeonato Goiano 2000',
           ]),
         );
-        // Goiano 2002 do Marquinhos: PENDENTE de prova nominal.
-        expect(marq, isNot(contains('Campeonato Goiano 2002')));
+        // Goiano 2002 do Marquinhos: creditado nominalmente por Futebol de Goyaz,
+        // Galo Digital e uma terceira fonte (título da campanha, sem afirmar finais).
+        expect(marq, contains('Campeonato Goiano 2002'));
       });
 
       test('rankings sempre datados (Lincoln 2021, Josué press kit 2026)', () {
@@ -229,6 +230,27 @@ void main() {
           expect(idol.goals, isNull, reason: name);
         }
       });
+    });
+
+    test('rodada de 07/10/2026: Alex Dias, Dimba, Amauri e Carlos Alberto', () {
+      expect(byName(goias, 'Alex Dias').period, '1995-1999');
+      expect(byName(goias, 'Alex Dias').titles, hasLength(4));
+
+      final dimba = byName(goias, 'Dimba');
+      expect(dimba.period, '2002-2003');
+      expect(dimba.matches, isNull);
+      expect(dimba.goals, isNull);
+
+      final amauri = byName(goias, 'Amauri');
+      expect(amauri.period, '1973-1982');
+      expect(amauri.highlights.join(' '), contains('589 minutos'));
+      expect(amauri.description, contains('589 minutos'));
+      expect(amauri.description, isNot(contains('540')));
+
+      final carlos = byName(goias, 'Carlos Alberto Santos');
+      expect(carlos.fullName, 'Carlos Alberto Souza dos Santos');
+      expect(carlos.matches, isNull);
+      expect(carlos.goals, isNull);
     });
 
     test('nenhum ídolo repete nome', () {
