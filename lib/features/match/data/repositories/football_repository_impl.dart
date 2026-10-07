@@ -234,14 +234,12 @@ class FootballRepositoryImpl implements FootballRepository {
       // partida — cada `MatchDto` já carrega a própria competição real;
       // `''` é a mesma convenção de "desconhecida" que `getSeasonFixtures`
       // já usa logo abaixo.
-      final nextMatch = result.nextMatch?.toEntity(competitionName: '');
-      final recentResults = result.recentResults
-          .map((dto) => dto.toEntity(competitionName: ''))
-          .toList();
-      if (screenshotHomeMatch) {
-        return Success(_asScreenshotHomeMatch(nextMatch, recentResults));
-      }
-      return Success((nextMatch: nextMatch, recentResults: recentResults));
+      return Success((
+        nextMatch: result.nextMatch?.toEntity(competitionName: ''),
+        recentResults: result.recentResults
+            .map((dto) => dto.toEntity(competitionName: ''))
+            .toList(),
+      ));
     } on DioException catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return Error(_mapDioError(error));
@@ -249,61 +247,6 @@ class FootballRepositoryImpl implements FootballRepository {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
-  }
-
-  /// Modo de captura de tela (`--dart-define=SCREENSHOT_HOME_MATCH=true`):
-  /// o próximo jogo vira jogo em casa do clube ativo e o resultado recente
-  /// sai da Home, pra liberar Escalação da Torcida e venda de ingressos
-  /// quando o próximo jogo real é fora. Desligado por padrão — nunca em
-  /// build de loja.
-  static const screenshotHomeMatch = bool.fromEnvironment(
-    'SCREENSHOT_HOME_MATCH',
-  );
-
-  ({Match? nextMatch, List<Match> recentResults}) _asScreenshotHomeMatch(
-    Match? nextMatch,
-    List<Match> recentResults,
-  ) {
-    if (nextMatch == null) {
-      return (nextMatch: null, recentResults: recentResults);
-    }
-    final isHome = nextMatch.homeTeam.matchesClub(_clubConfig);
-    // Estádio do último jogo em casa da própria fonte — nada hardcoded por
-    // clube.
-    final lastHome = recentResults
-        .where((m) => m.homeTeam.matchesClub(_clubConfig))
-        .firstOrNull;
-    // Venda/check-in abrem 48h antes (`TicketFixture.infoFor`): traz o jogo
-    // pra dentro dessa janela em dias inteiros, mantendo o horário.
-    final now = DateTime.now();
-    final kickoff = nextMatch.kickoff;
-    final daysAhead = kickoff == null ? 0 : kickoff.difference(now).inDays - 1;
-    final homeMatch = Match(
-      id: nextMatch.id,
-      competition: nextMatch.competition,
-      round: nextMatch.round,
-      homeTeam: isHome ? nextMatch.homeTeam : nextMatch.awayTeam,
-      awayTeam: isHome ? nextMatch.awayTeam : nextMatch.homeTeam,
-      stadium: isHome
-          ? nextMatch.stadium
-          : lastHome?.stadium ?? nextMatch.stadium,
-      city: isHome ? nextMatch.city : lastHome?.city ?? nextMatch.city,
-      kickoff: daysAhead > 0
-          ? kickoff!.subtract(Duration(days: daysAhead))
-          : kickoff,
-      status: nextMatch.status,
-      minute: nextMatch.minute,
-    );
-    // Tira o resultado recém-encerrado: senão a Home segura o placar
-    // (folga do `HomeCubit`) e a Arena esconde a Escalação.
-    bool justFinished(Match m) =>
-        m.status == MatchStatus.finished &&
-        m.kickoff != null &&
-        now.difference(m.kickoff!) < const Duration(days: 2);
-    return (
-      nextMatch: homeMatch,
-      recentResults: recentResults.where((m) => !justFinished(m)).toList(),
-    );
   }
 
   @override
