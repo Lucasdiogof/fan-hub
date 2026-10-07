@@ -1,3 +1,4 @@
+import 'package:goias_app/features/club/domain/entities/active_idol_tracking.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 
 /// Ídolos do Goiás — lista aprovada pelo usuário em 2026-10-01 (37 nomes,
@@ -90,6 +91,9 @@ class GoiasIdolsData {
           '1966 participou do primeiro título goiano da história do clube e foi '
           'eleito o melhor jogador do Goiás naquela campanha. Voltou ao clube em '
           '1973 e conquistou o estadual de 1975 e o de 1976.',
+      // Goianos 1966, 1975 e 1976 confirmados em 06/10/2026 por publicação oficial do
+      // Goiás que os atribui diretamente ao zagueiro (não é inferência pelos anos em que
+      // ele estava no clube). 217 jogos/3 gols: só na base filtrada — fora.
       // Pesquisa 2026-10: retrospectivas do Goiás EC (antigo site) — títulos e momentos CONFIRMADOS. Total de jogos: só o recorte de Brasileiro (118) — fora.
       // Total geral NULO: o 218 da visualização geral do Futebol de Goyaz inclui a
       // Seleção Goiana; filtrando só Goiás-GO a própria base retorna 217 — nenhum dos
@@ -159,16 +163,18 @@ class GoiasIdolsData {
       photoAsset: '$_idols/tuira.jpg',
       evidenceExplicitIdol: true,
       description: 'Destaque do Goiás na década de 1970.',
-      // Posição VAZIA de propósito: o Futebol de Goyaz o chama de meio-campista, o
-      // Zerozero de avançado e uma matéria de 1975 o descreve atuando no ataque, no
-      // meio e na defesa — por isso o texto também não fixa "atacante".
+      // Posição Meia CONFIRMADA em 06/10/2026: Futebol de Goyaz e a Agência Cora
+      // Coralina (fonte oficial do Estado de Goiás, matéria sobre o Serra Dourada) o
+      // chamam de meia; um depoimento do Museu do Futebol/FGV também, destacando a
+      // versatilidade. Por isso o texto continua sem fixar "atacante".
+      position: 'Meia',
       period: '1969-1975',
       fullName: 'Valtuir Laureano Marques',
       highlights: [
         'Esteve no empate por 4 a 4 com o Santos, no Pacaembu',
         'Marcou em um dos primeiros confrontos entre Goiás e Goianésia',
       ],
-      // Pesquisa 2026-10: momentos = Futebol de Goyaz + Goiás EC. Período 1969-1975 aplicado em 07/10/2026 (duas bases). POSIÇÃO (atacante x meia) em aberto — removida em 07/10/2026.
+      // Pesquisa 2026-10: momentos = Futebol de Goyaz + Goiás EC. Período 1969-1975 aplicado em 07/10/2026 (duas bases). 133 jogos/22 gols: 1 FONTE — fora.
     ),
     ClubIdol(
       name: 'Matinha',
@@ -236,10 +242,12 @@ class GoiasIdolsData {
         'Campeonato Goiano 1991',
       ],
       highlights: [
-        'Integrou o elenco da campanha do Goiás no Campeonato Brasileiro de 1983, uma das grandes campanhas nacionais do clube nos anos 1980',
+        'Integrou o elenco da campanha do Goiás que terminou o Campeonato Brasileiro de 1983 em 5º lugar',
         'Voltou ao Goiás em 1990 e esteve na campanha do vice-campeonato da Copa do Brasil',
       ],
-      // Auditoria 06/10/2026: colocação do Brasileiro de 1983 DIVERGENTE (5º x 7º) — posição exata fora do texto. 17 gols = recorte Brasileiro + Copa do Brasil, NÃO total — fora.
+      // 5º lugar no Brasileiro de 1983 e passagem inicial até 1983 / retorno em 1990-1991
+      // fechados por fonte oficial do Goiás (TBT do acervo, 06/10/2026); a divergência
+      // anterior (5º x 7º) fica resolvida pela fonte do clube. 17 gols = recorte Brasileiro + Copa do Brasil, NÃO total — fora.
       // Pesquisa 2026-10: Goiás EC (retrospectiva) — títulos e campanhas CONFIRMADOS. Totais de jogos/gols: sem fonte.
     ),
     // ------------------------------------------------------------ anos 1980
@@ -461,6 +469,9 @@ class GoiasIdolsData {
       // Goiano 1996: Fortaleza oficial + Galo Digital (duas fontes). Obs.: uma
       // auditoria anterior tinha removido esse título por falta de fonte nominal;
       // reaplicado por decisão do usuário nesta rodada.
+      // Goiano 1994 NÃO cadastrado: um jornal de 1994 mostra Lúcio jogando pelo Goiás
+      // no estadual e o mesmo jornal registra o Goiás campeão de 1994, mas nenhuma
+      // fonte atribui o título explicitamente a ele — ter estado no elenco não basta.
       // Pesquisa 2026-10: Goiás EC (revelação 1996).
     ),
     ClubIdol(
@@ -490,6 +501,11 @@ class GoiasIdolsData {
         'Artilheiro do Campeonato Brasileiro de 2000, com 20 gols',
       ],
       // Pesquisa 2026-10: Goiás EC + Mais Goiás. Gols 135 x 133: resolvido pelo press kit oficial do Goiás de 2026 (a fonte institucional mais nova prevalece); o 133 vem de material anterior.
+      // AUDITORIA 06/10/2026 — NÃO está mais resolvido: o press kit oficial do Goiás de
+      // 01/10/2026 voltou a listar Dill com 133 gols (um press kit do Goianão 2026 tinha
+      // 135). Não é "fontes antigas 133 x fonte nova 135": o próprio clube voltou para 133,
+      // sem nota explicando. 133 x 135 segue DIVERGENTE oficialmente; valor do card não
+      // alterado nesta rodada.
     ),
     ClubIdol(
       name: 'Alex Dias',
@@ -746,8 +762,9 @@ class GoiasIdolsData {
         'Artilheiro do Goiás no Campeonato Brasileiro de 2008, com 14 gols',
         'Fez 7 gols em 10 jogos na Copa Sul-Americana',
       ],
-      // 78 gols: ge + Futebol80 (levantamento gol a gol) + Goal convergem diretamente em 78 (aplicado em 07/10/2026);
-      // o 75 de outra base fica como divergência minoritária. Jogos totais VAZIOS de propósito. Antes: Goiás EC. Notas: Rodada 06/10/2026: uma base com detalhe por temporada (2004 47/16,
+      // 78 gols: CONFIRMADO com fonte oficial (conteúdo do canal oficial do Goiás baseado
+      // nos 78 gols) + ge; Futebol80 (levantamento gol a gol) e Goal convergem. O 75 (e os
+      // 65/71 de outras bases) ficam como divergência sem explicação de escopo. Jogos totais VAZIOS de propósito. Antes: Goiás EC. Notas: Rodada 06/10/2026: uma base com detalhe por temporada (2004 47/16,
       // 2005 43/21, 2007 38/17, 2008 49/21) soma 177 jogos/75 gols. Futebol80 totaliza 78
       // gols pelo Goiás contando amistosos no geral (228 na carreira, 2 amistosos) — o
       // escopo exato da diferença segue sem prova; jogos totais também NÃO gravados.
@@ -814,6 +831,7 @@ class GoiasIdolsData {
       // ogol.com.br/jogador/ernando/32225).
       matches: 405,
       titles: [
+        'Campeonato Goiano 2006',
         'Campeonato Goiano 2009',
         'Campeonato Goiano 2012',
         'Campeonato Goiano 2013',
@@ -827,9 +845,11 @@ class GoiasIdolsData {
       ],
       // Auditoria 06/10/2026: total final de gols NÃO ENCONTRADO (o 8 é marco datado de 2012).
       // Goianos 2009/2012/2013 + Série B 2012: fonte nominal de 2013 (aplicados).
-      // Goiano 2006: DIVERGENTE — fontes posteriores listam quatro estaduais
-      // (com 2006); a de 2013 lista três; ele NÃO aparece nas escalações das finais de
-      // 2006 (Bola na Área). Não gravado. Rodada 07/10/2026: Ernando consta na escalação
+      // Goiano 2006: CONFIRMADO em 06/10/2026 — a apresentação oficial dele pelo Vasco
+      // lista os Goianos de 2006, 2009, 2012 e 2013 e outra fonte independente registra
+      // os mesmos quatro, o que supera a matéria do ge de 2013 (três títulos). É o
+      // título, não a participação nas finais (ele não está nas escalações das finais de
+      // 2006, Bola na Área). Rodada 07/10/2026: Ernando consta na escalação
       // da final de 2009 e na lista de 2012 (como reserva); o Futebol de Goyaz lista só o
       // Goiano 2013 — conflito com a fonte nominal de 2013 que lista 2009/12/13. Gols: o
       // 12 do Futebol de Goyaz/ogol é da carreira inteira, não do Goiás.
@@ -950,6 +970,12 @@ class GoiasIdolsData {
         'Fez 11 gols no Campeonato Goiano de 2013 e 13 no Campeonato Brasileiro de 2013',
         'Marcou 5 gols na Copa do Brasil na primeira passagem',
       ],
+      // Origem provável do 97 x 98 (06/10/2026): o Goiás e o ge contabilizavam a primeira
+      // passagem como 81 jogos/45 gols e a segunda (ge) como 16 jogos/3 gols — a soma dá
+      // 97/48, e Walter disse em fev/2017 "completei 97 jogos hoje, 48 gols". O Popular,
+      // Mais Goiás e Esporte Goiano publicaram depois 98/48. Não parece partida esquecida:
+      // é diferença de contagem dentro da primeira passagem. 48 gols seguro; jogos seguem
+      // sem prova definitiva.
       // Auditoria 06/10/2026: 81 jogos/45 gols = fonte oficial do Goiás, SÓ 2012-2013 (o 82 antigo estava errado). 48 gols somando as duas passagens: ge (97 jogos/48 gols) + Esporte Goiano de 11/03/2022 (98 jogos/48 gols) — os GOLS fecham em duas fontes. Jogos: Esporte Goiano (2022) e outra base apontam 98, mas a declaração do próprio Walter na época (97 jogos/48 gols) e a divisão do ge (81/45 + 2016: 10/3 + 2017: 6/0 = 97/48) sustentam 97, sem outra partida antes da saída — rodada 06/10/2026, decisão do usuário.
     ),
     ClubIdol(
@@ -991,15 +1017,36 @@ class GoiasIdolsData {
       description:
           'Goleiro no clube desde 2019, completou 400 jogos pelo Goiás em '
           '28/08/2026 e é o segundo jogador com mais partidas pelo clube.',
-      matches: 406,
-      goals: 13,
-      statsAsOf: '2026-10-01',
+      // ATIVO: os números NÃO são fixos. `baseline` é o dado HISTÓRICO auditado
+      // (406 jogos / 13 gols até Novorizontino x Goiás, 01/10/2026) — e o que a tela
+      // mostra é baseline + as partidas posteriores em que ele realmente entrou em
+      // campo (ver `computeIdolStats`). Nunca editar este número a cada rodada.
+      // Vínculo com o jogador real: ID do OneFootball 48597
+      // (/pt-br/jogador/tadeu-48597); só gols e substituições vêm apenas por nome.
+      tracking: ActiveIdolTracking(
+        providerPlayerId: 48597,
+        eventNames: {'Tadeu'},
+        baseline: IdolStatsBaseline(
+          appearances: 406,
+          goals: 13,
+          throughMatchId: 'onef-2669540',
+          throughKickoff: '2026-10-01T21:00:00.000',
+          throughDate: '2026-10-01',
+        ),
+      ),
       highlights: [
         'Estreou pelo Goiás em 28/04/2019, contra o Fluminense, e defendeu um pênalti na vitória por 1 a 0',
         'Chegou ao 400º jogo pelo clube em agosto de 2026',
         'Segundo jogador com mais partidas pela camisa do Goiás',
       ],
       // Pesquisa 2026-10: 406 jogos após Goiás x Novorizontino (01/10/2026), O Popular + imprensa local; 13 gols = ge + Mais Goiás.
+      // 406 = PARCIAL FORTE (não CONFIRMADO): o press kit oficial do Goiás de 01/10, antes
+      // do jogo, tinha 405 (empatado com Ernando); duas matérias anteriores ao jogo
+      // publicaram que Novorizontino x Goiás seria a 406ª partida; e a cobertura pós-jogo
+      // (Esporte Goiano) confirma que ele atuou e ultrapassou Ernando, ficando isolado
+      // como 2º com mais partidas. Para virar CONFIRMADO: aguardar Goiás oficial/ge/O
+      // Popular escrevendo literalmente "406". Partidas posteriores (ex.: 06/10,
+      // Athletic) entram sozinhas pelo cálculo, não por edição deste arquivo.
     ),
   ];
 }

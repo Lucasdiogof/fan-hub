@@ -150,8 +150,9 @@ void main() {
             'Campeonato Brasileiro Série B 2012',
           ]),
         );
-        // Goiano 2006 do Ernando: DIVERGENTE (2013 lista três) — não gravar.
-        expect(ernando, isNot(contains('Campeonato Goiano 2006')));
+        // Goiano 2006 do Ernando: CONFIRMADO em 06/10/2026 (apresentação oficial
+        // do Vasco + outra fonte independente listam 2006, 2009, 2012 e 2013).
+        expect(ernando, contains('Campeonato Goiano 2006'));
         final marq = byName(goias, 'Marquinhos').titles;
         expect(
           marq,
@@ -189,14 +190,19 @@ void main() {
         },
       );
 
-      test('Brasileiro de 1983: colocação divergente (5º x 7º) fica fora', () {
-        for (final name in ['Zé Teodoro', 'Luvanor']) {
-          final texto = byName(goias, name).highlights.join(' ');
-          expect(texto, contains('1983'), reason: name);
-          expect(texto, isNot(contains('Quinto')), reason: name);
-          expect(texto, isNot(contains('Sétimo')), reason: name);
-        }
-      });
+      test(
+        'Brasileiro de 1983: Luvanor tem o 5º lugar (fonte oficial do Goiás); '
+        'Zé Teodoro segue sem colocação',
+        () {
+          final luvanor = byName(goias, 'Luvanor').highlights.join(' ');
+          expect(luvanor, contains('1983'));
+          expect(luvanor, contains('5º lugar'));
+          final ze = byName(goias, 'Zé Teodoro').highlights.join(' ');
+          expect(ze, contains('1983'));
+          expect(ze, isNot(contains('Quinto')));
+          expect(ze, isNot(contains('Sétimo')));
+        },
+      );
 
       test('Iarley: 173 jogos e 47 gols (soma das quatro temporadas)', () {
         final iarley = byName(goias, 'Iarley');

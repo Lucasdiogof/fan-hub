@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/club/domain/entities/active_idol_tracking.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
+import 'package:goias_app/features/club/domain/repositories/active_idol_stats_repository.dart';
+import 'package:goias_app/features/club/presentation/cubit/club_idol_stats_cubit.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_idol_avatar.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -14,9 +18,17 @@ import 'package:intl/intl.dart';
 /// números não há placar de jogos/gols, sem títulos não há a seção — nunca
 /// um "—" ou "0" no lugar de um dado que a pesquisa não confirmou.
 class ClubIdolDetailPage extends StatelessWidget {
-  const ClubIdolDetailPage({required this.idol, super.key});
+  const ClubIdolDetailPage({
+    required this.idol,
+    this.statsRepository,
+    super.key,
+  });
 
   final ClubIdol idol;
+
+  /// Só usado por ídolo ativo (`idol.tracking`): calcula os números a partir
+  /// das partidas. `null` mostra o baseline auditado, sem cálculo.
+  final ActiveIdolStatsRepository? statsRepository;
 
   String? get _subtitle {
     final parts = [
@@ -32,7 +44,8 @@ class ClubIdolDetailPage extends StatelessWidget {
     final l10n = context.l10n;
     final subtitle = _subtitle;
     final story = idol.story ?? idol.description;
-    final hasStats = idol.matches != null || idol.goals != null;
+    final hasStats =
+        idol.matches != null || idol.goals != null || idol.tracking != null;
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -93,7 +106,7 @@ class ClubIdolDetailPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (hasStats) ...[
-                _Stats(idol: idol),
+                _IdolStatsSection(idol: idol, repository: statsRepository),
                 const SizedBox(height: AppSpacing.xxl),
               ],
               if (story.trim().isNotEmpty) ...[
@@ -132,13 +145,60 @@ class ClubIdolDetailPage extends StatelessWidget {
   }
 }
 
-class _Stats extends StatelessWidget {
-  const _Stats({required this.idol});
+/// Decide de onde vêm os números: ídolo ativo -> baseline + partidas
+/// posteriores (cubit); os demais -> os números fixos e auditados do
+/// catálogo, exatamente como sempre.
+class _IdolStatsSection extends StatelessWidget {
+  const _IdolStatsSection({required this.idol, required this.repository});
 
   final ClubIdol idol;
+  final ActiveIdolStatsRepository? repository;
+
+  @override
+  Widget build(BuildContext context) {
+    final tracking = idol.tracking;
+    if (tracking == null) {
+      return _Stats(
+        matches: idol.matches,
+        goals: idol.goals,
+        asOf: idol.statsAsOf,
+        scope: idol.statsScope,
+      );
+    }
+    Widget view(IdolStats stats) => _Stats(
+      matches: stats.appearances,
+      goals: stats.goals,
+      asOf: stats.asOfDate,
+      scope: idol.statsScope,
+    );
+    final repo = repository;
+    if (repo == null) {
+      return view(IdolStats.fromBaseline(tracking.baseline));
+    }
+    return BlocProvider(
+      create: (_) => ClubIdolStatsCubit(repo, idol)..load(),
+      child: BlocBuilder<ClubIdolStatsCubit, IdolStats>(
+        builder: (context, stats) => view(stats),
+      ),
+    );
+  }
+}
+
+class _Stats extends StatelessWidget {
+  const _Stats({
+    required this.matches,
+    required this.goals,
+    required this.asOf,
+    required this.scope,
+  });
+
+  final int? matches;
+  final int? goals;
+  final String? asOf;
+  final String? scope;
 
   String? _asOf(BuildContext context) {
-    final raw = idol.statsAsOf;
+    final raw = asOf;
     if (raw == null) return null;
     final date = DateTime.tryParse(raw);
     if (date == null) return null;
@@ -150,24 +210,21 @@ class _Stats extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
-    final notes = [idol.statsScope, _asOf(context)].whereType<String>();
+    final notes = [scope, _asOf(context)].whereType<String>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            if (idol.matches != null)
+            if (matches != null)
               Expanded(
-                child: _StatBox(
-                  value: idol.matches!,
-                  label: l10n.clubIdolMatches,
-                ),
+                child: _StatBox(value: matches!, label: l10n.clubIdolMatches),
               ),
-            if (idol.matches != null && idol.goals != null)
+            if (matches != null && goals != null)
               const SizedBox(width: AppSpacing.md),
-            if (idol.goals != null)
+            if (goals != null)
               Expanded(
-                child: _StatBox(value: idol.goals!, label: l10n.clubIdolGoals),
+                child: _StatBox(value: goals!, label: l10n.clubIdolGoals),
               ),
           ],
         ),

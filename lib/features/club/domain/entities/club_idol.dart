@@ -1,3 +1,5 @@
+import 'package:goias_app/features/club/domain/entities/active_idol_tracking.dart';
+
 /// Existe distinção real entre "a pesquisa chamou essa pessoa de ídolo,
 /// literalmente" e "nome historicamente forte, mas a fonte recuperada não
 /// necessariamente usou essa palavra" — nunca promover o segundo caso pro
@@ -18,6 +20,7 @@ class ClubIdol {
     this.goals,
     this.statsAsOf,
     this.statsScope,
+    this.tracking,
     this.titles = const [],
     this.highlights = const [],
   });
@@ -65,8 +68,11 @@ class ClubIdol {
   /// o resumo curto do card da lista.
   final String? story;
 
-  /// Jogos/gols PELO CLUBE. Número só entra com fonte que feche; quando as
-  /// fontes divergem, fica `null` (ver o comentário no dataset do clube).
+  /// Jogos/gols PELO CLUBE de quem NÃO joga mais — números finais e
+  /// auditados. Número só entra com fonte que feche; quando as fontes
+  /// divergem, fica `null` (ver o comentário no dataset do clube). Quem ainda
+  /// está no elenco NÃO usa estes dois campos: usa [tracking], porque um
+  /// número fixo envelhece a cada partida.
   final int? matches;
   final int? goals;
 
@@ -78,6 +84,12 @@ class ClubIdol {
   /// Quando os números não são o total no clube (ex.: "Primeira passagem,
   /// 2012-2013") — aparece junto dos números.
   final String? statsScope;
+
+  /// Só para ídolo que AINDA joga pelo clube: baseline auditado + vínculo
+  /// com o jogador real nas partidas. Os números exibidos passam a ser
+  /// baseline + partidas posteriores (ver `ActiveIdolStatsRepository`);
+  /// [matches]/[goals]/[statsAsOf] ficam vazios nesses casos.
+  final ActiveIdolTracking? tracking;
 
   /// Títulos conquistados pelo clube com o jogador, já redigidos.
   final List<String> titles;
@@ -93,6 +105,7 @@ class ClubIdol {
       story != null ||
       matches != null ||
       goals != null ||
+      tracking != null ||
       titles.isNotEmpty ||
       highlights.isNotEmpty;
 

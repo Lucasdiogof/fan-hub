@@ -15,6 +15,8 @@ class MatchEvent extends Equatable {
     required this.type,
     this.player,
     this.detail,
+    this.playerInId,
+    this.playerOutId,
   });
 
   final String minute;
@@ -23,6 +25,19 @@ class MatchEvent extends Equatable {
   final String? player;
   final String? detail;
 
+  /// ID do jogador no provedor, só em substituição e só quando o provedor o
+  /// informa (hoje o OneFootball manda apenas o nome — fica `null`).
+  final int? playerInId;
+  final int? playerOutId;
+
   @override
-  List<Object?> get props => [minute, side, type, player, detail];
+  List<Object?> get props => [
+    minute,
+    side,
+    type,
+    player,
+    detail,
+    playerInId,
+    playerOutId,
+  ];
 }

@@ -27,8 +27,10 @@ import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/session/account_session_cache_guard.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/club/data/club_song_volume_store.dart';
+import 'package:goias_app/features/club/data/football_active_idol_stats_repository.dart';
 import 'package:goias_app/features/club/data/supabase_club_board_repository.dart';
 import 'package:goias_app/features/club/data/supabase_club_transparency_repository.dart';
+import 'package:goias_app/features/club/domain/repositories/active_idol_stats_repository.dart';
 import 'package:goias_app/features/club/domain/repositories/club_board_repository.dart';
 import 'package:goias_app/features/club/domain/repositories/club_transparency_repository.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_board_cubit.dart';
@@ -130,6 +132,13 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<FootballRepository>(
     () => FootballRepositoryImpl(sl(), sl()),
+  );
+  // Números dos ídolos que ainda jogam: baseline auditado + partidas reais.
+  sl.registerLazySingleton<ActiveIdolStatsRepository>(
+    () => FootballActiveIdolStatsRepository(
+      sl<FootballRepository>(),
+      sl<ClubConfig>().integrations.oneFootballTeamId,
+    ),
   );
 
   sl.registerLazySingleton<SocialRemoteDataSource>(

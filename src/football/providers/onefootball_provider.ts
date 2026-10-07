@@ -52,13 +52,21 @@ export interface OneFootballMatchEvent {
   timeline: string;
   goal?: { type?: string; scorer?: { name: string } };
   card?: { player?: { name: string } };
-  substitution?: { playerIn?: { name: string }; playerOut?: { name: string } };
+  /** Medido em 2026-10 (30 substituições de 3 partidas): `playerIn`/`playerOut` trazem SÓ `name`
+   * — o `link` abaixo é opcional e hoje nunca vem; fica tipado para o dia em que vier. */
+  substitution?: {
+    playerIn?: { name: string; link?: { urlPath?: string } };
+    playerOut?: { name: string; link?: { urlPath?: string } };
+  };
 }
 
 export interface OneFootballLineupPlayer {
   name: string;
   jerseyNumber: number;
   image: { path: string };
+  /** Confirmado ao vivo (GET .../match/<id>): `urlPath` é `/pt-br/jogador/<slug>-<id>` —
+   * o número no fim é o ID do jogador no OneFootball. */
+  link?: { urlPath?: string };
 }
 
 export interface OneFootballLineupRow {

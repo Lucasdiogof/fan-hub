@@ -7,6 +7,8 @@ class MatchEventDto {
     required this.type,
     this.player,
     this.detail,
+    this.playerInId,
+    this.playerOutId,
   });
 
   final String minute;
@@ -14,6 +16,8 @@ class MatchEventDto {
   final String type;
   final String? player;
   final String? detail;
+  final int? playerInId;
+  final int? playerOutId;
 
   factory MatchEventDto.fromJson(Map<String, dynamic> json) {
     return MatchEventDto(
@@ -22,6 +26,8 @@ class MatchEventDto {
       type: json['type'] as String? ?? 'other',
       player: json['player'] as String?,
       detail: json['detail'] as String?,
+      playerInId: (json['playerInId'] as num?)?.toInt(),
+      playerOutId: (json['playerOutId'] as num?)?.toInt(),
     );
   }
 
@@ -38,6 +44,8 @@ class MatchEventDto {
       },
       player: player,
       detail: detail,
+      playerInId: playerInId,
+      playerOutId: playerOutId,
     );
   }
 }

@@ -45,6 +45,7 @@ import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
+import 'package:goias_app/features/club/domain/repositories/active_idol_stats_repository.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
 import 'package:goias_app/features/club/presentation/pages/club_diretoria_page.dart';
@@ -634,7 +635,10 @@ GoRouter createAppRouter(
             pageBuilder: (context, state) => appPage(
               state,
               state.extra is ClubIdol
-                  ? ClubIdolDetailPage(idol: state.extra! as ClubIdol)
+                  ? ClubIdolDetailPage(
+                      idol: state.extra! as ClubIdol,
+                      statsRepository: sl<ActiveIdolStatsRepository>(),
+                    )
                   : const ClubIdolsPage(),
             ),
           ),

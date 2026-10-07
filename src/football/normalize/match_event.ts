@@ -1,4 +1,5 @@
 import type { OneFootballMatchEvent } from '../providers/onefootball_provider';
+import { playerIdFromLink } from './match_lineup';
 
 export interface MatchEventJson {
   minute: string;
@@ -6,6 +7,10 @@ export interface MatchEventJson {
   type: 'goal' | 'yellow_card' | 'red_card' | 'substitution' | 'other';
   player: string | null;
   detail: string | null;
+  /** Só em substituição, e só quando o provedor mandar o link do jogador (hoje não manda:
+   * o evento traz apenas o nome). Aditivo — ausente/null = sem ID, o cliente cai no nome. */
+  playerInId?: number | null;
+  playerOutId?: number | null;
 }
 
 /**
@@ -46,6 +51,8 @@ export function normalizeOneFootballMatchEvent(event: OneFootballMatchEvent): Ma
       type: 'substitution',
       player: event.substitution.playerIn?.name ?? null,
       detail: event.substitution.playerOut?.name ?? null,
+      playerInId: playerIdFromLink(event.substitution.playerIn?.link?.urlPath),
+      playerOutId: playerIdFromLink(event.substitution.playerOut?.link?.urlPath),
     };
   }
 
