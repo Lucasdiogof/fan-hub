@@ -1,227 +1,208 @@
-# Goiás EC — App do Torcedor
-
-Aplicativo (não-oficial, em desenvolvimento) do ecossistema digital do torcedor esmeraldino: acompanhar jogos e classificação, comprar ingresso com check-in na entrada, virar Sócio Esmeralda, comprar na loja oficial, jogar na Arena Esmeraldina e seguir as redes do clube — tudo num só lugar.
-
-| | |
-|---|---|
-| **App** | Flutter (Android, iOS, Web) — PT-BR, EN e ES |
-| **Backend esportivo/social** | Cloudflare Worker (TypeScript) |
-| **Backend de conta e conteúdo** | Supabase (Auth + Postgres) |
-
 <p align="center">
-  <img src="docs/screenshots/home.png" width="200" alt="Início">
-  <img src="docs/screenshots/arena_hub.png" width="200" alt="Arena Esmeraldina">
-  <img src="docs/screenshots/loja_produto_detalhe.png" width="200" alt="Goiás Store">
-  <img src="docs/screenshots/ingressos_checkout.png" width="200" alt="Checkout de ingresso">
+  <img src="ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" width="112" alt="Goiás App icon">
 </p>
 
-## Índice
-
-- [Início](#início)
-- [Jogos](#jogos)
-- [Notícias e Mídia](#notícias-e-mídia-goiás-na-rede)
-- [Sócio Esmeralda](#sócio-esmeralda)
-- [Ingressos](#ingressos)
-- [Loja](#loja-goiás-store)
-- [Arena Esmeraldina](#arena-esmeraldina)
-- [O Clube](#o-clube)
-- [Conta e Perfil](#conta-e-perfil)
-- [Idiomas e tema](#idiomas-e-tema)
-- [Arquitetura](#arquitetura)
-- [Backend (Cloudflare Worker)](#backend-cloudflare-worker)
-- [Backend (Supabase)](#backend-supabase)
-- [Rodando o projeto](#rodando-o-projeto)
-- [Testes e qualidade](#testes-e-qualidade)
-
-## Início
-
-- Saudação personalizada e card de contagem regressiva para a próxima partida do Goiás, com atalho direto pra compra de ingresso.
-- Destaque dinâmico da Arena Esmeraldina: convida pra votar na Escalação da Torcida quando há votação aberta, pro Quiz quando ainda não foi concluído, ou pro hub da Arena como padrão — sempre levando pro hub, nunca direto pra um jogo específico.
-- Cards de entrada para O Clube e para a Goiás Store.
-
-<p align="center"><img src="docs/screenshots/home.png" width="240" alt="Tela Início"></p>
-
-## Jogos
-
-- **Partidas**: próximo jogo do Goiás com data, horário e estádio; rodada atual (todos os jogos, com navegação pras rodadas anteriores/seguintes) e resultados recentes.
-- **Classificação**: tabela completa da Série B, com o Goiás destacado.
-- **Detalhes da partida**: placar, timeline de eventos e escalações titulares de cada jogo.
+<h1 align="center">Goiás App</h1>
 
 <p align="center">
-  <img src="docs/screenshots/jogos_partidas.png" width="220" alt="Jogos — Partidas">
-  <img src="docs/screenshots/jogos_classificacao.png" width="220" alt="Jogos — Classificação">
+  A fan app for Goiás supporters: matches, club content, media, tickets, membership and a mini-games Arena in one place.
 </p>
-
-## Notícias e Mídia (Goiás na Rede)
-
-- Leitor nativo de matérias do clube (backend próprio de scraping), com visualizador de PDF embutido para links de press kit — nunca sai do app.
-- Feed unificado de **Instagram**, **YouTube** e **X**, com filtro por plataforma.
 
 <p align="center">
-  <img src="docs/screenshots/midia_noticias.png" width="220" alt="Notícias">
-  <img src="docs/screenshots/midia_youtube.png" width="220" alt="Mídia — YouTube">
+  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" alt="Dart">
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Workers">
+  <img src="https://img.shields.io/badge/platforms-Android_·_iOS_·_Web-555555" alt="Platforms: Android, iOS and Web">
 </p>
-
-## Sócio Esmeralda
-
-- Vitrine com os planos oficiais em carrossel, cada um com página de detalhes e benefícios.
-- Associação real: assinatura de 30 dias persistida no Supabase (substituiu o repositório mock inicial).
-- Regulamento completo e Dúvidas Frequentes, servidos pelo Supabase com fallback local se a tabela estiver vazia ou sem rede.
 
 <p align="center">
-  <img src="docs/screenshots/socio_hub.png" width="220" alt="Sócio Esmeralda">
-  <img src="docs/screenshots/socio_plano_detalhe.png" width="220" alt="Detalhe de plano">
+  <b>English</b> · <a href="README.pt-BR.md">Português</a> · <a href="README.es.md">Español</a>
 </p>
 
-## Ingressos
+---
 
-- Setores do estádio disponíveis por partida, com seleção de quantidade e tipo (inteira/meia/menor).
-- Resumo de compra com dados do titular e confirmação — venda persistida no Supabase.
-- Check-in na entrada do estádio no dia do jogo, com PDF do ingresso gerado no próprio app.
-- "Meus ingressos" (em aberto/histórico) e "Meus pedidos".
+Goiás App puts the match schedule, live scores, club history, news and social media, tickets, membership, a store and a set of fan games into a single app for Goiás supporters. It is an independent product: it is not an official app and does not represent a partnership with, or endorsement by, Goiás Esporte Clube.
 
-<p align="center">
-  <img src="docs/screenshots/ingressos_selecao_setor.png" width="220" alt="Seleção de setor">
-  <img src="docs/screenshots/ingressos_checkout.png" width="220" alt="Resumo da compra">
-</p>
+Technically, the app is built on **Fan Hub**, a multi-club base: one Flutter codebase that produces a separate build per club, each with its own backend.
 
-## Loja (Goiás Store)
+## Availability
 
-Duas abas dentro da mesma tela: **Ingressos** (atalho pro matchday e pras compras já feitas) e **Roupas** (a vitrine em si).
+- **Android**, **iOS** and **Web (installable PWA)**, from a single Flutter codebase.
+- **Languages**: Portuguese (Brazil), English and Spanish, selectable independently of the device language.
+- **Themes**: light, dark or following the system.
 
-- Catálogo real com mais de 100 produtos (uniformes, acessórios, presentes), organizado por categoria.
-- Carrinho, checkout e histórico de pedidos completos — hoje sobre um repositório local, pronto pra plugar um gateway de pagamento real sem reescrever telas.
+## Screenshots
 
-<p align="center"><img src="docs/screenshots/loja_produto_detalhe.png" width="240" alt="Produto da Goiás Store"></p>
+### What fans use
 
-## Arena Esmeraldina
+<table>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/home.webp" width="220" alt="App home screen with the latest result, the club area and the Esmeraldina Arena"><br><sub><b>Home</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/matches.webp" width="220" alt="Matches tab with the next match, a match details button and the round&#x27;s fixture list"><br><sub><b>Matches</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/standings.webp" width="220" alt="Série B standings table with Goiás highlighted"><br><sub><b>Standings</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/calendar.webp" width="220" alt="Matches tab with the monthly match calendar"><br><sub><b>Matches</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/socio.webp" width="220" alt="Membership program screen with the available plans"><br><sub><b>Membership</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/store.webp" width="220" alt="In-app store with product categories and access to purchases and orders"><br><sub><b>Store</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/club.webp" width="220" alt="Club menu scrolled down: Idols, Board, Squad, Anthem &amp; Songs, Transparency and Partners"><br><sub><b>The Club</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/anthem.webp" width="220" alt="Anthem player with playback controls, volume and lyrics"><br><sub><b>Anthem &amp; Songs</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/guess-shirt.webp" width="220" alt="Game where the fan guesses, letter by letter, the name of an attacking midfielder from the squad, with an on-screen keyboard"><br><sub><b>Guess the Lineup</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/guess-player.webp" width="220" alt="Guess the Player: career table with clubs, games and goals and a field to guess the name"><br><sub><b>Guess the Player</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/identity-quiz.webp" width="220" alt="Football identity quiz question with four statements to choose from"><br><sub><b>Football Identity</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/identity-result.webp" width="220" alt="Result “The Refined” with traits and playing-style attributes"><br><sub><b>Which star are you?</b></sub></td></tr>
+</table>
 
-Hub de minigames sobre a história e o elenco do Goiás, com progresso e ranking persistentes no Supabase.
+### Club and content
 
-| Jogo | Descrição |
-|---|---|
-| **Escalação da Torcida** | Vote na escalação provável do próximo jogo e veja o time mais escalado pela torcida. |
-| **Quiz do Verdão** | Perguntas sobre a história do clube, em três níveis de dificuldade. |
-| **Adivinhe a Escalação** | Reconstrua as escalações de partidas históricas do Goiás. |
-| **Adivinhe o Jogador** | Descubra o jogador pela trajetória de carreira (clubes, jogos, gols). |
-| **Quem Vestiu o Manto?** | Jogador secreto revelado aos poucos por foto e pistas. |
-| **Passaporte Esmeraldino** | Registre os jogos que você viveu com o Goiás, temporada a temporada. |
+<table>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/club-home.webp" width="220" alt="Club menu with History, Titles, Idols, Board, Squad and Anthem"><br><sub><b>Club menu</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/titles.webp" width="220" alt="Club titles screen with the count of major titles and the years of each championship"><br><sub><b>Titles</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/board.webp" width="220" alt="Club board screen with executive management and in memoriam sections"><br><sub><b>Board</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/idols.webp" width="220" alt="List of the club idols with photo, period and a short description"><br><sub><b>Idols</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/squad.webp" width="220" alt="Club squad in a grid, with each player photo and shirt number"><br><sub><b>Squad</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/player.webp" width="220" alt="Player profile with number, age, nationality, height, foot and career"><br><sub><b>Player profile</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/transparency.webp" width="220" alt="Transparency screen with notices, bylaws and yearly reports"><br><sub><b>Transparency</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/songs.webp" width="220" alt="List with the anthem versions and the supporters songs"><br><sub><b>Anthem &amp; Songs</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/document.webp" width="220" alt="Meeting notice open in the PDF viewer with a share button"><br><sub><b>Documents</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/partners.webp" width="220" alt="Grid with the club&#x27;s partner brands"><br><sub><b>Partners</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/media.webp" width="220" alt="Media tab with the club&#x27;s Instagram posts and news, YouTube and X tabs"><br><sub><b>Media</b></sub></td></tr>
+</table>
 
-Tudo isso alimenta um **ranking cruzado entre os jogos** (geral/mensal/semanal), com detalhamento de pontuação por jogo para cada torcedor.
+### Tickets and membership
 
-<p align="center">
-  <img src="docs/screenshots/arena_hub.png" width="200" alt="Arena Esmeraldina">
-  <img src="docs/screenshots/arena_quiz_pergunta.png" width="200" alt="Quiz do Verdão">
-  <img src="docs/screenshots/arena_escalacao_torcida.png" width="200" alt="Escalação da Torcida">
-</p>
-<p align="center">
-  <img src="docs/screenshots/arena_adivinhe_escalacao.png" width="200" alt="Adivinhe a Escalação">
-  <img src="docs/screenshots/arena_adivinhe_jogador.png" width="200" alt="Adivinhe o Jogador">
-  <img src="docs/screenshots/arena_quem_vestiu_manto.png" width="200" alt="Quem Vestiu o Manto?">
-</p>
-<p align="center">
-  <img src="docs/screenshots/arena_passaporte_progresso.png" width="220" alt="Passaporte Esmeraldino">
-  <img src="docs/screenshots/arena_ranking_detalhe.png" width="220" alt="Detalhe do ranking">
-</p>
+<table>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/tickets.webp" width="220" alt="Tickets screen with the next event, buy button and quick access to my tickets and orders"><br><sub><b>Tickets</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/ticket-sectors.webp" width="220" alt="Sector and ticket quantity selection by category, with home fans sectors and prices"><br><sub><b>Sectors</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/purchase.webp" width="220" alt="Purchase summary with items, total, holder details and a demo notice"><br><sub><b>Purchase summary</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/purchased.webp" width="220" alt="Ticket purchase confirmation with a shortcut to My tickets"><br><sub><b>Purchase complete</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/my-tickets.webp" width="220" alt="My tickets with an upcoming demo ticket marked valid, its sector, holder and a refund option"><br><sub><b>My tickets</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/ticket.webp" width="220" alt="Digital ticket with match details, sector, holder and QR code, marked as a demo"><br><sub><b>Ticket</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/member-signup.webp" width="220" alt="First step of the membership sign-up, with the chosen plan and access details"><br><sub><b>Membership sign-up</b></sub></td></tr>
+</table>
 
-## O Clube
+### Arena and passport
 
-Hub institucional com a identidade do clube: **História**, **Títulos**, **Diretoria**, **Elenco** (perfil individual de cada jogador, com estatísticas de carreira), **Hino & Músicas**, **Transparência** (balanços, atas e demonstrativos) e **Parceiros**.
+<table>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/arena.webp" width="220" alt="Esmeraldina Arena with the Fans&#x27; Lineup waiting for the next match, the Passport and the challenges"><br><sub><b>Esmeraldina Arena</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/challenges.webp" width="220" alt="Arena challenges: Goiás Quiz, Guess the Lineup, Guess the Player and Who Wore the Shirt"><br><sub><b>Challenges</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/crowd.webp" width="220" alt="Fans&#x27; Lineup: pitch with the most voted formation and each player&#x27;s percentage"><br><sub><b>Fans team</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/pitch.webp" width="220" alt="Lineup builder on the pitch with formation selection and a confirm button"><br><sub><b>Pick your team</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/guess-lineup.webp" width="220" alt="Guess the Lineup: pitch with the lineup of a historic match to be discovered shirt by shirt"><br><sub><b>Lineup pitch</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/who-wore.webp" width="220" alt="Who Wore the Shirt: blurred photo of a former player, name search and a clues table"><br><sub><b>Who Wore the Shirt?</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/who-wore-hit.webp" width="220" alt="Who Wore the Shirt result with the revealed photo and number of attempts"><br><sub><b>Right answer</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/passport.webp" width="220" alt="Passport with the season, the matches the fan attended and each result"><br><sub><b>Esmeraldino Passport</b></sub></td><td align="center" valign="top"><img src="docs/screenshots/en/trajectory.webp" width="220" alt="Summary of the fan&#x27;s journey with matches, stadiums, seasons, wins, goals and most memorable match"><br><sub><b>My journey</b></sub></td></tr>
+<tr><td align="center" valign="top"><img src="docs/screenshots/en/ranking.webp" width="220" alt="Fans ranking with each participant&#x27;s position, avatar, name and score"><br><sub><b>Fans ranking</b></sub></td></tr>
+</table>
 
-<p align="center">
-  <img src="docs/screenshots/clube_menu.png" width="200" alt="Menu O Clube">
-  <img src="docs/screenshots/clube_elenco.png" width="200" alt="Elenco">
-  <img src="docs/screenshots/clube_jogador_perfil.png" width="200" alt="Perfil de jogador">
-</p>
+## Features
 
-## Conta e Perfil
+**Home**
+- Latest result, next match and shortcuts to the club, the Arena and the store.
 
-- Login, cadastro, recuperação de senha e confirmação de e-mail via Supabase Auth.
-- Dados pessoais, endereço, troca de senha e avatar.
-- Termos de Uso e Política de Privacidade dentro do app.
-- Exclusão de conta (remove a conta e todos os dados vinculados, com dupla confirmação).
+**Matches**
+- Next match, the current round with navigation between rounds, a monthly calendar and the full standings table with the club highlighted.
+- Match detail with score, event timeline, statistics and lineups on a pitch view.
+- Live score with an "in progress" indicator while a match is being played.
 
-<p align="center"><img src="docs/screenshots/perfil.png" width="240" alt="Perfil"></p>
+**Club**
+- History, titles by competition and year, idols, board and management, and the squad with a profile and career for each player.
+- Anthem and supporters' songs with an audio player and on-screen lyrics.
+- Transparency documents organized by category, opened inside the app as PDF and shareable.
+- Partners.
 
-## Idiomas e tema
+**Media**
+- Club news read inside the app, plus Instagram, YouTube and X in one feed with platform filters.
 
-App inteiro traduzido em **Português, Inglês e Espanhol**, com seletor de idioma independente do idioma do sistema, e tema claro/escuro/automático.
+**Membership**
+- Membership plans with benefits, a step-by-step sign-up with address lookup by postal code (CEP), regulations and FAQ.
 
-## Arquitetura
+**Tickets**
+- Ticket flow for the next match: sector, category (full price, half price and others) and quantity, purchase summary with ticket holders, and confirmation.
+- "My tickets" with upcoming tickets and history, and a digital ticket with a QR code, also available as a PDF.
 
-Clean Architecture por feature, sem geração de código:
+**Store**
+- Product catalog by category, cart, checkout and order history.
+
+**Esmeraldina Arena**
+- **Fans' Lineup**: fans vote on the lineup for the next match and see the most-voted team.
+- **Quiz** about club history, with difficulty levels.
+- **Guess the Lineup**: rebuild the lineup of a historic match, shirt by shirt.
+- **Guess the Player**: find the player from career clues (clubs, games and goals).
+- **Who Wore the Shirt?**: a blurred photo and clues revealed attempt by attempt.
+- **Profile tests**: a football identity quiz that matches the fan to a player profile, and a tactical identity test.
+- **Fans' ranking**: cross-game score with overall, monthly and weekly views.
+
+**Esmeraldino Passport**
+- Fans record the matches they attended, season by season, with a passport ranking and a "My journey" summary of their numbers.
+
+**Notifications**
+- Push notifications for live match events (kickoff, goals, half-time, second half and full time), with per-user preferences.
+
+**Account**
+- Sign-up with email verification, sign-in, password reset, personal data, addresses, avatar and in-app terms and privacy policy.
+- Self-service account deletion.
+
+## Architecture
+
+- **One codebase, one build per club.** Club identity, content and available features are defined in a club configuration and selected at build time (`APP_CLUB` plus Android/iOS flavors). Features a club does not offer are hidden from navigation and blocked at the router level.
+- **Isolated backend per club.** Each club has its own Supabase project and its own Cloudflare Worker, running the same migrations and the same Worker code. Data isolation comes from this physical separation; the `club_id` columns are a defensive second layer.
+- **Two data sources in the app.**
+  - The **Cloudflare Worker** (TypeScript) serves public sports data, news and the social media feed, with per-endpoint caching, KV storage, scheduled syncs and an image proxy.
+  - **Supabase** stores everything tied to a user or to club content: authentication, membership, tickets and orders, Arena content, progress and rankings, and the passport.
+- **Server-side rules.** Tables are protected by Row Level Security, and writes that affect scores, rankings, membership or orders go through `security definer` RPCs, so the client never sets its own results.
+- **Live matches.** The app polls live match data every 45 seconds. On the server, a `pg_cron` job calls an Edge Function every minute that detects match events and sends push notifications through Firebase Cloud Messaging. The app does not use Supabase Realtime.
+- **Commerce in demo mode.** Ticket sectors, prices and the store catalog come from local fixtures, and there is no payment gateway. Users' orders, tickets and check-ins are stored in Supabase behind repository interfaces, so a real provider can be plugged in without changing the screens.
+- **Flutter app** with feature-first Clean Architecture (domain, data, presentation), Cubits for state, `get_it` for dependency injection and `go_router`. A release gate can require an app update when a minimum version is set.
+- **Observability** with Sentry.
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| App | Flutter, Dart |
+| State | `flutter_bloc` (Cubit) + `equatable` |
+| DI / Routing | `get_it`, `go_router` |
+| Networking | `dio` (Worker), `supabase_flutter` (Supabase) |
+| Backend | Supabase: Auth, PostgreSQL, RLS, RPCs, Storage, Edge Functions (Deno), `pg_cron` |
+| Edge | Cloudflare Workers (TypeScript), Workers KV |
+| Push | Firebase Cloud Messaging |
+| Mini-game engine | Flame |
+| Observability | Sentry |
+| Tests | `flutter_test`, Vitest (Worker) |
+
+## Project structure
 
 ```
 lib/
-  core/           # DI (get_it), roteamento (go_router), tema, config, network, l10n
-  features/
-    <feature>/
-      domain/       # entidades, contratos de repositório
-      data/         # DTOs, datasources, implementações (reais e mock)
-      presentation/ # Cubits (flutter_bloc), páginas, widgets
-  shared/         # widgets e utilitários reaproveitados entre features
+├── core/           club configuration and capabilities, DI, routing, theme, l10n, network
+├── features/       home, match, club, squad, news, social, membership, ticket, store,
+│                   arena, crowd_lineup, passport, notifications, partners, profile,
+│                   auth, release_gate, splash
+├── shared/         reusable widgets
+└── l10n/           ARB files per language and per club
+
+src/                Cloudflare Worker (sports data, news, social feed, image proxy)
+supabase/           migrations, SQL and Edge Functions
+docs/architecture/  architecture, data flow, multi-club, security and testing notes
 ```
 
-- **Estado**: `flutter_bloc` (Cubit) + `equatable`.
-- **DI**: `get_it`.
-- **Navegação**: `go_router`, com redirecionamento automático baseado no estado de autenticação.
-- **Rede**: `dio`/`http`, com repositórios mock e reais atrás da mesma interface — a UI nunca sabe qual está usando.
-- **Localização**: `flutter_localizations` + `intl` (`flutter gen-l10n`), arquivos-fonte em `lib/l10n/app_{pt,en,es}.arb`.
+## Running locally
 
-## Backend (Cloudflare Worker)
-
-Fica em `src/`, escrito em TypeScript, deployado via `git push` (deploy automático ligado ao repositório).
-
-| Rota | Descrição |
-|---|---|
-| `GET /api/football/standings` | Classificação da Série B |
-| `GET /api/football/current-round` | Jogos da rodada atual |
-| `GET /api/football/team/goias` | Próximo jogo e últimos resultados do Goiás |
-| `GET /api/football/fixtures/:id` | Detalhes de uma partida |
-| `GET /api/social/feed` | Feed social unificado (Instagram + X + YouTube) |
-| `GET /api/news` / `GET /api/news/:id` | Lista e detalhe de notícias |
-| `GET /api/image-proxy` | Proxy de imagens externas (contorna CORS) |
-
-Fonte esportiva única: **OneFootball** (endpoint interno da própria página, sem key nem secret), cobrindo próximo jogo, rodada atual, detalhe de partida e classificação. Respostas cacheadas por endpoint, com `CACHE_VERSION` em `wrangler.toml` pra invalidar o cache quando o formato mudar.
-
-O Instagram é sincronizado 3x/dia por um **Cron Trigger** do próprio Worker, que dispara uma Task do Apify e grava o resultado num namespace do Workers KV — nenhuma abertura do app dispara a sincronização.
-
-## Backend (Supabase)
-
-Auth (e-mail + senha) e todo o conteúdo/estado que precisa persistir entre sessões e dispositivos: Sócio Esmeralda, Ingressos, Elenco, Diretoria, Transparência, e o conteúdo + progresso + ranking de toda a Arena Esmeraldina (Quiz, Escalação da Torcida, Adivinhe a Escalação, Adivinhe o Jogador, Quem Vestiu o Manto?, Passaporte Esmeraldino). Migrações e seeds em `supabase/`.
-
-## Rodando o projeto
-
-### App Flutter
+Requirements: Flutter (stable channel) and Node.js for the Worker.
 
 ```bash
 flutter pub get
-flutter run
+flutter run --flavor goias --dart-define=APP_CLUB=goias
 ```
 
-A configuração do Supabase já vem com valores padrão embutidos (`lib/core/config/supabase_config.dart`); para apontar para outro projeto, sobrescreva via `--dart-define`:
+On the web, `--flavor` is not used:
 
 ```bash
-flutter run --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_PUBLISHABLE_KEY=...
+flutter run -d chrome --dart-define=APP_CLUB=goias
 ```
 
-### Worker (Cloudflare)
+Worker (Cloudflare):
 
 ```bash
 npm install
-npm run dev:worker   # ambiente local
-npm run deploy       # deploy manual, se precisar
+npm run dev:worker
 ```
 
-Na prática o deploy é automático a cada `git push` para a branch principal — normalmente não é preciso rodar `wrangler deploy` manualmente.
-
-## Testes e qualidade
+Checks:
 
 ```bash
 flutter analyze
 flutter test
+npm run test:worker
 ```
 
-```bash
-npm run test:worker   # testes do Worker (Vitest)
-```
+More detail in [`docs/architecture`](docs/architecture/README.md).
+
+## Project status
+
+In development. Commerce features (tickets, store and membership payments) run in demo mode, without real payments.
+
+## License
+
+No open-source license is granted. The source code is visible as part of a portfolio; all rights are reserved.
+
+Goiás App is an independent product. It does not represent a partnership, contract or official endorsement by Goiás Esporte Clube. The club's name, crest and other marks belong to their respective owners.
+
+## About
+
+Built by Lucas Diogo França. Case study: [lucksrei.com/projects/fan-hub](https://lucksrei.com/projects/fan-hub/)
