@@ -4,3 +4,8 @@
 # do Git for Windows) reescreve LF -> CRLF e quebra esse checksum
 # permanentemente, mesmo com o conteúdo/dado real intacto.
 tooling/passaporte_esmeraldino/source/*.json text eol=lf
+
+# Páginas do ogol.com.br salvas como fonte bruta para os parsers do passaporte
+# do Bragantino (~6 MB). Não são código do app: sem esta regra o GitHub
+# Linguist conta esses bytes e o repositório aparece com mais HTML que Dart.
+tooling/bragantino_passport/source/*.html linguist-vendored
