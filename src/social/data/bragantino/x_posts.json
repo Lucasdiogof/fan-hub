@@ -1,5 +1,33 @@
 [
   {
+    "tweet_id": "2108322285874819328",
+    "text": "Tarde de reapresentação no CPD! 🏃‍♂️ https://t.co/7ePVC3wxFD",
+    "timestamp": "2026-10-08T22:22:58+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2108322285874819328",
+    "image_links": [
+      "https://pbs.twimg.com/amplify_video_thumb/2108322169792925697/img/_xc4QOvxsloFQzc8.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 67,
+    "retweets": 8,
+    "comments": 5
+  },
+  {
+    "tweet_id": "2108274183411323191",
+    "text": "No pódio da Hooray Cup! 🥉\n\nOs #CriasDoBraga, do sub-16, encerram a participação na competição, disputada na China, com a terceira colocação.\n\n📸 Divulgação / Hooray Cup https://t.co/VB0lIml6Xa",
+    "timestamp": "2026-10-08T19:11:49+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2108274183411323191",
+    "image_links": [
+      "https://pbs.twimg.com/media/HUIYMYLXYAAzbHW.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 7,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
     "tweet_id": "2108211453505548758",
     "text": "Segunda-feira, voltamos a campo contra o Cruzeiro. https://t.co/SKauoPny4f",
     "timestamp": "2026-10-08T15:02:33+00:00",
@@ -9,9 +37,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 0
+    "likes": 19,
+    "retweets": 1,
+    "comments": 2
   },
   {
     "tweet_id": "2107992025882853609",
@@ -23,7 +51,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 13,
+    "likes": 22,
     "retweets": 3,
     "comments": 18
   },
@@ -71,7 +99,7 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 7,
+    "likes": 12,
     "retweets": 0,
     "comments": 8
   },
@@ -83,7 +111,7 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 3,
+    "likes": 4,
     "retweets": 1,
     "comments": 1
   },
@@ -109,8 +137,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 12,
-    "retweets": 1,
+    "likes": 15,
+    "retweets": 0,
     "comments": 2
   },
   {
@@ -123,7 +151,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 3,
+    "likes": 4,
     "retweets": 0,
     "comments": 2
   },
@@ -199,8 +227,8 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 3,
-    "retweets": 0,
+    "likes": 5,
+    "retweets": 1,
     "comments": 6
   },
   {
@@ -211,7 +239,7 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 6,
+    "likes": 5,
     "retweets": 0,
     "comments": 2
   },
@@ -226,31 +254,5 @@
     "likes": 5,
     "retweets": 0,
     "comments": 3
-  },
-  {
-    "tweet_id": "2107963756835938430",
-    "text": "Quase um gol olímpico aqui no Cícero, hein?! \nWalter tirou por pouco!\n\n⏰ 07’ 1T | (0x0)\n#RBBxMIR\n#RedBullBragantino",
-    "timestamp": "2026-10-07T22:38:18+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2107963756835938430",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 3,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2107961838155575590",
-    "text": "COMEEEEEEEEEEEÇA O JOGO! 🔥\n\nVAMOS, MASSA BRUTA! SÓ A VITÓRIA INTERESSA! \n\n#RBBxMIR\n#RedBullBragantino https://t.co/dmprumU0b3",
-    "timestamp": "2026-10-07T22:30:40+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2107961838155575590",
-    "image_links": [
-      "https://pbs.twimg.com/media/HUD8BiQWUAAn1vT.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 8,
-    "retweets": 0,
-    "comments": 0
   }
 ]
