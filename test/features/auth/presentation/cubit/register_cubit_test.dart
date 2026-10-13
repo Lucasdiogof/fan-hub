@@ -12,6 +12,7 @@ import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   AuthUser? user;
+  // ignore: close_sinks
   final _events = StreamController<AuthSessionEvent>.broadcast();
 
   Result<bool> isCpfTakenResult = const Success(false);

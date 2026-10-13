@@ -47,7 +47,7 @@ pw.Widget teamPdfBadge({required ClubConfig clubConfig, double size = 44}) {
 
 PdfColor _legiblePdfTextColor(Color background) {
   return background.computeLuminance() > 0.55
-      ? PdfColor.fromInt(0xFF14181B)
+      ? const PdfColor.fromInt(0xFF14181B)
       : PdfColors.white;
 }
 

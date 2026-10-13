@@ -128,7 +128,7 @@ Future<void> main() async {
 
         if (response.statusCode < 200 || response.statusCode >= 300) {
           stderr.writeln('HTTP ${response.statusCode}');
-          await response.drain();
+          await response.drain<void>();
           continue;
         }
 

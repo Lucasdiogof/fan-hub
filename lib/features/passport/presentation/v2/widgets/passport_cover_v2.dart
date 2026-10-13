@@ -100,15 +100,15 @@ class PassportCoverV2 extends StatelessWidget {
                   bottom: -46,
                   child: Opacity(
                     opacity: levelStyle.watermarkOpacity,
-                    child: ColorFiltered(
-                      colorFilter: const ColorFilter.mode(
+                    child: const ColorFiltered(
+                      colorFilter: ColorFilter.mode(
                         Colors.white,
                         BlendMode.srcIn,
                       ),
                       // `ClubBadge.activeClub` (não `StyledTeamBadge`
                       // direto) de propósito: mantém o rollback de
                       // `useStyledTeamBadges` funcionando aqui também.
-                      child: const ClubBadge.activeClub(size: 150),
+                      child: ClubBadge.activeClub(size: 150),
                     ),
                   ),
                 ),

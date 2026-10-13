@@ -48,6 +48,7 @@ TicketEvent _buildEvent() {
 
 class _FakeAuthRepository implements AuthRepository {
   AuthUser? user;
+  // ignore: close_sinks
   final _events = StreamController<AuthSessionEvent>.broadcast();
 
   @override

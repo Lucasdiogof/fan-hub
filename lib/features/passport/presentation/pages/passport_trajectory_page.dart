@@ -514,13 +514,13 @@ class _TrajectoryCard extends StatelessWidget {
           // toque). `ClubBadge.activeClub` (não `StyledTeamBadge` direto)
           // de propósito: mantém o rollback de `useStyledTeamBadges`
           // funcionando aqui também.
-          Positioned(
+          const Positioned(
             top: 4,
             right: AppSpacing.lg,
             child: IgnorePointer(
               child: Opacity(
                 opacity: 0.22,
-                child: const ClubBadge.activeClub(size: 84),
+                child: ClubBadge.activeClub(size: 84),
               ),
             ),
           ),

@@ -100,8 +100,9 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
       ),
     );
     final stateName = address.state;
-    if (stateName != null && stateName.isNotEmpty)
+    if (stateName != null && stateName.isNotEmpty) {
       unawaited(_loadCities(stateName));
+    }
   }
 
   void _updateField(

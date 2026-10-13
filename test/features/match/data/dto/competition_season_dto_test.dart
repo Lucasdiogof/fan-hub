@@ -18,9 +18,9 @@ void main() {
             'type': 'LEAGUE_TABLE',
             'status': 'ACTIVE',
             'isCurrent': true,
-            'standings': [],
-            'groups': [],
-            'rounds': [],
+            'standings': <Object?>[],
+            'groups': <Object?>[],
+            'rounds': <Object?>[],
           },
         ],
       });
