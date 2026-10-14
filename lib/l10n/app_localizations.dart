@@ -3702,7 +3702,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgotSentDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Se este e-mail tiver uma conta no aplicativo do {club}, você vai receber um link de redefinição em instantes:'**
+  /// **'Se este e-mail tiver uma conta no aplicativo do {club}, enviamos um código de 6 dígitos para:'**
   String forgotSentDescription(String club);
 
   /// No description provided for @forgotNotReceived.
@@ -3714,7 +3714,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgotResendSuccess.
   ///
   /// In pt, this message translates to:
-  /// **'Se a conta existir, reenviamos o e-mail.'**
+  /// **'Se a conta existir, reenviamos o código.'**
   String get forgotResendSuccess;
 
   /// No description provided for @commonGotIt.
@@ -3732,13 +3732,13 @@ abstract class AppLocalizations {
   /// No description provided for @forgotSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Digite seu e-mail para receber o link de redefinição.'**
+  /// **'Digite seu e-mail para receber um código de 6 dígitos.'**
   String get forgotSubtitle;
 
   /// No description provided for @forgotSendButton.
   ///
   /// In pt, this message translates to:
-  /// **'Enviar link'**
+  /// **'Enviar código'**
   String get forgotSendButton;
 
   /// No description provided for @forgotSending.

@@ -71,6 +71,11 @@ class AuthCubit extends Cubit<AuthState> {
   Future<Result<void>> sendPasswordReset(String email) =>
       _repository.sendPasswordReset(email);
 
+  Future<Result<void>> verifyRecoveryOtp({
+    required String email,
+    required String token,
+  }) => _repository.verifyRecoveryOtp(email: email, token: token);
+
   Future<Result<void>> resendConfirmation(String email) =>
       _repository.resendConfirmationEmail(email);
 

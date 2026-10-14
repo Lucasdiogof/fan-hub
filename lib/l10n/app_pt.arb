@@ -1301,18 +1301,18 @@
   "resetPasswordSuccessTitle": "Senha alterada com sucesso",
   "resetPasswordSuccessMessage": "Sua senha foi atualizada. Entre novamente para continuar.",
   "forgotVerifyEmailTitle": "Confira seu e-mail",
-  "forgotSentDescription": "Se este e-mail tiver uma conta no aplicativo do {club}, você vai receber um link de redefinição em instantes:",
+  "forgotSentDescription": "Se este e-mail tiver uma conta no aplicativo do {club}, enviamos um código de 6 dígitos para:",
   "@forgotSentDescription": {
     "placeholders": {
       "club": { "type": "String" }
     }
   },
   "forgotNotReceived": "Não recebeu?",
-  "forgotResendSuccess": "Se a conta existir, reenviamos o e-mail.",
+  "forgotResendSuccess": "Se a conta existir, reenviamos o código.",
   "commonGotIt": "Entendi",
   "forgotTitle": "Recuperar senha",
-  "forgotSubtitle": "Digite seu e-mail para receber o link de redefinição.",
-  "forgotSendButton": "Enviar link",
+  "forgotSubtitle": "Digite seu e-mail para receber um código de 6 dígitos.",
+  "forgotSendButton": "Enviar código",
   "forgotSending": "Enviando...",
   "authShowPassword": "Mostrar senha",
   "authHidePassword": "Ocultar senha",

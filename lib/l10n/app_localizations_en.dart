@@ -2129,7 +2129,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String forgotSentDescription(String club) {
-    return 'If this email has an account with the $club app, you\'ll receive a reset link shortly:';
+    return 'If this email has an account with the $club app, we sent a 6-digit code to:';
   }
 
   @override
@@ -2137,7 +2137,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forgotResendSuccess =>
-      'If the account exists, we resent the email.';
+      'If the account exists, we resent the code.';
 
   @override
   String get commonGotIt => 'Got it';
@@ -2146,10 +2146,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotTitle => 'Recover password';
 
   @override
-  String get forgotSubtitle => 'Enter your email to get the reset link.';
+  String get forgotSubtitle => 'Enter your email to get a 6-digit code.';
 
   @override
-  String get forgotSendButton => 'Send link';
+  String get forgotSendButton => 'Send code';
 
   @override
   String get forgotSending => 'Sending...';

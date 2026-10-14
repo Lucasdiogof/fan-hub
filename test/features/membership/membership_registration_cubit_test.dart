@@ -93,6 +93,12 @@ class _FakeAuthRepository implements AuthRepository {
   Future<Result<void>> signOut() async => const Success(null);
 
   @override
+  Future<Result<void>> verifyRecoveryOtp({
+    required String email,
+    required String token,
+  }) async => const Success(null);
+
+  @override
   Future<Result<void>> sendPasswordReset(String email) async =>
       const Success(null);
 

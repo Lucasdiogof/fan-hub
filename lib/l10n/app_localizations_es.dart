@@ -2133,7 +2133,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String forgotSentDescription(String club) {
-    return 'Si este correo tiene una cuenta en la app de $club, recibirás un enlace de restablecimiento en breve:';
+    return 'Si este correo tiene una cuenta en la app de $club, enviamos un código de 6 dígitos a:';
   }
 
   @override
@@ -2141,7 +2141,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get forgotResendSuccess =>
-      'Si la cuenta existe, reenviamos el correo.';
+      'Si la cuenta existe, reenviamos el código.';
 
   @override
   String get commonGotIt => 'Entendido';
@@ -2151,10 +2151,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get forgotSubtitle =>
-      'Escribe tu correo para recibir el enlace de restablecimiento.';
+      'Escribe tu correo para recibir un código de 6 dígitos.';
 
   @override
-  String get forgotSendButton => 'Enviar enlace';
+  String get forgotSendButton => 'Enviar código';
 
   @override
   String get forgotSending => 'Enviando...';

@@ -62,6 +62,14 @@ abstract interface class AuthRepository {
 
   Future<Result<void>> sendPasswordReset(String email);
 
+  /// Valida o código de 6 dígitos da recuperação de senha (`{{ .Token }}` do
+  /// template "Reset password"). Sucesso abre sessão e emite
+  /// [AuthSessionEvent.passwordRecovery] (o router leva a `/reset-password`).
+  Future<Result<void>> verifyRecoveryOtp({
+    required String email,
+    required String token,
+  });
+
   Future<Result<void>> resendConfirmationEmail(String email);
 
   Future<Result<void>> updatePassword(String newPassword);

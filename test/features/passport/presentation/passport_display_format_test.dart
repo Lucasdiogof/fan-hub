@@ -4,17 +4,11 @@ import 'package:goias_app/features/passport/presentation/passport_display_format
 void main() {
   group('shortCompetitionLabel', () {
     test('encurta Campeonato Brasileiro Série B para Série B', () {
-      expect(
-        shortCompetitionLabel('Campeonato Brasileiro Série B'),
-        'Série B',
-      );
+      expect(shortCompetitionLabel('Campeonato Brasileiro Série B'), 'Série B');
     });
 
     test('encurta Campeonato Brasileiro Série A para Série A', () {
-      expect(
-        shortCompetitionLabel('Campeonato Brasileiro Série A'),
-        'Série A',
-      );
+      expect(shortCompetitionLabel('Campeonato Brasileiro Série A'), 'Série A');
     });
 
     test('mantém competições sem prefixo Campeonato Brasileiro intactas', () {

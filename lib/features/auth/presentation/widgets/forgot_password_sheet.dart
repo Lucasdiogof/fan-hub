@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -15,7 +17,15 @@ import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:goias_app/features/auth/presentation/widgets/otp_code_field.dart';
 
+const _otpLength = 6;
+const _resendCooldownSeconds = 60;
+
+/// Recuperação de senha por código de 6 dígitos (`{{ .Token }}` do template
+/// "Reset password"), nunca por link: e-mail → código → `verifyOTP(recovery)`.
+/// Sucesso abre sessão e o SDK emite `passwordRecovery`; o router leva a
+/// `/reset-password` (nova senha) e esta sheet só precisa se fechar.
 class ForgotPasswordSheet extends StatefulWidget {
   const ForgotPasswordSheet({super.key});
 
@@ -46,10 +56,54 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
   bool _resendDone = false;
   Failure? _resendError;
 
+  String _code = '';
+  bool _verifying = false;
+  Failure? _verifyError;
+  Timer? _cooldownTimer;
+  int _cooldown = 0;
+
   @override
   void dispose() {
+    _cooldownTimer?.cancel();
     _emailController.dispose();
     super.dispose();
+  }
+
+  void _startCooldown() {
+    setState(() => _cooldown = _resendCooldownSeconds);
+    _cooldownTimer?.cancel();
+    _cooldownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted || _cooldown <= 1) {
+        timer.cancel();
+        if (mounted) setState(() => _cooldown = 0);
+      } else {
+        setState(() => _cooldown -= 1);
+      }
+    });
+  }
+
+  Future<void> _verify() async {
+    if (_code.length != _otpLength || _verifying) return;
+    setState(() {
+      _verifying = true;
+      _verifyError = null;
+    });
+    final result = await context.read<AuthCubit>().verifyRecoveryOtp(
+      email: _sentEmail,
+      token: _code,
+    );
+    if (!mounted) return;
+    switch (result) {
+      case Success<void>():
+        // Sessão aberta: o router já redireciona pra /reset-password.
+        Navigator.of(context).pop();
+      case Error<void>(:final failure):
+        setState(() {
+          _verifying = false;
+          _verifyError = failure;
+          _code = '';
+        });
+    }
   }
 
   void _onEmailChanged(String value) {
@@ -79,13 +133,14 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           _sent = true;
           _sentEmail = email;
         });
+        _startCooldown();
       case Error<void>(:final failure):
         setState(() => _formError = failure);
     }
   }
 
   Future<void> _resend() async {
-    if (_resending) return;
+    if (_resending || _cooldown > 0) return;
     setState(() {
       _resending = true;
       _resendDone = false;
@@ -100,10 +155,17 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
       switch (result) {
         case Success<void>():
           _resendDone = true;
+          _verifyError = null;
         case Error<void>(:final failure):
           _resendError = failure;
       }
     });
+    if (result is Success<void>) {
+      _startCooldown();
+      ScaffoldMessenger.maybeOf(
+        context,
+      )?.showSnackBar(SnackBar(content: Text(context.l10n.checkEmailResent)));
+    }
   }
 
   @override
@@ -214,15 +276,33 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           ),
         ),
         const SizedBox(height: AppSpacing.xxl),
+        const SizedBox(height: AppSpacing.xl),
+        AuthErrorBanner(
+          message: _verifyError == null
+              ? null
+              : localizeAuthFailure(_verifyError!, l10n),
+        ),
+        OtpCodeField(
+          length: _otpLength,
+          value: _code,
+          onChanged: (value) => setState(() {
+            _code = value;
+            _verifyError = null;
+          }),
+          onSubmitted: _verify,
+        ),
+        const SizedBox(height: AppSpacing.xxl),
         AppPrimaryButton(
-          label: l10n.commonGotIt,
-          onPressed: () => Navigator.of(context).pop(),
+          label: l10n.checkEmailConfirmButton,
+          loading: _verifying,
+          onPressed: _code.length == _otpLength && !_verifying ? _verify : null,
         ),
         const SizedBox(height: AppSpacing.lg),
         _ResendAction(
           resending: _resending,
           done: _resendDone,
           error: _resendError,
+          cooldown: _cooldown,
           onResend: _resend,
         ),
       ],
@@ -288,12 +368,14 @@ class _ResendAction extends StatelessWidget {
     required this.resending,
     required this.done,
     required this.error,
+    required this.cooldown,
     required this.onResend,
   });
 
   final bool resending;
   final bool done;
   final Failure? error;
+  final int cooldown;
   final VoidCallback onResend;
 
   @override
@@ -306,6 +388,13 @@ class _ResendAction extends StatelessWidget {
         localizeAuthFailure(error!, l10n),
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 13, color: colors.error),
+      );
+    }
+    if (cooldown > 0) {
+      return Text(
+        l10n.checkEmailResendIn(cooldown),
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 13, color: colors.textSecondary),
       );
     }
     if (done) {

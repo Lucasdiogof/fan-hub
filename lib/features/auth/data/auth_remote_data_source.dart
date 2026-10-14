@@ -77,8 +77,24 @@ class AuthRemoteDataSource {
 
   Future<void> signOut() => _client.auth.signOut();
 
-  Future<void> sendPasswordReset(String email, {String? redirectTo}) {
-    return _client.auth.resetPasswordForEmail(email, redirectTo: redirectTo);
+  /// Sem `redirectTo`: a recuperação é por código de 6 dígitos (`{{ .Token }}`
+  /// do template "Reset password"), nunca por link/deep link/PKCE.
+  Future<void> sendPasswordReset(String email) {
+    return _client.auth.resetPasswordForEmail(email);
+  }
+
+  /// `type: OtpType.recovery` — sucesso abre sessão e o SDK emite
+  /// `AuthChangeEvent.passwordRecovery`, que o router já traduz em
+  /// `/reset-password` (a nova senha é salva com [updatePassword]).
+  Future<AuthResponse> verifyRecoveryOtp({
+    required String email,
+    required String token,
+  }) {
+    return _client.auth.verifyOTP(
+      email: email,
+      token: token,
+      type: OtpType.recovery,
+    );
   }
 
   Future<void> resendConfirmation(String email) {

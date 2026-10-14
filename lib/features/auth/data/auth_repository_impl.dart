@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/error/auth_error_code.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -190,10 +189,20 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<void>> sendPasswordReset(String email) async {
     try {
-      await _dataSource.sendPasswordReset(
-        email,
-        redirectTo: SupabaseConfig.redirectUrl,
-      );
+      await _dataSource.sendPasswordReset(email);
+      return const Success(null);
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
+    }
+  }
+
+  @override
+  Future<Result<void>> verifyRecoveryOtp({
+    required String email,
+    required String token,
+  }) async {
+    try {
+      await _dataSource.verifyRecoveryOtp(email: email, token: token);
       return const Success(null);
     } catch (error, stackTrace) {
       return Error(mapAuthError(error, stackTrace));

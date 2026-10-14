@@ -642,18 +642,21 @@ void main() {
       },
     );
 
-    test('com ticketsContent (Goiás) -> setores reais do próprio clube', () async {
-      final client = await _authedClient(httpClient);
-      final repo = MockTicketRepository(
-        client,
-        _FakeFootballRepository(_fakeMatch),
-        goiasClubConfig,
-      );
-      final result = await repo.getFeaturedEvent();
-      final event = (result as Success<TicketEvent?>).data;
-      expect(event, isNotNull);
-      expect(event!.info.sectors, GoiasTicketContent.content.sectors);
-    });
+    test(
+      'com ticketsContent (Goiás) -> setores reais do próprio clube',
+      () async {
+        final client = await _authedClient(httpClient);
+        final repo = MockTicketRepository(
+          client,
+          _FakeFootballRepository(_fakeMatch),
+          goiasClubConfig,
+        );
+        final result = await repo.getFeaturedEvent();
+        final event = (result as Success<TicketEvent?>).data;
+        expect(event, isNotNull);
+        expect(event!.info.sectors, GoiasTicketContent.content.sectors);
+      },
+    );
   });
 
   group(

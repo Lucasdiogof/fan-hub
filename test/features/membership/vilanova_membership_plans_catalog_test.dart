@@ -146,10 +146,7 @@ void main() {
     test(
       'Goiás/Bragantino continuam sem externalCheckoutUrl (fluxo interno demo preservado)',
       () {
-        expect(
-          goiasClubConfig.membershipProgram.externalCheckoutUrl,
-          isNull,
-        );
+        expect(goiasClubConfig.membershipProgram.externalCheckoutUrl, isNull);
       },
     );
   });
