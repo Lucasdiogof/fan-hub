@@ -2401,5 +2401,15 @@
   "tacticalQ10A": "Primeiro vem a nossa maneira de jogar; depois pensamos no adversário.",
   "tacticalQ10B": "Os princípios permanecem, mas esquema e estratégia podem mudar.",
   "tacticalQ10C": "Chegar ao gol rapidamente vale mais do que ter a bola por ter.",
-  "tacticalQ10D": "O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival."
+  "tacticalQ10D": "O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival.",
+  "commonOfflineMessage": "Sem conexão com a internet.",
+  "commonSavedContentNotice": "Mostrando conteúdo salvo em {date}. Pode estar desatualizado.",
+  "@commonSavedContentNotice": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "commonOfflineNoSavedContent": "Conteúdo ainda não disponível offline. Conecte-se para carregar."
 }

@@ -12,6 +12,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/saved_content_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// Transparência do clube — tópicos expansíveis (exercícios contábeis,
@@ -68,7 +69,12 @@ class _ClubTransparencyView extends StatelessWidget {
                       child: StateMessage(
                         icon: Icons.wifi_off_rounded,
                         title: context.l10n.clubTransparencyLoadErrorTitle,
-                        message: state.errorMessage,
+                        message: state.isOffline
+                            ? context.l10n.commonOfflineMessage
+                            : state.errorMessage,
+                        actionLabel: context.l10n.commonRetry,
+                        onAction: () =>
+                            context.read<ClubTransparencyCubit>().load(),
                       ),
                     ),
                   ),
@@ -82,7 +88,14 @@ class _ClubTransparencyView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  LoadStatus.success => _TopicList(topics: state.topics),
+                  LoadStatus.success => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (state.cachedAt case final savedAt?)
+                        SavedContentBanner(savedAt: savedAt),
+                      _TopicList(topics: state.topics),
+                    ],
+                  ),
                 },
               ),
             ),

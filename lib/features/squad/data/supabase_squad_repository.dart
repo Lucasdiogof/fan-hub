@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:goias_app/core/cache/json_snapshot_cache.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/error/connectivity_error.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/squad/domain/repositories/squad_repository.dart';
@@ -13,10 +15,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// mecanismo `ClubScopedFallback`/`ClubDataUnavailableException` das
 /// outras 4 tabelas de conteúdo).
 class SupabaseSquadRepository implements SquadRepository {
-  SupabaseSquadRepository(this._client, this._clubConfig);
+  SupabaseSquadRepository(
+    this._client,
+    this._clubConfig, {
+    this._cache = const JsonSnapshotCache(),
+  });
 
   final SupabaseClient _client;
   final ClubConfig _clubConfig;
+  final JsonSnapshotCache _cache;
+
+  String get _cacheKey => 'squad:${_clubConfig.identity.canonicalClubId}';
 
   @override
   Future<Result<List<SquadMember>>> getSquad() async {
@@ -30,10 +39,26 @@ class SupabaseSquadRepository implements SquadRepository {
       final members = rows
           .map((row) => SquadMember.fromJson(row))
           .toList(growable: false);
+      await _cache.write(_cacheKey, rows);
       return Success(members);
     } catch (error, stackTrace) {
-      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-      return const Error(ServerFailure('Não foi possível carregar o elenco.'));
+      if (!isConnectivityError(error)) {
+        unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      }
+      final snapshot = await _cache.read(_cacheKey);
+      if (snapshot != null) {
+        try {
+          final members = (snapshot.payload as List<dynamic>)
+              .map((row) => SquadMember.fromJson(row as Map<String, dynamic>))
+              .toList(growable: false);
+          return Success(members, cachedAt: snapshot.savedAt);
+        } catch (_) {}
+      }
+      return Error(
+        isConnectivityError(error)
+            ? const NetworkFailure('Sem conexão com a internet.')
+            : const ServerFailure('Não foi possível carregar o elenco.'),
+      );
     }
   }
 }

@@ -1630,5 +1630,15 @@
   "tacticalQ10A": "Our way of playing comes first; the opponent comes after.",
   "tacticalQ10B": "The principles hold, but the shape and the plan can change.",
   "tacticalQ10C": "Reaching the goal quickly is worth more than having the ball for its own sake.",
-  "tacticalQ10D": "The best football is the one that suits our players and hurts their weaknesses."
+  "tacticalQ10D": "The best football is the one that suits our players and hurts their weaknesses.",
+  "commonOfflineMessage": "No internet connection.",
+  "commonSavedContentNotice": "Showing content saved on {date}. It may be out of date.",
+  "@commonSavedContentNotice": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "commonOfflineNoSavedContent": "Content not available offline yet. Connect to load it."
 }

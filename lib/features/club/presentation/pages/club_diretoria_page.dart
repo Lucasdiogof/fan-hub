@@ -10,6 +10,7 @@ import 'package:goias_app/features/club/presentation/cubit/club_board_state.dart
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/saved_content_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// Diretoria do clube — Supabase é a fonte da verdade (ver `club_board.sql`
@@ -64,7 +65,11 @@ class _ClubDiretoriaView extends StatelessWidget {
                       child: StateMessage(
                         icon: Icons.wifi_off_rounded,
                         title: context.l10n.clubBoardLoadErrorTitle,
-                        message: state.errorMessage,
+                        message: state.isOffline
+                            ? context.l10n.commonOfflineMessage
+                            : state.errorMessage,
+                        actionLabel: context.l10n.commonRetry,
+                        onAction: () => context.read<ClubBoardCubit>().load(),
                       ),
                     ),
                   ),
@@ -78,7 +83,14 @@ class _ClubDiretoriaView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  LoadStatus.success => _BoardList(sections: state.sections),
+                  LoadStatus.success => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (state.cachedAt case final savedAt?)
+                        SavedContentBanner(savedAt: savedAt),
+                      _BoardList(sections: state.sections),
+                    ],
+                  ),
                 },
               ),
             ),

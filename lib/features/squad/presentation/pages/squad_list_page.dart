@@ -13,6 +13,7 @@ import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/saved_content_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
@@ -78,7 +79,11 @@ class _SquadListView extends StatelessWidget {
                       child: StateMessage(
                         icon: Icons.wifi_off_rounded,
                         title: context.l10n.squadLoadError,
-                        message: state.errorMessage,
+                        message: state.isOffline
+                            ? context.l10n.commonOfflineMessage
+                            : state.errorMessage,
+                        actionLabel: context.l10n.commonRetry,
+                        onAction: () => context.read<SquadCubit>().load(),
                       ),
                     ),
                   ),
@@ -93,6 +98,8 @@ class _SquadListView extends StatelessWidget {
                   ),
                   LoadStatus.success => Column(
                     children: [
+                      if (state.cachedAt case final savedAt?)
+                        SavedContentBanner(savedAt: savedAt),
                       for (final group in positionGroupOrder)
                         _PositionGroupSection(
                           title: positionGroupLabel(group, context.l10n),

@@ -4512,4 +4512,16 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get tacticalQ10D =>
       'O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival.';
+
+  @override
+  String get commonOfflineMessage => 'Sem conexão com a internet.';
+
+  @override
+  String commonSavedContentNotice(String date) {
+    return 'Mostrando conteúdo salvo em $date. Pode estar desatualizado.';
+  }
+
+  @override
+  String get commonOfflineNoSavedContent =>
+      'Conteúdo ainda não disponível offline. Conecte-se para carregar.';
 }

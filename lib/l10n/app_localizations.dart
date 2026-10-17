@@ -7718,6 +7718,24 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival.'**
   String get tacticalQ10D;
+
+  /// No description provided for @commonOfflineMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem conexão com a internet.'**
+  String get commonOfflineMessage;
+
+  /// No description provided for @commonSavedContentNotice.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mostrando conteúdo salvo em {date}. Pode estar desatualizado.'**
+  String commonSavedContentNotice(String date);
+
+  /// No description provided for @commonOfflineNoSavedContent.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conteúdo ainda não disponível offline. Conecte-se para carregar.'**
+  String get commonOfflineNoSavedContent;
 }
 
 class _AppLocalizationsDelegate
