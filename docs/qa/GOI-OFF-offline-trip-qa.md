@@ -35,4 +35,5 @@ já falhavam rápido — por isso mostravam o erro.
   erro + "Tentar novamente"); confirmar no aparelho.
 - Arena/Desafios: o overlay (`GlobalLoading`) agora termina pelo timeout das
   consultas; jogos sem cache de perguntas mostram erro ao tocar. Confirmar.
-- Fotos de jogadores/diretoria vêm de URL: sem rede podem não aparecer.
+- Fotos remotas (diretoria, elenco, ídolos, escalações, notícias, parceiros) agora usam `ClubNetworkImage` (cache em disco): só aparecem offline se já foram vistas com internet; senão mostram iniciais/número.
+- Arena: quiz, escalação, carreira e adivinhe o jogador têm fallback embarcado do Goiás e armazenamento local com `catch`; o ranking (Supabase) mostra erro offline. Não verificado em aparelho.

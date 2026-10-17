@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/partners/domain/entities/partner.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Card de parceiro reutilizado tanto na grid completa (PartnersPage)
 /// quanto no carrossel discreto da Home — só [logoHeight]/[padding] mudam
@@ -75,13 +76,13 @@ class _PartnerLogo extends StatelessWidget {
     }
     final logoUrl = partner.logoUrl;
     if (logoUrl != null) {
-      return Image.network(
-        logoUrl,
+      return ClubNetworkImage(
+        url: logoUrl,
         fit: BoxFit.contain,
-        errorBuilder: (context, _, _) =>
-            _PartnerNameFallback(name: partner.name, onDark: partner.lightLogo),
-        loadingBuilder: (context, child, progress) =>
-            progress == null ? child : const SizedBox.shrink(),
+        fallback: _PartnerNameFallback(
+          name: partner.name,
+          onDark: partner.lightLogo,
+        ),
       );
     }
     return _PartnerNameFallback(name: partner.name, onDark: partner.lightLogo);

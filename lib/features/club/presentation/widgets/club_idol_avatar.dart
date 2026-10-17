@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Foto real quando existe asset; caso contrário, iniciais sobre a cor
 /// secundária do clube — mesma linguagem do avatar da Diretoria. NUNCA uma
@@ -42,14 +43,13 @@ class ClubIdolAvatar extends StatelessWidget {
       // Foto do elenco atual (CDN oficial do clube) — mesmo padrão de
       // `SquadAvatar`/`GuessBlurredPhoto`: [photoAsset] pode ser um asset
       // local (histórico) ou uma URL remota (jogador ainda no elenco).
-      image = Image.network(
-        asset,
+      image = ClubNetworkImage(
+        url: asset,
         width: size,
         height: size,
-        fit: BoxFit.cover,
         // Fotos do elenco são retratos altos: o rosto fica no terço superior.
         alignment: const Alignment(0, -0.6),
-        errorBuilder: (context, error, stackTrace) => initials,
+        fallback: initials,
       );
     } else {
       image = Image.asset(

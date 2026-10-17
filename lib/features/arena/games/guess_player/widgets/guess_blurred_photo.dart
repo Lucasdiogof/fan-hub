@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 bool _isNetworkUrl(String value) =>
     value.startsWith('http://') || value.startsWith('https://');
@@ -85,12 +86,12 @@ class _GuessBlurredPhotoState extends State<GuessBlurredPhoto>
           child: AnimatedBuilder(
             animation: _sigmaAnimation,
             child: _isNetworkUrl(widget.imageUrl)
-                ? Image.network(
-                    widget.imageUrl,
-                    fit: BoxFit.cover,
+                ? ClubNetworkImage(
+                    url: widget.imageUrl,
                     alignment: const Alignment(0, -0.85),
                     width: double.infinity,
                     height: double.infinity,
+                    fallback: const SizedBox.shrink(),
                   )
                 : Image.asset(
                     widget.imageUrl,

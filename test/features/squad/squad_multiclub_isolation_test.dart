@@ -15,6 +15,7 @@ import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/squad/domain/position_groups.dart';
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 import '../../core/club/synthetic_club_config.dart';
 
@@ -207,11 +208,10 @@ void main() {
       );
 
       expect(tester.takeException(), isNull);
-      final image = tester.widget<Image>(find.byType(Image));
-      expect(
-        (image.image as NetworkImage).url,
-        'https://img.redbullbragantino.com/foto.jpg',
+      final image = tester.widget<ClubNetworkImage>(
+        find.byType(ClubNetworkImage),
       );
+      expect(image.url, 'https://img.redbullbragantino.com/foto.jpg');
     });
 
     testWidgets(
@@ -253,9 +253,11 @@ void main() {
       );
 
       expect(tester.takeException(), isNull);
-      final image = tester.widget<Image>(find.byType(Image));
+      final image = tester.widget<ClubNetworkImage>(
+        find.byType(ClubNetworkImage),
+      );
       expect(
-        (image.image as NetworkImage).url,
+        image.url,
         'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.png',
       );
     });

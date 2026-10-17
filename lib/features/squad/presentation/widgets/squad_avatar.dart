@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Foto do atleta com fallback pro número da camisa — nunca quebra a lista
 /// se a imagem falhar ou não existir. Prioriza a foto embutida no app
@@ -44,15 +45,12 @@ class SquadAvatar extends StatelessWidget {
     if (url == null || url.isEmpty) return fallback;
 
     return ClipOval(
-      child: Image.network(
-        url,
+      child: ClubNetworkImage(
+        url: url,
         width: size,
         height: size,
-        fit: BoxFit.cover,
         alignment: Alignment.topCenter,
-        errorBuilder: (context, _, _) => fallback,
-        loadingBuilder: (context, child, progress) =>
-            progress == null ? child : fallback,
+        fallback: fallback,
       ),
     );
   }

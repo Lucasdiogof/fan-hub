@@ -8,6 +8,7 @@ import 'package:goias_app/features/match/presentation/widgets/match_tab_empty_st
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Aba ESCALAÇÕES: um seletor com o nome dos dois times (mandante e
 /// visitante) e, embaixo, o time escolhido num campo — as linhas da formação
@@ -264,14 +265,11 @@ class _PlayerSpot extends StatelessWidget {
                     ),
                   ),
                   child: ClipOval(
-                    child: Image.network(
-                      proxiedImageUrl(player.photo),
+                    child: ClubNetworkImage(
+                      url: proxiedImageUrl(player.photo),
                       width: _photo,
                       height: _photo,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, _, _) => fallback,
-                      loadingBuilder: (context, child, progress) =>
-                          progress == null ? child : fallback,
+                      fallback: fallback,
                     ),
                   ),
                 ),

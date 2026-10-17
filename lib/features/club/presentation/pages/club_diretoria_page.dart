@@ -12,6 +12,7 @@ import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/saved_content_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Diretoria do clube — Supabase é a fonte da verdade (ver `club_board.sql`
 /// e `SupabaseClubBoardRepository`), então nome/cargo/seção atualizados lá
@@ -215,12 +216,11 @@ class _InitialsAvatar extends StatelessWidget {
         alignment: Alignment.center,
         color: colors.secondary,
         child: url != null && url.isNotEmpty
-            ? Image.network(
-                url,
+            ? ClubNetworkImage(
+                url: url,
                 width: 44,
                 height: 44,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Text(
+                fallback: Text(
                   _initials,
                   style: TextStyle(
                     fontSize: 14,

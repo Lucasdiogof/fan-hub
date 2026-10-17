@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/crowd_lineup/domain/squad_player.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Avatar do atleta — foto quando houver, com fallback discreto pro número
 /// da camisa (nunca quebra a escalação se a imagem falhar).
@@ -40,14 +41,11 @@ class PlayerAvatar extends StatelessWidget {
     if (url == null || url.isEmpty) return fallback;
 
     return ClipOval(
-      child: Image.network(
-        url,
+      child: ClubNetworkImage(
+        url: url,
         width: size,
         height: size,
-        fit: BoxFit.cover,
-        errorBuilder: (context, _, _) => fallback,
-        loadingBuilder: (context, child, progress) =>
-            progress == null ? child : fallback,
+        fallback: fallback,
       ),
     );
   }

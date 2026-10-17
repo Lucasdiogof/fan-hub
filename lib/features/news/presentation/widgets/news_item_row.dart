@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/relative_time_label.dart';
+import 'package:goias_app/shared/widgets/club_network_image.dart';
 
 /// Item de notícia — imagem + título/categoria/data. Usado tanto no preview
 /// da Home quanto na lista completa, pra manter o mesmo visual nos dois
@@ -46,15 +47,14 @@ class NewsItemRow extends StatelessWidget {
                   height: 93,
                   child: ColoredBox(
                     color: colors.secondary,
-                    child: Image.network(
-                      proxiedImageUrl(item.imageUrl),
-                      fit: BoxFit.cover,
+                    child: ClubNetworkImage(
+                      url: proxiedImageUrl(item.imageUrl),
                       // As artes "Guia da Partida" põem o texto e os dois
                       // escudos perto do rodapé, com uma faixa de topo que
                       // não importa — `bottomCenter` corta a sobra de cima
                       // em vez de esconder justo a parte com informação.
                       alignment: Alignment.bottomCenter,
-                      errorBuilder: (context, error, stackTrace) => Icon(
+                      fallback: Icon(
                         Icons.image_not_supported_outlined,
                         color: colors.textHint,
                         size: 22,
