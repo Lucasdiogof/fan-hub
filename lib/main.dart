@@ -115,6 +115,11 @@ Future<void> main() async {
         // repositório que fala com o Supabase, sem precisar mexer em cada
         // um.
         httpClient: SessionAwareHttpClient(http.Client()),
+        // Padrão do SDK é 3 retentativas com espera de 1s/2s/4s: sem rede
+        // isso soma ~7s de tela esperando ANTES do erro. Com 1 retentativa
+        // (e o teto de 10s por tentativa em `SessionAwareHttpClient`) a
+        // espera máxima é finita e curta; o usuário tem "Tentar novamente".
+        postgrestOptions: const PostgrestClientOptions(retryCount: 1),
       );
       setupDependencies();
       // Lido do build instalado (funciona igual em Web/PWA — mesma fonte já

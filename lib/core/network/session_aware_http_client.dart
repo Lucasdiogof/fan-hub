@@ -24,11 +24,58 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// exatamente esse ponto cego: reage à resposta REAL do servidor, nunca
 /// só ao que o relógio local acha.
 class SessionAwareHttpClient extends http.BaseClient {
-  SessionAwareHttpClient(this._inner, {GoTrueClient Function()? auth})
-    : _auth = auth ?? (() => Supabase.instance.client.auth);
+  SessionAwareHttpClient(
+    this._inner, {
+    GoTrueClient Function()? auth,
+    this.requestTimeout = defaultRequestTimeout,
+  }) : _auth = auth ?? (() => Supabase.instance.client.auth);
 
   final http.Client _inner;
   final GoTrueClient Function() _auth;
+
+  /// Teto de espera por resposta de QUALQUER chamada do Supabase. Sem isso,
+  /// em modo avião / rede que não responde, o `send` do cliente nativo
+  /// pode ficar pendente por minutos — e toda tela que espera um
+  /// repositório (Diretoria, Transparência, Sócio, Arena...) ficava com
+  /// spinner/overlay indefinido (QA offline GOI-OFF-002). Estourado, vira
+  /// `TimeoutException`, que todos os mappers de erro já classificam como
+  /// falha de rede (e a UI mostra "Tentar novamente").
+  final Duration requestTimeout;
+
+  static const defaultRequestTimeout = Duration(seconds: 10);
+
+  /// Upload de arquivo (Storage) manda corpo em stream e pode legitimamente
+  /// levar mais que uma consulta — mesmo assim, nunca infinito.
+  static const _streamedRequestTimeout = Duration(seconds: 90);
+
+  Future<http.StreamedResponse> _guardedSend(
+    http.Client client,
+    http.BaseRequest request,
+  ) {
+    final limit = request is http.Request
+        ? requestTimeout
+        : _streamedRequestTimeout;
+    return client
+        .send(request)
+        .timeout(
+          limit,
+          onTimeout: () => throw TimeoutException(
+            'Sem resposta do servidor em ${limit.inSeconds}s.',
+            limit,
+          ),
+        );
+  }
+
+  Future<http.Response> _guardedFull(http.BaseRequest request) async {
+    final streamed = await _guardedSend(_inner, request);
+    return http.Response.fromStream(streamed).timeout(
+      requestTimeout,
+      onTimeout: () => throw TimeoutException(
+        'Resposta do servidor interrompida.',
+        requestTimeout,
+      ),
+    );
+  }
 
   static const _authPathSegment = '/auth/v1/';
 
@@ -38,7 +85,7 @@ class SessionAwareHttpClient extends http.BaseClient {
     // senão uma falha ao renovar o token viraria uma tentativa de renovar
     // de novo, recursivamente.
     if (request.url.path.contains(_authPathSegment)) {
-      return _inner.send(request);
+      return _guardedAuthSend(request);
     }
 
     // Só sabemos reconstruir, pra tentar de novo, requests com corpo já
@@ -49,12 +96,10 @@ class SessionAwareHttpClient extends http.BaseClient {
     // original ainda chega normal pro mapper de cada repositório, exatamente
     // como já acontecia antes desta classe existir.
     if (request is! http.Request) {
-      return _inner.send(request);
+      return _guardedSend(_inner, request);
     }
 
-    final firstAttempt = await http.Response.fromStream(
-      await _inner.send(request),
-    );
+    final firstAttempt = await _guardedFull(request);
     if (!_looksLikeExpiredJwt(firstAttempt)) {
       return _toStreamedResponse(firstAttempt, request);
     }
@@ -110,10 +155,24 @@ class SessionAwareHttpClient extends http.BaseClient {
     // segunda tentativa também vier com problema (seja lá qual for), o
     // erro sobe normal — nunca um novo ciclo de refresh.
     final retry = _cloneWithFreshToken(request, freshAccessToken);
-    final retryResponse = await http.Response.fromStream(
-      await _inner.send(retry),
-    );
+    final retryResponse = await _guardedFull(retry);
     return _toStreamedResponse(retryResponse, retry);
+  }
+
+  /// O GoTrue só trata como "sem rede, tente depois" o `ClientException`
+  /// (→ `AuthRetryableFetchException`); um `TimeoutException` cru escaparia
+  /// como erro desconhecido. Por isso o Auth converte o estouro de tempo.
+  Future<http.StreamedResponse> _guardedAuthSend(
+    http.BaseRequest request,
+  ) async {
+    try {
+      return await _guardedSend(_inner, request);
+    } on TimeoutException {
+      throw http.ClientException(
+        'Sem resposta do servidor de autenticação.',
+        request.url,
+      );
+    }
   }
 
   bool _looksLikeExpiredJwt(http.Response response) {
