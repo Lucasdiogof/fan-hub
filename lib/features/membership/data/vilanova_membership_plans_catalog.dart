@@ -45,7 +45,11 @@ class VilaNovaMembershipPlansCatalog {
         'Acesso ao Tigrão de Vantagens',
       ],
       prices: [
-        MembershipPlanPrice(label: '', monthlyPrice: 20.00, annualPrice: 220.00),
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 20.00,
+          annualPrice: 220.00,
+        ),
       ],
     ),
     MembershipPlan(
@@ -65,7 +69,11 @@ class VilaNovaMembershipPlansCatalog {
         'Acesso ao Tigrão de Vantagens',
       ],
       prices: [
-        MembershipPlanPrice(label: '', monthlyPrice: 55.00, annualPrice: 605.00),
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 55.00,
+          annualPrice: 605.00,
+        ),
       ],
     ),
     MembershipPlan(

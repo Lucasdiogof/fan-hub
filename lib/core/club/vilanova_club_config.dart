@@ -21,7 +21,6 @@ import 'package:goias_app/features/passport/data/vilanova_passport_content.dart'
 import 'package:goias_app/features/ticket/data/vilanova_ticket_content.dart';
 import 'package:goias_app/features/partners/data/vilanova_partners_data.dart';
 
-// ============================================================================
 // Vila Nova Futebol Clube — 3ª entrada REAL do clubRegistry (F1).
 //
 // Fonte de todo dado aqui: `docs/vila_nova_data/` (pacote de pesquisa,
@@ -40,7 +39,6 @@ import 'package:goias_app/features/partners/data/vilanova_partners_data.dart';
 //   * workerBaseUrl/supabaseRedirectUrl — Worker do Vila criado em
 //     2026-09-30 (F8, `wrangler.vilanova.toml`). Jogos, notícias e redes
 //     ligados (ver `hasNews`/`hasSocial`).
-// ============================================================================
 
 // Cor oficial única do clube, do manual de identidade visual (pág. 9):
 // C0 M93 Y73 K0 / RGB 195,61,65 / #C33D41 / PANTONE 18-1563 TPG. O resto

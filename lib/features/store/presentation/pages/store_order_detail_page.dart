@@ -31,9 +31,8 @@ class StoreOrderDetailPage extends StatelessWidget {
         maxWidth: ContentWidth.detail,
         title: order.id,
         // Vindo do checkout a página é aberta com `go`, sem nada na pilha.
-        onBack: () => context.canPop()
-            ? context.pop()
-            : context.go('/store/orders'),
+        onBack: () =>
+            context.canPop() ? context.pop() : context.go('/store/orders'),
         heroTitle: Row(
           children: [
             Expanded(

@@ -107,9 +107,7 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
       final needed = math.min(optionCount, _minVisibleItems) * _itemHeight;
       final deficit = needed - _spaceBelowField();
       if (deficit <= 1) return;
-      final position = Scrollable.maybeOf(
-        _fieldKey.currentContext!,
-      )?.position;
+      final position = Scrollable.maybeOf(_fieldKey.currentContext!)?.position;
       if (position == null) return;
       final target = math.min(
         position.pixels + deficit,

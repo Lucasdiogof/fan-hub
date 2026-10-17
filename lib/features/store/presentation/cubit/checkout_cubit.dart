@@ -61,10 +61,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   /// endereço de entrega em outra tela (Perfil) e volta pro checkout.
   Future<void> refreshAddresses() => _loadAddresses();
 
-  // ---------------------------------------------------------------------
-  // Etapa 1 — identificação
-  // ---------------------------------------------------------------------
-
   void updateIdentification({
     String? fullName,
     String? cpf,
@@ -80,10 +76,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // Etapa 2 — entrega ou retirada
-  // ---------------------------------------------------------------------
 
   Future<void> setFulfillmentMethod(FulfillmentMethod method) async {
     emit(state.copyWith(fulfillmentMethod: method));
@@ -170,10 +162,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     ),
   );
 
-  // ---------------------------------------------------------------------
-  // Etapa 3 — pagamento simulado
-  // ---------------------------------------------------------------------
-
   void choosePaymentMethod(PaymentMethod method) => emit(
     state.copyWith(
       paymentMethod: method,
@@ -206,10 +194,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // Etapa 4 — revisão / navegação entre etapas
-  // ---------------------------------------------------------------------
 
   void setAcceptedTerms(bool value) =>
       emit(state.copyWith(acceptedTerms: value));

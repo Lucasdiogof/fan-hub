@@ -50,8 +50,6 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     await clearAccountScopedLocalCache();
   });
-
-  // ==========================================================================
   // M3.3 (rodada de hardening) — as chaves reais agora vivem namespaçadas
   // por clube (`<clubCode>:arena_best_<gameId>`, `<clubCode>:guess_player_*`
   // — ver ClubScopedStorageKey). O cleanup precisa continuar limpando TANTO
@@ -59,7 +57,6 @@ void main() {
   // (pré-M3.3, ainda pode existir num aparelho que nunca abriu o app desde
   // a migração) — num único passe, sem depender de saber qual é o clube
   // ativo. Comportamento real de storage, não só checagem de string.
-  // ==========================================================================
   test(
     'remove as variantes namespaçadas por clube (goias: e club-b:) das chaves de jogo',
     () async {

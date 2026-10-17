@@ -1,9 +1,5 @@
 part of '../pages/checkout_page.dart';
 
-// ---------------------------------------------------------------------
-// Etapa 3 — Pagamento simulado
-// ---------------------------------------------------------------------
-
 class _PaymentStep extends StatelessWidget {
   const _PaymentStep({required this.state});
 
@@ -334,10 +330,6 @@ class _PaymentApprovedNotice extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------
-// Etapa 4 — Revisão
-// ---------------------------------------------------------------------
-
 class _ReviewStep extends StatelessWidget {
   const _ReviewStep({required this.state});
 
@@ -581,10 +573,6 @@ class _AcceptTermsRow extends StatelessWidget {
     );
   }
 }
-
-// ---------------------------------------------------------------------
-// Etapa 5 — Confirmação
-// ---------------------------------------------------------------------
 
 class _ConfirmationStep extends StatelessWidget {
   const _ConfirmationStep({required this.state});

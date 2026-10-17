@@ -10,7 +10,6 @@ import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 /// detalhes para quem conhece bem o clube.
 /// FANÁTICO — recordes, curiosidades e números específicos.
 const quizQuestions = <QuizQuestion>[
-  // --- TORCEDOR ---------------------------------------------------------
   QuizQuestion(
     id: 'torcedor_01',
     question: 'Em que data o Goiás Esporte Clube foi fundado?',
@@ -191,7 +190,6 @@ const quizQuestions = <QuizQuestion>[
     difficulty: QuizDifficulty.torcedor,
   ),
 
-  // --- ESMERALDINO --------------------------------------------------------
   QuizQuestion(
     id: 'esmeraldino_01',
     question:
@@ -382,7 +380,6 @@ const quizQuestions = <QuizQuestion>[
     difficulty: QuizDifficulty.esmeraldino,
   ),
 
-  // --- FANÁTICO -----------------------------------------------------------
   QuizQuestion(
     id: 'fanatico_01',
     question:

@@ -450,10 +450,6 @@ InputDecoration _fieldDecoration(
   );
 }
 
-// ---------------------------------------------------------------------
-// Etapa 1 — Identificação
-// ---------------------------------------------------------------------
-
 class _IdentificationStep extends StatefulWidget {
   const _IdentificationStep({required this.state});
 
@@ -614,10 +610,6 @@ class _IdentificationStepState extends State<_IdentificationStep> {
     );
   }
 }
-
-// ---------------------------------------------------------------------
-// Etapa 2 — Entrega ou retirada
-// ---------------------------------------------------------------------
 
 class _DeliveryStep extends StatelessWidget {
   const _DeliveryStep({required this.state});

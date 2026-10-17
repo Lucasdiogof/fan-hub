@@ -49,10 +49,8 @@ class BallComponent extends PositionComponent {
     }
   }
 
-  // --- Sombra (sempre por código) ----------------------------------------
   late final Paint _shadow;
 
-  // --- Fallback procedural -----------------------------------------------
   late final Paint _base;
   late final Paint _rimPaint;
   late final Paint _innerShadePaint;

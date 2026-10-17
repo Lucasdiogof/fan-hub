@@ -128,8 +128,8 @@ final Map<String, TeamVisualIdentity> _knownTeams = {
 };
 
 final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
-  // --- Clube ativo, também curado (pra quando aparece como ADVERSÁRIO no
-  // outro flavor do app, ex.: Goiás no build do Bragantino) ---
+  // Clube ativo, também curado (pra quando aparece como ADVERSÁRIO no
+  // outro flavor do app, ex.: Goiás no build do Bragantino)
   (['Goiás', 'Goiás Esporte Clube', 'Goiás EC'], 'GOI', _c(0xFF004C1B), null),
   (
     ['Red Bull Bragantino', 'Bragantino', 'RB Bragantino'],
@@ -138,7 +138,7 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
     null,
   ),
 
-  // --- Série B (regra explícita do pedido 2026-09-22) ---
+  // Série B (regra explícita do pedido 2026-09-22)
   // Vermelho oficial do manual de identidade do clube (#C33D41) — também
   // clube ativo (flavor `vilanova`).
   (['Vila Nova', 'Vila Nova-GO'], 'VIL', _c(0xFFC33D41), _c(0xFF7A2226)),
@@ -201,9 +201,9 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
   ),
   (['Ponte Preta', 'AA Ponte Preta'], 'PON', _c(0xFF111111), _c(0xFF303030)),
 
-  // --- Série A e outros tradicionais (auditados na mesma revisão: sem
+  // Série A e outros tradicionais (auditados na mesma revisão: sem
   // branco grande — time preto/branco ou verde/branco vira SÓ a primary,
-  // `secondaryColor: null`) ---
+  // `secondaryColor: null`)
   (['Internacional', 'SC Internacional'], 'INT', _c(0xFFE3242B), null),
   (['Remo', 'Clube do Remo'], 'REM', _c(0xFF0072BC), _c(0xFF8B1D2C)),
   (['Vitória', 'EC Vitória'], 'VIT', _c(0xFFCC092F), Colors.black),

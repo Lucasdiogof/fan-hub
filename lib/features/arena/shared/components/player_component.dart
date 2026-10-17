@@ -44,7 +44,6 @@ class PlayerComponent extends PositionComponent {
   /// Chamado uma vez por chute, no frame de contato do pé com a bola.
   void Function()? onContactFrame;
 
-  // --- Sprite sheet (opcional) -------------------------------------------
   static const int _spriteFrameCount = 6;
   static const int _idleFrame = 0;
   static const int _stepLeftFrame = 1;

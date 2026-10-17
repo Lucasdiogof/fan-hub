@@ -57,7 +57,7 @@ class ClubIdol {
   /// nunca numa imagem genérica fingindo ser a pessoa.
   final String? photoAsset;
 
-  // ---- Campos da tela de detalhe — todos opcionais. Cada um só existe com
+  // Campos da tela de detalhe — todos opcionais. Cada um só existe com
   // fonte; sem fonte fica `null`/vazio e a tela simplesmente não mostra a
   // seção (nunca um traço, um zero ou um palpite no lugar).
 

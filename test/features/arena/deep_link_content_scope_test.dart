@@ -82,10 +82,8 @@ class _FakeRanking implements ArenaRankingRepository {
       throw UnimplementedError();
 }
 
-// ---------------------------------------------------------------------
 // Dados sentinela — claramente diferentes de qualquer entrada real do
 // fallback do Goiás (id/nome inconfundíveis).
-// ---------------------------------------------------------------------
 const _sentinelCareerPlayers = [
   CareerPlayer(
     id: 'sentinel-career-player',

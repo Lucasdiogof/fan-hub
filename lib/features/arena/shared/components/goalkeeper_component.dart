@@ -66,7 +66,6 @@ class GoalkeeperComponent extends PositionComponent {
     _applyPosition(_goalBounds.center.dx, _goalBounds.bottom);
   }
 
-  // --- Sprite sheet (opcional) -------------------------------------------
   static const int _idleFrame = 0;
   static const int _pushFrame = 1;
   static const int _diveStartFrame = 2;

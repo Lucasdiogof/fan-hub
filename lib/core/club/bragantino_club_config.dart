@@ -21,7 +21,6 @@ import 'package:goias_app/features/membership/data/bragantino_regulation_content
 import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 import 'package:goias_app/features/passport/data/bragantino_passport_content.dart';
 
-// ============================================================================
 // Red Bull Bragantino — 2ª entrada REAL do clubRegistry (onboarding M4).
 //
 // MÍNIMO viável pra COMPILAR/rodar o flavor `bragantino` no Fan Hub. TODAS as
@@ -55,7 +54,6 @@ import 'package:goias_app/features/passport/data/bragantino_passport_content.dar
 //   * integrations.workerBaseUrl — DATA_GAP real: `null` até o Worker do
 //     Bragantino ser deployado e validado (`hasMatches` continua `false`
 //     até lá, ver ClubCapabilities).
-// ============================================================================
 
 // Paleta V1 oficial do Bragantino, cedida pelo usuário em 2026-09-06 — cores
 // reais do escudo (vermelho/azul-marinho/amarelo), não mais placeholder.

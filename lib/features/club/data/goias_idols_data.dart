@@ -41,7 +41,7 @@ class GoiasIdolsData {
   static const _idols = 'lib/assets/branding/goias/idols';
 
   static const List<ClubIdol> idols = [
-    // ---------------------------------------------------- anos 1950–1970
+    // anos 1950–1970
     ClubIdol(
       name: 'Tião Segurado',
       tier: 1,
@@ -250,7 +250,7 @@ class GoiasIdolsData {
       // anterior (5º x 7º) fica resolvida pela fonte do clube. 17 gols = recorte Brasileiro + Copa do Brasil, NÃO total — fora.
       // Pesquisa 2026-10: Goiás EC (retrospectiva) — títulos e campanhas CONFIRMADOS. Totais de jogos/gols: sem fonte.
     ),
-    // ------------------------------------------------------------ anos 1980
+    // anos 1980
     ClubIdol(
       name: 'Carlos Alberto Santos',
       tier: 1,
@@ -415,7 +415,7 @@ class GoiasIdolsData {
       // Auditoria 06/10/2026: gols DIVERGENTES — press kit oficial atual 93 x ge histórico 96. Mantido o do clube, com a fonte no statsScope; não escolher silenciosamente.
       // Pesquisa 2026-10: 93 gols = press kit oficial do Goiás 2026; título e artilharia = Goiás EC.
     ),
-    // ------------------------------------------------------------ anos 1990
+    // anos 1990
     ClubIdol(
       name: 'Kléber Guerra',
       tier: 1,
@@ -723,7 +723,7 @@ class GoiasIdolsData {
           'encerrar a carreira em 2014.',
       // Pesquisa 2026-10: Goiás EC — 831 jogos e 12 títulos CONFIRMADOS. Gols: não encontrado (null, não zero).
     ),
-    // ------------------------------------------------------------ anos 2000
+    // anos 2000
     ClubIdol(
       name: 'Dimba',
       tier: 1,
@@ -932,7 +932,7 @@ class GoiasIdolsData {
       // 173 jogos/47 gols: ge + ogol (soma das quatro temporadas: 2008 31/12, 2009 60/18, 2011 23/7, 2012 59/10). Substitui o 154 antigo. Goianos 2009/2012: gravados na rodada 07/10/2026 — Iarley está nas escalações das finais de 2009 e 2012 (Bola na Área) e o ge registra dois estaduais.
       // Pesquisa 2026-10: ge + ogol (154 jogos). 43 gols (ogol) = 1 FONTE — não importado.
     ),
-    // ------------------------------------------------------------ anos 2010
+    // anos 2010
     ClubIdol(
       name: 'Rafael Moura',
       tier: 1,
@@ -1003,7 +1003,7 @@ class GoiasIdolsData {
           'para o Flamengo.',
       // Pesquisa 2026-10: ge + O Popular — 129/24 e Goiano 2018 CONFIRMADOS.
     ),
-    // ----------------------------------------------------------------- atual
+    // atual
     ClubIdol(
       name: 'Tadeu',
       tier: 1,
