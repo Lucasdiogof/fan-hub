@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
@@ -12,6 +13,7 @@ import 'package:goias_app/features/news/presentation/news_navigation.dart';
 import 'package:goias_app/features/news/presentation/widgets/news_item_row.dart';
 import 'package:goias_app/features/news/presentation/widgets/news_skeleton_row.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/stale_data_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
@@ -38,6 +40,8 @@ class NewsListBody extends StatelessWidget {
                 icon: Icons.wifi_off_rounded,
                 title: context.l10n.newsLoadError,
                 message: state.errorMessage,
+                actionLabel: context.l10n.commonRetry,
+                onAction: () => context.read<NewsCubit>().load(),
               ),
             ),
             LoadStatus.empty => _centered(
@@ -98,9 +102,12 @@ class _NewsList extends StatelessWidget {
         AppSpacing.lg,
         AppSpacing.xxxl,
       ),
-      itemCount: items.length,
+      itemCount: items.length + 1,
       itemBuilder: (context, index) {
-        final item = items[index];
+        if (index == 0) {
+          return const StaleDataBanner(SnapshotCategory.news);
+        }
+        final item = items[index - 1];
         return NewsItemRow(
           item: item,
           onTap: () => openNewsArticle(context, item),

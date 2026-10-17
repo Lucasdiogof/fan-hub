@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:sentry_dio/sentry_dio.dart';
 
 const _definedBaseUrl = String.fromEnvironment('API_BASE_URL');
@@ -31,7 +32,10 @@ String resolveApiBaseUrl(ClubConfig clubConfig) {
 class ApiClient {
   const ApiClient._();
 
-  static Dio create(ClubConfig clubConfig) {
+  static Dio create(
+    ClubConfig clubConfig, {
+    OfflineSnapshotStatus? snapshotStatus,
+  }) {
     final dio = Dio(
       BaseOptions(
         baseUrl: resolveApiBaseUrl(clubConfig),
@@ -49,6 +53,11 @@ class ApiClient {
     // aparece como uma DioException genérica, sem dar pra saber qual
     // endpoint ou se foi timeout de conexão vs. resposta.
     dio.addSentry();
+    // Última resposta boa de Home/Jogos/Mídia, servida só quando não há
+    // rede (ver `OfflineSnapshotInterceptor`).
+    if (snapshotStatus != null) {
+      dio.interceptors.add(OfflineSnapshotInterceptor(snapshotStatus));
+    }
     return dio;
   }
 }

@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/resolve_active_club.dart';
 import 'package:goias_app/core/network/api_client.dart';
+import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
@@ -126,7 +127,10 @@ void setupDependencies() {
     () => ViaCepAddressRepository(sl(), sl()),
   );
 
-  sl.registerLazySingleton<Dio>(() => ApiClient.create(sl()));
+  sl.registerLazySingleton<OfflineSnapshotStatus>(OfflineSnapshotStatus.new);
+  sl.registerLazySingleton<Dio>(
+    () => ApiClient.create(sl(), snapshotStatus: sl<OfflineSnapshotStatus>()),
+  );
   sl.registerLazySingleton<FootballRemoteDataSource>(
     () => FootballRemoteDataSource(sl(), sl()),
   );

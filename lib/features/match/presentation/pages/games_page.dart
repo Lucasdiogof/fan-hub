@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -21,6 +22,7 @@ import 'package:goias_app/features/match/presentation/widgets/next_match_card.da
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/stale_data_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/viewport_centered.dart';
@@ -167,6 +169,8 @@ class _MatchesTab extends StatelessWidget {
                     message:
                         state.currentRoundErrorMessage ??
                         state.snapshotErrorMessage,
+                    actionLabel: context.l10n.commonRetry,
+                    onAction: () => context.read<GamesCubit>().refresh(),
                   ),
                 )
               : _allEmpty(state)
@@ -226,6 +230,7 @@ class _MatchesContent extends StatelessWidget {
         AppSpacing.xxxl,
       ),
       children: [
+        const StaleDataBanner(SnapshotCategory.matches),
         if (nextMatch != null) ...[
           _isLive(nextMatch)
               ? LiveMatchPoller(

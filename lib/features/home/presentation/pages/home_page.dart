@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -24,6 +25,7 @@ import 'package:goias_app/features/store/presentation/widgets/store_entry_card.d
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/stale_data_banner.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// [HomeCubit] agora é singleton (ver `injection_container.dart`) — pra
@@ -267,6 +269,8 @@ class _ScrollContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const HomeBrandHeader(),
+              const SizedBox(height: AppSpacing.md),
+              const StaleDataBanner(SnapshotCategory.matches),
               if (match != null) ...[
                 const SizedBox(height: AppSpacing.md),
                 NextMatchSection(
