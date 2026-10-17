@@ -1,5 +1,21 @@
 [
   {
+    "tweet_id": "2111219380679745976",
+    "text": "📸 Detalhes da nossa camisa Outubro Rosa 💖😮‍💨\n\nDisponível a partir de amanhã na @storegoiasoficial 🟢 https://t.co/IIuWBInOmJ",
+    "timestamp": "2026-10-16T22:14:59+00:00",
+    "tweet_url": "https://x.com/goiasoficial/status/2111219380679745976",
+    "image_links": [
+      "https://pbs.twimg.com/media/HUyO1ctWEAAG3cX.jpg",
+      "https://pbs.twimg.com/media/HUyO1crWkAA1avR.jpg",
+      "https://pbs.twimg.com/media/HUyO1cjWMAAtNk2.jpg"
+    ],
+    "user_screen_name": "goiasoficial",
+    "user_name": "Goiás Esporte Clube",
+    "likes": 64,
+    "retweets": 2,
+    "comments": 4
+  },
+  {
     "tweet_id": "2110116982884286814",
     "text": "O próximo confronto do Maior do Centro-Oeste pelo @brasileiraob \n\n🆚 Náutico\n🗓️ 19/10\n🕟19h30\n\nJUNTOS EM MAIS UMA BATALHA ⚔️💚 https://t.co/NKJdvkQ7va",
     "timestamp": "2026-10-13T21:14:27+00:00",
@@ -9,7 +25,7 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 32,
+    "likes": 33,
     "retweets": 0,
     "comments": 2
   },
@@ -239,20 +255,6 @@
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
     "likes": 10,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2109354681965085163",
-    "text": "🆚 Operário \n🗓️ Domingo \n⏰ 18h30\n🏟️ Estádio Germano Krüger\n📺 @espnbrasil @disneyplusbr @redetv \n\n#OPExGEC\n#brasileiraob https://t.co/vd7O6evHGy",
-    "timestamp": "2026-10-11T18:45:20+00:00",
-    "tweet_url": "https://x.com/goiasoficial/status/2109354681965085163",
-    "image_links": [
-      "https://pbs.twimg.com/media/HUXu5oFXQAAAx2o.jpg"
-    ],
-    "user_screen_name": "goiasoficial",
-    "user_name": "Goiás Esporte Clube",
-    "likes": 8,
     "retweets": 1,
     "comments": 0
   }
