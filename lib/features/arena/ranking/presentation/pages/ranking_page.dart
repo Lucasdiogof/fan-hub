@@ -19,6 +19,7 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/saved_content_banner.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`) — a tela
@@ -109,6 +110,7 @@ class _RankingView extends StatelessWidget {
                   }
                   if (state.status == LoadStatus.error) {
                     return _ErrorRanking(
+                      offline: state.isOffline,
                       onRetry: () => context.read<RankingCubit>().load(),
                     );
                   }
@@ -118,6 +120,8 @@ class _RankingView extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      if (state.cachedAt case final savedAt?)
+                        SavedContentBanner(savedAt: savedAt),
                       for (var i = 0; i < state.entries.length; i++) ...[
                         if (i > 0) const SizedBox(height: AppSpacing.sm),
                         _RankRow(
@@ -411,9 +415,10 @@ class _PinnedPositionCard extends StatelessWidget {
 }
 
 class _ErrorRanking extends StatelessWidget {
-  const _ErrorRanking({required this.onRetry});
+  const _ErrorRanking({required this.onRetry, this.offline = false});
 
   final VoidCallback onRetry;
+  final bool offline;
 
   @override
   Widget build(BuildContext context) {
@@ -424,8 +429,20 @@ class _ErrorRanking extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.error_outline_rounded, size: 48, color: colors.textHint),
+            Icon(
+              offline ? Icons.wifi_off_rounded : Icons.error_outline_rounded,
+              size: 48,
+              color: colors.textHint,
+            ),
             const SizedBox(height: AppSpacing.md),
+            if (offline) ...[
+              Text(
+                context.l10n.commonOfflineMessage,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 13.5, color: colors.textSecondary),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+            ],
             TextButton(
               onPressed: onRetry,
               child: Text(context.l10n.commonRetry),

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
@@ -25,17 +26,29 @@ class RankingCubit extends Cubit<RankingState> {
   /// ranking sempre devolve `is_member = false` pra todo mundo, porque ela
   /// não sabe nada sobre a assinatura de sócio de NINGUÉM (nem a do próprio
   /// usuário nem a de outros) — só o app sabe, via essa mesma fonte única.
+  int _requestId = 0;
+
   Future<void> _loadPeriod(RankingPeriod period) async {
+    // Resposta de um período já trocado (ou de um load antigo) é descartada.
+    final requestId = ++_requestId;
     emit(state.copyWith(status: LoadStatus.loading, period: period));
     final rankingFuture = _ranking.getRanking(period);
     final myRankFuture = _ranking.getMyRank(period);
 
     final rankingResult = await rankingFuture;
+    if (isClosed || requestId != _requestId) return;
     if (rankingResult is Error<List<RankingEntry>>) {
-      emit(state.copyWith(status: LoadStatus.error));
+      emit(
+        state.copyWith(
+          status: LoadStatus.error,
+          isOffline: rankingResult.failure is NetworkFailure,
+          cachedAt: () => null,
+        ),
+      );
       return;
     }
-    final entries = (rankingResult as Success<List<RankingEntry>>).data;
+    final success = rankingResult as Success<List<RankingEntry>>;
+    final entries = success.data;
 
     final isMember = _membershipStatusCubit.state.isMember;
     final patchedEntries = [
@@ -44,6 +57,7 @@ class RankingCubit extends Cubit<RankingState> {
     ];
 
     final myRankResult = await myRankFuture;
+    if (isClosed || requestId != _requestId) return;
     final myRank = myRankResult is Success<({int rank, int totalScore})?>
         ? myRankResult.data
         : null;
@@ -54,6 +68,8 @@ class RankingCubit extends Cubit<RankingState> {
         entries: patchedEntries,
         myRank: myRank,
         clearMyRank: myRank == null,
+        isOffline: false,
+        cachedAt: () => success.cachedAt,
       ),
     );
   }

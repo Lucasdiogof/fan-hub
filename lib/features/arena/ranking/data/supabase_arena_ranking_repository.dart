@@ -1,3 +1,4 @@
+import 'package:goias_app/core/cache/json_snapshot_cache.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/ranking/data/arena_ranking_error_mapper.dart';
@@ -6,10 +7,20 @@ import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseArenaRankingRepository implements ArenaRankingRepository {
-  SupabaseArenaRankingRepository(this._client, this._clubConfig);
+  SupabaseArenaRankingRepository(
+    this._client,
+    this._clubConfig, [
+    this._cache = const JsonSnapshotCache(),
+  ]);
 
   final SupabaseClient _client;
   final ClubConfig _clubConfig;
+  final JsonSnapshotCache _cache;
+
+  /// Só o placar PÚBLICO do clube é salvo (nunca `getMyRank`/detalhe, que
+  /// são da conta). `isMe` é recalculado com o usuário atual a cada leitura.
+  String _cacheKey(RankingPeriod period) =>
+      'arena_ranking:$_clubId:${period.apiValue}';
 
   String? get _uid => _client.auth.currentUser?.id;
   String get _clubId => _clubConfig.identity.canonicalClubId;
@@ -75,29 +86,42 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
           'p_limit': limit,
         },
       );
-      final uid = _uid;
-      return Success(
-        rows.map((row) {
-          final map = row as Map<String, dynamic>;
-          final userId = map['user_id'] as String;
-          return RankingEntry(
-            rank: (map['rank'] as num).toInt(),
-            userId: userId,
-            // Nome pode faltar num perfil incompleto — string vazia aqui, o
-            // fallback traduzido ("Torcedor" etc.) é resolvido na
-            // apresentação (ver `rankingDisplayName`), já que este
-            // repositório não tem acesso a l10n.
-            name: (map['name'] as String?) ?? '',
-            avatarUrl: map['avatar_url'] as String?,
-            isMember: map['is_member'] as bool? ?? false,
-            totalScore: (map['total_score'] as num).toInt(),
-            isMe: uid != null && userId == uid,
-          );
-        }).toList(),
-      );
+      final entries = _parseRanking(rows);
+      await _cache.write(_cacheKey(period), rows);
+      return Success(entries);
     } catch (error, stackTrace) {
-      return Error(mapArenaRankingError(error, stackTrace));
+      final failure = mapArenaRankingError(error, stackTrace);
+      final snapshot = await _cache.read(_cacheKey(period));
+      if (snapshot != null) {
+        try {
+          return Success(
+            _parseRanking(snapshot.payload as List<dynamic>),
+            cachedAt: snapshot.savedAt,
+          );
+        } catch (_) {}
+      }
+      return Error(failure);
     }
+  }
+
+  List<RankingEntry> _parseRanking(List<dynamic> rows) {
+    final uid = _uid;
+    return rows.map((row) {
+      final map = row as Map<String, dynamic>;
+      final userId = map['user_id'] as String;
+      return RankingEntry(
+        rank: (map['rank'] as num).toInt(),
+        userId: userId,
+        // Nome pode faltar num perfil incompleto — string vazia aqui, o
+        // fallback traduzido é resolvido na apresentação
+        // (`rankingDisplayName`), já que o repositório não tem l10n.
+        name: (map['name'] as String?) ?? '',
+        avatarUrl: map['avatar_url'] as String?,
+        isMember: map['is_member'] as bool? ?? false,
+        totalScore: (map['total_score'] as num).toInt(),
+        isMe: uid != null && userId == uid,
+      );
+    }).toList();
   }
 
   @override

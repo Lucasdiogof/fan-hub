@@ -8,6 +8,8 @@ class RankingState extends Equatable {
     this.period = RankingPeriod.allTime,
     this.entries = const [],
     this.myRank,
+    this.isOffline = false,
+    this.cachedAt,
   });
 
   final LoadStatus status;
@@ -16,6 +18,12 @@ class RankingState extends Equatable {
 
   /// `null` quando o usuário ainda não pontuou nada no período selecionado.
   final ({int rank, int totalScore})? myRank;
+
+  /// Falha por falta de rede/timeout (não erro do servidor).
+  final bool isOffline;
+
+  /// Não nulo = placar exibido é a última consulta salva (desatualizado).
+  final DateTime? cachedAt;
 
   /// O card fixo "Sua posição" só aparece quando o usuário pontuou mas não
   /// está entre as linhas já carregadas — se ele já aparece na lista, o
@@ -28,15 +36,26 @@ class RankingState extends Equatable {
     List<RankingEntry>? entries,
     ({int rank, int totalScore})? myRank,
     bool clearMyRank = false,
+    bool? isOffline,
+    DateTime? Function()? cachedAt,
   }) {
     return RankingState(
       status: status ?? this.status,
       period: period ?? this.period,
       entries: entries ?? this.entries,
       myRank: clearMyRank ? null : (myRank ?? this.myRank),
+      isOffline: isOffline ?? this.isOffline,
+      cachedAt: cachedAt != null ? cachedAt() : this.cachedAt,
     );
   }
 
   @override
-  List<Object?> get props => [status, period, entries, myRank];
+  List<Object?> get props => [
+    status,
+    period,
+    entries,
+    myRank,
+    isOffline,
+    cachedAt,
+  ];
 }
