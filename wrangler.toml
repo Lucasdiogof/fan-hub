@@ -2,6 +2,11 @@ name = "goias-app"
 main = "src/index.ts"
 compatibility_date = "2024-09-23"
 
+# Domínio próprio, além do goias-app.lucasdiogo1234.workers.dev (que continua
+# ligado: workers_dev precisa ser explícito quando há routes).
+workers_dev = true
+routes = [{ pattern = "goias.lucksrei.com", custom_domain = true }]
+
 [assets]
 directory = "build/web"
 binding = "ASSETS"
