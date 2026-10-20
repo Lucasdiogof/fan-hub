@@ -82,19 +82,25 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
           onTap: () => onSelected(seasons[index - 1].season),
         ),
         const SizedBox(width: AppSpacing.sm),
-        TextButton(
-          onPressed: () => _openSheet(context),
-          style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-            minimumSize: Size.zero,
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          ),
-          child: Text(
-            l10n.passportChangeSeasonCta,
-            style: TextStyle(
-              fontSize: 14.5,
-              fontWeight: FontWeight.w800,
-              color: colors.primary,
+        // Flexible: "Cambiar temporada" não pode estourar a linha em telas
+        // estreitas nem com a fonte do sistema ampliada.
+        Flexible(
+          child: TextButton(
+            onPressed: () => _openSheet(context),
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: Text(
+              l10n.passportChangeSeasonCta,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14.5,
+                fontWeight: FontWeight.w800,
+                color: colors.primary,
+              ),
             ),
           ),
         ),

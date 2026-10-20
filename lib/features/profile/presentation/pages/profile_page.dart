@@ -513,10 +513,14 @@ class _SignOutButton extends StatelessWidget {
 class _AppVersion extends StatelessWidget {
   const _AppVersion();
 
+  /// Lida uma vez (lazy): `build` não pode abrir uma chamada de plataforma
+  /// nova a cada rebuild.
+  static final Future<PackageInfo> _info = PackageInfo.fromPlatform();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<PackageInfo>(
-      future: PackageInfo.fromPlatform(),
+      future: _info,
       builder: (context, snapshot) {
         final version = snapshot.data?.version;
         if (version == null) return const SizedBox.shrink();

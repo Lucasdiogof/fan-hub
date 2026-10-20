@@ -216,7 +216,7 @@ class ClubBadge extends StatelessWidget {
     // toda vez decodifica o PNG no tamanho original antes de encolher —
     // caro o bastante pra ficar visível quando o calendário mostra várias
     // dezenas de escudos diferentes de uma vez no grid do mês.
-    final pixelSize = (size * MediaQuery.of(context).devicePixelRatio).round();
+    final pixelSize = (size * MediaQuery.devicePixelRatioOf(context)).round();
     return CachedNetworkImage(
       imageUrl: url,
       width: size,

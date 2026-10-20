@@ -232,7 +232,7 @@ class _SideNavItemState extends State<_SideNavItem>
   void didUpdateWidget(covariant _SideNavItem oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.selected && !oldWidget.selected) {
-      if (MediaQuery.of(context).disableAnimations) return;
+      if (MediaQuery.disableAnimationsOf(context)) return;
       _pulse.forward(from: 0);
     }
   }

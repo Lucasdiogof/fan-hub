@@ -92,13 +92,45 @@ class _NotificationPreferencesView extends StatelessWidget {
 /// isso claramente em vez de deixar os toggles prometerem algo que não vai
 /// chegar. `FirebaseMessaging.getNotificationSettings()` nunca pede
 /// permissão sozinho, só lê o estado atual.
-class _OsPermissionBanner extends StatelessWidget {
+class _OsPermissionBanner extends StatefulWidget {
   const _OsPermissionBanner();
+
+  @override
+  State<_OsPermissionBanner> createState() => _OsPermissionBannerState();
+}
+
+class _OsPermissionBannerState extends State<_OsPermissionBanner>
+    with WidgetsBindingObserver {
+  /// Lido uma vez e de novo ao voltar das configurações do sistema: `build`
+  /// não pode abrir uma chamada de plataforma nova a cada rebuild.
+  late Future<NotificationSettings> _settings = _read();
+
+  Future<NotificationSettings> _read() =>
+      FirebaseMessaging.instance.getNotificationSettings();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && mounted) {
+      setState(() => _settings = _read());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<NotificationSettings>(
-      future: FirebaseMessaging.instance.getNotificationSettings(),
+      future: _settings,
       builder: (context, snapshot) {
         final status = snapshot.data?.authorizationStatus;
         if (status == null || status == AuthorizationStatus.authorized) {
