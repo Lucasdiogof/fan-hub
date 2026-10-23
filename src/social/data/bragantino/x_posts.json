@@ -1,5 +1,50 @@
 [
   {
+    "tweet_id": "2113601829699498405",
+    "text": "Na proxima semana temos mais um duelo importante na nossa casa! 🏡 \n\nFaça seu check-in a partir das 10h em https://t.co/HNuDjgapep 🤳\n\nhttps://t.co/btKAGO8zlE https://t.co/3jRIzV7l0x",
+    "timestamp": "2026-10-23T12:01:59+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2113601829699498405",
+    "image_links": [
+      "https://pbs.twimg.com/media/HVUFqNkW8AANvwj.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 8,
+    "retweets": 1,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2113353683412914369",
+    "text": "Com a palavra: @Tiagovolpi_90! 🎙️\n\n📺 Você assiste a coletiva do goleiro do Braga na Massa Bruta TV: https://t.co/vYEeC2Qf7C https://t.co/5Q5RONjdCD",
+    "timestamp": "2026-10-22T19:35:56+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2113353683412914369",
+    "image_links": [
+      "https://pbs.twimg.com/media/HVQj6vCWYAAeBZC.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 64,
+    "retweets": 9,
+    "comments": 3
+  },
+  {
+    "tweet_id": "2113324816313078061",
+    "text": "📍 Centro de Perfomance e Desenvolvimento https://t.co/4UablPKYeX",
+    "timestamp": "2026-10-22T17:41:14+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2113324816313078061",
+    "image_links": [
+      "https://pbs.twimg.com/media/HVQJkDJXgAACzDD.jpg",
+      "https://pbs.twimg.com/amplify_video_thumb/2113324640080650240/img/VmjEreWkXkpnVxks.jpg",
+      "https://pbs.twimg.com/media/HVQJkDEWoAAB2rL.jpg",
+      "https://pbs.twimg.com/amplify_video_thumb/2113324640156180480/img/dzOUq68gfykvM8wH.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 32,
+    "retweets": 2,
+    "comments": 2
+  },
+  {
     "tweet_id": "2113254106211000335",
     "text": "É MUNDIAL, CRIA! 🇧🇷🌍\n\nDaniel Arcon está no Azerbaijão com a Seleção Brasileira para a primeira edição da Copa do Mundo e Festival Sub-15 da FIFA!\n\nA estreia será neste sábado (24), contra Guiné-Bissau, às 2h (de Brasília).\n\n📸 Rafael Ribeiro / CBF https://t.co/8XPlldVWsa",
     "timestamp": "2026-10-22T13:00:15+00:00",
@@ -9,9 +54,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 8,
-    "retweets": 1,
-    "comments": 0
+    "likes": 89,
+    "retweets": 7,
+    "comments": 2
   },
   {
     "tweet_id": "2113066093459734815",
@@ -21,9 +66,9 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 6,
+    "likes": 13,
     "retweets": 0,
-    "comments": 0
+    "comments": 2
   },
   {
     "tweet_id": "2113057442380513633",
@@ -35,8 +80,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 15,
-    "retweets": 1,
+    "likes": 8,
+    "retweets": 2,
     "comments": 0
   },
   {
@@ -66,9 +111,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 97,
-    "retweets": 4,
-    "comments": 2
+    "likes": 103,
+    "retweets": 7,
+    "comments": 3
   },
   {
     "tweet_id": "2112996323192672270",
@@ -80,8 +125,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 131,
-    "retweets": 4,
+    "likes": 133,
+    "retweets": 3,
     "comments": 2
   },
   {
@@ -94,9 +139,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 66,
-    "retweets": 1,
-    "comments": 0
+    "likes": 63,
+    "retweets": 0,
+    "comments": 1
   },
   {
     "tweet_id": "2112876908291506568",
@@ -108,8 +153,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 16,
-    "retweets": 3,
+    "likes": 5,
+    "retweets": 0,
     "comments": 0
   },
   {
@@ -136,8 +181,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 115,
-    "retweets": 3,
+    "likes": 66,
+    "retweets": 1,
     "comments": 0
   },
   {
@@ -155,38 +200,6 @@
     "comments": 1
   },
   {
-    "tweet_id": "2112640075183853911",
-    "text": "As titulares estão definidas para a @copadobrasilfem 🔥 https://t.co/Ocz18ufbLH",
-    "timestamp": "2026-10-20T20:20:19+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2112640075183853911",
-    "image_links": [
-      "https://pbs.twimg.com/media/HVGa8u3XQAElO-J.jpg",
-      "https://pbs.twimg.com/media/HVGa8u1XgAACf9p.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 1,
-    "comments": 1
-  },
-  {
-    "tweet_id": "2112635376355381674",
-    "text": "Chegamos para mais um capítulo decisivo! 😤\n\n📸 Cárila Covas / Red Bull Bragantino https://t.co/YGMh5TTTQ0",
-    "timestamp": "2026-10-20T20:01:39+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2112635376355381674",
-    "image_links": [
-      "https://pbs.twimg.com/media/HVGWrR6WoAElI7i.jpg",
-      "https://pbs.twimg.com/media/HVGWrR6XkAAyUZr.jpg",
-      "https://pbs.twimg.com/media/HVGWrR6WQAMg-3h.jpg",
-      "https://pbs.twimg.com/media/HVGWrSJXwAAtqae.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 1
-  },
-  {
     "tweet_id": "2112620501256589369",
     "text": "Tem #CriasDoBraga no Cícero pela semifinal do Brasileirão Sub-17!\n\n🎟️ A entrada é gratuita, sem necessidade de ingresso.\n\n👉 Torcida Massa Bruta: Setor Norte, Portão 3.\n\n👉 Torcida visitante: Setor Leste, Portão 9.\n\n📺 Não pode ir? Acompanhe ao vivo pela Massa Bruta TV! https://t.co/YYfH7AFDFh",
     "timestamp": "2026-10-20T19:02:32+00:00",
@@ -196,8 +209,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 182,
-    "retweets": 7,
+    "likes": 66,
+    "retweets": 2,
     "comments": 1
   },
   {
@@ -210,8 +223,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 64,
-    "retweets": 6,
+    "likes": 35,
+    "retweets": 1,
     "comments": 0
   },
   {
@@ -224,8 +237,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 102,
-    "retweets": 8,
+    "likes": 28,
+    "retweets": 2,
     "comments": 3
   },
   {
@@ -238,8 +251,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 77,
-    "retweets": 6,
+    "likes": 22,
+    "retweets": 0,
     "comments": 2
   },
   {
@@ -251,7 +264,7 @@
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 4,
-    "retweets": 2,
+    "retweets": 1,
     "comments": 0
   },
   {
@@ -264,22 +277,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 44,
-    "retweets": 3,
+    "likes": 40,
+    "retweets": 1,
     "comments": 1
-  },
-  {
-    "tweet_id": "2111980138938413167",
-    "text": "Um ponto para casa. No Mangueirão, Remo 1 x 1 Red Bull Bragantino. \n\n⚽ Lucas Barbosa\n\n📸 Ari Ferreira https://t.co/wLCL7ReAfB",
-    "timestamp": "2026-10-19T00:37:58+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2111980138938413167",
-    "image_links": [
-      "https://pbs.twimg.com/media/HU9CvUXWMAAvwDu.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 70,
-    "retweets": 4,
-    "comments": 6
   }
 ]
