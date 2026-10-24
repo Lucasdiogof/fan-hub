@@ -28,7 +28,8 @@ Tecnicamente, o app é construído sobre o **Fan Hub**, uma base multi-clube: um
 
 ## Disponibilidade
 
-- **Android**, **iOS** e **Web (PWA instalável)**, a partir de uma única base em Flutter.
+- **Android**, **iOS** e **Web (PWA instalável)** em [goias.lucksrei.com](https://goias.lucksrei.com), a partir de uma única base em Flutter.
+- **Offline**: início, jogos, conteúdo do clube, mídia e o ranking da Arena abrem a partir da última cópia salva, e as fotos remotas ficam em cache no disco.
 - **Idiomas**: português (Brasil), inglês e espanhol, com escolha independente do idioma do aparelho.
 - **Temas**: claro, escuro ou seguindo o sistema.
 
