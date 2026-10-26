@@ -1,5 +1,33 @@
 [
   {
+    "tweet_id": "2114703706406928695",
+    "text": "Quarta-feira é dia de voltar pra nossa casa com todo o apoio. VAMOS, BRAGA! 👊\n\n🎟️ Faça já o seu check-in para o duelo contra a Chapecoense: https://t.co/HNuDjg9RoR https://t.co/krSdvsnHp9",
+    "timestamp": "2026-10-26T13:00:27+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2114703706406928695",
+    "image_links": [
+      "https://pbs.twimg.com/media/HVjvz8nWYAAFQ4B.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 5,
+    "retweets": 1,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2114372428046717240",
+    "text": "Nosso próximo duelo é em casa, diante da Chapecoense. 🔜 https://t.co/Dvj2UX415N",
+    "timestamp": "2026-10-25T15:04:04+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2114372428046717240",
+    "image_links": [
+      "https://pbs.twimg.com/media/HVfCg3LWEAARbmY.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 9,
+    "retweets": 0,
+    "comments": 1
+  },
+  {
     "tweet_id": "2114160773308043476",
     "text": "📺 Coletiva do técnico Vagner Mancini na Massa Bruta TV: https://t.co/oWZhHKa476",
     "timestamp": "2026-10-25T01:03:02+00:00",
@@ -7,8 +35,8 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 4,
-    "retweets": 3,
+    "likes": 3,
+    "retweets": 2,
     "comments": 2
   },
   {
@@ -21,7 +49,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 10,
+    "likes": 11,
     "retweets": 4,
     "comments": 6
   },
@@ -33,7 +61,7 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 0,
+    "likes": 1,
     "retweets": 0,
     "comments": 0
   },
@@ -70,7 +98,7 @@
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 5,
-    "retweets": 4,
+    "retweets": 3,
     "comments": 0
   },
   {
@@ -218,30 +246,6 @@
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 0,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2114116459605397772",
-    "text": "🗣️ UUUUUUUUUUHHHH!!!\n\nFernando tenta de pé direito e a bola passa com perigo ao gol adversário.\n\n⏱️ 35| 1T",
-    "timestamp": "2026-10-24T22:06:57+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2114116459605397772",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 0,
-    "comments": 1
-  },
-  {
-    "tweet_id": "2114116204482703419",
-    "text": "🗣️Contra-ataque do Braga puxado por Herrera, o camisa 32 tenta o chute de bico, mas para no goleiro do Palmeiras.\n\n⏱️ 34| 1T",
-    "timestamp": "2026-10-24T22:05:56+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2114116204482703419",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 3,
     "retweets": 0,
     "comments": 0
   }
