@@ -1,5 +1,95 @@
 [
   {
+    "tweet_id": "2117987857713283559",
+    "text": "Braga 🤝 V!\n\nO ADM agora é um #Army! 🫶 https://t.co/C8mV4QrKxT",
+    "timestamp": "2026-11-04T14:30:30+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117987857713283559",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWSauvDWEAEduDw.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 739,
+    "retweets": 247,
+    "comments": 27
+  },
+  {
+    "tweet_id": "2117969011971694640",
+    "text": "De volta ao início com nosso #Cria! 🥹🔙 https://t.co/tWk0NP5Jtn",
+    "timestamp": "2026-11-04T13:15:37+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117969011971694640",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWSJgEXX0AAUH3d.jpg",
+      "https://pbs.twimg.com/media/HWSJgEcXUAEB1qM.jpg",
+      "https://pbs.twimg.com/media/HWSJgEcX0AA5xn8.jpg",
+      "https://pbs.twimg.com/media/HWSJgEXXAAEcSx7.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 13,
+    "retweets": 1,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2117947638914175072",
+    "text": "É dia de dar o primeiro passo na semifinal! Pra cima, Bragantinas! ❤️‍🔥😤\n\n⚽ Internacional x Red Bull Bragantino\n🏆 @copadobrasilfem | Semifinal – Ida\n⏰ 19h30\n🏟️ Beira-Rio – Porto Alegre/RS\n📺 SporTV, XSports, NSports e Lance https://t.co/V8KgnN8twk",
+    "timestamp": "2026-11-04T11:50:41+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117947638914175072",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWR2JdOWcAA3Rhi.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 5,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2117745634388459705",
+    "text": "Aquela figurinha pra mandar pro seu amigo! 💪👀 https://t.co/MT8guV3FiG",
+    "timestamp": "2026-11-03T22:27:59+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117745634388459705",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWO-bc-WwAAaK9L.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 8,
+    "retweets": 1,
+    "comments": 3
+  },
+  {
+    "tweet_id": "2117713692867584101",
+    "text": "Com energia e suor o Braga venceu! ⚡️\n\n📺 E você assiste aos bastidores na Massa Bruta TV: https://t.co/KLWtuFuopc https://t.co/PciUbm4wsI",
+    "timestamp": "2026-11-03T20:21:04+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117713692867584101",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWOhQiLW4AA4JS0.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 47,
+    "retweets": 2,
+    "comments": 7
+  },
+  {
+    "tweet_id": "2117685548450222411",
+    "text": "1️⃣ ano de Vagner Mancini no Massa Bruta!\n\nO professor comemorou nesta semana 365 dias à frente do Braga. Vamos juntos! 👏\n\n📸: Ari Ferreira https://t.co/jtkKmvKC4E",
+    "timestamp": "2026-11-03T18:29:14+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2117685548450222411",
+    "image_links": [
+      "https://pbs.twimg.com/media/HWOHvK5WsAAhJCv.jpg",
+      "https://pbs.twimg.com/media/HWOHvK3XAAARJz1.jpg",
+      "https://pbs.twimg.com/media/HWOHvLBW0AA1pDU.jpg",
+      "https://pbs.twimg.com/media/HWOHvK3W0AAgLG2.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 11,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
     "tweet_id": "2117655147740578175",
     "text": "A torcida Massa Bruta é só sorriso nessa terça-feira! 😁 https://t.co/1ChzkjtSvi",
     "timestamp": "2026-11-03T16:28:26+00:00",
@@ -12,9 +102,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 0,
-    "retweets": 0,
-    "comments": 0
+    "likes": 6,
+    "retweets": 3,
+    "comments": 1
   },
   {
     "tweet_id": "2117626187665002744",
@@ -26,7 +116,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 2,
+    "likes": 3,
     "retweets": 0,
     "comments": 0
   },
@@ -40,9 +130,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 3,
-    "retweets": 0,
-    "comments": 0
+    "likes": 10,
+    "retweets": 4,
+    "comments": 1
   },
   {
     "tweet_id": "2117589669260972039",
@@ -57,7 +147,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 0,
+    "likes": 1,
     "retweets": 0,
     "comments": 0
   },
@@ -74,8 +164,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 6,
-    "retweets": 0,
+    "likes": 7,
+    "retweets": 2,
     "comments": 1
   },
   {
@@ -88,7 +178,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 8,
+    "likes": 10,
     "retweets": 0,
     "comments": 0
   },
@@ -135,7 +225,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 9,
+    "likes": 12,
     "retweets": 0,
     "comments": 2
   },
@@ -149,9 +239,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 50,
+    "likes": 40,
     "retweets": 1,
-    "comments": 0
+    "comments": 2
   },
   {
     "tweet_id": "2117437844096741761",
@@ -161,8 +251,8 @@
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 6,
-    "retweets": 0,
+    "likes": 7,
+    "retweets": 1,
     "comments": 0
   },
   {
@@ -175,9 +265,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 61,
+    "likes": 51,
     "retweets": 0,
-    "comments": 2
+    "comments": 3
   },
   {
     "tweet_id": "2117428409852989605",
@@ -190,7 +280,7 @@
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 17,
-    "retweets": 0,
+    "retweets": 1,
     "comments": 2
   },
   {
@@ -203,84 +293,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 31,
-    "retweets": 4,
-    "comments": 3
-  },
-  {
-    "tweet_id": "2117423875789308100",
-    "text": "Vruuuuuuuuummmmmm https://t.co/FVQ76P4oJw",
-    "timestamp": "2026-11-03T01:09:26+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117423875789308100",
-    "image_links": [
-      "https://pbs.twimg.com/amplify_video_thumb/2117423851369869313/img/4iSBGqXoDgzY7JyZ.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 13,
-    "retweets": 3,
-    "comments": 3
-  },
-  {
-    "tweet_id": "2117421787286020251",
-    "text": "ENERGIZADO POR NÓS! ⚡\n\nO Red Bull Bragantino venceu o Santos por 2 a 1 e conquistou mais três pontos no Brasileirão! 🏁\n\nVAMOS, MASSA BRUTA! \n\n📸: Ari Ferreira https://t.co/EAvha3PcT7",
-    "timestamp": "2026-11-03T01:01:08+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117421787286020251",
-    "image_links": [
-      "https://pbs.twimg.com/media/HWKX5AnWcAAYi8X.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 25,
-    "retweets": 3,
-    "comments": 9
-  },
-  {
-    "tweet_id": "2117420339395281208",
-    "text": "Mais 5 minutos de acréscimo no segundo tempo.\n\n⏰ 45’ 2T | (2x1)\n#RBBxSAN\n#RedBullBragantino",
-    "timestamp": "2026-11-03T00:55:23+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117420339395281208",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2117417549076009396",
-    "text": "Últimas substituições do Red Bull Bragantino:\n\nSaem: Mosquera e Wallace Yan\n\nEntram: Alix e Herrera\n\n⏰ 34’ 2T | (2x1)\n#RBBxSAN\n#RedBullBragantino",
-    "timestamp": "2026-11-03T00:44:18+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117417549076009396",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2117414667404669435",
-    "text": "Mais duas substituições no Braga:\n\nSaem: Eric Ramires e Fabinho\n\nEntram: Matheus Fernandes e Gabriel\n\n⏰ 22’ 2T | (2x1)\n#RBBxSAN\n#RedBullBragantino",
-    "timestamp": "2026-11-03T00:32:51+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117414667404669435",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2117414543265767854",
-    "text": "QUASE! \n\nRyan ganha na velocidade pela esquerda, toca no meio para Wallace Yan, mas o chute para no goleiro do Santos. \n\n⏰ 22’ 2T | (2x1)\n#RBBxSAN\n#RedBullBragantino",
-    "timestamp": "2026-11-03T00:32:21+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2117414543265767854",
-    "image_links": [],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 2,
-    "retweets": 0,
-    "comments": 0
+    "likes": 42,
+    "retweets": 5,
+    "comments": 4
   }
 ]
