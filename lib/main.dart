@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -201,7 +201,7 @@ class _GoiasAppState extends State<GoiasApp> {
                   themeMode: themeMode,
                   locale: locale,
                   localizationsDelegates:
-                      AppLocalizations.localizationsDelegates,
+                      [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
                   supportedLocales: AppLocalizations.supportedLocales,
                   routerConfig: _router,
                 ),

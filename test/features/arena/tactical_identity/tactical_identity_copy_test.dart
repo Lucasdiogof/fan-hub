@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -23,7 +23,7 @@ Future<({List<String> stems, List<String> options})> _copy(
   await tester.pumpWidget(
     MaterialApp(
       locale: locale,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
       supportedLocales: AppLocalizations.supportedLocales,
       home: Builder(
         builder: (context) {

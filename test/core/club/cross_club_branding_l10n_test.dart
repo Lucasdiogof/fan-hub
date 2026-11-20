@@ -8,7 +8,7 @@
 // mesmo bug não se repetir quando a capability ligar — mesma lição do
 // vazamento real achado em storeHomeEntryBadge (ver
 // store_entry_card_test.dart).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -30,7 +30,7 @@ Future<Map<String, String>> _renderAll(
   await tester.pumpWidget(
     MaterialApp(
       locale: locale,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
       supportedLocales: AppLocalizations.supportedLocales,
       home: Builder(
         builder: (context) {

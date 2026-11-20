@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Nome COMPLETO do time, em até duas linhas — nunca reticências, nunca
 /// cortado. A quebra é natural, por palavras ("Grêmio / Novorizontino").

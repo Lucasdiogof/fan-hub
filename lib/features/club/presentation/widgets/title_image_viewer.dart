@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
 /// Mesmo padrão de `_ZoomGallery` (galeria de fotos da Loja) — swipe entre

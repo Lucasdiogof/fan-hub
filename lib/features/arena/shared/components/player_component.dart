@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart'
+import 'package:material_ui/material_ui.dart'
     show TextPainter, TextSpan, TextStyle, TextDirection, FontWeight, Curves;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/arena/shared/arena_assets.dart';

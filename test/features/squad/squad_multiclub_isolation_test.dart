@@ -4,7 +4,7 @@
 // curto e repetível ("juninho", "pedrinho", "danilo") — bastava um clube
 // novo ter um homônimo pra o rosto de um jogador do Goiás aparecer no card
 // de outro clube. Agora o mapa vive em `ClubAssets.squadPhotos`, por clube.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';

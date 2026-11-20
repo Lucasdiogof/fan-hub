@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 
 /// Paleta de fallback pra times sem cor própria conhecida (a API-Football não

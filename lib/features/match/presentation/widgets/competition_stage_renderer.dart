@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/match/domain/entities/competition_stage.dart';
 import 'package:goias_app/features/match/domain/entities/stage_type.dart';
 import 'package:goias_app/features/match/presentation/widgets/knockout_stage_view.dart';

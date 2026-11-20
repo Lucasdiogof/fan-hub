@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Finalidade da página — decide a largura máxima do conteúdo no desktop.
 /// Nunca escolha um número direto numa tela: escolha a categoria que

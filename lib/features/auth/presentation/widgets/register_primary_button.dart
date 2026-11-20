@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 
 /// Mesmo `AppPrimaryButton` do resto do app, só um alias local — sem seta,

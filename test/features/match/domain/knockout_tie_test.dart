@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show Color;
+import 'package:material_ui/material_ui.dart' show Color;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/match/domain/entities/knockout_tie.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';

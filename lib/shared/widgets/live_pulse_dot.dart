@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Ponto pulsante do indicador "AO VIVO" — sempre verde (nunca vermelho,
 /// regra do design system), animação sutil só de opacidade, sem escala

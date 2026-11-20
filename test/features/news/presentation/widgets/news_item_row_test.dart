@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
@@ -19,7 +19,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('pt'),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
         supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light(),
@@ -39,7 +39,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('pt'),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
         supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light(),
@@ -57,7 +57,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('pt'),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
         supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light(),

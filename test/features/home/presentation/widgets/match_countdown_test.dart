@@ -6,7 +6,7 @@
 // aritmética). Este arquivo prova a mesma invariância na PONTA — o widget
 // renderiza o mesmo tanto de dias/horas restantes pro mesmo instante real,
 // não importa em qual fuso esse instante é representado.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/home/presentation/widgets/match_countdown.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
@@ -16,7 +16,7 @@ import 'package:timezone/timezone.dart' as tz;
 Future<void> _pump(WidgetTester tester, DateTime kickoff) => tester.pumpWidget(
   MaterialApp(
     locale: const Locale('pt'),
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
     supportedLocales: AppLocalizations.supportedLocales,
     home: Scaffold(body: MatchCountdown(kickoff: kickoff)),
   ),

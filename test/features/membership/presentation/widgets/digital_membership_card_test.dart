@@ -3,7 +3,7 @@
 // pra travar: com o clube em `CommerceMode.demo`, o selo "DEMONSTRAÇÃO"
 // aparece; se um clube um dia virar `real`, ele some sozinho — nenhuma
 // tela precisa ser reescrita.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -43,7 +43,7 @@ ClubConfig _configWith(CommerceMode membershipMode) => ClubConfig(
 
 Widget _wrap(Widget child) => MaterialApp(
   locale: const Locale('pt'),
-  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
   supportedLocales: AppLocalizations.supportedLocales,
   theme: AppTheme.light(),
   home: Scaffold(body: child),

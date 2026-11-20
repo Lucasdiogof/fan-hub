@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// Loading global bloqueante — pro caso em que uma tela só deve navegar

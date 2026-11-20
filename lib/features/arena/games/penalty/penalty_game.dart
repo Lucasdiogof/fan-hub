@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_logic.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';

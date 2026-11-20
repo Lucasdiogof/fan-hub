@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_category.dart';
 import 'package:goias_app/shared/widgets/fan_hub_tab_bar.dart';

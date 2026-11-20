@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
@@ -44,7 +44,7 @@ Widget _host(
 }) => MaterialApp(
   theme: theme ?? AppTheme.light(),
   locale: const Locale('pt'),
-  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
   supportedLocales: AppLocalizations.supportedLocales,
   builder: (context, app) => MediaQuery(
     data: MediaQuery.of(

@@ -6,7 +6,7 @@
 // `passport_match_row_v1.dart`, `passport_match_ticket_v2.dart`), todos
 // corrigidos juntos — este teste trava só o mais visível (o picker), mas
 // serve de sentinela pro padrão inteiro.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -44,7 +44,7 @@ void main() {
         await tester.pumpWidget(
           MaterialApp(
             theme: AppTheme.light(),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
             supportedLocales: AppLocalizations.supportedLocales,
             home: Builder(
               builder: (context) => ElevatedButton(

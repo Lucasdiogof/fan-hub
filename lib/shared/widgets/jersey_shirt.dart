@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Camisa de uniforme estilizada — mesmo desenho usado no jogo "Adivinhe a
 /// Escalação" e na "Escalação da Torcida", pra manter uma única linguagem

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/presentation/widgets/membership_plan_card.dart';

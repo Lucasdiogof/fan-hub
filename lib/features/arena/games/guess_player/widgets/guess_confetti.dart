@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Acabamento bem discreto pro acerto — algumas partículas em verde/dourado
 /// do clube saindo do centro, sem exagero de confete/neon.

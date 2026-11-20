@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
 
 /// Taxonomia fixa de categorias/coleções da loja — estrutural, não dado de

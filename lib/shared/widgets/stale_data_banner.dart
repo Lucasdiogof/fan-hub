@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
 import 'package:goias_app/shared/widgets/saved_content_banner.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Chave do `Navigator` raiz do app — permite abrir UI (ex.: a bottom
 /// sheet de sessão expirada) a partir de código que não tem um

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_field_background.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';

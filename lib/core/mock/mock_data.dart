@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';

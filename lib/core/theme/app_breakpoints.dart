@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Classe de tamanho de tela — mesmo vocabulário das "window size classes"
 /// do Material 3, adaptado aos 4 níveis que este app precisa distinguir.

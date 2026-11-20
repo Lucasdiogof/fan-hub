@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/shared/utils/display_name_fit.dart';
 
 /// Quebra previsível em até 2 linhas — nunca o `maxLines` do Flutter

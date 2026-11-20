@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
@@ -12,7 +12,7 @@ Future<void> _pump(WidgetTester tester, int totalMatches, {ThemeData? theme}) =>
     tester.pumpWidget(
       MaterialApp(
         locale: const Locale('pt'),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
         supportedLocales: AppLocalizations.supportedLocales,
         theme: theme ?? AppTheme.light(),
         home: Scaffold(

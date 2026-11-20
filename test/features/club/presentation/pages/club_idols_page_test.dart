@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
@@ -99,7 +99,7 @@ void main() {
         ).copyWith(textScaler: TextScaler.linear(textScale)),
         child: child!,
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
     );
@@ -493,7 +493,7 @@ void main() {
         MaterialApp.router(
           theme: dark ? AppTheme.dark() : AppTheme.light(),
           locale: const Locale('pt'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
           supportedLocales: AppLocalizations.supportedLocales,
           builder: (context, child) => MediaQuery(
             data: MediaQuery.of(

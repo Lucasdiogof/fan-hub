@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Idiomas que o app oferece no seletor, na ordem em que aparecem.
 const kSupportedLocales = <Locale>[Locale('pt'), Locale('en'), Locale('es')];

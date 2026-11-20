@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/home/presentation/widgets/live_match_hero.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
