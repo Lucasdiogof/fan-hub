@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
+import 'package:goias_app/features/match/data/datasources/football_data_source.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 import 'package:goias_app/features/match/domain/entities/competition_season.dart';
 import 'package:goias_app/features/match/domain/entities/competition_stage.dart';
@@ -22,7 +22,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 class FootballRepositoryImpl implements FootballRepository {
   FootballRepositoryImpl(this._remote, this._clubConfig);
 
-  final FootballRemoteDataSource _remote;
+  final FootballDataSource _remote;
   final ClubConfig _clubConfig;
 
   @override

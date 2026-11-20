@@ -48,11 +48,14 @@ export interface ClubServerConfig {
    * "esse homeTeamName é o clube ativo?" no dispatch, nunca pra decisão de
    * fluxo/roteamento. */
   shortName: string;
-  /** Mesmo `ClubIntegrations.workerBaseUrl` do Flutter — substitui o
-   * antigo `WORKER_BASE_URL` hardcoded (sempre o do Goiás) em
-   * `notifications-poll-live-match`/`notifications-sync-and-check-access`.
-   * Nunca inferido a partir do `code`; sempre o valor real do clube. */
-  workerBaseUrl: string;
+  /** Slug do time no OneFootball (`/pt-br/time/<slug>`) — mesmo valor de
+   * `TEAM_ONEFOOTBALL_SLUG` nos `wrangler*.toml`. Camada `_shared/football`. */
+  oneFootballSlug: string;
+  /** Slug da competição PRINCIPAL no OneFootball (muda por temporada) —
+   * `PRIMARY_COMPETITION_SLUG` dos `wrangler*.toml`. */
+  primaryCompetitionSlug: string;
+  /** Nome de exibição da competição principal (`PRIMARY_COMPETITION_DISPLAY_NAME`). */
+  primaryCompetitionDisplayName: string;
 }
 
 /**
@@ -71,11 +74,13 @@ const GOIAS_SERVER_CONFIG: ClubServerConfig = {
   oneFootballTeamId: 1863,
   oneFootballTeamPath: 'goias',
   shortName: 'Goiás',
-  workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
+  oneFootballSlug: 'goias-1863',
+  primaryCompetitionSlug: 'brasileirao-serie-b-superbet-119',
+  primaryCompetitionDisplayName: 'Brasileirão Série B',
 };
 
 // Mesmos valores reais de `lib/core/club/bragantino_club_config.dart`
-// (canonicalClubId/oneFootballTeamId/workerBaseUrl já confirmados lá,
+// (canonicalClubId/oneFootballTeamId/(sem Worker de futebol) já confirmados lá,
 // nunca reinventados aqui).
 const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   code: 'bragantino',
@@ -83,19 +88,23 @@ const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   oneFootballTeamId: 4734,
   oneFootballTeamPath: 'bragantino',
   shortName: 'Bragantino',
-  workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
+  oneFootballSlug: 'rb-bragantino-4734',
+  primaryCompetitionSlug: 'brasileirao-betano-16',
+  primaryCompetitionDisplayName: 'Brasileirão Série A',
 };
 
 // Mesmos valores reais de `lib/core/club/vilanova_club_config.dart`
 // (canonicalClubId = `goias-app:multiclub:club:3`, oneFootballTeamId 2865 e
-// workerBaseUrl confirmados lá, nunca reinventados aqui).
+// confirmados lá, nunca reinventados aqui).
 const VILANOVA_SERVER_CONFIG: ClubServerConfig = {
   code: 'vilanova',
   canonicalClubId: '3a6b1e27-8441-533d-b6b8-99fdcfdf1c3e',
   oneFootballTeamId: 2865,
   oneFootballTeamPath: 'vilanova',
   shortName: 'Vila Nova',
-  workerBaseUrl: 'https://vilanova-app.lucasdiogo1234.workers.dev',
+  oneFootballSlug: 'vila-nova-2865',
+  primaryCompetitionSlug: 'brasileirao-serie-b-superbet-119',
+  primaryCompetitionDisplayName: 'Brasileirão Série B',
 };
 
 /** Todo registro real hoje — Goiás, Bragantino e Vila Nova. Um 4º clube real

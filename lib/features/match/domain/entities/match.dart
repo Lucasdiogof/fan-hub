@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 
 enum MatchStatus {
@@ -50,6 +51,25 @@ class Match extends Equatable {
   final String? minute;
 
   bool isHomeTeam(int teamId) => homeTeam.id == teamId;
+
+  /// O clube ativo está vencendo (ao vivo/intervalo) ou venceu (encerrado)?
+  /// Compara o placar DO CLUBE contra o do adversário, em qualquer lado do
+  /// confronto (mandante ou visitante) — nunca assume mandante. `false`
+  /// sem placar, sem status de jogo em andamento/encerrado, ou se nenhum
+  /// dos times é o clube ativo.
+  bool isClubWinning(ClubConfig club) {
+    if (status != MatchStatus.live &&
+        status != MatchStatus.halftime &&
+        status != MatchStatus.finished) {
+      return false;
+    }
+    final home = homeScore;
+    final away = awayScore;
+    if (home == null || away == null) return false;
+    if (homeTeam.matchesClub(club)) return home > away;
+    if (awayTeam.matchesClub(club)) return away > home;
+    return false;
+  }
 
   @override
   List<Object?> get props => [

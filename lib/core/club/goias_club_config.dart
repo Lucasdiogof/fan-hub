@@ -91,6 +91,8 @@ final goiasClubConfig = ClubConfig(
     guessPlayerPhotos: {...squadPhotoAssets, ...goiasGuessPlayerPhotos},
   ),
   integrations: const ClubIntegrations(
+    // TEMPORÁRIO (rollout): futebol via snapshot Supabase. Rollback = FootballSource.worker.
+    footballSource: FootballSource.supabaseSnapshot,
     oneFootballTeamId: 1863,
     oneFootballSlug: 'goias-1863',
     oneFootballCompetitionSlug: 'brasileirao-serie-b-superbet-119',

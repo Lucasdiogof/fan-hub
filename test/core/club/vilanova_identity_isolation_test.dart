@@ -142,9 +142,10 @@ void main() {
         // `vilanova_membership_plans_catalog.dart`.
         expect(c.hasMembership, isTrue);
         // F8 (2026-09-30): Worker próprio no ar — jogos e aba Mídia.
+        // TODO-P1: News/Social desligados temporariamente (Worker inexistente).
         expect(c.hasMatches, isTrue);
-        expect(c.hasNews, isTrue);
-        expect(c.hasSocial, isTrue);
+        expect(c.hasNews, isFalse);
+        expect(c.hasSocial, isFalse);
         // 2026-09-30: ingressos (notícias oficiais de venda) e parceiros
         // (faixa de patrocinadores do site oficial).
         expect(c.hasTickets, isTrue);

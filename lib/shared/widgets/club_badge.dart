@@ -376,6 +376,8 @@ class _LoadingBadge extends StatelessWidget {
   }
 }
 
+const _neutralShield = Color(0xFF5B6470);
+
 class _ShieldBadge extends StatelessWidget {
   const _ShieldBadge({
     required this.team,
@@ -394,7 +396,9 @@ class _ShieldBadge extends StatelessWidget {
       height: size,
       child: CustomPaint(
         painter: _ShieldPainter(
-          color: team.color,
+          // Neutro de propósito: sem escudo real, nunca inventa uma cor que
+          // lembre o escudo de outro clube — só as iniciais do time.
+          color: _neutralShield,
           ringColor: Colors.white.withValues(alpha: onDark ? 0.5 : 0.85),
         ),
         child: Padding(

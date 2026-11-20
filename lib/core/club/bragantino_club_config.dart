@@ -328,6 +328,8 @@ final bragantinoClubConfig = ClubConfig(
     },
   ),
   integrations: const ClubIntegrations(
+    // TEMPORÁRIO (rollout): futebol via snapshot Supabase. Rollback = FootballSource.worker.
+    footballSource: FootballSource.supabaseSnapshot,
     // Confirmado navegando onefootball.com/pt-br/time/rb-bragantino-4734
     // (também /en/team/rb-bragantino-4734) — nome oficial exibido "RB
     // Bragantino", id numérico 4734.
@@ -417,7 +419,10 @@ final bragantinoClubConfig = ClubConfig(
     // 2026-09-08: Worker passou a integrar a fonte oficial real do Bragantino
     // (API JSON interna da própria SPA do Red Bull, sem raspagem/dado
     // inventado — ver `project_goias_app_media_multiclub.md`).
-    hasNews: true,
+    // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
+    // Worker do clube, que não existe mais. Restaurar numa arquitetura
+    // compartilhada (sem remover código/dados desta feature).
+    hasNews: false,
     // 2026-09-08: YouTube oficial (@MassaBrutaTV / UC0x9Ypk2Z1lUdR4a88jMC2Q)
     // confirmado ao vivo contra a Data API v3 real — 15 vídeos reais
     // devolvidos pelo Worker, `?club=goias` no deploy do Bragantino segue
@@ -429,7 +434,10 @@ final bragantinoClubConfig = ClubConfig(
     // vivo — feed agregado hoje tem as 4 fontes juntas (News/YouTube/X/
     // Instagram), 40 posts, sem cross-club. Ver
     // `project_goias_app_media_multiclub.md`.
-    hasSocial: true,
+    // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
+    // Worker do clube, que não existe mais. Restaurar numa arquitetura
+    // compartilhada (sem remover código/dados desta feature).
+    hasSocial: false,
     // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
     // (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
     // `BragantinoSongsData`) — liga o `/clube`. Diretoria (13 pessoas, 3

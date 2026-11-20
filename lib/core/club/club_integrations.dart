@@ -1,3 +1,10 @@
+/// Origem dos dados de futebol deste clube. TEMPORÁRIO: existe só para o
+/// rollout/rollback gradual Worker → snapshot Supabase (Etapas C/D). Quando
+/// os três clubes estiverem migrados, remover este enum, a flag
+/// `footballSource` e o caminho Worker (`FootballRemoteDataSource`) — fica
+/// só o snapshot.
+enum FootballSource { worker, supabaseSnapshot }
+
 /// Endereço fixo de retirada — mesmo shape de `PickupInformation`
 /// (`features/store/domain/entities/shipping.dart`), duplicado aqui de
 /// propósito: `core/club` nunca deveria importar de `features/*` (a
@@ -32,6 +39,7 @@ class ClubIntegrations {
     required this.orderPrefix,
     required this.pickupAddress,
     this.workerBaseUrl,
+    this.footballSource = FootballSource.worker,
     this.supabaseUrl,
     this.supabasePublishableKey,
     this.supabaseRedirectUrl,
@@ -63,6 +71,9 @@ class ClubIntegrations {
   /// (`hasMatches`, `hasNews`, `hasSocial`) já fica indisponível antes
   /// disso de qualquer jeito.
   final String? workerBaseUrl;
+
+  /// TEMPORÁRIO — ver [FootballSource]. Nenhum clube foi migrado ainda.
+  final FootballSource footballSource;
 
   /// Projeto Supabase deste clube — cada clube tem seu PRÓPRIO projeto,
   /// fisicamente separado, `auth.users` nunca compartilhado (ver

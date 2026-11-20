@@ -178,6 +178,24 @@
       ],
       "sha256": "e5219ddd7db24bad7895c71dc5437ef200666fdad2ff6c2609b8e56171e944ff",
       "note": "Hardening das RPCs passport_*: auth.uid() nas 5 por usuário, revoga EXECUTE de public e anon, checks transacionais. Preparada e NÃO aplicada. Global: as 12 funções existem no baseline e não há literal de clube."
+    },
+    {
+      "version": "20261120010000",
+      "file": "20261120010000_football_snapshots.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "adfc2c0e533d3bf2177cac186e9b5884410b39ee5d6e4f04c118008099a6e204",
+      "note": "Futebol: tabela football_snapshots + RPC get_football_snapshot (leitura anon/authenticated, escrita service_role). Sem pg_cron/pg_net/Vault. Preparada e NÃO aplicada. Global: sem literal de clube."
+    },
+    {
+      "version": "20261120020000",
+      "file": "20261120020000_football_images_bucket.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "5bc26451c688998008641b5a5ebed344b32d122002a4cc8d6f81fb87a3679f1e",
+      "note": "Bucket público football-images (escudos de times materializados pelo football-refresh); escrita só service_role. Global: sem literal de clube."
     }
   ]
 }

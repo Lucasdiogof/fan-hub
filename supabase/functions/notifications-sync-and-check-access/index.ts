@@ -14,6 +14,8 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 import { SERVER_CLUB_REGISTRY, type ClubServerConfig } from '../_shared/club_server_config.ts';
 import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
+import { readSnapshotOrRefresh } from '../_shared/football/read.ts';
+import { createSnapshotStore } from '../_shared/football/store.ts';
 
 const ACCESS_WINDOW_HOURS = 48;
 const MONITOR_HORIZON_DAYS = 10;
@@ -41,12 +43,20 @@ async function syncClub(
   admin: ReturnType<typeof createClient>,
   clubConfig: ClubServerConfig,
 ): Promise<{ club: string; ok: boolean; matchId?: string; createdEvent: boolean; reason?: string }> {
-  const teamRes = await fetch(`${clubConfig.workerBaseUrl}/api/football/team/${clubConfig.oneFootballTeamPath}`);
-  if (!teamRes.ok) {
-    console.error('sync-and-check-access: falha ao consultar /team', clubConfig.code, teamRes.status);
+  // Snapshot normalizado (football_snapshots) — a mesma fonte da Home. Aceita
+  // até 30 min de idade; senão refaz via a implementação única de refresh.
+  const team = await readSnapshotOrRefresh<{ nextMatch: NextMatch | null }>(
+    admin,
+    clubConfig,
+    'team',
+    'default',
+    { store: createSnapshotStore(admin), images: null },
+    30 * 60 * 1000,
+  );
+  if (!team) {
+    console.error('sync-and-check-access: snapshot de /team indisponível', clubConfig.code);
     return { club: clubConfig.code, ok: false, createdEvent: false, reason: 'upstream_error' };
   }
-  const team = (await teamRes.json()) as { nextMatch: NextMatch | null };
   const nextMatch = team.nextMatch;
 
   if (!nextMatch || !nextMatch.kickoff) {
@@ -147,8 +157,14 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceRoleKey);
 
-    // Itera o registry inteiro — hoje só 1 clube, mas nunca hardcoded qual.
-    const results = await Promise.all(SERVER_CLUB_REGISTRY.map((clubConfig) => syncClub(admin, clubConfig)));
+    // Só os clubes DESTE projeto (registry ∩ `public.clubs`): nunca busca/grava
+    // dado de clube de outro projeto Supabase.
+    const { data: rows, error: clubsError } = await admin.from('clubs').select('id');
+    if (clubsError) return jsonResponse({ ok: false, error: 'clubs unavailable' }, 500);
+    const present = new Set((rows ?? []).map((r: { id: string }) => r.id));
+    const results = await Promise.all(
+      SERVER_CLUB_REGISTRY.filter((c) => present.has(c.canonicalClubId)).map((c) => syncClub(admin, c)),
+    );
 
     const anyEventCreated = results.some((r) => r.createdEvent);
     if (anyEventCreated) {

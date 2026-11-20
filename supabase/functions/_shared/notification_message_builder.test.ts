@@ -12,7 +12,6 @@ const GOIAS: ClubServerConfig = {
   oneFootballTeamId: 1863,
   oneFootballTeamPath: 'goias',
   shortName: 'Goiás',
-  workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
 };
 
 const BRAGANTINO: ClubServerConfig = {
@@ -21,7 +20,6 @@ const BRAGANTINO: ClubServerConfig = {
   oneFootballTeamId: 4734,
   oneFootballTeamPath: 'bragantino',
   shortName: 'Bragantino',
-  workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
 };
 
 // Fixture SINTÉTICA, só neste arquivo de teste — nunca registrada em
@@ -32,7 +30,6 @@ const CLUB_B: ClubServerConfig = {
   oneFootballTeamId: 999999,
   oneFootballTeamPath: 'club-b',
   shortName: 'Clube B',
-  workerBaseUrl: 'https://club-b.example.workers.dev',
 };
 
 const COLOR_EMOJIS = ['💚', '❤️', '🟢', '🔴'];

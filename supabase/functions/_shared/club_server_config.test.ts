@@ -42,9 +42,9 @@ describe('SERVER_CLUB_REGISTRY — Goiás + Bragantino + Vila Nova, nenhum 4º c
     expect(SERVER_CLUB_REGISTRY.map((c) => c.code).sort()).toEqual(['bragantino', 'goias', 'vilanova']);
   });
 
-  it('cada clube tem workerBaseUrl PRÓPRIO — nunca os 2 apontando pro mesmo Worker', () => {
-    const urls = SERVER_CLUB_REGISTRY.map((c) => c.workerBaseUrl);
-    expect(new Set(urls).size).toBe(SERVER_CLUB_REGISTRY.length);
+  it('cada clube tem slug OneFootball PRÓPRIO', () => {
+    const slugs = SERVER_CLUB_REGISTRY.map((c) => c.oneFootballSlug);
+    expect(new Set(slugs).size).toBe(SERVER_CLUB_REGISTRY.length);
   });
 });
 
@@ -55,7 +55,6 @@ describe('resolveClubServerConfigByClubId/ByCode — Bragantino', () => {
     const config = resolveClubServerConfigByClubId(BRAGANTINO_CANONICAL_CLUB_ID);
     expect(config?.code).toBe('bragantino');
     expect(config?.oneFootballTeamId).toBe(4734);
-    expect(config?.workerBaseUrl).toBe('https://bragantino-app.lucasdiogo1234.workers.dev');
   });
 
   it("code 'bragantino' resolve pra config do Bragantino", () => {
@@ -72,7 +71,6 @@ describe('resolveClubServerConfigByClubId/ByCode — Vila Nova', () => {
     expect(config?.code).toBe('vilanova');
     expect(config?.oneFootballTeamId).toBe(2865);
     expect(config?.shortName).toBe('Vila Nova');
-    expect(config?.workerBaseUrl).toBe('https://vilanova-app.lucasdiogo1234.workers.dev');
   });
 
   it("code 'vilanova' resolve pra config do Vila Nova", () => {

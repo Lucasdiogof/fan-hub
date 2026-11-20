@@ -29,6 +29,8 @@ import {
   type FixtureEvent,
 } from '../_shared/live_match_events.ts';
 import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
+import { refreshSnapshot } from '../_shared/football/refresh.ts';
+import { createSnapshotStore } from '../_shared/football/store.ts';
 
 const PRE_KICKOFF_BUFFER_MINUTES = 5;
 
@@ -94,6 +96,7 @@ Deno.serve(async (req) => {
     if (denied) return denied;
 
     const admin = createClient(supabaseUrl, serviceRoleKey);
+    const snapshotStore = createSnapshotStore(admin);
 
     const now = new Date();
     const bufferMs = PRE_KICKOFF_BUFFER_MINUTES * 60 * 1000;
@@ -153,13 +156,18 @@ Deno.serve(async (req) => {
       const rawId = session.match_id.startsWith('onef-')
         ? session.match_id.slice('onef-'.length)
         : session.match_id;
-      const fixtureRes = await fetch(`${clubConfig.workerBaseUrl}/api/football/fixtures/onef-${rawId}`);
-      if (!fixtureRes.ok) {
-        console.error('poll-live-match: falha ao consultar fixture', session.match_id, fixtureRes.status);
+      // Mesma implementação de refresh/normalização da Home (football_snapshots),
+      // sem HTTP interno nem Worker. Refresh a cada poll (1 min): mantém o
+      // snapshot do jogo ao vivo em dia para o app também.
+      const refreshed = await refreshSnapshot(clubConfig, 'fixture', `onef-${rawId}`, {
+        store: snapshotStore,
+        images: null,
+      });
+      if (!refreshed.ok || !refreshed.payload) {
+        console.error('poll-live-match: falha ao atualizar fixture', session.match_id, refreshed.error);
         continue;
       }
-      const fixture = (await fixtureRes.json()) as FixtureResponse;
-      const { match, events } = fixture;
+      const { match, events } = refreshed.payload as FixtureResponse;
 
       const activeClubSide: 'home' | 'away' | null =
         match.homeTeam.id === clubConfig.oneFootballTeamId

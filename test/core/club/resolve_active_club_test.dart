@@ -198,9 +198,10 @@ void main() {
         // real — 15 vídeos reais devolvidos pelo Worker, isolamento
         // cross-club intacto (`?club=goias` no deploy do Bragantino segue
         // 404). Instagram/X seguem sem config própria, mas isso nunca
+        // TODO-P1: News/Social desligados temporariamente (Worker inexistente).
         // derruba o feed inteiro (`Promise.allSettled` por provider).
-        expect(c.hasNews, isTrue);
-        expect(c.hasSocial, isTrue);
+        expect(c.hasNews, isFalse);
+        expect(c.hasSocial, isFalse);
         // player_identity e tactical_identity: datasets próprios do
         // Bragantino auditados, simulados e corrigidos (ver
         // `bragantino_player_identity_references.dart` e

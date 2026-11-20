@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/resolve_active_club.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/core/network/offline_snapshot_interceptor.dart';
@@ -50,7 +51,9 @@ import 'package:goias_app/features/profile/data/supabase_profile_repository.dart
 import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:goias_app/features/match/data/datasources/football_data_source.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
+import 'package:goias_app/features/match/data/datasources/football_snapshot_data_source.dart';
 import 'package:goias_app/features/match/data/repositories/football_repository_impl.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
@@ -131,8 +134,16 @@ void setupDependencies() {
   sl.registerLazySingleton<Dio>(
     () => ApiClient.create(sl(), snapshotStatus: sl<OfflineSnapshotStatus>()),
   );
-  sl.registerLazySingleton<FootballRemoteDataSource>(
-    () => FootballRemoteDataSource(sl(), sl()),
+  // Flag TEMPORÁRIA de rollout/rollback por clube (ver `FootballSource`).
+  sl.registerLazySingleton<FootballDataSource>(
+    () => switch (sl<ClubConfig>().integrations.footballSource) {
+      FootballSource.worker => FootballRemoteDataSource(sl(), sl()),
+      FootballSource.supabaseSnapshot => FootballSnapshotDataSource(
+        Supabase.instance.client,
+        sl(),
+        sl(),
+      ),
+    },
   );
   sl.registerLazySingleton<FootballRepository>(
     () => FootballRepositoryImpl(sl(), sl()),

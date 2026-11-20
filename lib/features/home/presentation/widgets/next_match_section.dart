@@ -1,4 +1,9 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/victory_glow_border.dart';
 import 'package:goias_app/features/home/presentation/widgets/live_match_hero.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -39,10 +44,16 @@ class NextMatchSection extends StatelessWidget {
         switchInCurve: Curves.easeOut,
         switchOutCurve: Curves.easeIn,
         child: _showsScoreCard
-            ? LiveMatchHero(
+            ? VictoryGlowBorder(
                 key: const ValueKey('live'),
-                match: match,
-                onFollow: () => openMatchDetails(context, match),
+                active: match.isClubWinning(sl<ClubConfig>()),
+                // Cor do design system do clube/tema ativo — nunca fixa.
+                color: context.colors.cta,
+                borderRadius: AppRadius.hero,
+                child: LiveMatchHero(
+                  match: match,
+                  onFollow: () => openMatchDetails(context, match),
+                ),
               )
             : NextMatchHero(
                 key: const ValueKey('upcoming'),

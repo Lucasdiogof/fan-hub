@@ -218,6 +218,8 @@ final vilaNovaClubConfig = ClubConfig(
     guessPlayerPhotos: _vilaNovaGuessPlayerPhotos,
   ),
   integrations: const ClubIntegrations(
+    // TEMPORÁRIO (rollout): futebol via snapshot Supabase. Rollback = FootballSource.worker.
+    footballSource: FootballSource.supabaseSnapshot,
     // Projeto Supabase do Vila, criado pelo usuário em 2026-09-29. A
     // publishable key não é segredo (mesmo padrão do Goiás/Bragantino,
     // já commitados em texto puro); nunca a service_role/senha de banco.
@@ -280,8 +282,14 @@ final vilaNovaClubConfig = ClubConfig(
     // Action) e YouTube "TigrãoTV" (precisa do secret YOUTUBE_API_KEY no
     // Worker). Rede sem dado ainda aparece vazia, nunca com post de outro
     // clube.
-    hasNews: true,
-    hasSocial: true,
+    // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
+    // Worker do clube, que não existe mais. Restaurar numa arquitetura
+    // compartilhada (sem remover código/dados desta feature).
+    hasNews: false,
+    // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
+    // Worker do clube, que não existe mais. Restaurar numa arquitetura
+    // compartilhada (sem remover código/dados desta feature).
+    hasSocial: false,
     // F3: história, linha do tempo, títulos e ídolos estáticos (pacote
     // v1.2). F4 (2026-09-29): diretoria (6 seções/28 pessoas) e
     // transparência (5 documentos) confirmadas ao vivo no Supabase do Vila
