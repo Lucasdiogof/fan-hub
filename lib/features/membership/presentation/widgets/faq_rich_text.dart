@@ -1,5 +1,5 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_block.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';

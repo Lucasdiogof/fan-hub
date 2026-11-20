@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show Color;
+import 'package:material_ui/material_ui.dart' show Color;
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/shared/widgets/team_visuals/team_visual_identity.dart';
 import 'package:pdf/pdf.dart';

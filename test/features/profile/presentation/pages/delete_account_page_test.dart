@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -95,7 +95,7 @@ class _FakeAuthRepository implements AuthRepository {
 Widget _wrap(AuthCubit cubit) {
   return MaterialApp(
     locale: const Locale('pt'),
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
     supportedLocales: AppLocalizations.supportedLocales,
 
     theme: AppTheme.light(),

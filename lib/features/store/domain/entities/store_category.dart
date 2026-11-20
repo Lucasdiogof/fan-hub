@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Categoria principal (Lançamentos, Uniformes, Masculino...) ou coleção
 /// (Uniforme 01, Goleiro, Torcedor...) — mesma entidade, diferenciadas por

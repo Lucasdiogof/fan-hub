@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -24,7 +24,7 @@ class _FixedRepository implements ReleaseRequirementRepository {
 Widget _wrap(Widget child) => MaterialApp(
   theme: AppTheme.light(),
   locale: const Locale('pt'),
-  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
   supportedLocales: AppLocalizations.supportedLocales,
   home: child,
 );

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
@@ -55,7 +55,7 @@ void main() {
     return MaterialApp.router(
       theme: AppTheme.light(),
       locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
     );

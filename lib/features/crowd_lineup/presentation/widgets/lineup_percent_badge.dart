@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Pill compacta de porcentagem da Escalação da Torcida — nunca um círculo

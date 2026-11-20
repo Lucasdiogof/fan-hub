@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart' show Colors;
+import 'package:material_ui/material_ui.dart' show Colors;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:goias_app/core/club/bragantino_club_config.dart';

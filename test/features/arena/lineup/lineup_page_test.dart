@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -132,7 +132,7 @@ void main() {
         MaterialApp(
           theme: AppTheme.light(),
           locale: const Locale('pt'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
           supportedLocales: AppLocalizations.supportedLocales,
           home: const LineupPage(),
         ),
@@ -258,7 +258,7 @@ void main() {
           navigatorKey: navigatorKey,
           theme: AppTheme.light(),
           locale: const Locale('pt'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
           supportedLocales: AppLocalizations.supportedLocales,
           // Simula a Arena por baixo — é essencial pro teste provar o bug
           // (`LineupPage` empilhada sobre outra tela, não como raiz do

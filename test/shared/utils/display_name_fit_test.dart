@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_name_label.dart';
 import 'package:goias_app/shared/utils/display_name_fit.dart';

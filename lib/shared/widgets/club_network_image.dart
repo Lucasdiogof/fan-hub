@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Foto remota com cache em disco: quem já foi vista com internet continua
 /// aparecendo depois de fechar o app, em modo avião. Substitui

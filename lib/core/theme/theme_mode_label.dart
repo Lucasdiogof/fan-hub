@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
 String themeModeLabel(AppLocalizations l10n, ThemeMode mode) => switch (mode) {

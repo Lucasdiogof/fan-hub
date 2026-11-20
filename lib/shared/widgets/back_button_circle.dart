@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Botão de voltar redondo padrão do app — usado em toda página empilhada

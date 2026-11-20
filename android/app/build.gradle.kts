@@ -30,7 +30,7 @@ android {
     // (Gradle permite namespace != applicationId). MainActivity.kt movida pro
     // mesmo package.
     namespace = "br.com.fanhub.goias"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = maxOf(flutter.compileSdkVersion, 37) // plugins (permission_handler, flutter_local_notifications, androidx.core 1.19) exigem 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

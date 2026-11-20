@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
 /// Campo visto de cima, só as marcações essenciais (linha central, círculo,

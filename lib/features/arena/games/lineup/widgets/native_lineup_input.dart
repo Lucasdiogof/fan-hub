@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Experimental (ver `lineup_input_mode.dart`): captura o palpite pelo
 /// teclado NATIVO do aparelho em vez do `LineupKeyboard` próprio do app —

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -45,7 +45,7 @@ class _FakeNewsRepository implements NewsRepository {
 Widget _wrap() {
   return MaterialApp.router(
     locale: const Locale('pt'),
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
     supportedLocales: AppLocalizations.supportedLocales,
 
     theme: AppTheme.light(),

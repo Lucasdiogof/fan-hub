@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/features/club/data/goias_idols_data.dart';
 import 'package:goias_app/features/club/domain/entities/active_idol_tracking.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';

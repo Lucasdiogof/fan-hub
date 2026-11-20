@@ -4,7 +4,7 @@
 // servidor (RPC `arena_record_score`); aqui só travamos que o CLIENTE
 // sempre reporta a conclusão (gameId/itemId corretos), com `itemId` fixo
 // 'profile' (não há coleção de conteúdo nesses 2 jogos).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
@@ -119,7 +119,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
           supportedLocales: AppLocalizations.supportedLocales,
           home: TacticalIdentityResultPage(result: result),
         ),
@@ -167,7 +167,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
           supportedLocales: AppLocalizations.supportedLocales,
           home: const PlayerIdentityResultPage(result: result),
         ),

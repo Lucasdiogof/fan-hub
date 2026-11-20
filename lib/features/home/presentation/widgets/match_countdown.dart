@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 
 /// Contagem regressiva até `kickoff`. Cuida do próprio `Timer` e só chama

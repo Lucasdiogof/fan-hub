@@ -2,7 +2,7 @@
 // travando aqui a regressão de 2026-09-07: o Bragantino mostrava
 // "O MAIOR DO CENTRO-OESTE" (frase real só do Goiás) porque o texto vinha
 // hardcoded direto do l10n global em vez do clube ativo.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -19,7 +19,7 @@ void main() {
 
   Widget wrap() => MaterialApp(
     locale: const Locale('pt'),
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    localizationsDelegates: [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
     supportedLocales: AppLocalizations.supportedLocales,
     theme: AppTheme.light(),
     home: const Scaffold(body: ClubHeader()),

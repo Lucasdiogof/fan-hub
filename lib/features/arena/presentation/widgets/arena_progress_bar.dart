@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Barra de progresso fina compartilhada pela Arena — mesmo traço em
 /// `ArenaChallengeCard` (grade de desafios) e `ContinuePlayingCard`, pra
