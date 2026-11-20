@@ -1,283 +1,245 @@
 [
   {
-    "tweet_id": "2123464690236002622",
-    "text": "Nosso escudo pelas texturas de Salvador! 🌇 https://t.co/gMLT4hMmce",
-    "timestamp": "2026-11-19T17:13:28+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123464690236002622",
+    "tweet_id": "2123809120364994562",
+    "text": "Últimos detalhes antes de encarar o Mirassol! 🎯\n\n🎙️ Carlinhos fala sobre a expectativa para a semifinal do Paulista Sub-15. https://t.co/DoQxQcphH6",
+    "timestamp": "2026-11-20T16:02:07+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123809120364994562",
     "image_links": [
-      "https://pbs.twimg.com/media/HXgPxZsXEAAn-aS.jpg"
+      "https://pbs.twimg.com/amplify_video_thumb/2123808875929341952/img/9UHENfbUZIlAI2yY.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 2,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123749207991619832",
+    "text": "20 de novembro, dia da Consciência Negra.\n\nUma data de reflexão, reconhecimento e valorização da história, da cultura e da luta da população negra.\n\nO Red Bull Bragantino reforça que o respeito, a igualdade e o combate ao racismo são compromissos de todos os dias. ✊🏿 https://t.co/kvyEvDy8BJ",
+    "timestamp": "2026-11-20T12:04:03+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123749207991619832",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXkSpQsWsAACbXJ.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 11,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123591025713152215",
+    "text": "Domingo nós encaramos o Vasco em casa! 🔜 https://t.co/EQDr1kp9vq",
+    "timestamp": "2026-11-20T01:35:29+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123591025713152215",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXh9AGSW0AAfkP8.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 2,
+    "retweets": 1,
+    "comments": 1
+  },
+  {
+    "tweet_id": "2123576084734050721",
+    "text": "Fim de jogo no Barradão: Vitória 2 x 1 Red Bull Bragantino. \n\n📸 Ari Ferreira https://t.co/TR8WBdUI7a",
+    "timestamp": "2026-11-20T00:36:07+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123576084734050721",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXh1MRuW8AAiAj8.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 9,
+    "retweets": 1,
+    "comments": 22
+  },
+  {
+    "tweet_id": "2123573546224165267",
+    "text": "🗣️ Passou perto! Wallace Yan recebe de Vinicinho e bate colocado, a bola passa por cima do gol de Lucas Arcanjo. \n\n⏱️ 42 | 2T (2x1)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:26:02+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123573546224165267",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 0,
+    "retweets": 0,
+    "comments": 1
+  },
+  {
+    "tweet_id": "2123572060857471200",
+    "text": "🗣️ Matheus Fernandes também recebe o cartão amarelo. \n\n⏱️ 36 | 2T (2x1)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:20:08+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123572060857471200",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 0,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123571375050993734",
+    "text": "🗣 Gustavo Marques recebe o cartão amarelo. \n\n⏱️ 34 | 2T (2x1)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:17:24+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123571375050993734",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 3,
+    "retweets": 0,
+    "comments": 1
+  },
+  {
+    "tweet_id": "2123571275281072389",
+    "text": "🔁 Última mudança no Braga:\n\n⬇️ Saiu Eric Ramires\n⬆️ Entrou Matheus Fernandes\n\n⏱️ 33 | 2T (2x1)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:17:00+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123571275281072389",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 0,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123570531832103070",
+    "text": "HENRY MOSQUERA DIMINUI!\n\nA dupla de atacantes que acabou de entrar constrói a jogada para o Braga diminuir a vantagem do Vitória. Vinicinho cruza e Henry Mosquera, dividindo com o zagueiro, empurra para o funda da rede.\n\n⏱️ 27 | 2T (2x1)\n\n#VITxRBB\n#RedBullBragantino https://t.co/8WjLS0RPfU",
+    "timestamp": "2026-11-20T00:14:03+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123570531832103070",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXhvxtaWsAAukhh.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 6,
+    "retweets": 1,
+    "comments": 1
+  },
+  {
+    "tweet_id": "2123569817106203065",
+    "text": "GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!",
+    "timestamp": "2026-11-20T00:11:13+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123569817106203065",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 11,
+    "retweets": 0,
+    "comments": 3
+  },
+  {
+    "tweet_id": "2123568910389928387",
+    "text": "🔁 Substituições do técnico Vagner Mancini:\n\n⬇️ Saíram Fabinho e Fernando\n⬆️ Entraram Henry Mosquera e Vinicinho\n\n⏱️ 23 | 2T (2x0)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:07:36+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123568910389928387",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 1,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123567507592368329",
+    "text": "🗣️ Fabinho recebe o cartão 🟨.\n\n⏱️ 18 | 2T (2x0)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-20T00:02:02+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123567507592368329",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 0,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123563208556400782",
+    "text": "🔁 Duas mudanças no Massa Bruta, no intervalo:\n\n⬇️ Saíram Guzman e Herrera\n⬆️ Entraram Alix Vinícius e Gustavo Neves \n\n⏱️ 00 | 2T (2x0)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-19T23:44:57+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123563208556400782",
+    "image_links": [],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 0,
+    "retweets": 0,
+    "comments": 1
+  },
+  {
+    "tweet_id": "2123562757916148075",
+    "text": "Bola em jogo para o segundo tempo no Barradão.\n\n#VITxRBB \n#RedBullBragantino https://t.co/PrAeRYRsmD",
+    "timestamp": "2026-11-19T23:43:10+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123562757916148075",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXhpAnxWYAAbU4K.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 1,
+    "retweets": 1,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2123558475636830216",
+    "text": "Fim de primeiro tempo. \n\n#VITxRBB \n#RedBullBragantino https://t.co/sRy3YxsvOT",
+    "timestamp": "2026-11-19T23:26:09+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123558475636830216",
+    "image_links": [
+      "https://pbs.twimg.com/media/HXhlLIjXMAAvgFI.jpg"
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 3,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2123416235605987343",
-    "text": "É dia de jogo do Massa Bruta na Bahia! ❤️‍🔥 https://t.co/cO9ReDx7VZ",
-    "timestamp": "2026-11-19T14:00:56+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123416235605987343",
-    "image_links": [
-      "https://pbs.twimg.com/amplify_video_thumb/2123416109437050880/img/C33hYTsk09nWMv9Z.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 13,
-    "retweets": 1,
-    "comments": 1
-  },
-  {
-    "tweet_id": "2123385799035040124",
-    "text": "O ADM MANDOU AVISAR: 𝗛𝗢𝗝𝗘 𝗧𝗘𝗠 𝗕𝗥𝗔𝗚𝗔 𝗘𝗠 𝗖𝗔𝗠𝗣𝗢! 🙌\n\n⚽ Vitória x Red Bull Bragantino\n🏆 Brasileirão | 35ª rodada\n⏰ 19h30\n🏟️ Barradão\n📺 Premiere \n\n#RedBullBragantino #ForçaInterior https://t.co/f2LZWQLnvN",
-    "timestamp": "2026-11-19T11:59:59+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123385799035040124",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXfIA-yWAAA48iK.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 10,
-    "retweets": 1,
-    "comments": 2
-  },
-  {
-    "tweet_id": "2123197516267311335",
-    "text": "Nossa viagem até Salvador! 🛬 https://t.co/TF6BryoiDh",
-    "timestamp": "2026-11-18T23:31:49+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123197516267311335",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXccyhVXEAAlQfe.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 8,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2123159431034937570",
-    "text": "Welcome, Roger! 🤝⚽️\n\nO novo diretor global de futebol da Red Bull, Roger Schmidt, esteve pela primeira vez no Centro de Performance e Desenvolvimento do Red Bull Bragantino. \n\nNesta quarta-feira, ele comandou um trabalho com a equipe sub-16 do clube. \n\n📸 Italo Gabriel | Red Bull Bragantino",
-    "timestamp": "2026-11-18T21:00:29+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123159431034937570",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXb6Pz7XoAARIcD.jpg",
-      "https://pbs.twimg.com/media/HXb6Pz3WAAASaz2.jpg",
-      "https://pbs.twimg.com/media/HXb6Pz2WQAAWOLP.jpg",
-      "https://pbs.twimg.com/media/HXb6Pz2WUAA9RsV.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 43,
-    "retweets": 7,
-    "comments": 1
-  },
-  {
-    "tweet_id": "2123124837149253900",
-    "text": "🇲🇿 Diretamente de Moçambique, Diego Pelembe, novo atleta da base do Braga, conta um pouco da sua história e das experiências como jogador. \n\nDiego também foi convocado para representar seu país no Mundial Sub-17, que começa amanhã!\n\nQuer saber mais? Confira a entrevista completa na Massa Bruta TV!\n📺: https://t.co/GsLckGRuC5",
-    "timestamp": "2026-11-18T18:43:01+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123124837149253900",
-    "image_links": [
-      "https://pbs.twimg.com/amplify_video_thumb/2123124714042204160/img/jFo0SQJXTXW9MSbZ.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 601,
-    "retweets": 162,
-    "comments": 26
-  },
-  {
-    "tweet_id": "2123123058508755302",
-    "text": "Destino da viagem: Salvador! 🛫\n\n📸: Ari Ferreira https://t.co/6GkPcn9YbA",
-    "timestamp": "2026-11-18T18:35:57+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123123058508755302",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXbZI8dWAAAY1sW.jpg",
-      "https://pbs.twimg.com/media/HXbZI8pW0AI2t-f.jpg",
-      "https://pbs.twimg.com/media/HXbZI8pWkAEBibj.jpg",
-      "https://pbs.twimg.com/media/HXbZI8nXAAAF1Mh.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 10,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2123088042714108056",
-    "text": "AS PORTAS DO CPD ESTÃO SEMPRE ABERTAS! 🤝\n\nO agora ex-jogador Alan Ruschel visitou o Centro de Performance e Desenvolvimento do Massa Bruta e foi recepcionado pelo seu amigo @lucas_hbarbosa! ❤️‍🔥 https://t.co/1NBeThsV4O",
-    "timestamp": "2026-11-18T16:16:49+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123088042714108056",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXa5UdyW0AAu2YI.jpg",
-      "https://pbs.twimg.com/media/HXa5UdtXsAA-QHR.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 18,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2123062474941595654",
-    "text": "Sol ☀️ &amp; treino 🏃‍♂️no CPD! \n\n📸: Ari Ferreira https://t.co/FEMiMdPERY",
-    "timestamp": "2026-11-18T14:35:13+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2123062474941595654",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXaiEKpX0AEbS90.jpg",
-      "https://pbs.twimg.com/media/HXaiEKjXMAAF1tT.jpg",
-      "https://pbs.twimg.com/media/HXaiEK2XwAArR58.jpg",
-      "https://pbs.twimg.com/media/HXaiEKoWkAEVZdD.jpg",
-      "https://pbs.twimg.com/media/HXaiEKqXcAAbh5d.jpg",
-      "https://pbs.twimg.com/media/HXaiEKsWYAE-Evw.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2122883746441331073",
-    "text": "As artilheiras da noite ⚽️ https://t.co/w5J9ziomgZ",
-    "timestamp": "2026-11-18T02:45:01+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122883746441331073",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXX_g1bWwAAvT4Q.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 11,
     "retweets": 0,
-    "comments": 1
+    "comments": 3
   },
   {
-    "tweet_id": "2122876014510461137",
-    "text": "𝑽𝑬𝑵𝑪𝑬𝑴 𝑨𝑺 𝑩𝑹𝑨𝑮𝑨𝑵𝑻𝑰𝑵𝑨𝑺!  ❤️‍🔥\n\nCom gols de Miriã e Lurdinha, o Red Bull Bragantino derrota o Corinthians por 2 a 0, em Bragança Paulista e sai na frente no play in do Paulistão. \n\nO jogo da volta acontece no domingo, às 11h, na Fazendinha. \n\nVAMOOOOOOOSSS! https://t.co/nE8frct9nA",
-    "timestamp": "2026-11-18T02:14:17+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122876014510461137",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXX4e18XMAEBsxv.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 27,
-    "retweets": 4,
-    "comments": 2
-  },
-  {
-    "tweet_id": "2122872204786598067",
-    "text": "FIIIIIIM DE JOGOOOOOO!\n\nVAMOS, BRAGANTINAAAAAAAS.",
-    "timestamp": "2026-11-18T01:59:09+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122872204786598067",
+    "tweet_id": "2123553588345757752",
+    "text": "VAR chama a arbitragem, que volta atrás na marcação do pênalti em Wallace Yan.",
+    "timestamp": "2026-11-19T23:06:43+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123553588345757752",
     "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 6,
+    "likes": 2,
     "retweets": 0,
     "comments": 0
   },
   {
-    "tweet_id": "2122868431397507144",
-    "text": "GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL!\n\nLurdinha amplia para as Bragantinas. https://t.co/09Pxs6xmrX",
-    "timestamp": "2026-11-18T01:44:09+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122868431397507144",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXxUpsWAAAzlGR.jpg"
-    ],
+    "tweet_id": "2123552756967395827",
+    "text": "🗣️ Pênalti para o Red Bull Bragantino! \n\n⏱️ 31 | 1T (2x0)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-19T23:03:25+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123552756967395827",
+    "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 7,
-    "retweets": 2,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2122859690061406228",
-    "text": "Bola em jogo para a segunda etapa!\n\nPra cima, Bragantinas. https://t.co/Ay26qftEM5",
-    "timestamp": "2026-11-18T01:09:25+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122859690061406228",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXpjkFXcAA3iJs.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2122855002146533653",
-    "text": "Intervalo de jogo em Bragança!\n\nVamos vencendo o Corinthians por 1 a 0. https://t.co/kaJFcSkA6q",
-    "timestamp": "2026-11-18T00:50:47+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122855002146533653",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXkx4xXEAAg5hO.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2122850141916848415",
-    "text": "GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\n\nMiriã abre o placar para as Bragantinas contra o Corinthians!\n\nVAMOOOOOOOSSSSS!!! https://t.co/MFFHOAUFm1",
-    "timestamp": "2026-11-18T00:31:29+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122850141916848415",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXgw68XcAAUpcG.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 11,
+    "likes": 3,
     "retweets": 1,
-    "comments": 0
+    "comments": 2
   },
   {
-    "tweet_id": "2122842675011567911",
-    "text": "Bola rolando em Bragança Paulista! \n\nÉ hora de torcer pelas Bragantinas. ⚽️❤️‍🔥 https://t.co/F0KIL4nby4",
-    "timestamp": "2026-11-18T00:01:48+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122842675011567911",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXWbtBW8AAq_Xy.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 4,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2122840867023270000",
-    "text": "Em busca da vitória, Bragantinas! 😤 https://t.co/4eLmY0h3jZ",
-    "timestamp": "2026-11-17T23:54:37+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122840867023270000",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXXETRW0AAQ9po.jpg",
-      "https://pbs.twimg.com/media/HXXXGp_WQAAzyu7.jpg"
-    ],
+    "tweet_id": "2123550933397504510",
+    "text": "🗣️ Vitória amplia no Barradão. \n\n⏱️ 23 | 1T (2x0)\n\n#VITxRBB\n#RedBullBragantino",
+    "timestamp": "2026-11-19T22:56:10+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123550933397504510",
+    "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 8,
     "retweets": 1,
-    "comments": 0
+    "comments": 9
   },
   {
-    "tweet_id": "2122837280079450583",
-    "text": "O aquecimento tá ON no Cícero! 🔥 https://t.co/2efpM7u81S",
-    "timestamp": "2026-11-17T23:40:22+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2122837280079450583",
-    "image_links": [
-      "https://pbs.twimg.com/media/HXXVG4WWsAA9XTj.jpg",
-      "https://pbs.twimg.com/media/HXXVG39WcAEtdnN.jpg",
-      "https://pbs.twimg.com/media/HXXVG4DWsAAOeNw.jpg",
-      "https://pbs.twimg.com/media/HXXVG32WoAA_lju.jpg"
-    ],
+    "tweet_id": "2123548992965341662",
+    "text": "🗣️Primeira chegada com perigo do Braga, que busca o empate no Barradão. Fernando bate da entrada da área e o goleiro Lucas Arcanjo defende. \n\n⏱️ 15 | 1T (1x0)\n\n#VITxRBB \n#RedBullBragantino",
+    "timestamp": "2026-11-19T22:48:28+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2123548992965341662",
+    "image_links": [],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 5,
+    "likes": 0,
     "retweets": 0,
-    "comments": 0
+    "comments": 1
   },
   {
     "tweet_id": "2122664983347466440",
@@ -289,8 +251,8 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 16,
+    "likes": 17,
     "retweets": 1,
-    "comments": 3
+    "comments": 4
   }
 ]
