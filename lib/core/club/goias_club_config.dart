@@ -93,6 +93,8 @@ final goiasClubConfig = ClubConfig(
   integrations: const ClubIntegrations(
     // TEMPORÁRIO (rollout): futebol via snapshot Supabase. Rollback = FootballSource.worker.
     footballSource: FootballSource.supabaseSnapshot,
+    // TEMPORÁRIO (rollout): notícias via snapshot Supabase. Rollback = NewsSource.worker.
+    newsSource: NewsSource.supabase,
     oneFootballTeamId: 1863,
     oneFootballSlug: 'goias-1863',
     oneFootballCompetitionSlug: 'brasileirao-serie-b-superbet-119',

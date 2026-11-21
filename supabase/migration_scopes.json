@@ -196,6 +196,15 @@
       ],
       "sha256": "5bc26451c688998008641b5a5ebed344b32d122002a4cc8d6f81fb87a3679f1e",
       "note": "Bucket público football-images (escudos de times materializados pelo football-refresh); escrita só service_role. Global: sem literal de clube."
+    },
+    {
+      "version": "20261121010000",
+      "file": "20261121010000_news_snapshots.sql",
+      "scope": [
+        "global"
+      ],
+      "sha256": "4ff75e167b162ecf5d9bcfa9af968577811cc652ff69e0c7110adb784aa16218",
+      "note": "Notícias: tabela news_snapshots (1 linha/clube) + RPC get_news_snapshot + bucket público news-images; escrita só service_role. Preparada e NÃO aplicada. Global: sem literal de clube."
     }
   ]
 }

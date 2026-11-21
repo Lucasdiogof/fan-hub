@@ -220,6 +220,7 @@ final vilaNovaClubConfig = ClubConfig(
   integrations: const ClubIntegrations(
     // TEMPORÁRIO (rollout): futebol via snapshot Supabase. Rollback = FootballSource.worker.
     footballSource: FootballSource.supabaseSnapshot,
+    newsSource: NewsSource.supabase,
     // Projeto Supabase do Vila, criado pelo usuário em 2026-09-29. A
     // publishable key não é segredo (mesmo padrão do Goiás/Bragantino,
     // já commitados em texto puro); nunca a service_role/senha de banco.
@@ -282,10 +283,10 @@ final vilaNovaClubConfig = ClubConfig(
     // Action) e YouTube "TigrãoTV" (precisa do secret YOUTUBE_API_KEY no
     // Worker). Rede sem dado ainda aparece vazia, nunca com post de outro
     // clube.
-    // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
-    // Worker do clube, que não existe mais. Restaurar numa arquitetura
-    // compartilhada (sem remover código/dados desta feature).
-    hasNews: false,
+    // Notícias via Supabase (snapshot + Edge Function `news-article`), sem
+    // Worker. Rollback = `newsSource: NewsSource.worker` (Worker inexistente
+    // hoje: na prática, `hasNews: false`).
+    hasNews: true,
     // TODO-P1 (temporário): desligado porque /api/news e /api/social dependem do
     // Worker do clube, que não existe mais. Restaurar numa arquitetura
     // compartilhada (sem remover código/dados desta feature).

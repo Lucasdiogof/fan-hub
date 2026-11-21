@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
+import 'package:goias_app/features/news/data/datasources/news_data_source.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
@@ -12,7 +12,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 class NewsRepositoryImpl implements NewsRepository {
   NewsRepositoryImpl(this._remote);
 
-  final NewsRemoteDataSource _remote;
+  final NewsDataSource _remote;
 
   @override
   Future<Result<List<NewsItem>>> getList() async {

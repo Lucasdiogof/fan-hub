@@ -144,7 +144,7 @@ void main() {
         // F8 (2026-09-30): Worker próprio no ar — jogos e aba Mídia.
         // TODO-P1: News/Social desligados temporariamente (Worker inexistente).
         expect(c.hasMatches, isTrue);
-        expect(c.hasNews, isFalse);
+        expect(c.hasNews, isTrue); // via Supabase (D1)
         expect(c.hasSocial, isFalse);
         // 2026-09-30: ingressos (notícias oficiais de venda) e parceiros
         // (faixa de patrocinadores do site oficial).

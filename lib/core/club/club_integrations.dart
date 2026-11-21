@@ -5,6 +5,10 @@
 /// só o snapshot.
 enum FootballSource { worker, supabaseSnapshot }
 
+/// Fonte das notícias: Worker (`/api/news`, rollback) ou Supabase (RPC
+/// `get_news_snapshot` + Edge Function `news-article`).
+enum NewsSource { worker, supabase }
+
 /// Endereço fixo de retirada — mesmo shape de `PickupInformation`
 /// (`features/store/domain/entities/shipping.dart`), duplicado aqui de
 /// propósito: `core/club` nunca deveria importar de `features/*` (a
@@ -40,6 +44,7 @@ class ClubIntegrations {
     required this.pickupAddress,
     this.workerBaseUrl,
     this.footballSource = FootballSource.worker,
+    this.newsSource = NewsSource.worker,
     this.supabaseUrl,
     this.supabasePublishableKey,
     this.supabaseRedirectUrl,
@@ -74,6 +79,9 @@ class ClubIntegrations {
 
   /// TEMPORÁRIO — ver [FootballSource]. Nenhum clube foi migrado ainda.
   final FootballSource footballSource;
+
+  /// TEMPORÁRIO — ver [NewsSource]. Rollback = [NewsSource.worker].
+  final NewsSource newsSource;
 
   /// Projeto Supabase deste clube — cada clube tem seu PRÓPRIO projeto,
   /// fisicamente separado, `auth.users` nunca compartilhado (ver

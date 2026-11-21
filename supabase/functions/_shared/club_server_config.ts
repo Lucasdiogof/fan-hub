@@ -27,8 +27,25 @@
 // projeto atual simplesmente falha ao gravar por FK ausente em `clubs`,
 // erro isolado e logado por clube — nunca derruba o outro).
 
+/** Fonte de notícias do clube (site oficial). Única definição server-side:
+ * `news-refresh` e `news-article` leem só daqui. Sem secret. */
+export interface ClubNewsSource {
+  /** Listagem raspada (HTML) ou API JSON completa. */
+  sourceUrl: string;
+  /** Origem para resolver URLs relativas. */
+  siteOrigin: string;
+  /** Qual parser: cada site tem formato próprio. */
+  parser: 'goias' | 'bragantino' | 'vilanova';
+  /** Hosts permitidos para buscar listagem/artigo (nunca URL arbitrária). */
+  allowedHosts: readonly string[];
+  /** Hosts permitidos para materializar capas no Storage. */
+  imageHosts: readonly string[];
+}
+
 export interface ClubServerConfig {
   code: string;
+  /** Notícias do site oficial; ausente = clube sem notícias. */
+  news?: ClubNewsSource;
   /** Mesmo UUID de `goiasClubConfig.identity.canonicalClubId` no Flutter
    * (`lib/core/club/goias_club_config.dart`) e de
    * `src/football/_lib/club_server_config.ts` no Worker — os 3 nunca devem
@@ -77,6 +94,13 @@ const GOIAS_SERVER_CONFIG: ClubServerConfig = {
   oneFootballSlug: 'goias-1863',
   primaryCompetitionSlug: 'brasileirao-serie-b-superbet-119',
   primaryCompetitionDisplayName: 'Brasileirão Série B',
+  news: {
+    sourceUrl: 'https://www.goiasec.com.br/noticias',
+    siteOrigin: 'https://www.goiasec.com.br',
+    parser: 'goias',
+    allowedHosts: ['www.goiasec.com.br'],
+    imageHosts: ['static.goiasec.com.br'],
+  },
 };
 
 // Mesmos valores reais de `lib/core/club/bragantino_club_config.dart`
@@ -91,6 +115,17 @@ const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   oneFootballSlug: 'rb-bragantino-4734',
   primaryCompetitionSlug: 'brasileirao-betano-16',
   primaryCompetitionDisplayName: 'Brasileirão Série A',
+  news: {
+    // API JSON interna do site oficial (feed de stories, schema.org).
+    sourceUrl:
+      'https://www.redbullbragantino.com/v3/api/graphql/v1/v3/feed/pt-BR' +
+      '?filter[type]=stories&scoring=freshness&rb3Schema=v1:structuredData' +
+      '&rb3Locale=br-pt&page[limit]=20&disableUsageRestrictions=true',
+    siteOrigin: 'https://www.redbullbragantino.com',
+    parser: 'bragantino',
+    allowedHosts: ['www.redbullbragantino.com'],
+    imageHosts: ['img.redbullbragantino.com'],
+  },
 };
 
 // Mesmos valores reais de `lib/core/club/vilanova_club_config.dart`
@@ -105,6 +140,13 @@ const VILANOVA_SERVER_CONFIG: ClubServerConfig = {
   oneFootballSlug: 'vila-nova-2865',
   primaryCompetitionSlug: 'brasileirao-serie-b-superbet-119',
   primaryCompetitionDisplayName: 'Brasileirão Série B',
+  news: {
+    sourceUrl: 'https://www.vilanovafc.com.br/noticias',
+    siteOrigin: 'https://www.vilanovafc.com.br',
+    parser: 'vilanova',
+    allowedHosts: ['www.vilanovafc.com.br'],
+    imageHosts: ['www.vilanovafc.com.br'],
+  },
 };
 
 /** Todo registro real hoje — Goiás, Bragantino e Vila Nova. Um 4º clube real

@@ -194,10 +194,14 @@ void main() {
     }
   });
 
-  test('hasNews/hasSocial desligados no Vila e Bragantino (TODO-P1)', () {
+  test('hasSocial desligado no Vila e Bragantino (TODO-P1); hasNews via Supabase no Vila e Bragantino (D1)', () {
     for (final c in [vilaNovaClubConfig, bragantinoClubConfig]) {
-      expect(c.capabilities.hasNews, isFalse);
       expect(c.capabilities.hasSocial, isFalse);
     }
+    expect(vilaNovaClubConfig.capabilities.hasNews, isTrue);
+    expect(vilaNovaClubConfig.integrations.newsSource, NewsSource.supabase);
+    expect(bragantinoClubConfig.capabilities.hasNews, isTrue);
+    expect(bragantinoClubConfig.integrations.newsSource, NewsSource.supabase);
+    expect(goiasClubConfig.integrations.newsSource, NewsSource.supabase);
   });
 }

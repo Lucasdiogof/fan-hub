@@ -72,7 +72,9 @@ import 'package:goias_app/features/passport/domain/repositories/passport_reposit
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_trajectory_cubit.dart';
+import 'package:goias_app/features/news/data/datasources/news_data_source.dart';
 import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
+import 'package:goias_app/features/news/data/datasources/news_snapshot_data_source.dart';
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
 import 'package:goias_app/features/news/presentation/cubit/news_cubit.dart';
@@ -163,8 +165,16 @@ void setupDependencies() {
     () => SocialFeedRepositoryImpl(sl()),
   );
 
-  sl.registerLazySingleton<NewsRemoteDataSource>(
-    () => NewsRemoteDataSource(sl(), sl()),
+  // Flag TEMPORÁRIA de rollout/rollback por clube (ver `NewsSource`).
+  sl.registerLazySingleton<NewsDataSource>(
+    () => switch (sl<ClubConfig>().integrations.newsSource) {
+      NewsSource.worker => NewsRemoteDataSource(sl(), sl()),
+      NewsSource.supabase => NewsSnapshotDataSource(
+        Supabase.instance.client,
+        sl(),
+        sl(),
+      ),
+    },
   );
   sl.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(sl()));
 

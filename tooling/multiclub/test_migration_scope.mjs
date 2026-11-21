@@ -206,9 +206,9 @@ test('clube inexistente -> falha (nunca resolve por padrão)', () => {
   throwsScope(() => resolveForClub('juventude', mkFixture()), /clube desconhecido "juventude"/);
   throwsScope(() => resolveForClub(undefined, mkFixture()), /clube desconhecido/);
 });
-test('REAL: as 11 migrations de dados do Goiás são só-Goiás e as 10 restantes são globais', () => {
+test('REAL: as 11 migrations de dados do Goiás são só-Goiás e as 11 restantes são globais', () => {
   assert.strictEqual(REAL_GOIAS_ONLY.length, 11);
-  assert.strictEqual(REAL_GLOBAL.length, 10);
+  assert.strictEqual(REAL_GLOBAL.length, 11);
   assert.ok(REAL_GOIAS_ONLY.every((f) => /^(20260930|20261001|20261002)/.test(f) && !/harden/.test(f)));
   assert.ok(REAL_GLOBAL.includes('20261002040000_harden_passport_per_user_rpcs.sql'));
   assert.ok(REAL_GLOBAL.some((f) => f.startsWith('20260909000000')), '20260909000000 deve ser global (dívida funcional é separada)');
@@ -358,7 +358,7 @@ test('db-push: escrita real sem --yes, clube desconhecido e --remote sem --dry-r
 test('db-status --plan usa o mesmo recorte e não exige env var nem conecta', () => {
   const r = run('db-status.mjs', ['bragantino', '--plan'], {});
   assert.strictEqual(r.code, 0, r.out);
-  assert.ok(/Migrations incluídas \(10\)/.test(r.out) && /excluídas por escopo \(11\)/.test(r.out), r.out);
+  assert.ok(/Migrations incluídas \(11\)/.test(r.out) && /excluídas por escopo \(11\)/.test(r.out), r.out);
 });
 test('o help de db-push cita os três clubes', () => {
   const r = run('db-push.mjs', [], {});

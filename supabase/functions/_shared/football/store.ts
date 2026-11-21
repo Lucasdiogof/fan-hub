@@ -36,8 +36,13 @@ export function createSnapshotStore(admin: Admin): SnapshotStore {
   };
 }
 
-export function createImageDeps(admin: Admin, supabaseUrl: string, fetchImpl: typeof fetch = fetch): ImageDeps {
-  const publicBase = `${supabaseUrl}/storage/v1/object/public/${IMAGE_BUCKET}`;
+export function createImageDeps(
+  admin: Admin,
+  supabaseUrl: string,
+  fetchImpl: typeof fetch = fetch,
+  bucket: string = IMAGE_BUCKET,
+): ImageDeps {
+  const publicBase = `${supabaseUrl}/storage/v1/object/public/${bucket}`;
   return {
     fetch: fetchImpl,
     publicBase,
@@ -56,7 +61,7 @@ export function createImageDeps(admin: Admin, supabaseUrl: string, fetchImpl: ty
       },
       async upload(path, bytes, contentType) {
         const { error } = await admin.storage
-          .from(IMAGE_BUCKET)
+          .from(bucket)
           .upload(path, bytes, { contentType, upsert: false, cacheControl: '31536000' });
         // Corrida entre dois refreshes: o arquivo já existe -> ok.
         if (error && !/already exists|Duplicate/i.test(error.message)) throw new Error(error.message);

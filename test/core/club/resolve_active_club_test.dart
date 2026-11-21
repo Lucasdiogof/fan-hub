@@ -200,7 +200,7 @@ void main() {
         // 404). Instagram/X seguem sem config própria, mas isso nunca
         // TODO-P1: News/Social desligados temporariamente (Worker inexistente).
         // derruba o feed inteiro (`Promise.allSettled` por provider).
-        expect(c.hasNews, isFalse);
+        expect(c.hasNews, isTrue); // via Supabase (D1)
         expect(c.hasSocial, isFalse);
         // player_identity e tactical_identity: datasets próprios do
         // Bragantino auditados, simulados e corrigidos (ver

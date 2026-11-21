@@ -74,7 +74,7 @@ export function collectImageUrls(payload: unknown, out = new Set<string>()): Set
   return out;
 }
 
-async function fileName(url: string): Promise<string> {
+export async function fileName(url: string): Promise<string> {
   const normalized = normalizeImageUrl(url);
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(normalized));
   const hash = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');

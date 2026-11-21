@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/features/news/data/datasources/news_data_source.dart';
 import 'package:goias_app/features/news/data/dto/news_article_dto.dart';
 import 'package:goias_app/features/news/data/dto/news_item_dto.dart';
 
@@ -9,12 +10,13 @@ import 'package:goias_app/features/news/data/dto/news_item_dto.dart';
 /// default de compatibilidade (Goiás), então qualquer clube veria notícia
 /// real do Goiás. Mandar `club_id`/`club` explícito é o que torna
 /// `hasNews=false` uma proteção de verdade, não só cosmética.
-class NewsRemoteDataSource {
+class NewsRemoteDataSource implements NewsDataSource {
   NewsRemoteDataSource(this._dio, this._clubConfig);
 
   final Dio _dio;
   final ClubConfig _clubConfig;
 
+  @override
   Future<List<NewsItemDto>> getList() async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/news',
@@ -28,6 +30,7 @@ class NewsRemoteDataSource {
 
   /// Null quando `available: false` — o backend não conseguiu extrair a
   /// matéria completa dessa vez.
+  @override
   Future<NewsArticleDto?> getArticle(String id) async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/news/$id',
